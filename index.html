@@ -261,7 +261,7 @@ try{const r=JSON.parse(localStorage.getItem("hsk_s")||"null");if(r&&(r.mode=="hs
 try{S.mem=JSON.parse(localStorage.getItem("hsk_mem")||"{}")}catch(e){S.mem={}}
 if(S.mode!="hm"){if(!S.mem[S.mode])S.mem[S.mode]={ch:S.ch,i:S.i,tab:S.tab};S.lastm=S.mode;S.vm=S.mode=="tek"?"tek":"hsk"}
 S.mode="hm";
-const $=id=>document.getElementById(id);
+const $=id=>document.getElementById(typeof id==="string"&&id.charAt(0)==="#"?id.slice(1):id);
 const save=()=>{try{localStorage.setItem("hsk_m",JSON.stringify(S.m))}catch(e){}};
 const K=()=>S.mode=="tek"?S.tk:S.mode=="gr"?S.gs:S.mode=="rd"?S.rl:S.mode=="lt"?S.lk:S.lv,inMode=c=>S.mode=="tek"?(c[3]==5||c[3]==6):(c[3]>=1&&c[3]<=4),list=()=>D.filter(c=>(S.mode=="tek"?c[3]==S.tk:c[3]>=1&&c[3]<=4&&(!S.lv||c[3]==S.lv))&&(!S.ch||c[4]==S.ch)),hzs=n=>n<=3?76:n<=5?54:n<=8?40:n<=16?30:24;
 
