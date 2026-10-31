@@ -225,7 +225,225 @@ body:not(.hm) h1{font-size:26px}body:not(.hm) .sub{display:none}
 .prep-ft input{background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:6px 8px;font:inherit}
 .prep button:focus-visible,.prep input:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
 </style>
-</head><body><div class="wrap"><button id="sbtn" aria-label="Cari">🔍</button>
+</head><body><style id="auth-css">
+html.gated .wrap{display:none!important}
+html.gated body{overflow:hidden}
+#authgate[hidden]{display:none!important}
+#authgate{--ag-err:#ff9d8a;position:fixed;top:0;right:0;bottom:0;left:0;z-index:100000;overflow:auto;-webkit-overflow-scrolling:touch;background:var(--bg);color:var(--ink);display:flex;padding:calc(env(safe-area-inset-top,0px) + 20px) 16px calc(env(safe-area-inset-bottom,0px) + 20px);font-family:Inter,system-ui,sans-serif;text-align:left}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]) #authgate{--ag-err:#b23a24}}
+:root[data-theme="light"] #authgate{--ag-err:#b23a24}
+#authgate .ag-box{width:100%;max-width:380px;margin:auto;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px 22px 22px;box-shadow:0 10px 40px rgba(0,0,0,.25)}
+#authgate h1{font-family:'Noto Serif SC',serif;color:var(--acc);font-size:44px;line-height:1.1;margin:0;text-align:center}
+#authgate .ag-sub{letter-spacing:.15em;font-size:12px;color:var(--mute);text-transform:uppercase;text-align:center;margin-top:4px}
+#authgate .ag-tabs{display:flex;gap:4px;margin:22px 0 16px;padding:4px;background:var(--bg);border:1px solid var(--line);border-radius:12px}
+#authgate .ag-tabs button{flex:1;border:0;border-radius:9px;padding:9px 0;font:600 14px Inter,system-ui,sans-serif;background:none;color:var(--mute);cursor:pointer}
+#authgate .ag-tabs button.on{background:var(--acc);color:#2b2620}
+#authgate label{display:block;font-size:13px;color:var(--mute);margin:12px 0 5px}
+#authgate input{width:100%;font:16px Inter,system-ui,sans-serif;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px 14px;outline:none}
+#authgate input:focus{border-color:var(--acc);box-shadow:0 0 0 2px var(--acc)}
+#authgate .ag-pwrow{position:relative}
+#authgate .ag-pwrow input{padding-right:48px}
+#authgate .ag-eye{position:absolute;right:2px;top:2px;bottom:2px;width:44px;border:0;background:none;color:var(--mute);font-size:18px;cursor:pointer;border-radius:8px}
+#authgate .ag-msg{min-height:20px;margin:12px 0 4px;font-size:14px;line-height:1.4;color:var(--ag-err)}
+#authgate .ag-msg.info{color:var(--mute)}
+#authgate .ag-go{width:100%;border:0;border-radius:12px;padding:13px 0;font:700 16px Inter,system-ui,sans-serif;background:var(--acc);color:#2b2620;cursor:pointer}
+#authgate .ag-go[disabled]{opacity:.6;cursor:default}
+#authgate .ag-note{margin:16px 0 0;font-size:12.5px;line-height:1.5;color:var(--mute);text-align:center}
+#authgate button:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+#acct{position:absolute;right:44px;top:9px;width:34px;height:34px;padding:0;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--acc);font:700 14px Inter,system-ui,sans-serif;cursor:pointer;z-index:3}
+#acct-menu{position:absolute;right:0;top:50px;z-index:4;width:250px;max-width:100%;padding:14px;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:14px;text-align:left;box-shadow:0 8px 28px rgba(0,0,0,.3)}
+#acct-menu[hidden]{display:none}
+#acct-menu .am-s{font-size:12px;color:var(--mute)}
+#acct-menu .am-e{font-size:14px;font-weight:600;word-break:break-all;margin:2px 0 12px}
+#acct-menu button{width:100%;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:10px;padding:10px 0;font:600 14px Inter,system-ui,sans-serif;cursor:pointer}
+#acct-menu button[disabled]{opacity:.6;cursor:default}
+</style>
+<div id="authgate" hidden role="dialog" aria-modal="true" aria-labelledby="ag-title">
+ <div class="ag-box">
+  <h1 id="ag-title">词卡</h1>
+  <div class="ag-sub">Kartu Kosakata Mandarin</div>
+  <div class="ag-tabs" role="tablist"><button type="button" id="ag-t-in" class="on" role="tab" aria-selected="true">Masuk</button><button type="button" id="ag-t-up" role="tab" aria-selected="false">Daftar</button></div>
+  <form id="ag-form" novalidate>
+   <label for="ag-email">Email</label>
+   <input id="ag-email" name="email" type="email" inputmode="email" autocomplete="username" autocapitalize="off" autocorrect="off" spellcheck="false">
+   <label for="ag-pw">Password</label>
+   <div class="ag-pwrow"><input id="ag-pw" name="password" type="password" autocomplete="current-password" autocapitalize="off" spellcheck="false"><button type="button" class="ag-eye" id="ag-eye" aria-label="Tampilkan password" title="Tampilkan password">👁</button></div>
+   <div id="ag-kwrap" hidden><label for="ag-kode">Kode undangan</label><input id="ag-kode" name="kode" type="text" autocomplete="off" autocapitalize="characters" autocorrect="off" spellcheck="false"></div>
+   <div class="ag-msg" id="ag-msg" role="alert" aria-live="polite"></div>
+   <button type="submit" class="ag-go" id="ag-go">Masuk</button>
+  </form>
+  <p class="ag-note" id="ag-note">Lupa password? Minta pemilik situs mengatur ulang password-mu.</p>
+ </div>
+</div>
+<script id="auth-gate">
+/* Halaman login. Berjalan paling awal, sebelum aplikasi.
+   - Tanpa sesi yang sah, aplikasi disembunyikan dan halaman login ditampilkan.
+   - Setelah masuk, server n8n (hsk-auth) memberi token + alamat sinkron; keduanya disimpan di browser (acct_auth, sync_*), lalu halaman dimuat ulang.
+   - Progres tiap akun dipisah: bila akun berganti di browser ini, progres akun sebelumnya disimpan ke slot (acct_s_<email>) dan progres akun baru dipulihkan.
+   Catatan: ini gerbang di sisi tampilan. Data kosakata tetap ada di berkas halaman; yang dilindungi server adalah progres belajar tiap akun. */
+(function(){
+ var AUTH_URL="https://n8n.zenta.web.id/webhook/hsk-auth";
+ var root=document.documentElement,LS=null,A=null,gone=false;
+ try{LS=window.localStorage;LS.getItem("acct_auth")}catch(e){LS=null}
+ var PROG=["hsk_m","hsk_gp","hsk_gb","hsk_rr","hsk_rdone","hsk_wr","hsk_wa","hsk_error_bank_v1","hsk_exam_history","hsk_daily_activity_v1","hsk_prep_v1","hsk_srs_v1"];
+ function $g(id){return document.getElementById(id)}
+ function jget(k){try{return JSON.parse(LS.getItem(k)||"null")}catch(e){return null}}
+ function readAuth(){
+  var a=jget("acct_auth");
+  if(a&&typeof a.token==="string"&&a.token&&typeof a.email==="string"&&a.email&&typeof a.exp==="number"&&a.exp>Date.now()/1000+60&&a.sync&&a.sync.u&&a.sync.p&&a.sync.k)return a;
+  return null;
+ }
+ function liveKeys(){var o=[],i,k;for(i=0;i<LS.length;i++){k=LS.key(i);if(k&&(k.indexOf("hsk_")===0||k==="sync_base"))o.push(k)}return o}
+ function hasData(){
+  return PROG.some(function(k){var v=LS.getItem(k);return !!v&&v!=="{}"&&v!=="[]"&&v!=="null"});
+ }
+ function slotKey(e){return "acct_s_"+(e||"*lama")}
+ function saveSlot(name){
+  var o={},ks=liveKeys(),i;
+  for(i=0;i<ks.length;i++)o[ks[i]]=LS.getItem(ks[i]);
+  try{LS.setItem(slotKey(name),JSON.stringify(o))}catch(e){try{LS.removeItem(slotKey(name))}catch(_){}throw e}
+ }
+ function loadSlot(name){
+  var o=jget(slotKey(name)),k;
+  if(!o||typeof o!=="object")return false;
+  for(k in o)if(Object.prototype.hasOwnProperty.call(o,k)&&typeof o[k]==="string")LS.setItem(k,o[k]);
+  LS.removeItem(slotKey(name));
+  return true;
+ }
+ /* Pisahkan progres antar akun di browser ini. Hasil: true bila siap dilanjutkan. */
+ function switchData(E,peran){
+  var cur=LS.getItem("acct_last")||"",own=peran==="owner",ks,i;
+  if(cur===E)return true;
+  if(cur===""&&own)return true;   /* progres lama (sebelum ada login) di browser ini milik pemilik */
+  try{
+   if(cur!==""||hasData())saveSlot(cur);
+   ks=liveKeys();for(i=0;i<ks.length;i++)LS.removeItem(ks[i]);
+   if(!loadSlot(E)&&own)loadSlot("");
+   return true;
+  }catch(e){return false}
+ }
+ function applySync(a){
+  try{
+   if(LS.getItem("sync_url")!==a.sync.u)LS.setItem("sync_url",a.sync.u);
+   if(LS.getItem("sync_pull")!==a.sync.p)LS.setItem("sync_pull",a.sync.p);
+   if(LS.getItem("sync_key")!==a.sync.k)LS.setItem("sync_key",a.sync.k);
+  }catch(e){}
+ }
+ function dropSession(msg){
+  try{
+   LS.removeItem("acct_auth");LS.removeItem("sync_url");LS.removeItem("sync_key");LS.removeItem("sync_pull");
+   if(msg)LS.setItem("acct_msg",msg);
+  }catch(e){}
+ }
+
+ /* alamat lama ?n8n=...&k=... tidak dipakai lagi (pengaturan sinkron kini hanya dari login) */
+ try{
+  var q=new URLSearchParams(location.search);
+  if(q.has("n8n")||q.has("k")||q.has("p")){
+   q["delete"]("n8n");q["delete"]("k");q["delete"]("p");
+   var qs=q.toString();history.replaceState(null,"",location.pathname+(qs?"?"+qs:"")+location.hash);
+  }
+ }catch(e){}
+
+ if(LS)A=readAuth();
+ window.hskAuth={
+  mode:function(){return A?A.mode:""},
+  email:function(){return A?A.email:""},
+  peran:function(){return A?A.peran:""},
+  expired:function(){if(gone)return;gone=true;dropSession("Sesi berakhir. Silakan masuk lagi.");location.reload()},
+  logout:function(){
+   if(gone)return Promise.resolve();gone=true;
+   function fin(){dropSession("");location.reload()}
+   var p=window.hskSync&&window.hskSync.settle?window.hskSync.settle(6000):Promise.resolve();
+   return p.then(fin,fin);
+  },
+  _t:{switchData:switchData,liveKeys:liveKeys,hasData:hasData}
+ };
+
+ if(A){
+  applySync(A);
+  window.addEventListener("storage",function(e){   /* tab lain keluar / berganti akun */
+   if(gone)return;
+   if(e.key==="acct_auth"){var n=null;try{n=e.newValue&&JSON.parse(e.newValue)}catch(_){}if(!n||n.email!==A.email){gone=true;location.reload()}}
+  });
+  document.addEventListener("DOMContentLoaded",function(){
+   var sb=$g("sbtn");if(!sb||!sb.parentNode)return;
+   var b=document.createElement("button");b.id="acct";b.type="button";b.setAttribute("aria-label","Akun: "+A.email);b.setAttribute("aria-haspopup","true");b.setAttribute("aria-expanded","false");
+   b.textContent=A.email.charAt(0).toUpperCase();
+   var m=document.createElement("div");m.id="acct-menu";m.hidden=true;
+   var s1=document.createElement("div");s1.className="am-s";s1.textContent="Masuk sebagai";
+   var s2=document.createElement("div");s2.className="am-e";s2.textContent=A.email;
+   var out=document.createElement("button");out.type="button";out.id="acct-out";out.textContent="Keluar";
+   m.appendChild(s1);m.appendChild(s2);m.appendChild(out);
+   sb.parentNode.insertBefore(b,sb.nextSibling);sb.parentNode.insertBefore(m,b.nextSibling);
+   function show(v){m.hidden=!v;b.setAttribute("aria-expanded",v?"true":"false")}
+   b.addEventListener("click",function(e){e.stopPropagation();show(m.hidden)});
+   document.addEventListener("click",function(e){if(!m.hidden&&!m.contains(e.target))show(false)});
+   document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!m.hidden){show(false);b.focus()}});
+   out.addEventListener("click",function(){out.disabled=true;out.textContent="Menyimpan…";window.hskAuth.logout()});
+  });
+  return;
+ }
+
+ /* ---- belum masuk: tampilkan halaman login ---- */
+ root.classList.add("gated");
+ if(LS){try{LS.removeItem("sync_url");LS.removeItem("sync_key");LS.removeItem("sync_pull")}catch(e){}}   /* tanpa login tidak ada sinkronisasi */
+ var gate=$g("authgate"),form=$g("ag-form"),em=$g("ag-email"),pw=$g("ag-pw"),kd=$g("ag-kode"),kw=$g("ag-kwrap"),msgEl=$g("ag-msg"),go=$g("ag-go"),note=$g("ag-note"),
+     tIn=$g("ag-t-in"),tUp=$g("ag-t-up"),eye=$g("ag-eye"),up=false,busy=false;
+ gate.hidden=false;
+ function msg(t,info){msgEl.textContent=t||"";msgEl.className="ag-msg"+(info?" info":"")}
+ function mode(u){
+  up=u;
+  tIn.className=u?"":"on";tUp.className=u?"on":"";
+  tIn.setAttribute("aria-selected",u?"false":"true");tUp.setAttribute("aria-selected",u?"true":"false");
+  kw.hidden=!u;go.textContent=u?"Daftar":"Masuk";
+  pw.setAttribute("autocomplete",u?"new-password":"current-password");
+  note.textContent=u?"Kode undangan didapat dari pemilik situs. Password minimal 8 karakter.":"Lupa password? Minta pemilik situs mengatur ulang password-mu.";
+  msg("");
+ }
+ tIn.addEventListener("click",function(){if(!busy)mode(false)});
+ tUp.addEventListener("click",function(){if(!busy)mode(true)});
+ eye.addEventListener("click",function(){
+  var show=pw.type==="password";pw.type=show?"text":"password";
+  eye.setAttribute("aria-label",show?"Sembunyikan password":"Tampilkan password");eye.title=eye.getAttribute("aria-label");
+ });
+ if(!LS){msg("Penyimpanan browser dinonaktifkan, jadi login tidak bisa dipakai. Aktifkan penyimpanan situs (cookie/data situs) lalu muat ulang.");go.disabled=true}
+ else{
+  var last=LS.getItem("acct_last")||"",m0=LS.getItem("acct_msg");
+  if(last)em.value=last;
+  if(m0){msg(m0,true);try{LS.removeItem("acct_msg")}catch(e){}}
+  try{if(window.matchMedia&&matchMedia("(pointer:fine)").matches)setTimeout(function(){(last?pw:em).focus()},60)}catch(e){}
+ }
+ function accept(j){
+  var E=String(j.email).toLowerCase();
+  if(!switchData(E,j.peran)){msg("Penyimpanan browser penuh, akun tidak bisa diganti di sini. Hapus data situs lama lalu coba lagi.");return false}
+  var a={token:j.token,exp:j.exp,email:E,peran:j.peran,mode:j.mode,sync:j.sync};
+  try{LS.setItem("acct_auth",JSON.stringify(a));LS.setItem("acct_last",E)}catch(e){msg("Tidak bisa menyimpan sesi di browser ini.");return false}
+  applySync(a);
+  return true;
+ }
+ function submit(){
+  if(busy||!LS)return;
+  var email=em.value.trim().toLowerCase(),pass=pw.value,kode=kd.value.trim();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){msg("Alamat email tidak valid.");em.focus();return}
+  if(!pass){msg("Password belum diisi.");pw.focus();return}
+  if(up&&pass.length<8){msg("Password minimal 8 karakter.");pw.focus();return}
+  if(up&&!kode){msg("Kode undangan belum diisi.");kd.focus();return}
+  busy=true;go.disabled=true;go.textContent="Memproses…";msg("");
+  var ctl=typeof AbortController!=="undefined"?new AbortController():null,to=setTimeout(function(){if(ctl)ctl.abort()},25000),ok=false;
+  fetch(AUTH_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({action:up?"daftar":"masuk",email:email,password:pass,kode:up?kode:""}),mode:"cors",signal:ctl?ctl.signal:undefined})
+   .then(function(r){return r.json().then(function(j){return{s:r.status,j:j}},function(){return{s:r.status,j:null}})})
+   .then(function(x){
+    if(x.j&&x.j.ok===true&&x.j.token&&x.j.sync&&x.j.sync.u&&x.j.sync.p&&x.j.sync.k){
+     if(accept(x.j)){ok=true;go.textContent="Membuka…";location.reload()}
+    }else msg((x.j&&x.j.pesan)||("Gagal ("+x.s+"). Coba lagi sebentar lagi."));
+   })
+   .catch(function(){msg("Tidak bisa terhubung ke server. Periksa koneksi internet lalu coba lagi.")})
+   .then(function(){clearTimeout(to);if(!ok){busy=false;go.disabled=false;go.textContent=up?"Daftar":"Masuk"}});
+ }
+ form.addEventListener("submit",function(e){e.preventDefault();submit()});
+})();
+</script><div class="wrap"><button id="sbtn" aria-label="Cari">🔍</button>
 <h1>词卡</h1><div class="sub">Kartu Kosakata Mandarin</div>
 <div class="stats" id="stats"></div>
 <div class="row" id="md"></div>
@@ -1100,7 +1318,7 @@ STRP.then(render);
 </script><script id="n8n-sync">
 /* Sinkronisasi progres antar perangkat (HP ⇄ laptop) dan dengan bot Telegram, lewat n8n + Google Sheets.
    Tidak mengubah logika aplikasi; hanya "mendengar" penyimpanan hsk_* lalu menggabungkan.
-   Aktif per browser setelah halaman dibuka sekali dengan ?n8n=URL_WEBHOOK&k=KODE_RAHASIA (disimpan di browser, lalu dihapus dari alamat).
+   Alamat server dan kunci diisi otomatis oleh halaman login (skrip "auth-gate" di awal halaman) setelah masuk; tanpa login tidak ada yang disinkronkan.
    Alur: tarik data dari server -> gabungkan dengan data di sini -> tulis hasilnya ke sini -> kirim hasilnya ke server.
    - Tanda kata (hsk_m), 语法 (hsk_gp, hsk_gb), bacaan (hsk_rr, hsk_rdone), bank kesalahan, riwayat ujian, aktivitas harian,
      target persiapan ujian: digabung per butir dengan "gabungan tiga arah" terhadap salinan terakhir yang sama-sama disepakati (sync_base).
@@ -1110,18 +1328,8 @@ STRP.then(render);
    Posisi belajar terakhir, ukuran huruf, dsb. sengaja tidak disinkronkan (khusus per perangkat). */
 (function(){
  var LS;try{LS=window.localStorage}catch(e){return}
- var _set=Storage.prototype.setItem,timer=null,firstDirty=0,pulling=false,again=false,lastPull=0,lastSrv=null,failN=0,retryT=null,told=false,okShown=false,lastErr="";
+ var _set=Storage.prototype.setItem,timer=null,firstDirty=0,pulling=false,again=false,rerun=false,pushing=0,lastPull=0,lastSrv=null,failN=0,retryT=null,told=false,okShown=false,lastErr="";
  function has(o,k){return Object.prototype.hasOwnProperty.call(o,k)}
- try{
-  var q=new URLSearchParams(location.search);
-  if(q.get("n8n")){
-   var nu=q.get("n8n"),nk=q.get("k")||"";
-   if(LS.getItem("sync_url")!==nu||(LS.getItem("sync_key")||"")!==nk)LS.removeItem("sync_base");   /* alamat/kode baru: mulai gabungan dari awal */
-   _set.call(LS,"sync_url",nu);_set.call(LS,"sync_key",nk);
-   if(q.get("p"))_set.call(LS,"sync_pull",q.get("p"));
-   history.replaceState(null,"",location.pathname+location.hash);
-  }
- }catch(e){}
  function cfg(){try{return{u:LS.getItem("sync_url"),k:LS.getItem("sync_key")||"",p:LS.getItem("sync_pull")||""}}catch(e){return{}}}
  function pullUrl(c){
   if(c.p)return c.p;
@@ -1350,13 +1558,14 @@ STRP.then(render);
  }
  function fail(what,e){
   var msg=String((e&&e.message)||e);
+  if(msg==="401"&&window.hskAuth&&window.hskAuth.mode()==="tabel"){lastErr=what+": sesi berakhir";window.hskAuth.expired();return}   /* sesi tidak sah lagi (password diganti / akun dinonaktifkan / kedaluwarsa) */
   lastErr=what+": "+msg;failN++;
   try{console.warn("Sinkron "+what+" gagal:",e)}catch(_){}
   if(!told){told=true;toast("⚠️ Sinkron "+what+" gagal ("+(msg==="401"?"kode rahasia salah":msg.slice(0,60))+"). Progres tetap aman di perangkat ini.")}
   if(!retryT&&failN<=5)retryT=setTimeout(function(){retryT=null;sync(true)},60000);
  }
  function push(c,ps,nb,ka){
-  var b=build(ps),s;b.secret=c.k;s=JSON.stringify(b);
+  var b=build(ps),s;b.secret=c.k;s=JSON.stringify(b);pushing++;
   try{
    fetch(c.u,{method:"POST",headers:{"Content-Type":"application/json"},body:s,keepalive:ka&&s.length<60000,mode:"cors"})
     .then(function(r){
@@ -1365,8 +1574,9 @@ STRP.then(render);
      if(lastSrv){var kk;for(kk in ps){if(!has(ps,kk))continue;if(kk==="hsk_srs_c"){try{lastSrv.site=JSON.parse(ps[kk])}catch(e){}}else{lastSrv.state=isObj(lastSrv.state)?lastSrv.state:{};lastSrv.state[kk]=ps[kk]}}}
      failN=0;lastErr="";
     })
-    .catch(function(e){fail("kirim",e)});
-  }catch(e){fail("kirim",e)}
+    .catch(function(e){fail("kirim",e)})
+    .then(function(){pushing--},function(){pushing--});
+  }catch(e){pushing--;fail("kirim",e)}
  }
  /* j: tanggapan server {site, bot, state}; ka: true bila dipanggil saat halaman akan ditinggalkan */
  function handle(j,ka){
@@ -1401,7 +1611,7 @@ STRP.then(render);
   pulling=true;lastPull=Date.now();again=false;
   var ctl=typeof AbortController!=="undefined"?new AbortController():null;
   var to=setTimeout(function(){if(ctl)ctl.abort()},20000);
-  function done(){pulling=false;clearTimeout(to);if(again){again=false;setTimeout(function(){sync(true)},300)}}
+  function done(){pulling=false;clearTimeout(to);if(again){again=false;rerun=true;setTimeout(function(){rerun=false;sync(true)},300)}}
   try{
    fetch(u,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({secret:c.k,ts:new Date().toISOString()}),mode:"cors",signal:ctl?ctl.signal:undefined})
     .then(function(r){return r.ok?r.json():Promise.reject(r.status)})
@@ -1421,6 +1631,14 @@ STRP.then(render);
   if(lastSrv){try{handle(lastSrv,true)}catch(e){}}else sync(true);
  }
 
+ function settle(ms){   /* kirim perubahan yang tertunda lalu tunggu selesai; true bila sudah beres sebelum batas waktu */
+  return new Promise(function(res){
+   var t0=Date.now(),lim=ms||6000;
+   if(timer){clearTimeout(timer);timer=null;firstDirty=0;lastPull=0;sync(true)}
+   (function w(){var b=pulling||pushing>0||rerun;if(!b||Date.now()-t0>lim)return res(!b);setTimeout(w,120)})();
+  });
+ }
+
  Storage.prototype.setItem=function(k){
   _set.apply(this,arguments);
   if(this===LS){var n=String(k);if(has(KINDS,n)||n==="hsk_srs_v1")mark()}
@@ -1432,7 +1650,7 @@ STRP.then(render);
  window.addEventListener("focus",function(){sync(false)});
  window.addEventListener("online",function(){sync(true)});
  setTimeout(function(){sync(true)},2500);
- window.hskSync={pull:function(){sync(true)},send:function(){sync(true)},toSC:toSC,fromSC:fromSC,mergeMap:mergeMap,   /* untuk uji/diagnosa: hskSync.pull() di konsol */
+ window.hskSync={pull:function(){sync(true)},send:function(){sync(true)},settle:settle,toSC:toSC,fromSC:fromSC,mergeMap:mergeMap,   /* untuk uji/diagnosa: hskSync.pull() di konsol */
   status:function(){var c=cfg();return{url:c.u||null,pull:pullUrl(c)||null,base:!!loadBase(),lastErr:lastErr,lastPull:lastPull}},
   _t:{canon:canon,m3:m3,mergeKind:mergeKind,mergeState:mergeState,KINDS:KINDS}};
 })();
