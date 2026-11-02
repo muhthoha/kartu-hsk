@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src https://n8n.zenta.web.id; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer"><meta name="robots" content="noindex">
+<title>Verifikasi email · 词卡</title>
+<style>
+:root{--bg:#2b2620;--card:#38322a;--ink:#f7f1e8;--mute:#b9ad9c;--acc:#e8674f;--line:#5a4d40;--ok:#7fc29b;--err:#ff9d8a}
+@media(prefers-color-scheme:light){:root{--bg:#f6efe4;--card:#fffaf1;--ink:#2b2620;--mute:#7a6d5c;--line:#d8c9b3;--err:#b23a24;--ok:#2f7a52}}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:flex;padding:20px 16px;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif}
+.box{width:100%;max-width:380px;margin:auto;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px 22px 24px;text-align:center}
+h1{font-family:'Noto Serif SC',serif;color:var(--acc);font-size:44px;line-height:1.1;margin:0}
+.sub{letter-spacing:.15em;font-size:12px;color:var(--mute);text-transform:uppercase;margin-top:4px}
+p{line-height:1.55;margin:18px 0 0;font-size:15px;overflow-wrap:anywhere}
+#em{font-weight:600}
+#st{min-height:1.4em}#st.ok{color:var(--ok)}#st.err{color:var(--err)}
+.btn{display:inline-block;margin-top:20px;padding:13px 22px;border-radius:10px;border:1px solid var(--acc);background:#6b2a20;color:#fff;font:600 15px Inter,system-ui,sans-serif;text-decoration:none;cursor:pointer}
+.btn[disabled]{opacity:.6;cursor:default}
+.btn[hidden]{display:none}
+</style></head><body>
+<div class="box"><h1>词卡</h1><div class="sub">Verifikasi email</div>
+<p id="t">Memeriksa tautan…</p><p id="em" hidden></p>
+<p id="st" role="status" aria-live="polite"></p>
+<button class="btn" id="go" type="button" hidden>Verifikasi sekarang</button>
+<a class="btn" id="in" href="./" hidden>Ke halaman masuk</a>
+</div>
+<script>
+(function(){
+ var URL_V="https://n8n.zenta.web.id/webhook/hsk-verif";
+ var $=function(i){return document.getElementById(i)},t=$("t"),em=$("em"),st=$("st"),go=$("go"),lnk=$("in");
+ function say(c,s){st.className=c||"";st.textContent=s||""}
+ var tok="",email="";
+ try{
+  var p=new URLSearchParams(location.hash.replace(/^#/,""));
+  tok=String(p.get("verif")||"").trim().toLowerCase();email=String(p.get("email")||"").trim().toLowerCase();
+  history.replaceState(null,"",location.pathname);   /* token tidak tertinggal di bilah alamat / riwayat */
+ }catch(e){}
+ if(!/^[0-9a-f]{32}$/.test(tok)||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)||email.length>120){
+  t.textContent="Tautan verifikasi tidak lengkap atau rusak. Buka tautan langsung dari email, atau masuk untuk meminta tautan baru.";
+  lnk.hidden=false;return;
+ }
+ t.textContent="Konfirmasi bahwa email berikut milikmu:";em.textContent=email;em.hidden=false;go.hidden=false;
+ var busy=false;
+ go.addEventListener("click",function(){
+  if(busy)return;busy=true;go.disabled=true;go.textContent="Memproses…";say("","");
+  var ctl=typeof AbortController!=="undefined"?new AbortController():null,to=setTimeout(function(){if(ctl)ctl.abort()},20000),done=false;
+  fetch(URL_V,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email:email,token:tok}),mode:"cors",signal:ctl?ctl.signal:undefined})
+   .then(function(r){return r.json().then(function(j){return{s:r.status,j:j}},function(){return{s:r.status,j:null}})})
+   .then(function(x){
+    if(x.j&&x.j.ok===true){done=true;t.textContent="Email berhasil diverifikasi.";em.hidden=true;go.hidden=true;say("ok","Sekarang kamu bisa masuk.");lnk.hidden=false}
+    else if(x.s===400||x.s===429){done=true;go.hidden=true;lnk.hidden=false;say("err",(x.j&&x.j.pesan)||"Tautan tidak valid.")}
+    else say("err","Gagal ("+x.s+"). Coba lagi sebentar lagi.");
+   })
+   .catch(function(){say("err","Tidak bisa terhubung ke server. Periksa koneksi lalu coba lagi.")})
+   .then(function(){clearTimeout(to);busy=false;if(!done){go.disabled=false;go.textContent="Verifikasi sekarang"}});
+ });
+})();
+</script></body></html>

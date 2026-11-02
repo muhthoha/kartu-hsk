@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="id"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' blob: data:; connect-src 'self' https://n8n.zenta.web.id https://cdn.jsdelivr.net; object-src 'none'; base-uri 'self'; form-action 'self'">
-<script>window.hskEsc=function(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]})};window.onerror=function(m){var v=document.getElementById("view");if(v&&document.getElementById("fb"))v.innerHTML='<p class="pos" style="margin:28px 0">Terjadi kesalahan saat memuat: '+hskEsc(m)+'<br>Coba buka file ini dengan Chrome atau Firefox.</p>'};</script>
+<script>if(/^#verif=/.test(location.hash)){location.replace("verif.html"+location.hash)}window.hskEsc=function(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]})};window.onerror=function(m){var v=document.getElementById("view");if(v&&document.getElementById("fb"))v.innerHTML='<p class="pos" style="margin:28px 0">Terjadi kesalahan saat memuat: '+hskEsc(m)+'<br>Coba buka file ini dengan Chrome atau Firefox.</p>'};</script>
 <meta name="author" content="韩冬岳">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>词卡 — 韩冬岳</title>
@@ -436,7 +436,8 @@ html.gated body{overflow:hidden}
    .then(function(x){
     if(x.j&&x.j.ok===true&&x.j.token&&x.j.sync&&x.j.sync.u&&x.j.sync.p&&x.j.sync.k){
      if(accept(x.j)){ok=true;go.textContent="Membuka…";location.reload()}
-    }else msg((x.j&&x.j.pesan)||("Gagal ("+x.s+"). Coba lagi sebentar lagi."));
+    }else if(x.j&&x.j.ok===true&&x.j.perlu_verifikasi){mode(false);msg(x.j.pesan||"Cek email Anda untuk verifikasi, lalu masuk.",true)}
+    else msg((x.j&&x.j.pesan)||("Gagal ("+x.s+"). Coba lagi sebentar lagi."),!!(x.j&&x.j.error==="perlu_verifikasi"));
    })
    .catch(function(){msg("Tidak bisa terhubung ke server. Periksa koneksi internet lalu coba lagi.")})
    .then(function(){clearTimeout(to);if(!ok){busy=false;go.disabled=false;go.textContent=up?"Daftar":"Masuk"}});
