@@ -347,6 +347,38 @@ body.hm .tl{min-height:150px}
 .card .hz{font-size:96px}
 }
 </style>
+<style id="masukan-css">
+/* Kotak saran & masukan: ikon kecil di header aplikasi dan di halaman login; panel isian muncul di tengah layar. */
+.mskb{width:34px;height:34px;padding:0;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:3;letter-spacing:0}
+.mskb:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+#msk-btn{position:absolute;left:0;top:9px}
+#authgate .ag-box{position:relative}#msk-btn-g{position:absolute;right:56px;top:16px}
+html.msk-open body{overflow:hidden}
+#msk-dlg{--msk-err:#ff9d8a;position:fixed;top:0;right:0;bottom:0;left:0;z-index:100002;display:flex;overflow:auto;-webkit-overflow-scrolling:touch;background:rgba(0,0,0,.55);padding:calc(env(safe-area-inset-top,0px) + 16px) 16px calc(env(safe-area-inset-bottom,0px) + 16px);font-family:Inter,system-ui,sans-serif;color:var(--ink);text-align:left}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]) #msk-dlg{--msk-err:#b23a24}}
+:root[data-theme="light"] #msk-dlg{--msk-err:#b23a24}
+#msk-dlg[hidden]{display:none!important}
+#msk-dlg .mk-box{width:100%;max-width:400px;margin:auto;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px 20px 18px;box-shadow:0 12px 44px rgba(0,0,0,.35)}
+#msk-dlg .mk-hd{display:flex;align-items:center;justify-content:space-between;gap:12px}
+#msk-dlg h2{margin:0;font:600 20px/1.3 Poppins,Inter,system-ui,sans-serif;color:var(--ink);text-transform:none;letter-spacing:0}
+#msk-dlg .mk-x{width:34px;height:34px;padding:0;flex:none;border-radius:50%;border:1px solid var(--line);background:var(--bg);color:var(--mute);font-size:15px;letter-spacing:0;text-transform:none;display:flex;align-items:center;justify-content:center}
+#msk-dlg .mk-sub{margin:8px 0 14px;font-size:13.5px;line-height:1.5;color:var(--mute)}
+#msk-dlg .mk-kinds{display:flex;gap:6px;flex-wrap:wrap}
+#msk-dlg .mk-kinds button{flex:1 1 auto;padding:9px 10px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--mute);font:600 13px Inter,system-ui,sans-serif;letter-spacing:0;text-transform:none}
+#msk-dlg .mk-kinds button[aria-checked="true"]{background:var(--btn);color:var(--btnink);border-color:var(--btn)}
+#msk-dlg label{display:block;font-size:13px;color:var(--mute);margin:12px 0 5px}
+#msk-dlg textarea,#msk-dlg input{width:100%;box-sizing:border-box;font:16px/1.45 Inter,system-ui,sans-serif;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:11px 13px;outline:none;letter-spacing:0;text-transform:none}
+#msk-dlg textarea{min-height:112px;resize:vertical;display:block}
+#msk-dlg textarea:focus,#msk-dlg input:focus{border-color:var(--ink);box-shadow:0 0 0 2px var(--ink)}
+#msk-dlg .mk-cnt{margin-top:4px;font-size:12px;color:var(--mute);text-align:right}
+#msk-dlg .mk-hp{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+#msk-dlg .mk-st{min-height:20px;margin:10px 0 2px;font-size:14px;line-height:1.4;color:var(--msk-err)}
+#msk-dlg .mk-st.ok{color:var(--ok)}#msk-dlg .mk-st.info{color:var(--mute)}
+#msk-dlg .mk-go{width:100%;border:0;border-radius:12px;padding:13px 0;font:700 16px Inter,system-ui,sans-serif;background:var(--btn);color:var(--btnink);letter-spacing:0;text-transform:none}
+#msk-dlg .mk-go[disabled]{opacity:.6;cursor:default}
+#msk-dlg .mk-note{margin:12px 0 0;font-size:12.5px;line-height:1.5;color:var(--mute);text-align:center;word-break:break-word}
+#msk-dlg button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+</style>
 <div id="authgate" hidden role="dialog" aria-modal="true" aria-labelledby="ag-title">
  <div class="ag-box">
   <h1 id="ag-title">词卡</h1>
@@ -567,6 +599,98 @@ body.hm .tl{min-height:150px}
    m.insertBefore(w,out);m.insertBefore(g,out);
   }
   refresh();
+ });
+})();
+</script>
+<script id="masukan-ui">
+/* Kotak saran & masukan.
+   - Ikon kecil ada di header aplikasi (id msk-btn) dan di kotak halaman login (id msk-btn-g); keduanya membuka panel isian yang sama.
+   - Isian dikirim ke n8n (POST /webhook/hsk-saran), yang meneruskannya ke Telegram pemilik. Tidak ada rahasia di sini.
+   - Akun yang sedang masuk (hskAuth.email) ikut dikirim sebagai keterangan saja; server menandainya "belum diverifikasi".
+   - Kolom "web" disembunyikan dari manusia dan hanya terisi oleh bot (jebakan spam). */
+(function(){
+ var URL="https://n8n.zenta.web.id/webhook/hsk-saran",MAX=1000,MIN=5,COOL=10000;
+ var IC='<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/><path d="M8 9h8M8 13h5"/></svg>';
+ var dlg=null,F={},kind="saran",busy=false,opener=null,last=0,closeT=0;
+ function gated(){return document.documentElement.classList.contains("gated")}
+ function who(){try{return window.hskAuth&&window.hskAuth.email?String(window.hskAuth.email()||""):""}catch(e){return""}}
+ function say(t,cls){F.st.textContent=t||"";F.st.className="mk-st"+(cls?" "+cls:"")}
+ function setKind(k){kind=k;var bs=F.kinds.children,i;for(i=0;i<bs.length;i++)bs[i].setAttribute("aria-checked",bs[i].getAttribute("data-k")===k?"true":"false")}
+ function count(){F.cnt.textContent=F.msg.value.length+"/"+MAX}
+ function build(){
+  dlg=document.createElement("div");dlg.id="msk-dlg";dlg.hidden=true;
+  dlg.innerHTML='<div class="mk-box" role="dialog" aria-modal="true" aria-labelledby="mk-ttl">'+
+   '<div class="mk-hd"><h2 id="mk-ttl">Saran &amp; masukan</h2><button type="button" class="mk-x" id="mk-x" aria-label="Tutup">✕</button></div>'+
+   '<p class="mk-sub">Ada ide, kata yang salah, atau bagian yang membingungkan? Ceritakan di sini.</p>'+
+   '<form id="mk-form" novalidate>'+
+   '<div class="mk-kinds" id="mk-kinds" role="radiogroup" aria-label="Jenis masukan"><button type="button" role="radio" data-k="saran" aria-checked="true">Saran</button><button type="button" role="radio" data-k="masalah" aria-checked="false">Masalah</button><button type="button" role="radio" data-k="lain" aria-checked="false">Lainnya</button></div>'+
+   '<label for="mk-msg">Pesanmu</label><textarea id="mk-msg" maxlength="'+MAX+'" rows="5" autocomplete="off"></textarea><div class="mk-cnt" id="mk-cnt">0/'+MAX+'</div>'+
+   '<div id="mk-kw"><label for="mk-kon">Email atau kontak (opsional)</label><input id="mk-kon" type="text" maxlength="120" autocomplete="off" autocapitalize="off" spellcheck="false"></div>'+
+   '<div class="mk-hp" aria-hidden="true"><label>Jangan diisi<input id="mk-web" type="text" tabindex="-1" autocomplete="off"></label></div>'+
+   '<div class="mk-st" id="mk-st" role="status" aria-live="polite"></div>'+
+   '<button type="submit" class="mk-go" id="mk-go">Kirim</button></form>'+
+   '<p class="mk-note" id="mk-note"></p></div>';
+  document.body.appendChild(dlg);
+  F.kinds=document.getElementById("mk-kinds");F.msg=document.getElementById("mk-msg");F.cnt=document.getElementById("mk-cnt");
+  F.kw=document.getElementById("mk-kw");F.kon=document.getElementById("mk-kon");F.web=document.getElementById("mk-web");
+  F.st=document.getElementById("mk-st");F.go=document.getElementById("mk-go");F.note=document.getElementById("mk-note");
+  F.kinds.addEventListener("click",function(e){var b=e.target&&e.target.closest?e.target.closest("button[data-k]"):null;if(b&&!busy)setKind(b.getAttribute("data-k"))});
+  document.getElementById("mk-x").addEventListener("click",close);
+  dlg.addEventListener("click",function(e){if(e.target===dlg)close()});
+  F.msg.addEventListener("input",function(){count();if(F.st.textContent&&F.st.className.indexOf("ok")<0)say("")});
+  document.getElementById("mk-form").addEventListener("submit",function(e){e.preventDefault();send()});
+  dlg.addEventListener("keydown",function(e){
+   if(e.key==="Escape"){e.stopPropagation();close();return}
+   if(e.key!=="Tab")return;
+   var all=dlg.querySelectorAll("button:not([disabled]),textarea,input:not([tabindex='-1'])"),v=[],i;
+   for(i=0;i<all.length;i++)if(all[i].offsetParent!==null)v.push(all[i]);
+   if(!v.length)return;
+   var a=document.activeElement,f=v[0],l=v[v.length-1];
+   if(e.shiftKey&&(a===f||!dlg.contains(a))){e.preventDefault();l.focus()}
+   else if(!e.shiftKey&&(a===l||!dlg.contains(a))){e.preventDefault();f.focus()}
+  });
+ }
+ function open(el){
+  if(!dlg)build();
+  clearTimeout(closeT);opener=el||null;
+  var u=who();
+  F.kw.hidden=!!u;
+  F.note.textContent=u?"Dikirim bersama akunmu ("+u+") supaya bisa ditindaklanjuti.":"Kamu belum masuk. Isi kontak hanya jika ingin dibalas.";
+  say("");dlg.hidden=false;document.documentElement.classList.add("msk-open");
+  setTimeout(function(){F.msg.focus()},30);
+ }
+ function close(){
+  if(!dlg||dlg.hidden)return;
+  clearTimeout(closeT);dlg.hidden=true;document.documentElement.classList.remove("msk-open");
+  if(opener&&opener.focus){try{opener.focus()}catch(e){}}
+ }
+ function send(){
+  if(busy)return;
+  var t=F.msg.value.trim();
+  if(t.length<MIN){say("Tulis minimal "+MIN+" karakter.");F.msg.focus();return}
+  if(Date.now()-last<COOL){say("Tunggu sebentar sebelum mengirim lagi.","info");return}
+  busy=true;F.go.disabled=true;F.go.textContent="Mengirim…";say("");
+  var ctl=typeof AbortController!=="undefined"?new AbortController():null,to=setTimeout(function(){if(ctl)ctl.abort()},20000);
+  fetch(URL,{method:"POST",headers:{"Content-Type":"application/json"},mode:"cors",signal:ctl?ctl.signal:undefined,
+   body:JSON.stringify({pesan:t,jenis:kind,kontak:F.kon.value.trim(),akun:who(),halaman:gated()?"login":"app",web:F.web.value})})
+   .then(function(r){return r.json().then(function(j){return{s:r.status,j:j}},function(){return{s:r.status,j:null}})})
+   .then(function(x){
+    if(x.j&&x.j.ok===true){
+     last=Date.now();F.msg.value="";count();say(x.j.pesan||"Terima kasih! Masukanmu sudah terkirim.","ok");
+     closeT=setTimeout(close,2200);
+    }else say((x.j&&x.j.pesan)||("Gagal mengirim ("+x.s+"). Coba lagi sebentar lagi."));
+   })
+   .catch(function(){say("Tidak bisa terhubung ke server. Periksa koneksi internet lalu coba lagi.")})
+   .then(function(){clearTimeout(to);busy=false;F.go.disabled=false;F.go.textContent="Kirim"});
+ }
+ function mk(id){
+  var b=document.createElement("button");b.type="button";b.id=id;b.className="mskb";b.innerHTML=IC;
+  b.setAttribute("aria-label","Kirim saran dan masukan");b.setAttribute("aria-haspopup","dialog");b.title="Saran & masukan";
+  b.addEventListener("click",function(){open(b)});return b;
+ }
+ document.addEventListener("DOMContentLoaded",function(){
+  var sb=document.getElementById("sbtn");if(sb&&sb.parentNode)sb.parentNode.insertBefore(mk("msk-btn"),sb);
+  var box=document.querySelector("#authgate .ag-box");if(box)box.appendChild(mk("msk-btn-g"));
  });
 })();
 </script>
