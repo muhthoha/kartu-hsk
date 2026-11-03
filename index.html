@@ -145,6 +145,14 @@ body:not(.hm) h1{font-size:26px}body:not(.hm) .sub{display:none}
 .daily-goals{display:flex;gap:6px;margin:12px 0}
 .daily-goals button{flex:1;padding:8px 5px;font-size:12px;letter-spacing:0;text-transform:none;border-radius:999px}
 .daily-goals button.on{border-color:var(--acc);color:var(--acc);background:color-mix(in srgb,var(--acc) 12%,transparent)}
+.daily-custom{display:flex;align-items:center;gap:8px;margin:0 0 4px}
+.daily-custom label{font-size:12px;color:var(--mute);white-space:nowrap}
+.daily-custom input{flex:1;min-width:0;padding:8px 12px;font-size:13px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);font-family:inherit}
+.daily-custom input:focus{outline:none;border-color:var(--acc)}
+.daily-custom button{padding:8px 16px;font-size:12px;letter-spacing:0;text-transform:none;border-radius:999px}
+.daily-custom button.on{border-color:var(--acc);color:var(--acc);background:color-mix(in srgb,var(--acc) 12%,transparent)}
+.daily-custom-msg{font-size:11px;color:var(--mute);min-height:0;margin-top:4px}
+.daily-custom-msg:empty{display:none}
 .weekly-activity{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:7px;margin:14px 0 4px}
 .weekday{text-align:center;min-width:0}
 .weekbar{height:48px;display:flex;align-items:flex-end;justify-content:center;background:rgba(128,128,128,.08);border-radius:6px;overflow:hidden}
@@ -1061,7 +1069,8 @@ document.addEventListener("keydown",e=>{if(e.key=="Escape"&&$("srch").style.disp
   const GOAL="hsk_daily_goal_v1";
   const dayKey=(d)=>{const x=new Date(d);return x.getFullYear()+"-"+String(x.getMonth()+1).padStart(2,"0")+"-"+String(x.getDate()).padStart(2,"0")};
   const readActivity=()=>{try{return JSON.parse(localStorage.getItem(STORE)||"{}")}catch(e){return {}}};
-  const getGoal=()=>{const n=+(localStorage.getItem(GOAL)||10);return [5,10,15].includes(n)?n:10};
+  const PRESETS=[5,10,15],GOAL_MIN=1,GOAL_MAX=500;
+  const getGoal=()=>{const n=Math.floor(+(localStorage.getItem(GOAL)||10));return isFinite(n)&&n>=GOAL_MIN&&n<=GOAL_MAX?n:10};
   const activityToday=()=>{const v=Number(readActivity()[dayKey(new Date())]);return isFinite(v)&&v>0?v:0};
   const addActivity=()=>{const a=readActivity(),k=dayKey(new Date());a[k]=(a[k]||0)+1;try{localStorage.setItem(STORE,JSON.stringify(a))}catch(e){}};
   const oldRenderHome=renderHome;
@@ -1087,8 +1096,14 @@ document.addEventListener("keydown",e=>{if(e.key=="Escape"&&$("srch").style.disp
       <div class="daily-track" role="progressbar" aria-valuenow="${Math.min(today,goal)}" aria-valuemin="0" aria-valuemax="${goal}"><span style="width:${pct}%"></span></div>
       <div class="daily-meta"><span>${today>=goal?"Target hari ini tercapai.":`Tinggal ${goal-today} kartu untuk mencapai target.`}</span><span>${pct}%</span></div>
       <div class="daily-goals" aria-label="Pilih target harian">
-        ${[5,10,15].map(n=>`<button data-goal="${n}" class="${n===goal?"on":""}">${n} kartu</button>`).join("")}
+        ${PRESETS.map(n=>`<button data-goal="${n}" class="${n===goal?"on":""}">${n} kartu</button>`).join("")}
       </div>
+      <form class="daily-custom" autocomplete="off">
+        <label for="daily-custom-input">Atur sendiri</label>
+        <input id="daily-custom-input" type="number" inputmode="numeric" min="${GOAL_MIN}" max="${GOAL_MAX}" step="1" placeholder="${GOAL_MIN}–${GOAL_MAX}" value="${PRESETS.includes(goal)?"":goal}">
+        <button type="submit" class="${PRESETS.includes(goal)?"":"on"}">Simpan</button>
+      </form>
+      <div class="daily-custom-msg" role="status" aria-live="polite"></div>
       <div class="hms" style="margin:18px 0 8px">AKTIVITAS 7 HARI · STREAK ${streak} HARI</div>
       <div class="weekly-activity" aria-label="Aktivitas belajar tujuh hari">
         ${days.map(d=>`<div class="weekday" title="${d.k}: ${d.n} kartu"><div class="weekbar"><span style="height:${d.n?Math.max(8,Math.round(d.n/max*100)):3}%"></span></div><small>${d.label}</small></div>`).join("")}
@@ -1103,6 +1118,18 @@ document.addEventListener("keydown",e=>{if(e.key=="Escape"&&$("srch").style.disp
       localStorage.setItem(GOAL,b.dataset.goal);
       renderHome(v);
     }));
+    const customForm=panel.querySelector(".daily-custom");
+    customForm.addEventListener("submit",e=>{
+      e.preventDefault();
+      const raw=customForm.querySelector("input").value.trim();
+      const n=Number(raw);
+      if(!raw||!Number.isInteger(n)||n<GOAL_MIN||n>GOAL_MAX){
+        panel.querySelector(".daily-custom-msg").textContent="Masukkan bilangan bulat "+GOAL_MIN+"–"+GOAL_MAX+".";
+        return;
+      }
+      try{localStorage.setItem(GOAL,String(n))}catch(err){}
+      renderHome(v);
+    });
     panel.querySelector('[data-daily-action="vocab"]').addEventListener("click",()=>{S.mode="hsk";S.vm="hsk";S.lv=0;S.ch=0;S.tab="study";S.i=0;S.flip=false;render();scrollTo(0,0)});
     panel.querySelector('[data-daily-action="practice"]').addEventListener("click",()=>{S.mode="lt";S.lk="su";S.ch=0;render();scrollTo(0,0)});
   };
