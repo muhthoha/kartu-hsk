@@ -256,16 +256,6 @@ body.tone-on .tn5{color:var(--mute)}
 .lvcell .lvbar{height:5px;border-radius:99px;background:rgba(128,128,128,.18);overflow:hidden;margin-top:6px}
 .lvcell .lvbar i{display:block;height:100%;background:var(--acc);border-radius:99px}
 .lvsum{font-size:12.5px;color:var(--mute);margin-top:6px}
-/* Heatmap aktivitas */
-.hmap{display:grid;grid-auto-flow:column;grid-template-rows:repeat(7,1fr);gap:3px;margin:12px 0 6px;overflow-x:auto;padding-bottom:2px}
-.hmc{width:13px;height:13px;border-radius:3px;background:rgba(128,128,128,.12)}
-.hmc.l1{background:color-mix(in srgb,var(--e1) 35%,transparent)}
-.hmc.l2{background:color-mix(in srgb,var(--e1) 60%,transparent)}
-.hmc.l3{background:color-mix(in srgb,var(--e1) 82%,transparent)}
-.hmc.l4{background:var(--e1)}
-.hmc.today{outline:2px solid var(--acc);outline-offset:1px}
-.hmleg{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--mute);margin-top:4px}
-.hmleg .hmc{width:11px;height:11px}
 /* Kartu info versi daftar */
 .vchip{display:inline-block;font-size:11.5px;font-weight:600;letter-spacing:.04em;padding:2px 7px;border-radius:99px;background:var(--e5t);color:var(--e5d);border:1px solid var(--line);vertical-align:middle}
 details.vnote{margin:14px 0 2px;border:1px solid var(--line);border-radius:12px;background:rgba(128,128,128,.05);padding:0}
@@ -313,6 +303,7 @@ html.gated body{overflow:hidden}
 #acct-menu .am-e{font-size:14px;font-weight:600;word-break:break-all;margin:2px 0 12px}
 #acct-menu button{width:100%;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:10px;padding:10px 0;font:600 14px Inter,system-ui,sans-serif;cursor:pointer}
 #acct-menu button[disabled]{opacity:.6;cursor:default}
+#acct-menu button+button{margin-top:8px}
 </style>
 <style id="tema-lima-unsur">
 /* Tema Lima Unsur: tiap bagian punya warna sendiri. --acc/--acct/--accf berubah mengikuti tab yang aktif. */
@@ -540,8 +531,10 @@ html.msk-open body{overflow:hidden}
    var m=document.createElement("div");m.id="acct-menu";m.hidden=true;
    var s1=document.createElement("div");s1.className="am-s";s1.textContent="Masuk sebagai";
    var s2=document.createElement("div");s2.className="am-e";s2.textContent=A.email;
+   var pg=document.createElement("button");pg.type="button";pg.id="acct-pg";pg.textContent="Progres & cadangan";
+   pg.addEventListener("click",function(){show(false);try{S.mode="pg";render();scrollTo(0,0)}catch(e){}});
    var out=document.createElement("button");out.type="button";out.id="acct-out";out.textContent="Keluar";
-   m.appendChild(s1);m.appendChild(s2);m.appendChild(out);
+   m.appendChild(s1);m.appendChild(s2);m.appendChild(pg);m.appendChild(out);
    sb.parentNode.insertBefore(b,sb.nextSibling);sb.parentNode.insertBefore(m,b.nextSibling);
    function show(v){m.hidden=!v;b.setAttribute("aria-expanded",v?"true":"false")}
    b.addEventListener("click",function(e){e.stopPropagation();show(m.hidden)});
@@ -1258,6 +1251,7 @@ ${L.ans?`<div class="pos" style="text-align:left;margin-top:12px">Jawaban contoh
 }
 function render(){
  if(S.mode==="exam"){clearInterval(LTI);stopAud();$("sheet").style.display="none";renderExam($("view"));return}
+ if(S.mode==="pg"){clearInterval(LTI);stopAud();$("sheet").style.display="none";if(typeof renderProgres==="function")renderProgres($("view"));return}
  head();const L=S.review?srsReviewList():list(),v=$("view");if(S.mode!="hm"){S.lastm=S.mode;S.mem[S.mode]={ch:S.ch,i:S.i,tab:S.tab}}try{localStorage.setItem("hsk_s",JSON.stringify({mode:S.lastm,tk:S.tk,rl:S.rl,lk:S.lk,gs:S.gs,lv:S.lv,ch:S.ch,tab:S.tab,i:S.i}));localStorage.setItem("hsk_mem",JSON.stringify(S.mem))}catch(e){}
  stopAud();clearInterval(LTI);$("sheet").style.display="none";
  if(S.mode=="hm"){renderHome(v);return}
@@ -1357,17 +1351,6 @@ document.addEventListener("keydown",e=>{if(e.key=="Escape"&&$("srch").style.disp
       cursor.setDate(cursor.getDate()-1);
     }
     const wk=days.filter(d=>d.n>0).length;
-    /* Heatmap 8 minggu; satu kolom = satu minggu (Minggu sampai Sabtu). */
-    const hm=[],hmStart=new Date(now);
-    hmStart.setDate(hmStart.getDate()-now.getDay()-49);
-    for(let i=0;i<56;i++){
-      const d=new Date(hmStart);d.setDate(hmStart.getDate()+i);
-      const n=a[dayKey(d)]||0;
-      let lv=0;
-      if(n>0)lv=n>=goal*2?4:(n>=goal?3:(n>=Math.max(1,Math.round(goal/2))?2:1));
-      hm.push({k:dayKey(d),n:n,lv:lv,fut:d.getTime()>now.getTime(),today:dayKey(d)===dayKey(now)});
-    }
-    const hmAktif=hm.filter(d=>!d.fut&&d.n>0).length;
     /* Tumpukan kartu jatuh tempo. Manual Anki menyarankan menghentikan kartu baru sampai
        tunggakan selesai; di sini hanya saran, alur belajar tidak diubah otomatis. */
     let dueN=0;try{if(typeof srsDueCount==="function")dueN=srsDueCount()|0}catch(e){}
@@ -1397,11 +1380,6 @@ document.addEventListener("keydown",e=>{if(e.key=="Escape"&&$("srch").style.disp
       </div>
       <p class="thint" style="margin:8px 0 0">Runtun tetap jalan kalau kamu bolong satu hari; dua hari berurutan baru memutusnya.</p>
       ${dueBig?`<div class="backlog"><b>${dueN} kartu menunggu diulang.</b> Selesaikan tunggakan ini dulu sebelum menambah kartu baru, supaya jadwal pengulangan tidak makin menumpuk.</div>`:""}
-      <div class="hms" style="margin:18px 0 6px">AKTIVITAS 8 MINGGU · ${hmAktif} HARI AKTIF</div>
-      <div class="hmap" role="img" aria-label="Peta aktivitas delapan minggu terakhir, ${hmAktif} hari aktif">
-        ${hm.map(d=>`<div class="hmc${d.lv&&!d.fut?" l"+d.lv:""}${d.today?" today":""}"${d.fut?"":` title="${d.k}: ${d.n} kartu"`}></div>`).join("")}
-      </div>
-      <div class="hmleg"><span>Sepi</span><span class="hmc"></span><span class="hmc l1"></span><span class="hmc l2"></span><span class="hmc l3"></span><span class="hmc l4"></span><span>Padat</span></div>
       <div class="daily-actions">
         <button data-daily-action="vocab">Mulai belajar kosakata</button>
         <button data-daily-action="practice">Mulai latihan</button>
@@ -1679,15 +1657,23 @@ function downloadBackup(){
  function renderBackupPanel(v){
    if(!v||v.querySelector('#backup-panel'))return;
    const st=backupStats();const panel=document.createElement('section');panel.id='backup-panel';panel.className='backup-panel';
-   panel.innerHTML=`<div class="exam-title" style="font-size:17px">Progres &amp; cadangan data</div><p>Amankan progres belajar, jadwal pengulangan, target harian, bank kesalahan, dan riwayat ujian. Data tersimpan di browser ini; ekspor cadangan secara berkala jika ingin menghindari kehilangan data.</p><div class="exam-stats"><span>Data tersimpan: <b>${st.keys}</b> item</span><span>Bank kesalahan: <b>${st.errors}</b></span><span>Riwayat ujian: <b>${st.exams}</b></span></div><div class="backup-actions"><button id="backup-export">Unduh cadangan (.json)</button><button id="backup-csv">Ekspor kosakata (.csv)</button><button id="backup-import-trigger">Pulihkan dari cadangan</button><input id="backup-file" type="file" accept=".json,application/json" aria-label="Pilih file cadangan JSON"></div><div class="backup-status" id="backup-status" role="status" aria-live="polite">Pencadangan tidak menghapus data dari browser. File JSON berisi data progres aplikasi.</div><p>Catatan: pemulihan sebaiknya dilakukan pada versi aplikasi yang sama atau lebih baru. Simpan file cadangan secara pribadi karena dapat memuat riwayat belajar Anda.</p>`;
+   panel.innerHTML=`<p>Amankan progres belajar, jadwal pengulangan, target harian, bank kesalahan, dan riwayat ujian. Data tersimpan di browser ini; ekspor cadangan secara berkala jika ingin menghindari kehilangan data.</p><div class="exam-stats"><span>Data tersimpan: <b>${st.keys}</b> item</span><span>Bank kesalahan: <b>${st.errors}</b></span><span>Riwayat ujian: <b>${st.exams}</b></span></div><div class="backup-actions"><button id="backup-export">Unduh cadangan (.json)</button><button id="backup-csv">Ekspor kosakata (.csv)</button><button id="backup-import-trigger">Pulihkan dari cadangan</button><input id="backup-file" type="file" accept=".json,application/json" aria-label="Pilih file cadangan JSON"></div><div class="backup-status" id="backup-status" role="status" aria-live="polite">Pencadangan tidak menghapus data dari browser. File JSON berisi data progres aplikasi.</div><p>Catatan: pemulihan sebaiknya dilakukan pada versi aplikasi yang sama atau lebih baru. Simpan file cadangan secara pribadi karena dapat memuat riwayat belajar Anda.</p>`;
    const last=v.querySelector('.exam-home:last-of-type');if(last)last.insertAdjacentElement('afterend',panel);else v.appendChild(panel);
    panel.querySelector('#backup-export').onclick=downloadBackup;
    const csvB=panel.querySelector('#backup-csv');if(csvB)csvB.onclick=downloadCSV;
    panel.querySelector('#backup-import-trigger').onclick=()=>panel.querySelector('#backup-file').click();
    panel.querySelector('#backup-file').onchange=e=>{const f=e.target.files&&e.target.files[0];if(f)importBackup(f);e.target.value=''};
  }
- const _renderHomeStage5=renderHome;
- renderHome=function(v){_renderHomeStage5(v);renderBackupPanel(v)};
+ /* Halaman "Progres & cadangan", dibuka dari menu akun (S.mode="pg").
+    Sebelumnya panel ini menempel di beranda; dipindah agar beranda lebih ringkas. */
+ window.renderProgres=function(v){
+   if(!v)return;
+   v.innerHTML='<div class="hmt">Progres &amp; cadangan</div>'
+    +'<div class="row" style="margin-bottom:14px"><button id="pg-back">\u2190 Kembali ke beranda</button></div>';
+   renderBackupPanel(v);
+   const bk=v.querySelector('#pg-back');
+   if(bk)bk.onclick=function(){try{S.mode="hm";S.tab="home";render();scrollTo(0,0)}catch(e){}};
+ };
 })();
 
 // ===== Tahap 6: Pusat Belajar Adaptif dan rencana sesi harian =====
