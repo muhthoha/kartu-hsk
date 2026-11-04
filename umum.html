@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src https://n8n.zenta.web.id; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer"><meta name="robots" content="noindex">
+<title>Kirim pengumuman · 词卡</title>
+<script>try{var _t=localStorage.getItem("ui_tema");if(_t==="terang")document.documentElement.setAttribute("data-theme","light");else if(_t==="gelap")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
+<style>
+:root{color-scheme:dark;--bg:#121214;--card:#1C1C20;--ink:#F0F0F3;--mute:#A0A1AB;--line:#2E2F36;--soft:#26262B;--ok:#4CC58A;--btn:#F0F0F3;--btnink:#121214;--e1t:#183326;--e1d:#7ED9A6;--e2t:#172745;--e2d:#8FB5FF;--e3t:#382C14;--e3d:#E8BC62;--e4t:#3A1D17;--e4d:#FF9B83;--e5t:#232B35;--e5d:#B4C2D3;--err:#FF9B83}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]){color-scheme:light;--bg:#F4F4F5;--card:#FFFFFF;--ink:#1A1A1F;--mute:#5F6068;--line:#DEDFE3;--soft:#E9E9EC;--ok:#1E6B43;--btn:#1A1A1F;--btnink:#FFFFFF;--e1t:#DDEFE3;--e1d:#1E6B43;--e2t:#DEE8FB;--e2d:#1F4FB0;--e3t:#F6E9CC;--e3d:#7F5508;--e4t:#FADFD8;--e4d:#A52F18;--e5t:#E3E8EE;--e5d:#3B4A5C;--err:#A52F18}}
+:root[data-theme="light"]{color-scheme:light;--bg:#F4F4F5;--card:#FFFFFF;--ink:#1A1A1F;--mute:#5F6068;--line:#DEDFE3;--soft:#E9E9EC;--ok:#1E6B43;--btn:#1A1A1F;--btnink:#FFFFFF;--e1t:#DDEFE3;--e1d:#1E6B43;--e2t:#DEE8FB;--e2d:#1F4FB0;--e3t:#F6E9CC;--e3d:#7F5508;--e4t:#FADFD8;--e4d:#A52F18;--e5t:#E3E8EE;--e5d:#3B4A5C;--err:#A52F18}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:flex;padding:20px 16px;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif}
+.box{width:100%;max-width:400px;margin:auto;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:28px 22px 24px;text-align:center}
+h1{font-family:'Noto Serif SC',serif;color:var(--ink);font-size:52px;line-height:1.1;margin:0}
+.el{display:flex;gap:7px;justify-content:center;margin:12px 0 4px}.el span{width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;font:700 16px 'Noto Serif SC',serif}
+.el span:nth-child(1){background:var(--e1t);color:var(--e1d)}.el span:nth-child(2){background:var(--e2t);color:var(--e2d)}.el span:nth-child(3){background:var(--e3t);color:var(--e3d)}.el span:nth-child(4){background:var(--e4t);color:var(--e4d)}.el span:nth-child(5){background:var(--e5t);color:var(--e5d)}
+.sub{letter-spacing:.04em;font-size:13px;color:var(--mute);margin-top:8px}
+p{line-height:1.55;margin:18px 0 0;font-size:15px;overflow-wrap:anywhere}
+.draf{margin-top:20px;text-align:left;background:var(--soft);border-radius:16px;padding:14px 16px}
+.draf .lbl{font:700 11.5px Inter,system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.draf .jd{font-weight:700;font-size:16px;line-height:1.4;margin-top:4px;overflow-wrap:anywhere}
+.uji{display:inline-block;margin-left:6px;padding:1px 7px;border-radius:7px;background:var(--e3t);color:var(--e3d);font-size:11px;letter-spacing:.04em;vertical-align:2px}
+.info{font-size:14px;color:var(--mute);margin-top:12px}
+.info b{color:var(--ink)}
+#st{min-height:1.4em}#st.ok{color:var(--ok)}#st.err{color:var(--err)}
+.btn{display:block;width:100%;margin-top:20px;padding:14px 20px;border-radius:14px;border:0;background:var(--btn);color:var(--btnink);font:600 15px Inter,system-ui,sans-serif;text-decoration:none;cursor:pointer}
+.btn.yakin{background:var(--e3d);color:var(--card)}
+.btn2{display:inline-block;margin-top:14px;padding:8px 12px;border:0;background:none;color:var(--mute);font:500 14px Inter,system-ui,sans-serif;text-decoration:underline;cursor:pointer}
+.btn2.yakin{color:var(--err);font-weight:600}
+.btn[disabled],.btn2[disabled]{opacity:.6;cursor:default}
+[hidden]{display:none !important}
+</style></head><body>
+<div class="box"><h1>词卡</h1><div class="el" aria-hidden="true"><span>木</span><span>水</span><span>土</span><span>火</span><span>金</span></div><div class="sub">Persetujuan pengumuman</div>
+<p id="t">Memeriksa tautan…</p>
+<div class="draf" id="draf" hidden><div class="lbl">Judul pengumuman</div><div class="jd"><span id="jd"></span><span class="uji" id="uji" hidden>UJI</span></div></div>
+<p class="info" id="info" hidden></p>
+<p id="st" role="status" aria-live="polite"></p>
+<button class="btn" id="kirim" type="button" hidden>Kirim</button>
+<button class="btn2" id="batal" type="button" hidden>Batalkan draf</button>
+<button class="btn2" id="cek" type="button" hidden>Periksa status lagi</button>
+<a class="btn" id="ke" href="./" hidden>Ke 词卡</a>
+</div>
+<script>
+(function(){
+ var URL_U="https://n8n.zenta.web.id/webhook/hsk-umum",SK="umum_acc";
+ var $=function(i){return document.getElementById(i)},t=$("t"),st=$("st"),draf=$("draf"),jd=$("jd"),uji=$("uji"),info=$("info"),bK=$("kirim"),bB=$("batal"),bC=$("cek"),ke=$("ke");
+ function say(c,s){st.className=c||"";st.textContent=s||""}
+ var id="",tok="";
+ try{
+  var p=new URLSearchParams(location.hash.replace(/^#/,""));
+  id=String(p.get("id")||"").trim();tok=String(p.get("t")||"").trim().toLowerCase();
+  if(id||tok){try{sessionStorage.setItem(SK,JSON.stringify({id:id,t:tok}))}catch(e){}}
+  else{try{var s=JSON.parse(sessionStorage.getItem(SK)||"{}");id=String(s.id||"");tok=String(s.t||"")}catch(e){}}
+  history.replaceState(null,"",location.pathname);   /* token tidak tertinggal di bilah alamat / riwayat */
+ }catch(e){}
+ function selesai(){bK.hidden=true;bB.hidden=true;ke.hidden=false;try{sessionStorage.removeItem(SK)}catch(e){}}
+ if(!/^[1-9][0-9]{0,8}$/.test(id)||!/^[0-9a-f]{32}$/.test(tok)){
+  t.textContent="Tautan persetujuan tidak lengkap atau rusak. Buka tombol “Tinjau & kirim” langsung dari email draf.";
+  ke.hidden=false;return;
+ }
+ var busy=false,jumlah=0,isUji=false,tunggu={};
+ function minta(aksi,cb){
+  if(busy)return;busy=true;bK.disabled=bB.disabled=bC.disabled=true;
+  var ctl=typeof AbortController!=="undefined"?new AbortController():null,to=setTimeout(function(){if(ctl)ctl.abort()},45000);
+  fetch(URL_U,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({aksi:aksi,id:Number(id),token:tok}),mode:"cors",signal:ctl?ctl.signal:undefined})
+   .then(function(r){return r.json().then(function(j){return{s:r.status,j:j}},function(){return{s:r.status,j:null}})})
+   .then(function(x){cb(x)})
+   .catch(function(){say("err","Tidak bisa terhubung ke server. Periksa koneksi lalu coba lagi.")})
+   .then(function(){clearTimeout(to);busy=false;bK.disabled=bB.disabled=bC.disabled=false});
+ }
+ function tampilJudul(j){if(j&&j.judul){jd.textContent=j.judul;draf.hidden=false}}
+ function keadaan(x){   /* jawaban selain "draf siap dikirim" */
+  var j=x.j||{};tampilJudul(j);info.hidden=true;bC.hidden=true;
+  if(x.s===429){say("err",j.pesan||"Terlalu banyak percobaan. Coba lagi nanti.");return}
+  if(x.s===400){t.textContent="Tautan tidak bisa dipakai.";say("err",j.pesan||"Tautan tidak valid.");selesai();return}
+  if(j.status){
+   t.textContent=j.status==="terkirim"?"Pengumuman sudah terkirim.":j.status==="mengirim"?"Pengumuman sedang dikirim.":"Draf tidak bisa dikirim.";
+   say(j.status==="terkirim"?"ok":"err",j.pesan||"");
+   if(j.status==="mengirim"){bK.hidden=true;bB.hidden=true;bC.hidden=false}else selesai();
+   return;
+  }
+  say("err","Gagal ("+x.s+"). Coba lagi sebentar lagi.");
+ }
+ function lihat(){
+  minta("lihat",function(x){
+   var j=x.j||{};
+   if(x.s===200&&j.ok===true){
+    jumlah=Number(j.jumlah)||0;isUji=!!j.uji;tampilJudul(j);uji.hidden=!isUji;
+    t.textContent="Periksa isi draf di email, lalu kirim bila sudah sesuai.";
+    info.innerHTML="";
+    var a=document.createElement("span");
+    if(isUji){a.append("Draf uji: hanya dikirim ke ",Object.assign(document.createElement("b"),{textContent:"email pemilik"}),".")}
+    else{a.append("Akan dikirim ke ",Object.assign(document.createElement("b"),{textContent:jumlah+" pengguna aktif"}),", satu email per orang.")}
+    info.append(a);
+    if(j.berlaku_sampai){info.append(document.createElement("br"),"Tautan berlaku sampai "+j.berlaku_sampai+".")}
+    info.hidden=false;bC.hidden=true;say("","");
+    bK.textContent=isUji?"Kirim email uji":"Kirim ke "+jumlah+" pengguna";bK.hidden=false;bB.hidden=false;bB.textContent="Batalkan draf";
+   }else keadaan(x);
+  });
+ }
+ function duaKali(btn,kunci,teksYakin,teksAwal,lakukan){   /* tekan sekali = minta konfirmasi; tekan lagi dalam 6 detik = jalankan */
+  if(busy)return;
+  if(tunggu[kunci]){clearTimeout(tunggu[kunci]);tunggu[kunci]=0;btn.classList.remove("yakin");lakukan();return}
+  btn.classList.add("yakin");btn.textContent=teksYakin;
+  tunggu[kunci]=setTimeout(function(){tunggu[kunci]=0;btn.classList.remove("yakin");btn.textContent=teksAwal()},6000);
+ }
+ bK.addEventListener("click",function(){
+  duaKali(bK,"k",isUji?"Tekan lagi untuk mengirim email uji":"Tekan lagi untuk mengirim ke "+jumlah+" pengguna",function(){return isUji?"Kirim email uji":"Kirim ke "+jumlah+" pengguna"},function(){
+   bK.textContent="Mengirim…";say("","");
+   minta("kirim",function(x){
+    var j=x.j||{};
+    if(x.s===200&&j.ok===true){t.textContent="Pengumuman terkirim.";info.hidden=true;say("ok",j.pesan||"Terkirim.");selesai()}
+    else if(x.s===502){say("err",j.pesan||"Pengumuman gagal dikirim. Coba lagi nanti.");bK.textContent=isUji?"Kirim email uji":"Kirim ke "+jumlah+" pengguna"}
+    else keadaan(x);
+   });
+  });
+ });
+ bB.addEventListener("click",function(){
+  duaKali(bB,"b","Tekan lagi untuk membatalkan draf",function(){return "Batalkan draf"},function(){
+   bB.textContent="Membatalkan…";say("","");
+   minta("batal",function(x){
+    var j=x.j||{};
+    if(x.s===200&&j.ok===true){t.textContent="Draf dibatalkan.";info.hidden=true;say("ok",j.pesan||"Draf dibatalkan.");selesai()}
+    else keadaan(x);
+   });
+  });
+ });
+ bC.addEventListener("click",lihat);
+ lihat();
+})();
+</script></body></html>

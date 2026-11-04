@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src https://n8n.zenta.web.id; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer"><meta name="robots" content="noindex">
+<title>Berhenti berlangganan · 词卡</title>
+<script>try{var _t=localStorage.getItem("ui_tema");if(_t==="terang")document.documentElement.setAttribute("data-theme","light");else if(_t==="gelap")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
+<style>
+:root{color-scheme:dark;--bg:#121214;--card:#1C1C20;--ink:#F0F0F3;--mute:#A0A1AB;--line:#2E2F36;--ok:#4CC58A;--btn:#F0F0F3;--btnink:#121214;--e1t:#183326;--e1d:#7ED9A6;--e2t:#172745;--e2d:#8FB5FF;--e3t:#382C14;--e3d:#E8BC62;--e4t:#3A1D17;--e4d:#FF9B83;--e5t:#232B35;--e5d:#B4C2D3;--err:#FF9B83}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]){color-scheme:light;--bg:#F4F4F5;--card:#FFFFFF;--ink:#1A1A1F;--mute:#5F6068;--line:#DEDFE3;--ok:#1E6B43;--btn:#1A1A1F;--btnink:#FFFFFF;--e1t:#DDEFE3;--e1d:#1E6B43;--e2t:#DEE8FB;--e2d:#1F4FB0;--e3t:#F6E9CC;--e3d:#7F5508;--e4t:#FADFD8;--e4d:#A52F18;--e5t:#E3E8EE;--e5d:#3B4A5C;--err:#A52F18}}
+:root[data-theme="light"]{color-scheme:light;--bg:#F4F4F5;--card:#FFFFFF;--ink:#1A1A1F;--mute:#5F6068;--line:#DEDFE3;--ok:#1E6B43;--btn:#1A1A1F;--btnink:#FFFFFF;--e1t:#DDEFE3;--e1d:#1E6B43;--e2t:#DEE8FB;--e2d:#1F4FB0;--e3t:#F6E9CC;--e3d:#7F5508;--e4t:#FADFD8;--e4d:#A52F18;--e5t:#E3E8EE;--e5d:#3B4A5C;--err:#A52F18}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:flex;padding:20px 16px;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif}
+.box{width:100%;max-width:380px;margin:auto;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:28px 22px 24px;text-align:center}
+h1{font-family:'Noto Serif SC',serif;color:var(--ink);font-size:52px;line-height:1.1;margin:0}
+.el{display:flex;gap:7px;justify-content:center;margin:12px 0 4px}.el span{width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;font:700 16px 'Noto Serif SC',serif}
+.el span:nth-child(1){background:var(--e1t);color:var(--e1d)}.el span:nth-child(2){background:var(--e2t);color:var(--e2d)}.el span:nth-child(3){background:var(--e3t);color:var(--e3d)}.el span:nth-child(4){background:var(--e4t);color:var(--e4d)}.el span:nth-child(5){background:var(--e5t);color:var(--e5d)}
+.sub{letter-spacing:.04em;font-size:13px;color:var(--mute);margin-top:8px}
+p{line-height:1.55;margin:18px 0 0;font-size:15px;overflow-wrap:anywhere}
+.mt{font-size:14px;color:var(--mute);margin-top:10px}
+#st{min-height:1.4em}#st.ok{color:var(--ok)}#st.err{color:var(--err)}
+.btn{display:block;width:100%;margin-top:20px;padding:14px 20px;border-radius:14px;border:0;background:var(--btn);color:var(--btnink);font:600 15px Inter,system-ui,sans-serif;text-decoration:none;cursor:pointer}
+.btn2{display:inline-block;margin-top:14px;padding:8px 12px;border:0;background:none;color:var(--mute);font:500 14px Inter,system-ui,sans-serif;text-decoration:underline;cursor:pointer}
+.btn[disabled],.btn2[disabled]{opacity:.6;cursor:default}
+[hidden]{display:none !important}
+</style></head><body>
+<div class="box"><h1>词卡</h1><div class="el" aria-hidden="true"><span>木</span><span>水</span><span>土</span><span>火</span><span>金</span></div><div class="sub">Email pengumuman</div>
+<p id="t">Memeriksa tautan…</p>
+<p class="mt" id="ket" hidden>Kamu tetap bisa masuk dan belajar seperti biasa. Email penting tentang akunmu (misalnya verifikasi) tetap dikirim.</p>
+<p id="st" role="status" aria-live="polite"></p>
+<button class="btn" id="go" type="button" hidden>Berhenti berlangganan</button>
+<button class="btn2" id="balik" type="button" hidden>Batal, tetap terima pengumuman</button>
+<a class="btn2" id="ke" href="./" hidden>Ke 词卡</a>
+</div>
+<script>
+(function(){
+ var URL_B="https://n8n.zenta.web.id/webhook/hsk-berhenti";
+ var $=function(i){return document.getElementById(i)},t=$("t"),ket=$("ket"),st=$("st"),go=$("go"),balik=$("balik"),ke=$("ke");
+ function say(c,s){st.className=c||"";st.textContent=s||""}
+ var u="",tk="";
+ try{
+  var p=new URLSearchParams(location.hash.replace(/^#/,""));
+  u=String(p.get("u")||"").trim();tk=String(p.get("t")||"").trim().toLowerCase();
+  history.replaceState(null,"",location.pathname);
+ }catch(e){}
+ if(!/^[1-9][0-9]{0,8}$/.test(u)||!/^[0-9a-f]{32}$/.test(tk)){
+  t.textContent="Tautan berhenti berlangganan tidak lengkap. Buka tautan “Berhenti berlangganan” langsung dari email pengumuman.";
+  ke.hidden=false;return;
+ }
+ t.textContent="Berhenti menerima email pengumuman dari 词卡?";ket.hidden=false;go.hidden=false;
+ var busy=false;
+ function kirim(aksi,btn,teks){
+  if(busy)return;busy=true;go.disabled=balik.disabled=true;var asal=btn.textContent;btn.textContent="Memproses…";say("","");
+  var ctl=typeof AbortController!=="undefined"?new AbortController():null,to=setTimeout(function(){if(ctl)ctl.abort()},20000);
+  fetch(URL_B,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({aksi:aksi,u:u,t:tk}),mode:"cors",signal:ctl?ctl.signal:undefined})
+   .then(function(r){return r.json().then(function(j){return{s:r.status,j:j}},function(){return{s:r.status,j:null}})})
+   .then(function(x){
+    var j=x.j||{};
+    if(x.s===200&&j.ok===true){
+     ket.hidden=true;say("ok",j.pesan||"Selesai.");ke.hidden=false;
+     if(aksi==="berhenti"){t.textContent="Kamu sudah berhenti berlangganan.";go.hidden=true;balik.hidden=false;balik.textContent="Batal, tetap terima pengumuman"}
+     else{t.textContent="Kamu berlangganan lagi.";balik.hidden=true;go.hidden=false;go.textContent="Berhenti berlangganan"}
+    }else if(x.s===400){go.hidden=true;balik.hidden=true;ket.hidden=true;ke.hidden=false;say("err",j.pesan||"Tautan tidak valid.")}
+    else{btn.textContent=asal;say("err","Gagal ("+x.s+"). Coba lagi sebentar lagi.")}
+   })
+   .catch(function(){btn.textContent=asal;say("err","Tidak bisa terhubung ke server. Periksa koneksi lalu coba lagi.")})
+   .then(function(){clearTimeout(to);busy=false;go.disabled=balik.disabled=false;if(btn.textContent==="Memproses…")btn.textContent=asal});
+ }
+ go.addEventListener("click",function(){kirim("berhenti",go)});
+ balik.addEventListener("click",function(){kirim("langganan",balik)});
+})();
+</script></body></html>
