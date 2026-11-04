@@ -60,7 +60,7 @@ select{padding:10px 12px;font-size:14px}.card{min-height:300px;margin:12px 0}
 .gl h3{font-size:13px;letter-spacing:.05em;color:var(--acc);text-align:left;margin:22px 0 6px;font-weight:600}
 .gp{background:var(--card);border:1px solid var(--line);border-radius:8px;margin:8px 0;text-align:left}
 .gp summary{padding:12px 14px;cursor:pointer;list-style:none}.gp summary::-webkit-details-marker{display:none}
-.gp summary b{font-family:'Noto Serif SC',serif;font-size:17px}.gp summary span{display:block;font-size:12px;color:var(--mute);margin-top:3px}
+.gp summary b{font-family:'Noto Serif SC',serif;font-size:17px}.pyt,.gp summary b .pyt{display:inline;margin:0;font-family:Inter,'Helvetica Neue',Arial,sans-serif;font-size:14px;font-weight:600;color:var(--acc);letter-spacing:.01em;white-space:nowrap}.gp summary span{display:block;font-size:12px;color:var(--mute);margin-top:3px}
 .gp[open] summary{border-bottom:1px solid var(--line)}.gp .bd{padding:6px 14px 14px;font-size:14px;line-height:1.55}.gc{border-color:var(--acc)}.gc summary b{color:var(--acc)}
 .gx{border-left:3px solid var(--acc);padding:6px 10px;margin:8px 0;background:rgba(128,128,128,.07);border-radius:0 6px 6px 0}
 .gz{font-family:'Noto Serif SC',serif;font-size:18px;line-height:1.5}.gpy{font-size:12px;color:var(--acc);margin-top:2px}.gi{font-size:13px;margin-top:3px}.tg{font-size:11px;color:var(--mute);margin-top:3px}
@@ -913,6 +913,7 @@ function renderWrite(L,v){
 let LM={},GP={},GB={},GL=null;try{LM=JSON.parse(localStorage.getItem("hsk_lm")||"{}");GP=JSON.parse(localStorage.getItem("hsk_gp")||"{}");GB=JSON.parse(localStorage.getItem("hsk_gb")||"{}");GL=JSON.parse(localStorage.getItem("hsk_gl")||"null")}catch(e){}
 const gsave=()=>{try{localStorage.setItem("hsk_gp",JSON.stringify(GP));localStorage.setItem("hsk_gb",JSON.stringify(GB));localStorage.setItem("hsk_gl",JSON.stringify(GL))}catch(e){}};
 const GN={H2:"HSK 2",H3:"HSK 3","上":"HSK 4 上","下":"HSK 4 下",T:"Tips"};
+const PYR=/^([\u4e00-\u9fff]+) ([^\u4e00-\u9fff<>&]+)$/,PYT=t=>{const m=PYR.exec(t);return m?m[1]+' <span class="pyt">'+m[2]+"</span>":t},TT=(t,q)=>{const m=PYR.exec(t);return m?hl(m[1],q)+' <span class="pyt">'+hl(m[2],q)+"</span>":hl(t,q)};
 const gkey=(l,i)=>S.gs+"|"+l+"|"+i,gitems=x=>x.p.length+(x.c?1:0);
 const gdone=x=>{let n=0;x.p.forEach((_,i)=>{if(GP[gkey(x.l,i)])n++});if(x.c&&GP[gkey(x.l,"c")])n++;return n};
 function noteLast(m,t){LM[m]=t;LM._=m;try{localStorage.setItem("hsk_lm",JSON.stringify(LM))}catch(e){}}
@@ -956,7 +957,7 @@ ${lx?`<button class="rsm" id="gres"><span><small>Lanjutkan di sini</small><b>L${
  $("bc").innerHTML=`<b>语法</b> › ${GN[S.gs]} › L${x.l}`;
  const WC=w=>`<span><b>${w[0]}</b><small>${w[1]}</small>${w[2]?`<i>${w[2]}</i>`:""}</span>`,WS={laoshi:"Dari slide laoshi",sumber:"Dari referensi (kamus & situs belajar)",susun:"Contoh tambahan (disusun Claude, belum dikoreksi laoshi)"},WL=ws=>ws.some(w=>w[3])?["laoshi","sumber","susun"].map(s=>{const g=ws.filter(w=>w[3]==s);return g.length?`<div class="wlc">${WS[s]}</div><div class="wl">${g.map(WC).join("")}</div>`:""}).join(""):`<div class="wl">${ws.map(WC).join("")}</div>`;
  const E=(z,y,i,s)=>`<div class="gx"><div class="gz">${z}${AU[z]?` <button class="pl sm" data-aud="${enc(z)}">🔊</button>`:""}</div><div class="gpy">${y}</div><div class="gi">${i}</div><div class="tg">${s=="b"?"contoh dari buku":s=="l"?"contoh dari laoshi":s=="r"?"contoh dari referensi":"contoh tambahan"}</div></div>`;
- const blk=(i,cls,title,sub,body)=>{const k=gkey(x.l,i),u=GP[k],b=GB[k];return `<details class="gp ${cls}${u?" dn":""}" data-i="${i}"${op.includes(String(i))?" open":""}><summary><b>${u?"✓ ":""}${b?"🔖 ":""}${title}</b><span>${sub}</span></summary><div class="bd">${body}<div class="row" style="justify-content:flex-start;margin-top:10px"><button class="pl sm gk ${u?"on":""}" data-k="u" data-i="${i}">${u?"✓ Sudah paham":"Tandai paham"}</button><button class="pl sm gk ${b?"on":""}" data-k="b" data-i="${i}">${b?"🔖 Tersimpan":"🔖 Bookmark"}</button></div></div></details>`};
+ const blk=(i,cls,title,sub,body)=>{const k=gkey(x.l,i),u=GP[k],b=GB[k];return `<details class="gp ${cls}${u?" dn":""}" data-i="${i}"${op.includes(String(i))?" open":""}><summary><b>${u?"✓ ":""}${b?"🔖 ":""}${PYT(title)}</b><span>${sub}</span></summary><div class="bd">${body}<div class="row" style="justify-content:flex-start;margin-top:10px"><button class="pl sm gk ${u?"on":""}" data-k="u" data-i="${i}">${u?"✓ Sudah paham":"Tandai paham"}</button><button class="pl sm gk ${b?"on":""}" data-k="b" data-i="${i}">${b?"🔖 Tersimpan":"🔖 Bookmark"}</button></div></div></details>`};
  v.innerHTML=`<div class="rt"><button id="gb">← Daftar pelajaran</button><span class="pos">${S.ch} / ${G.length}</span></div><h3 class="rh">${x.n}</h3><div class="pos" style="text-align:left;margin-bottom:6px">Pelajaran ${x.l} · ${gdone(x)}/${gitems(x)} poin dipahami</div>`
  +x.p.map((p,i)=>blk(i,"",p.t,p.f,`<p>${p.m}</p>${p.w?WL(p.w):""}${p.z?E(p.z,p.y,p.i,p.s):""}`)).join("")
  +(x.c?blk("c","gc","比一比 · "+x.c.a+(x.c.b?" vs "+x.c.b:""),x.c.s,`<div class="tg">${x.c.t=="b"?"perbandingan dari buku":"perbandingan tambahan (disusun Claude)"}</div>${x.c.d.map(d=>`<p>${d.n}</p>${E(d.z,d.y,d.i,d.s)}`).join("")}`):"")
@@ -1312,7 +1313,7 @@ function runS(){
   let a=[];X[k].forEach(it=>{let ok=true;for(let j=0;j<T.length;j++){if(!(it.h.includes(T[j])||it.h.includes(nq[j]))){ok=false;break}}if(ok){const tl=it.t.toLowerCase();a.push([tl==q?3:tl.startsWith(q)?2:tl.includes(q)?1:0,it])}});
   a=a.map((x,i)=>[x[0],i,x[1]]).sort((p,r)=>r[0]-p[0]||p[1]-r[1]).map(x=>x[2]);
   if(!a.length)return;total+=a.length;const lim=SSH[k]?a.length:(SFLT==k?60:12);
-  html+=`<div class="sg">${names[k]} · ${a.length}</div>`+a.slice(0,lim).map((it,i)=>`<button class="sri" data-k="${k}" data-j="${X[k].indexOf(it)}"><b>${hl(it.t,q)}</b><small>${hl(it.s.length>110?it.s.slice(0,110)+"…":it.s,q)}</small><em>${it.g}</em></button>`).join("")+(a.length>lim?`<button class="sri" data-more="${k}" style="align-items:center;color:var(--acc)">Tampilkan semua ${a.length} hasil</button>`:"");
+  html+=`<div class="sg">${names[k]} · ${a.length}</div>`+a.slice(0,lim).map((it,i)=>`<button class="sri" data-k="${k}" data-j="${X[k].indexOf(it)}"><b>${TT(it.t,q)}</b><small>${hl(it.s.length>110?it.s.slice(0,110)+"…":it.s,q)}</small><em>${it.g}</em></button>`).join("")+(a.length>lim?`<button class="sri" data-more="${k}" style="align-items:center;color:var(--acc)">Tampilkan semua ${a.length} hasil</button>`:"");
  });
  sr.innerHTML=total?html:`<p class="pos" style="margin:30px 0">Tidak ada hasil untuk “${esc(q)}”.</p>`;
  sr.querySelectorAll(".sri[data-j]").forEach(b=>b.onclick=()=>{const it=X[b.dataset.k][+b.dataset.j];closeS();it.go()});
