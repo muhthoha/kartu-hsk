@@ -555,7 +555,7 @@ html.msk-open body{overflow:hidden}
   mode:function(){return A?A.mode:""},
   email:function(){return A?A.email:""},
   peran:function(){return A?A.peran:""},
-  expired:function(){if(gone)return;gone=true;dropSession("Sesi berakhir. Silakan masuk lagi.");location.reload()},
+  expired:function(m){if(gone)return;gone=true;dropSession(m||"Sesi berakhir. Silakan masuk lagi.");location.reload()},   /* m: pesan dari server, mis. masa berlaku habis */
   logout:function(){
    if(gone)return Promise.resolve();gone=true;
    function fin(){dropSession("");location.reload()}
@@ -2081,9 +2081,14 @@ STRP.then(render);
    setTimeout(function(){d.style.opacity="0";setTimeout(function(){if(d.parentNode)d.parentNode.removeChild(d)},300)},4500);
   }catch(e){}
  }
+ var pesan401="";
+ function tolak(r){   /* 401 bisa membawa pesan (mis. masa trial/langganan habis): simpan untuk halaman login, lalu gagal seperti biasa */
+  if(r.status!==401)return Promise.reject(r.status);
+  return r.json().then(function(j){if(j&&j.error==="masa_habis"&&typeof j.pesan==="string")pesan401=j.pesan.slice(0,400)},function(){}).then(function(){return Promise.reject(401)});
+ }
  function fail(what,e){
   var msg=String((e&&e.message)||e);
-  if(msg==="401"&&window.hskAuth&&window.hskAuth.mode()==="tabel"){lastErr=what+": sesi berakhir";window.hskAuth.expired();return}   /* sesi tidak sah lagi (password diganti / akun dinonaktifkan / kedaluwarsa) */
+  if(msg==="401"&&window.hskAuth&&window.hskAuth.mode()==="tabel"){lastErr=what+": sesi berakhir";window.hskAuth.expired(pesan401);return}   /* sesi tidak sah lagi (password diganti / akun dinonaktifkan / kedaluwarsa) */
   lastErr=what+": "+msg;failN++;
   try{console.warn("Sinkron "+what+" gagal:",e)}catch(_){}
   if(!told){told=true;toast("⚠️ Sinkron "+what+" gagal ("+(msg==="401"?"kode rahasia salah":msg.slice(0,60))+"). Progres tetap aman di perangkat ini.")}
@@ -2094,7 +2099,7 @@ STRP.then(render);
   try{
    fetch(c.u,{method:"POST",headers:{"Content-Type":"application/json"},body:s,keepalive:ka&&s.length<60000,mode:"cors"})
     .then(function(r){
-     if(!r.ok)return Promise.reject(r.status);
+     if(!r.ok)return tolak(r);
      if(nb)saveBase(nb);
      if(lastSrv){var kk;for(kk in ps){if(!has(ps,kk))continue;if(kk==="hsk_srs_c"){try{lastSrv.site=JSON.parse(ps[kk])}catch(e){}}else{lastSrv.state=isObj(lastSrv.state)?lastSrv.state:{};lastSrv.state[kk]=ps[kk]}}}
      failN=0;lastErr="";
@@ -2139,7 +2144,7 @@ STRP.then(render);
   function done(){pulling=false;clearTimeout(to);if(again){again=false;rerun=true;setTimeout(function(){rerun=false;sync(true)},300)}}
   try{
    fetch(u,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({secret:c.k,ts:new Date().toISOString()}),mode:"cors",signal:ctl?ctl.signal:undefined})
-    .then(function(r){return r.ok?r.json():Promise.reject(r.status)})
+    .then(function(r){return r.ok?r.json():tolak(r)})
     .then(function(j){if(!j||j.ok!==true)return Promise.reject("tanggapan tidak dikenal");lastSrv=j;handle(j,false)})
     .catch(function(e){fail("tarik",e)})
     .then(done,done);
