@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="id"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' blob: data:; connect-src 'self' https://n8n.zenta.web.id https://cdn.jsdelivr.net; object-src 'none'; base-uri 'self'; form-action 'self'">
-<script>if(/^#verif=/.test(location.hash)){location.replace("verif.html"+location.hash)}window.hskEsc=function(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]})};window.onerror=function(m){var v=document.getElementById("view");if(v&&document.getElementById("fb"))v.innerHTML='<p class="pos" style="margin:28px 0">Terjadi kesalahan saat memuat: '+hskEsc(m)+'<br>Coba buka file ini dengan Chrome atau Firefox.</p>'};</script>
+<script>if(/^#verif=/.test(location.hash)){location.replace("verif.html"+location.hash)}window.hskEsc=function(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]})};window.onerror=function(m){var v=document.getElementById("view");if(!v||!document.getElementById("fb"))return;if(window.hskBootErr&&document.documentElement.classList.contains("booting")){window.hskBootErr(m);return}v.innerHTML='<p class="pos" style="margin:28px 0;line-height:1.6">Kartu gagal dimuat: '+hskEsc(m)+'<br>Muat ulang halaman. Bila masih gagal, coba buka dengan Chrome atau Firefox versi terbaru.</p>'};</script>
 <meta name="author" content="韩冬岳">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>词卡 — 韩冬岳</title>
@@ -9,6 +9,7 @@
 <meta name="theme-color" content="#F4F4F5" media="(prefers-color-scheme:light)">
 <meta name="apple-mobile-web-app-title" content="词卡">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700&family=Inter:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<script id="boot-awal">try{var _a=JSON.parse(localStorage.getItem("acct_auth")||"null");if(_a&&typeof _a.token==="string"&&_a.token&&typeof _a.email==="string"&&_a.email&&typeof _a.exp==="number"&&_a.exp>Date.now()/1000+60&&_a.sync&&_a.sync.u&&_a.sync.p&&_a.sync.k)document.documentElement.classList.add("booting")}catch(e){}</script>
 <script id="tema-awal">try{var _t=localStorage.getItem("ui_tema");if(_t==="terang")document.documentElement.setAttribute("data-theme","light");else if(_t==="gelap")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
 <style>
 :root{color-scheme:dark;--bg:#121214;--card:#1C1C20;--ink:#F0F0F3;--mute:#A0A1AB;--line:#2E2F36;--soft:#26262B;--ok:#4CC58A;--okink:#0B1A12;--btn:#F0F0F3;--btnink:#121214;--fi:#0B1A12;--gop:.2;--e1:#4CC58A;--e1t:#183326;--e1d:#7ED9A6;--e2:#6A9BFF;--e2t:#172745;--e2d:#8FB5FF;--e3:#D9A441;--e3t:#382C14;--e3d:#E8BC62;--e4:#F2704F;--e4t:#3A1D17;--e4d:#FF9B83;--e5:#8DA0B5;--e5t:#232B35;--e5d:#B4C2D3;--f1:var(--e1);--f2:var(--e2);--f3:var(--e3);--f4:var(--e4);--acc:var(--ink);--acct:var(--soft);--accf:var(--btn);--accfi:var(--btnink);
@@ -271,7 +272,53 @@ details.vnote .vbd b{color:var(--ink)}
 .thint{font-size:12.5px;color:var(--mute);line-height:1.5}
 .backlog{margin:12px 0 0;padding:10px 12px;border-radius:10px;font-size:13px;line-height:1.55;border:1px solid var(--line);background:var(--e3t);color:var(--ink)}
 </style>
-</head><body><style id="auth-css">
+<style id="boot-css">
+/* Layar pemuatan: hanya tampil untuk pengguna yang sudah masuk (kelas "booting" dipasang skrip boot-awal), sampai kartu pertama selesai ditampilkan. */
+#boot{display:none}
+html.booting #boot{display:flex}
+html.gated #boot{display:none!important}
+html.booting body{overflow:hidden}
+#boot{position:fixed;top:0;right:0;bottom:0;left:0;z-index:99990;flex-direction:column;align-items:center;justify-content:center;padding:calc(env(safe-area-inset-top,0px) + 24px) 24px calc(env(safe-area-inset-bottom,0px) + 24px);background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;text-align:center;transition:opacity .3s ease,visibility .3s}
+#boot.bt-out{opacity:0;visibility:hidden;pointer-events:none}
+#boot .bt-in{width:100%;max-width:320px}
+#boot .bt-logo{font:700 64px/1.1 'Noto Serif SC',serif;color:var(--ink)}
+#boot .bt-sub{margin-top:6px;font-size:14px;letter-spacing:.02em;color:var(--mute)}
+#boot .bt-el{display:flex;justify-content:center;gap:8px;margin:28px 0 26px}
+#boot .bt-el span{width:36px;height:36px;border-radius:11px;display:flex;align-items:center;justify-content:center;font:700 18px 'Noto Serif SC',serif;opacity:.55;animation:bt-wave 1.6s ease-in-out infinite}
+#boot .bt-el span:nth-child(1){background:var(--e1t);color:var(--e1d)}
+#boot .bt-el span:nth-child(2){background:var(--e2t);color:var(--e2d);animation-delay:.14s}
+#boot .bt-el span:nth-child(3){background:var(--e3t);color:var(--e3d);animation-delay:.28s}
+#boot .bt-el span:nth-child(4){background:var(--e4t);color:var(--e4d);animation-delay:.42s}
+#boot .bt-el span:nth-child(5){background:var(--e5t);color:var(--e5d);animation-delay:.56s}
+#boot .bt-bar{position:relative;height:4px;border-radius:4px;overflow:hidden;background:var(--line)}
+#boot .bt-bar i{position:absolute;top:0;bottom:0;left:0;width:40%;border-radius:4px;background:linear-gradient(90deg,var(--e1d),var(--e2d),var(--e3d),var(--e4d),var(--e5d));animation:bt-slide 1.5s cubic-bezier(.4,0,.2,1) infinite}
+#boot .bt-msg{margin-top:18px;min-height:22px;font-size:15px;font-weight:600;color:var(--ink)}
+#boot .bt-hint{margin-top:6px;min-height:60px;font-size:13px;line-height:1.5;color:var(--mute)}
+#boot .bt-det{margin:6px 0 0;font:11.5px/1.45 ui-monospace,Menlo,Consolas,monospace;color:var(--mute);word-break:break-word}
+#boot .bt-det[hidden]{display:none}
+#boot .bt-act{margin-top:14px;min-height:46px}
+#boot .bt-btn{border:0;border-radius:12px;padding:12px 24px;font:700 15px Inter,system-ui,sans-serif;letter-spacing:0;text-transform:none;background:var(--btn);color:var(--btnink);cursor:pointer}
+#boot .bt-btn[hidden]{display:none}
+#boot .bt-btn:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+html.boot-fail #boot .bt-bar{display:none}
+html.boot-fail #boot .bt-el span{animation:none;opacity:.55}
+@keyframes bt-wave{0%,55%,100%{transform:translateY(0);opacity:.55}28%{transform:translateY(-7px);opacity:1}}
+@keyframes bt-slide{0%{transform:translateX(-100%)}100%{transform:translateX(250%)}}
+@media (prefers-reduced-motion:reduce){#boot{transition:none}#boot .bt-el span{animation:none;opacity:1}#boot .bt-bar i{animation:none;width:100%;opacity:.55}}
+</style>
+</head><body><div id="boot" role="status" aria-live="polite" aria-busy="true">
+ <div class="bt-in">
+  <div class="bt-logo" lang="zh" aria-hidden="true">词卡</div>
+  <div class="bt-sub">Kartu Kosakata Mandarin</div>
+  <div class="bt-el" aria-hidden="true"><span>木</span><span>水</span><span>土</span><span>火</span><span>金</span></div>
+  <div class="bt-bar" aria-hidden="true"><i></i></div>
+  <div class="bt-msg" id="bt-msg">Menyiapkan kartu kosakata…</div>
+  <div class="bt-hint" id="bt-hint">Memuat kosakata HSK, tata bahasa, bacaan, dan latihan.</div>
+  <div class="bt-det" id="bt-det" hidden></div>
+  <div class="bt-act"><button type="button" class="bt-btn" id="bt-reload" hidden>Muat ulang</button></div>
+ </div>
+</div>
+<style id="auth-css">
 html.gated .wrap{display:none!important}
 html.gated body{overflow:hidden}
 #authgate[hidden]{display:none!important}
@@ -740,7 +787,47 @@ html.msk-open body{overflow:hidden}
 <div class="crumb" id="bc"></div>
 <select id="ch"></select>
 <div class="seg" id="vt"><button id="t-study" class="on">Belajar</button><button id="t-write">Tulis</button><button id="t-sum">Ringkasan</button></div>
-<div id="view"><div id="fb" class="pos" style="margin:28px 0;line-height:1.6;font-size:15px"><noscript>JavaScript nonaktif. </noscript>Memuat kartu…<br>Jika layar ini tetap kosong, file ini tidak bisa dijalankan di pratinjau aplikasi chat. Simpan file ke HP, lalu buka dengan <b>Chrome</b> atau <b>Firefox</b>.</div></div>
+<div id="view"><div id="fb" class="pos" style="margin:28px 0;line-height:1.6;font-size:15px"><noscript>JavaScript nonaktif. Aktifkan JavaScript di browser untuk memakai 词卡.<br></noscript>Memuat kartu…</div></div>
+<script id="boot-ui">
+/* Mengatur layar pemuatan (#boot). Selesai saat kartu pertama menggantikan #fb di dalam #view.
+   Bila terlalu lama atau ada galat sebelum kartu tampil, pesannya berubah dan tombol "Muat ulang" muncul. */
+(function(){
+ var r=document.documentElement,b=document.getElementById("boot"),v=document.getElementById("view");
+ if(!b||!v||!document.getElementById("fb"))return;
+ var msg=document.getElementById("bt-msg"),hint=document.getElementById("bt-hint"),det=document.getElementById("bt-det"),rl=document.getElementById("bt-reload");
+ var done=false,errT=0,timers=[],obs=null;
+ function T(f,ms){timers.push(setTimeout(f,ms))}
+ function stopTimers(){for(var i=0;i<timers.length;i++)clearTimeout(timers[i]);timers=[]}
+ function say(m,h){if(msg)msg.textContent=m;if(hint)hint.textContent=h}
+ function finish(){
+  if(done)return;done=true;
+  stopTimers();clearTimeout(errT);
+  if(obs){try{obs.disconnect()}catch(e){}}
+  r.classList.remove("boot-fail");
+  b.setAttribute("aria-busy","false");
+  b.classList.add("bt-out");
+  setTimeout(function(){r.classList.remove("booting");if(b.parentNode)b.parentNode.removeChild(b)},320);
+ }
+ function check(){if(!document.getElementById("fb"))finish()}
+ function fail(m){
+  if(done)return;
+  stopTimers();
+  r.classList.add("boot-fail");
+  say("Kartu gagal dimuat","Terjadi kesalahan saat membuka halaman. Muat ulang halaman; bila masih gagal, coba buka dengan Chrome atau Firefox versi terbaru.");
+  if(det&&m){det.textContent=m;det.hidden=false}
+  if(rl)rl.hidden=false;
+ }
+ window.hskBootErr=function(m){
+  if(done||errT)return;
+  errT=setTimeout(function(){errT=0;if(!done&&document.getElementById("fb"))fail(String(m==null?"":m))},1500);
+ };
+ if(rl)rl.addEventListener("click",function(){rl.disabled=true;location.reload()});
+ try{obs=new MutationObserver(check);obs.observe(v,{childList:true})}catch(e){}
+ window.addEventListener("load",function(){check()});
+ T(function(){say("Masih memuat…","Koneksi sedang lambat. Pemuatan pertama memerlukan waktu lebih lama; kunjungan berikutnya biasanya lebih cepat.")},7000);
+ T(function(){say("Pemuatan lebih lama dari biasanya","Periksa koneksi internet. Bila layar ini tidak berubah, muat ulang halaman.");if(rl)rl.hidden=false},25000);
+})();
+</script>
 <nav id="nav"><button id="n-hm"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-7 8 7"/><path d="M6 10v9h12v-9"/></svg>Beranda</button><button id="n-vc"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M8 10h8M8 14h5"/></svg>Kosakata</button><button id="n-gr"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h11a3 3 0 013 3v13H8a3 3 0 01-3-3z"/><path d="M9 9h6M9 13h4"/></svg>语法</button><button id="n-rd"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6c3-1.5 6-1.5 9 0 3-1.5 6-1.5 9 0v13c-3-1.5-6-1.5-9 0-3-1.5-6-1.5-9 0z"/><path d="M12 6v13"/></svg>阅读</button><button id="n-lt"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1-4L16 5l3 3L8 19z"/><path d="M14 7l3 3"/></svg>练习</button></nav>
 <div id="srch"><div class="sh"><input id="sq" type="search" placeholder="Cari hanzi, pinyin, atau arti…" autocomplete="off"><button id="sx2" aria-label="Tutup">✕</button></div><div class="sf" id="sf"></div><div id="sr"></div></div>
 <div id="sheet"></div>
