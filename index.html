@@ -4,6 +4,10 @@
 <meta name="author" content="韩冬岳">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>词卡 — 韩冬岳</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#121214" media="(prefers-color-scheme:dark)">
+<meta name="theme-color" content="#F4F4F5" media="(prefers-color-scheme:light)">
+<meta name="apple-mobile-web-app-title" content="词卡">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700&family=Inter:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 <script id="tema-awal">try{var _t=localStorage.getItem("ui_tema");if(_t==="terang")document.documentElement.setAttribute("data-theme","light");else if(_t==="gelap")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
 <style>
@@ -236,6 +240,37 @@ body:not(.hm) h1{font-size:26px}body:not(.hm) .sub{display:none}
 .prep-ft input{background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:6px 8px;font:inherit}
 .prep button:focus-visible,.prep input:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
 </style>
+<style id="improv2">
+/* Warna nada (opsional, memakai palet 五行). Tanda nada pada pinyin tetap jadi penanda utama,
+   warna hanya pelengkap, agar tetap terbaca bagi pengguna buta warna. */
+.tn1,.tn2,.tn3,.tn4,.tn5{color:inherit}
+body.tone-on .tn1{color:var(--e4d)}
+body.tone-on .tn2{color:var(--e3d)}
+body.tone-on .tn3{color:var(--e1d)}
+body.tone-on .tn4{color:var(--e2d)}
+body.tone-on .tn5{color:var(--mute)}
+/* Rincian progres per level */
+.lvgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:8px;margin:10px 0 2px}
+.lvcell{background:rgba(128,128,128,.07);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+.lvcell b{font-size:14px}
+.lvcell .lvbar{height:5px;border-radius:99px;background:rgba(128,128,128,.18);overflow:hidden;margin-top:6px}
+.lvcell .lvbar i{display:block;height:100%;background:var(--acc);border-radius:99px}
+.lvsum{font-size:12.5px;color:var(--mute);margin-top:6px}
+/* Kartu info versi daftar */
+.vchip{display:inline-block;font-size:11.5px;font-weight:600;letter-spacing:.04em;padding:2px 7px;border-radius:99px;background:var(--e5t);color:var(--e5d);border:1px solid var(--line);vertical-align:middle}
+details.vnote{margin:14px 0 2px;border:1px solid var(--line);border-radius:12px;background:rgba(128,128,128,.05);padding:0}
+details.vnote>summary{cursor:pointer;padding:10px 12px;font-size:13.5px;font-weight:600;list-style:none}
+details.vnote>summary::-webkit-details-marker{display:none}
+details.vnote>summary::before{content:"\25B8  ";color:var(--mute)}
+details.vnote[open]>summary::before{content:"\25BE  "}
+details.vnote .vbd{padding:0 12px 12px;font-size:13px;color:var(--mute);line-height:1.6}
+details.vnote .vbd b{color:var(--ink)}
+.tonerow{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:14px 0 0;flex-wrap:wrap}
+.tonerow>div:first-child{flex:1 1 200px;min-width:0}
+.tonerow .tlbl{font-size:13.5px;font-weight:600}
+.thint{font-size:12.5px;color:var(--mute);line-height:1.5}
+.backlog{margin:12px 0 0;padding:10px 12px;border-radius:10px;font-size:13px;line-height:1.55;border:1px solid var(--line);background:var(--e3t);color:var(--ink)}
+</style>
 </head><body><style id="auth-css">
 html.gated .wrap{display:none!important}
 html.gated body{overflow:hidden}
@@ -268,6 +303,7 @@ html.gated body{overflow:hidden}
 #acct-menu .am-e{font-size:14px;font-weight:600;word-break:break-all;margin:2px 0 12px}
 #acct-menu button{width:100%;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:10px;padding:10px 0;font:600 14px Inter,system-ui,sans-serif;cursor:pointer}
 #acct-menu button[disabled]{opacity:.6;cursor:default}
+#acct-menu button+button{margin-top:8px}
 </style>
 <style id="tema-lima-unsur">
 /* Tema Lima Unsur: tiap bagian punya warna sendiri. --acc/--acct/--accf berubah mengikuti tab yang aktif. */
@@ -495,8 +531,10 @@ html.msk-open body{overflow:hidden}
    var m=document.createElement("div");m.id="acct-menu";m.hidden=true;
    var s1=document.createElement("div");s1.className="am-s";s1.textContent="Masuk sebagai";
    var s2=document.createElement("div");s2.className="am-e";s2.textContent=A.email;
+   var pg=document.createElement("button");pg.type="button";pg.id="acct-pg";pg.textContent="Progres & cadangan";
+   pg.addEventListener("click",function(){show(false);try{S.mode="pg";render();scrollTo(0,0)}catch(e){}});
    var out=document.createElement("button");out.type="button";out.id="acct-out";out.textContent="Keluar";
-   m.appendChild(s1);m.appendChild(s2);m.appendChild(out);
+   m.appendChild(s1);m.appendChild(s2);m.appendChild(pg);m.appendChild(out);
    sb.parentNode.insertBefore(b,sb.nextSibling);sb.parentNode.insertBefore(m,b.nextSibling);
    function show(v){m.hidden=!v;b.setAttribute("aria-expanded",v?"true":"false")}
    b.addEventListener("click",function(e){e.stopPropagation();show(m.hidden)});
@@ -621,9 +659,9 @@ html.msk-open body{overflow:hidden}
   dlg=document.createElement("div");dlg.id="msk-dlg";dlg.hidden=true;
   dlg.innerHTML='<div class="mk-box" role="dialog" aria-modal="true" aria-labelledby="mk-ttl">'+
    '<div class="mk-hd"><h2 id="mk-ttl">Saran &amp; masukan</h2><button type="button" class="mk-x" id="mk-x" aria-label="Tutup">✕</button></div>'+
-   '<p class="mk-sub">Ada ide, kata yang salah, atau bagian yang membingungkan? Ceritakan di sini.</p>'+
+   '<p class="mk-sub">Ada ide, kata yang salah, atau bagian yang membingungkan? Ceritakan di sini.<br>Untuk <b>Usul fitur</b>: mana yang paling kamu butuhkan — audio tiap kata, latihan menulis, kalimat contoh, pengingat Telegram, atau mode luring?</p>'+
    '<form id="mk-form" novalidate>'+
-   '<div class="mk-kinds" id="mk-kinds" role="radiogroup" aria-label="Jenis masukan"><button type="button" role="radio" data-k="saran" aria-checked="true">Saran</button><button type="button" role="radio" data-k="masalah" aria-checked="false">Masalah</button><button type="button" role="radio" data-k="lain" aria-checked="false">Lainnya</button></div>'+
+   '<div class="mk-kinds" id="mk-kinds" role="radiogroup" aria-label="Jenis masukan"><button type="button" role="radio" data-k="saran" aria-checked="true">Saran</button><button type="button" role="radio" data-k="masalah" aria-checked="false">Masalah</button><button type="button" role="radio" data-k="fitur" aria-checked="false">Usul fitur</button><button type="button" role="radio" data-k="lain" aria-checked="false">Lainnya</button></div>'+
    '<label for="mk-msg">Pesanmu</label><textarea id="mk-msg" maxlength="'+MAX+'" rows="5" autocomplete="off"></textarea><div class="mk-cnt" id="mk-cnt">0/'+MAX+'</div>'+
    '<div id="mk-kw"><label for="mk-kon">Email atau kontak (opsional)</label><input id="mk-kon" type="text" maxlength="120" autocomplete="off" autocapitalize="off" spellcheck="false"></div>'+
    '<div class="mk-hp" aria-hidden="true"><label>Jangan diisi<input id="mk-web" type="text" tabindex="-1" autocomplete="off"></label></div>'+
@@ -734,6 +772,50 @@ const $=id=>document.getElementById(typeof id==="string"&&id.charAt(0)==="#"?id.
 const save=()=>{try{localStorage.setItem("hsk_m",JSON.stringify(S.m))}catch(e){}};
 const K=()=>S.mode=="tek"?S.tk:S.mode=="gr"?S.gs:S.mode=="rd"?S.rl:S.mode=="lt"?S.lk:S.lv,inMode=c=>S.mode=="tek"?(c[3]==5||c[3]==6):(c[3]>=1&&c[3]<=4),list=()=>D.filter(c=>(S.mode=="tek"?c[3]==S.tk:c[3]>=1&&c[3]<=4&&(!S.lv||c[3]==S.lv))&&(!S.ch||c[4]==S.ch)),hzs=n=>n<=3?76:n<=5?54:n<=8?40:n<=16?30:24;
 
+/* === IMPROVISASI v2 ===
+   Versi daftar kosakata yang dipakai situs ini, dan pewarnaan nada pinyin.
+   HSKV: dipakai di breadcrumb, ringkasan progres, dan kartu catatan ujian.
+   Pemisah suku kata diuji pada seluruh 1.200 kata HSK 1-4: tidak ada yang gagal digabung ulang. */
+const HSKV={std:"HSK 2.0",levels:[1,2,3,4],total:1200,per:{1:150,2:150,3:300,4:600},
+ asof:"4 Nov 2026",last20:"7 November 2026",first30:"13 Desember 2026",
+ src:"https://www.chinesetest.cn"};
+const TONE_KEY="ui_nada";
+function toneOn(){try{return localStorage.getItem(TONE_KEY)==="1"}catch(e){return false}}
+function toneApply(){try{document.body.classList.toggle("tone-on",toneOn())}catch(e){}}
+function toneSet(v){try{localStorage.setItem(TONE_KEY,v?"1":"0")}catch(e){}toneApply()}
+const TMARK=(function(){const o={},g={a:"āáǎà",e:"ēéěè",i:"īíǐì",o:"ōóǒò",u:"ūúǔù","ü":"ǖǘǚǜ"};
+ for(const b in g){const m=g[b];for(let n=0;n<m.length;n++)o[m[n]]=n+1}return o})();
+const TVOW=(function(){const s={};"aeiouüv".split("").forEach(c=>s[c]=1);for(const k in TMARK)s[k]=1;return s})();
+function isV(ch){return !!TVOW[ch.toLowerCase()]}
+/* Pecah pinyin bernada menjadi suku kata; bagian non-huruf dikembalikan apa adanya. */
+function pySyl(p){
+ const out=[];let i=0;const n=p.length;
+ while(i<n){
+  const ch=p[i];
+  if(!isV(ch)&&!/[a-zü]/i.test(ch)){out.push([ch,0]);i++;continue}
+  const st=i;
+  while(i<n&&/[a-zü]/i.test(p[i])&&!isV(p[i]))i++;
+  if(i>=n||!isV(p[i])){out.push([p.slice(st,i),0]);continue}
+  while(i<n&&isV(p[i]))i++;
+  if(i<n&&p[i].toLowerCase()==="n"){
+   if(i+1<n&&p[i+1].toLowerCase()==="g"){ if(i+2<n&&isV(p[i+2]))i+=1; else i+=2 }
+   else if(i+1<n&&isV(p[i+1])){/* n memulai suku kata berikutnya */}
+   else i+=1;
+  } else if(i<n&&p[i].toLowerCase()==="r"&&!(i+1<n&&isV(p[i+1])))i+=1;
+  const sy=p.slice(st,i);let t=5;
+  for(const c of sy){if(TMARK[c]){t=TMARK[c];break}}
+  out.push([sy,t]);
+ }
+ return out;
+}
+/* Pinyin dengan tiap suku kata dibungkus kelas nada. Gagal apa pun -> teks biasa yang sudah di-escape. */
+function pyHTML(p){
+ try{
+  const str=String(p==null?"":p);
+  return pySyl(str).map(x=>x[1]?'<span class="tn'+x[1]+'">'+hskEsc(x[0])+'</span>':hskEsc(x[0])).join("");
+ }catch(e){return hskEsc(p)}
+}
+try{if(document.body)toneApply();else document.addEventListener("DOMContentLoaded",toneApply)}catch(e){}
 const SRS_KEY="hsk_srs_v1";
 function srsRead(){try{const x=JSON.parse(localStorage.getItem(SRS_KEY)||"{}");return x&&typeof x==="object"?x:{}}catch(e){return {}}}
 function srsWrite(x){try{localStorage.setItem(SRS_KEY,JSON.stringify(x))}catch(e){}}
@@ -751,12 +833,43 @@ function srsGrade(c,known){
   x[i]={reps,due:now+days*24*60*60*1000,last:now,quality:"known"};
  }
  srsWrite(x);
+ try{
+  /* Log ulasan (lokal, dibatasi 4000 baris terakhir). Berguna kalau nanti pindah ke FSRS,
+     yang butuh riwayat ulasan. Ikut tercadangkan karena berawalan hsk_. */
+  const LK="hsk_rlog_v1",cap=4000;
+  let g=[];try{g=JSON.parse(localStorage.getItem(LK)||"[]")||[]}catch(e){g=[]}
+  if(!Array.isArray(g))g=[];
+  g.push([now,i,known?1:0]);
+  if(g.length>cap)g=g.slice(g.length-cap);
+  /* Kalau localStorage penuh, kecilkan log lalu coba lagi; kalau masih gagal, buang lognya.
+     Log ini tidak boleh sampai menggagalkan penyimpanan progres belajar. */
+  try{localStorage.setItem(LK,JSON.stringify(g))}
+  catch(e1){
+   try{localStorage.setItem(LK,JSON.stringify(g.slice(-500)))}
+   catch(e2){try{localStorage.removeItem(LK)}catch(e3){}}
+  }
+ }catch(e){}
+}
+/* Ringkasan progres per level HSK, dihitung dari penanda "dikenali" (S.m). */
+function lvProgress(){
+ try{
+  if(S.mode!=="hsk")return "";
+  const rows=HSKV.levels.map(L=>{
+   let tot=0,kn=0;
+   for(let i=0;i<D.length;i++){if(D[i][3]!==L)continue;tot++;if(S.m["k"+i]==1)kn++}
+   return {L,tot,kn};
+  });
+  const tot=rows.reduce((x,r)=>x+r.tot,0),kn=rows.reduce((x,r)=>x+r.kn,0);
+  if(!tot)return "";
+  return `<div class="lvgrid">`+rows.map(r=>`<div class="lvcell"><b>HSK ${r.L}</b> <span style="color:var(--mute);font-size:12.5px">${r.kn}/${r.tot}</span><div class="lvbar"><i style="width:${r.tot?Math.round(r.kn/r.tot*100):0}%"></i></div></div>`).join("")
+   +`</div><div class="lvsum">Daftar <b>${HSKV.std}</b> \u00b7 HSK 1\u2013${HSKV.levels[HSKV.levels.length-1]} \u00b7 ${tot.toLocaleString("id-ID")} kata</div>`;
+ }catch(e){return ""}
 }
 
 function head(){const hm=S.mode=="hm",vc=S.mode=="hsk"||S.mode=="tek";
  const M=D.map((c,i)=>[c,S.m["k"+i]]).filter(x=>inMode(x[0])),k=M.filter(x=>x[1]==1).length,l=M.filter(x=>x[1]==0).length;
- $("stats").innerHTML=`<div class="pbar"><i style="width:${M.length?Math.round(k/M.length*100):0}%"></i></div><b>${k}</b> dari <b>${M.length}</b> kartu dikenali · ${l} masih belajar`;
- const cn=K()&&CH[K()]&&S.ch?CH[K()][S.ch-1]:(K()?"Semua bagian":"");$("bc").innerHTML=`<b>${S.mode=="tek"?"Kosakata Teknis":"Kosakata HSK"}</b> › ${S.mode=="tek"?(S.tk==5?"Bandara":"Harga &amp; Business Deal"):(S.lv?"HSK "+S.lv:"Semua level")}${cn?" › "+cn:""}`;
+ $("stats").innerHTML=`<div class="pbar"><i style="width:${M.length?Math.round(k/M.length*100):0}%"></i></div><b>${k}</b> dari <b>${M.length}</b> kartu dikenali · ${l} masih belajar`+lvProgress();
+ const cn=K()&&CH[K()]&&S.ch?CH[K()][S.ch-1]:(K()?"Semua bagian":"");$("bc").innerHTML=`<b>${S.mode=="tek"?"Kosakata Teknis":"Kosakata HSK"}</b> › ${S.mode=="tek"?(S.tk==5?"Bandara":"Harga &amp; Business Deal"):(S.lv?"HSK "+S.lv:"Semua level")}${cn?" › "+cn:""}${S.mode=="hsk"?` <span class="vchip" title="Daftar kosakata yang dipakai situs ini">${HSKV.std}</span>`:""}`;
  $("md").innerHTML=[["hsk","Kosakata HSK"],["tek","Kosakata Teknis"]].map(([v,t])=>`<button class="${S.mode==v?"on":""}" data-v="${v}">${t}</button>`).join("");
  $("md").querySelectorAll("button").forEach(b=>b.onclick=()=>{S.mode=S.vm=b.dataset.v;S.lv=0;S.ch=0;S.i=0;S.flip=false;render()});
  $("lv").innerHTML=(S.mode=="lt"?[["su","Susun kalimat"],["is","Isian kata"],["po","Pola kalimat"],["ar","Arti kata"],["de","Dengar & pilih"],["ur","Urutan"],["tu","Buat kalimat"],["hk","HSKK"]]:S.mode=="rd"?[["r1","Level 1"],["r2","Level 2"],["r3","Level 3"],["r4","Level 4"],["r5","Bandara"]]:S.mode=="gr"?[["H2","HSK 2"],["H3","HSK 3"],["上","HSK 4 · 上"],["下","HSK 4 · 下"],["T","Tips"]]:S.mode=="tek"?[[5,"Bandara"],[6,"Harga & Business Deal"]]:[[0,"Semua"],[1,"HSK 1"],[2,"HSK 2"],[3,"HSK 3"],[4,"HSK 4"]]).map(([v,t])=>`<button class="${K()==v?"on":""}" data-v="${v}">${t}</button>`).join("");
@@ -781,7 +894,7 @@ function renderWrite(L,v){
   v.innerHTML="<p>Tidak ada kartu.</p>";return
  }
  if(S.i>=L.length)S.i=0;const c=L[S.i],cs=[...c[0]].filter(x=>STR[x]);
- v.innerHTML=`<div class="wi"><div class="hz" style="font-size:44px">${c[0]}</div><div class="py">${c[1]}</div><div class="ar">${c[2]}</div>${posC(c)}${abr(c)}</div>`+cs.map((ch,n)=>`<div class="wc"><div class="wb" id="wb${n}"></div><div class="pos" id="wl${n}" style="margin-top:8px">${ch} · ${STR[ch].strokes.length} goresan</div>
+ v.innerHTML=`<div class="wi"><div class="hz" style="font-size:44px">${c[0]}</div><div class="py">${pyHTML(c[1])}</div><div class="ar">${c[2]}</div>${posC(c)}${abr(c)}</div>`+cs.map((ch,n)=>`<div class="wc"><div class="wb" id="wb${n}"></div><div class="pos" id="wl${n}" style="margin-top:8px">${ch} · ${STR[ch].strokes.length} goresan</div>
  <div class="wctl"><button data-a="s">Langkah ▶</button><button data-a="a">Animasi</button><button data-a="q">Latihan</button><button data-a="r">Reset</button></div>
  <div class="steps">${STR[ch].strokes.map((_,k)=>`<figure>${stepSVG(STR[ch].strokes,k)}<figcaption>${k+1}</figcaption></figure>`).join("")}</div></div>`).join("")
  +`<div class="pos">${S.i+1} / ${L.length}</div><div class="row"><button id="pv">← Sebelumnya</button><button id="nx">Berikutnya →</button></div>`;
@@ -1138,6 +1251,7 @@ ${L.ans?`<div class="pos" style="text-align:left;margin-top:12px">Jawaban contoh
 }
 function render(){
  if(S.mode==="exam"){clearInterval(LTI);stopAud();$("sheet").style.display="none";renderExam($("view"));return}
+ if(S.mode==="pg"){clearInterval(LTI);stopAud();$("sheet").style.display="none";if(typeof renderProgres==="function")renderProgres($("view"));return}
  head();const L=S.review?srsReviewList():list(),v=$("view");if(S.mode!="hm"){S.lastm=S.mode;S.mem[S.mode]={ch:S.ch,i:S.i,tab:S.tab}}try{localStorage.setItem("hsk_s",JSON.stringify({mode:S.lastm,tk:S.tk,rl:S.rl,lk:S.lk,gs:S.gs,lv:S.lv,ch:S.ch,tab:S.tab,i:S.i}));localStorage.setItem("hsk_mem",JSON.stringify(S.mem))}catch(e){}
  stopAud();clearInterval(LTI);$("sheet").style.display="none";
  if(S.mode=="hm"){renderHome(v);return}
@@ -1152,7 +1266,7 @@ function render(){
  if(!L.length){v.innerHTML="<p>Tidak ada kartu.</p>";return}
  if(S.i>=L.length)S.i=0;const c=L[S.i];
  v.innerHTML=`${S.review?`<div class="srs-panel"><h3>Pengulangan terjadwal</h3><p>Kartu yang jatuh tempo diprioritaskan. Nilai berdasarkan seberapa mudah Anda mengingatnya.</p><span class="srs-badge">Jadwal adaptif</span></div>`:""}<div class="card" id="cd"><span class="tag">${c[3]>=5?"Teknis":"HSK "+c[3]} · ${CH[c[3]][c[4]-1]}</span><div class="hz" style="font-size:${hzs(c[0].length)}px">${c[0]}</div>${posC(c)}${abr(c)}
- ${S.flip?`<div class="py">${c[1]}</div><div class="ar">${c[2]}</div>${c[5]?`<div class="ex">${c[5]}${AU[c[5]]?` <button class="pl sm" data-aud="${enc(c[5])}">🔊</button>`:""}</div>`:""}`:`<div class="hint">Ketuk untuk membuka</div>`}</div>
+ ${S.flip?`<div class="py">${pyHTML(c[1])}</div><div class="ar">${c[2]}</div>${c[5]?`<div class="ex">${c[5]}${AU[c[5]]?` <button class="pl sm" data-aud="${enc(c[5])}">🔊</button>`:""}</div>`:""}`:`<div class="hint">Ketuk untuk membuka</div>`}</div>
  <div class="pos">${S.i+1} / ${L.length}</div>
  <div class="row acts"><button class="no" id="b0">Masih belajar</button><button class="yes" id="b1">Sudah tahu</button></div>
  <div class="row"><button id="pv">← Sebelumnya</button><button id="nx">Berikutnya →</button></div>`;
@@ -1226,11 +1340,22 @@ document.addEventListener("keydown",e=>{if(e.key=="Escape"&&$("srch").style.disp
     const days=[];
     for(let i=6;i>=0;i--){const d=new Date();d.setHours(12,0,0,0);d.setDate(d.getDate()-i);days.push({k:dayKey(d),label:labels[d.getDay()],n:a[dayKey(d)]||0})}
     const max=Math.max(5,...days.map(d=>d.n));
-    let streak=0;const now=new Date();now.setHours(12,0,0,0);
-    // Streak dihitung dari hari ini, atau kemarin bila hari ini belum belajar.
-    let cursor=new Date(now);
-    if(!(a[dayKey(cursor)]||0)){cursor.setDate(cursor.getDate()-1)}
-    for(let i=0;i<366;i++){if((a[dayKey(cursor)]||0)>0){streak++;cursor.setDate(cursor.getDate()-1)}else break}
+    const now=new Date();now.setHours(12,0,0,0);
+    /* Runtun yang memaafkan: bolong satu hari tidak memutus runtun, dua hari berurutan baru memutus.
+       Lally dkk. 2010 menemukan satu hari terlewat tidak merusak pembentukan kebiasaan. */
+    let streak=0,miss=0,cursor=new Date(now);
+    for(let i=0;i<400;i++){
+      const n=a[dayKey(cursor)]||0;
+      if(n>0){streak++;miss=0}
+      else if(i>0){miss++;if(miss>=2)break}
+      cursor.setDate(cursor.getDate()-1);
+    }
+    const wk=days.filter(d=>d.n>0).length;
+    /* Tumpukan kartu jatuh tempo. Manual Anki menyarankan menghentikan kartu baru sampai
+       tunggakan selesai; di sini hanya saran, alur belajar tidak diubah otomatis. */
+    let dueN=0;try{if(typeof srsDueCount==="function")dueN=srsDueCount()|0}catch(e){}
+    const dueBig=dueN>Math.max(40,goal*4);
+    try{toneApply()}catch(e){}
     const panel=document.createElement("section");
     panel.className="daily-panel";
     panel.innerHTML=`
@@ -1249,20 +1374,36 @@ document.addEventListener("keydown",e=>{if(e.key=="Escape"&&$("srch").style.disp
         <button type="submit" class="${PRESETS.includes(goal)?"":"on"}">Simpan</button>
       </form>
       <div class="daily-custom-msg" role="status" aria-live="polite"></div>
-      <div class="hms" style="margin:18px 0 8px">AKTIVITAS 7 HARI · STREAK ${streak} HARI</div>
+      <div class="hms" style="margin:18px 0 8px">AKTIVITAS 7 HARI · RUNTUN ${streak} HARI · AKTIF ${wk} DARI 7 HARI</div>
       <div class="weekly-activity" aria-label="Aktivitas belajar tujuh hari">
         ${days.map(d=>`<div class="weekday" title="${d.k}: ${d.n} kartu"><div class="weekbar"><span style="height:${d.n?Math.max(8,Math.round(d.n/max*100)):3}%"></span></div><small>${d.label}</small></div>`).join("")}
       </div>
+      <p class="thint" style="margin:8px 0 0">Runtun tetap jalan kalau kamu bolong satu hari; dua hari berurutan baru memutusnya.</p>
+      ${dueBig?`<div class="backlog"><b>${dueN} kartu menunggu diulang.</b> Selesaikan tunggakan ini dulu sebelum menambah kartu baru, supaya jadwal pengulangan tidak makin menumpuk.</div>`:""}
       <div class="daily-actions">
         <button data-daily-action="vocab">Mulai belajar kosakata</button>
         <button data-daily-action="practice">Mulai latihan</button>
-      </div>`;
+      </div>
+      <div class="tonerow">
+        <div><div class="tlbl">Warna nada pada pinyin</div><div class="thint">Memakai palet 五行. Tanda nada tetap ditampilkan, warna hanya pelengkap.</div></div>
+        <button type="button" id="tone-tg" class="${toneOn()?"on":""}" aria-pressed="${toneOn()?"true":"false"}">${toneOn()?"Hidup":"Mati"}</button>
+      </div>
+      <details class="vnote">
+        <summary>Daftar kosakata: ${HSKV.std} · HSK 1–4 · ${HSKV.total.toLocaleString("id-ID")} kata</summary>
+        <div class="vbd">
+          <p>Situs ini memakai daftar <b>${HSKV.std}</b>: ${HSKV.levels.map(L=>HSKV.per[L]).join(" + ")} = <b>${HSKV.total.toLocaleString("id-ID")}</b> kata untuk HSK 1–4.</p>
+          <p>Menurut sumber sekunder per ${HSKV.asof}, ujian HSK reguler format lama yang terakhir dijadwalkan <b>${HSKV.last20}</b>, dan ujian format baru (HSK 3.0) yang pertama <b>${HSKV.first30}</b>. Pada HSK 3.0, HSK 4 berisi <b>2.000 kata</b>, sekitar 800 kata lebih banyak daripada daftar di situs ini.</p>
+          <p>Tanggal itu <b>belum dipastikan ke sumber resmi</b>. Kalau kamu akan ikut ujian, periksa <a href="${HSKV.src}" target="_blank" rel="noopener noreferrer">chinesetest.cn</a> dan pusat ujian tempatmu mendaftar.</p>
+        </div>
+      </details>`;
     const viewHead=v.querySelector(".hmt");
     if(viewHead) viewHead.insertAdjacentElement("afterend",panel); else v.prepend(panel);
     panel.querySelectorAll("[data-goal]").forEach(b=>b.addEventListener("click",()=>{
       localStorage.setItem(GOAL,b.dataset.goal);
       renderHome(v);
     }));
+    const toneBtn=panel.querySelector("#tone-tg");
+    if(toneBtn)toneBtn.addEventListener("click",()=>{toneSet(!toneOn());renderHome(v)});
     const customForm=panel.querySelector(".daily-custom");
     customForm.addEventListener("submit",e=>{
       e.preventDefault();
@@ -1469,7 +1610,23 @@ exResults=function(){_exResultsStage4();const host=$('view');if(host&&!host.quer
    try{exams=JSON.parse(d.hsk_exam_history||'[]').length}catch(e){}
    return {keys:Object.keys(d).length,known,learning,scheduled,errors,exams};
  }
- function downloadBackup(){
+ function csvCell(v){const t=String(v==null?"":v);return '"'+t.replace(/"/g,'""')+'"'}
+/* Ekspor kosakata + status belajar sebagai CSV. Kolomnya umum, bukan format khusus Anki:
+   kalau mau dipakai di Anki, petakan kolomnya sendiri saat impor. */
+function downloadCSV(){
+  let m={};try{m=JSON.parse(localStorage.getItem('hsk_m')||'{}')||{}}catch(e){m={}}
+  const head=['hanzi','pinyin','arti','level','bab','contoh','status'];
+  const rows=[head.map(csvCell).join(',')];
+  for(let i=0;i<D.length;i++){
+    const c=D[i],st=m['k'+i];
+    rows.push([c[0],c[1],c[2],c[3],c[4],c[5]||'',st==1?'dikenali':(st==0?'masih belajar':'belum dinilai')].map(csvCell).join(','));
+  }
+  const blob=new Blob(['﻿'+rows.join('\r\n')],{type:'text/csv;charset=utf-8'});
+  const url=URL.createObjectURL(blob),a=document.createElement('a');
+  a.href=url;a.download='kosakata-mandarin-hsk2-0-'+new Date().toISOString().slice(0,10)+'.csv';
+  document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);
+}
+function downloadBackup(){
    const pack={schema:BACKUP_SCHEMA,version:BACKUP_VERSION,createdAt:new Date().toISOString(),app:'词卡 — Mandarin Vocabulary',data:backupData()};
    const blob=new Blob([JSON.stringify(pack,null,2)],{type:'application/json;charset=utf-8'});
    const url=URL.createObjectURL(blob);const a=document.createElement('a');
@@ -1500,14 +1657,23 @@ exResults=function(){_exResultsStage4();const host=$('view');if(host&&!host.quer
  function renderBackupPanel(v){
    if(!v||v.querySelector('#backup-panel'))return;
    const st=backupStats();const panel=document.createElement('section');panel.id='backup-panel';panel.className='backup-panel';
-   panel.innerHTML=`<div class="exam-title" style="font-size:17px">Progres &amp; cadangan data</div><p>Amankan progres belajar, jadwal pengulangan, target harian, bank kesalahan, dan riwayat ujian. Data tersimpan di browser ini; ekspor cadangan secara berkala jika ingin menghindari kehilangan data.</p><div class="exam-stats"><span>Data tersimpan: <b>${st.keys}</b> item</span><span>Bank kesalahan: <b>${st.errors}</b></span><span>Riwayat ujian: <b>${st.exams}</b></span></div><div class="backup-actions"><button id="backup-export">Unduh cadangan (.json)</button><button id="backup-import-trigger">Pulihkan dari cadangan</button><input id="backup-file" type="file" accept=".json,application/json" aria-label="Pilih file cadangan JSON"></div><div class="backup-status" id="backup-status" role="status" aria-live="polite">Pencadangan tidak menghapus data dari browser. File JSON berisi data progres aplikasi.</div><p>Catatan: pemulihan sebaiknya dilakukan pada versi aplikasi yang sama atau lebih baru. Simpan file cadangan secara pribadi karena dapat memuat riwayat belajar Anda.</p>`;
+   panel.innerHTML=`<p>Amankan progres belajar, jadwal pengulangan, target harian, bank kesalahan, dan riwayat ujian. Data tersimpan di browser ini; ekspor cadangan secara berkala jika ingin menghindari kehilangan data.</p><div class="exam-stats"><span>Data tersimpan: <b>${st.keys}</b> item</span><span>Bank kesalahan: <b>${st.errors}</b></span><span>Riwayat ujian: <b>${st.exams}</b></span></div><div class="backup-actions"><button id="backup-export">Unduh cadangan (.json)</button><button id="backup-csv">Ekspor kosakata (.csv)</button><button id="backup-import-trigger">Pulihkan dari cadangan</button><input id="backup-file" type="file" accept=".json,application/json" aria-label="Pilih file cadangan JSON"></div><div class="backup-status" id="backup-status" role="status" aria-live="polite">Pencadangan tidak menghapus data dari browser. File JSON berisi data progres aplikasi.</div><p>Catatan: pemulihan sebaiknya dilakukan pada versi aplikasi yang sama atau lebih baru. Simpan file cadangan secara pribadi karena dapat memuat riwayat belajar Anda.</p>`;
    const last=v.querySelector('.exam-home:last-of-type');if(last)last.insertAdjacentElement('afterend',panel);else v.appendChild(panel);
    panel.querySelector('#backup-export').onclick=downloadBackup;
+   const csvB=panel.querySelector('#backup-csv');if(csvB)csvB.onclick=downloadCSV;
    panel.querySelector('#backup-import-trigger').onclick=()=>panel.querySelector('#backup-file').click();
    panel.querySelector('#backup-file').onchange=e=>{const f=e.target.files&&e.target.files[0];if(f)importBackup(f);e.target.value=''};
  }
- const _renderHomeStage5=renderHome;
- renderHome=function(v){_renderHomeStage5(v);renderBackupPanel(v)};
+ /* Halaman "Progres & cadangan", dibuka dari menu akun (S.mode="pg").
+    Sebelumnya panel ini menempel di beranda; dipindah agar beranda lebih ringkas. */
+ window.renderProgres=function(v){
+   if(!v)return;
+   v.innerHTML='<div class="hmt">Progres &amp; cadangan</div>'
+    +'<div class="row" style="margin-bottom:14px"><button id="pg-back">\u2190 Kembali ke beranda</button></div>';
+   renderBackupPanel(v);
+   const bk=v.querySelector('#pg-back');
+   if(bk)bk.onclick=function(){try{S.mode="hm";S.tab="home";render();scrollTo(0,0)}catch(e){}};
+ };
 })();
 
 // ===== Tahap 6: Pusat Belajar Adaptif dan rencana sesi harian =====
