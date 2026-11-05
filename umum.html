@@ -19,6 +19,8 @@ p{line-height:1.55;margin:18px 0 0;font-size:15px;overflow-wrap:anywhere}
 .draf{margin-top:20px;text-align:left;background:var(--soft);border-radius:16px;padding:14px 16px}
 .draf .lbl{font:700 11.5px Inter,system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
 .draf .jd{font-weight:700;font-size:16px;line-height:1.4;margin-top:4px;overflow-wrap:anywhere}
+.draf .lbl.l2{margin-top:12px}
+.draf .rc{font-weight:600;font-size:15px;line-height:1.4;margin-top:4px;overflow-wrap:anywhere}
 .uji{display:inline-block;margin-left:6px;padding:1px 7px;border-radius:7px;background:var(--e3t);color:var(--e3d);font-size:11px;letter-spacing:.04em;vertical-align:2px}
 .info{font-size:14px;color:var(--mute);margin-top:12px}
 .info b{color:var(--ink)}
@@ -30,9 +32,9 @@ p{line-height:1.55;margin:18px 0 0;font-size:15px;overflow-wrap:anywhere}
 .btn[disabled],.btn2[disabled]{opacity:.6;cursor:default}
 [hidden]{display:none !important}
 </style></head><body>
-<div class="box"><h1>词卡</h1><div class="el" aria-hidden="true"><span>木</span><span>水</span><span>土</span><span>火</span><span>金</span></div><div class="sub">Persetujuan pengumuman</div>
+<div class="box"><h1>词卡</h1><div class="el" aria-hidden="true"><span>木</span><span>水</span><span>土</span><span>火</span><span>金</span></div><div class="sub" id="sb">Persetujuan pengumuman</div>
 <p id="t">Memeriksa tautan…</p>
-<div class="draf" id="draf" hidden><div class="lbl">Judul pengumuman</div><div class="jd"><span id="jd"></span><span class="uji" id="uji" hidden>UJI</span></div></div>
+<div class="draf" id="draf" hidden><div class="lbl" id="lj">Judul pengumuman</div><div class="jd"><span id="jd"></span><span class="uji" id="uji" hidden>UJI</span></div><div class="lbl l2" id="lp" hidden>Penerima</div><div class="rc" id="rc" hidden></div></div>
 <p class="info" id="info" hidden></p>
 <p id="st" role="status" aria-live="polite"></p>
 <button class="btn" id="kirim" type="button" hidden>Kirim</button>
@@ -43,7 +45,7 @@ p{line-height:1.55;margin:18px 0 0;font-size:15px;overflow-wrap:anywhere}
 <script>
 (function(){
  var URL_U="https://n8n.zenta.web.id/webhook/hsk-umum",SK="umum_acc";
- var $=function(i){return document.getElementById(i)},t=$("t"),st=$("st"),draf=$("draf"),jd=$("jd"),uji=$("uji"),info=$("info"),bK=$("kirim"),bB=$("batal"),bC=$("cek"),ke=$("ke");
+ var $=function(i){return document.getElementById(i)},t=$("t"),st=$("st"),draf=$("draf"),jd=$("jd"),uji=$("uji"),sb=$("sb"),lj=$("lj"),lp=$("lp"),rc=$("rc"),info=$("info"),bK=$("kirim"),bB=$("batal"),bC=$("cek"),ke=$("ke");
  function say(c,s){st.className=c||"";st.textContent=s||""}
  var id="",tok="";
  try{
@@ -58,7 +60,9 @@ p{line-height:1.55;margin:18px 0 0;font-size:15px;overflow-wrap:anywhere}
   t.textContent="Tautan persetujuan tidak lengkap atau rusak. Buka tombol “Tinjau & kirim” langsung dari email draf.";
   ke.hidden=false;return;
  }
- var busy=false,jumlah=0,isUji=false,tunggu={};
+ var busy=false,jumlah=0,isUji=false,isPing=false,tunggu={};
+ function teksKirim(){return isUji?"Kirim email uji":isPing?"Kirim pengingat":"Kirim ke "+jumlah+" pengguna"}
+ function teksYakin(){return isUji?"Tekan lagi untuk mengirim email uji":isPing?"Tekan lagi untuk mengirim pengingat":"Tekan lagi untuk mengirim ke "+jumlah+" pengguna"}
  function minta(aksi,cb){
   if(busy)return;busy=true;bK.disabled=bB.disabled=bC.disabled=true;
   var ctl=typeof AbortController!=="undefined"?new AbortController():null,to=setTimeout(function(){if(ctl)ctl.abort()},45000);
@@ -69,8 +73,14 @@ p{line-height:1.55;margin:18px 0 0;font-size:15px;overflow-wrap:anywhere}
    .then(function(){clearTimeout(to);busy=false;bK.disabled=bB.disabled=bC.disabled=false});
  }
  function tampilJudul(j){if(j&&j.judul){jd.textContent=j.judul;draf.hidden=false}}
+ function tampilPenerima(j){   /* draf pengingat = tepat satu penerima; alamat ditulis lewat textContent, bukan HTML */
+  var e=j&&j.pengingat===true&&typeof j.penerima==="string"?j.penerima:"";
+  sb.textContent=e?"Persetujuan pengingat":"Persetujuan pengumuman";
+  lj.textContent=e?"Judul email pengingat":"Judul pengumuman";
+  rc.textContent=e;lp.hidden=rc.hidden=!e;if(e)draf.hidden=false;
+ }
  function keadaan(x){   /* jawaban selain "draf siap dikirim" */
-  var j=x.j||{};tampilJudul(j);info.hidden=true;bC.hidden=true;
+  var j=x.j||{};tampilJudul(j);tampilPenerima(j);info.hidden=true;bC.hidden=true;
   if(x.s===429){say("err",j.pesan||"Terlalu banyak percobaan. Coba lagi nanti.");return}
   if(x.s===400){t.textContent="Tautan tidak bisa dipakai.";say("err",j.pesan||"Tautan tidak valid.");selesai();return}
   if(j.status){
@@ -85,16 +95,17 @@ p{line-height:1.55;margin:18px 0 0;font-size:15px;overflow-wrap:anywhere}
   minta("lihat",function(x){
    var j=x.j||{};
    if(x.s===200&&j.ok===true){
-    jumlah=Number(j.jumlah)||0;isUji=!!j.uji;tampilJudul(j);uji.hidden=!isUji;
-    t.textContent="Periksa isi draf di email, lalu kirim bila sudah sesuai.";
+    jumlah=Number(j.jumlah)||0;isUji=!!j.uji;isPing=j.pengingat===true&&!!j.penerima;tampilJudul(j);tampilPenerima(j);uji.hidden=!isUji;
+    t.textContent=isPing?"Periksa isi pengingat di email draf, lalu kirim bila sudah sesuai.":"Periksa isi draf di email, lalu kirim bila sudah sesuai.";
     info.innerHTML="";
     var a=document.createElement("span");
     if(isUji){a.append("Draf uji: hanya dikirim ke ",Object.assign(document.createElement("b"),{textContent:"email pemilik"}),".")}
+    else if(isPing){a.append("Pengingat masa berlaku: hanya dikirim ke ",Object.assign(document.createElement("b"),{textContent:j.penerima}),", satu email.")}
     else{a.append("Akan dikirim ke ",Object.assign(document.createElement("b"),{textContent:jumlah+" pengguna aktif"}),", satu email per orang.")}
     info.append(a);
     if(j.berlaku_sampai){info.append(document.createElement("br"),"Tautan berlaku sampai "+j.berlaku_sampai+".")}
     info.hidden=false;bC.hidden=true;say("","");
-    bK.textContent=isUji?"Kirim email uji":"Kirim ke "+jumlah+" pengguna";bK.hidden=false;bB.hidden=false;bB.textContent="Batalkan draf";
+    bK.textContent=teksKirim();bK.hidden=false;bB.hidden=false;bB.textContent="Batalkan draf";
    }else keadaan(x);
   });
  }
@@ -105,12 +116,12 @@ p{line-height:1.55;margin:18px 0 0;font-size:15px;overflow-wrap:anywhere}
   tunggu[kunci]=setTimeout(function(){tunggu[kunci]=0;btn.classList.remove("yakin");btn.textContent=teksAwal()},6000);
  }
  bK.addEventListener("click",function(){
-  duaKali(bK,"k",isUji?"Tekan lagi untuk mengirim email uji":"Tekan lagi untuk mengirim ke "+jumlah+" pengguna",function(){return isUji?"Kirim email uji":"Kirim ke "+jumlah+" pengguna"},function(){
+  duaKali(bK,"k",teksYakin(),teksKirim,function(){
    bK.textContent="Mengirim…";say("","");
    minta("kirim",function(x){
     var j=x.j||{};
-    if(x.s===200&&j.ok===true){t.textContent="Pengumuman terkirim.";info.hidden=true;say("ok",j.pesan||"Terkirim.");selesai()}
-    else if(x.s===502){say("err",j.pesan||"Pengumuman gagal dikirim. Coba lagi nanti.");bK.textContent=isUji?"Kirim email uji":"Kirim ke "+jumlah+" pengguna"}
+    if(x.s===200&&j.ok===true){t.textContent=isPing?"Pengingat terkirim.":"Pengumuman terkirim.";info.hidden=true;say("ok",j.pesan||"Terkirim.");selesai()}
+    else if(x.s===502){say("err",j.pesan||(isPing?"Pengingat gagal dikirim. Coba lagi nanti.":"Pengumuman gagal dikirim. Coba lagi nanti."));bK.textContent=teksKirim()}
     else keadaan(x);
    });
   });
