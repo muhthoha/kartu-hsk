@@ -1943,16 +1943,40 @@ function downloadBackup(){
  }
  function today(){const k=ymd(new Date()),p=ld(PK,{}),h=p.hist||{};return p.d===k?{d:k,done:p.done||{},hist:h}:{d:k,done:{},hist:h}}
  function streak(h){let n=0,d=new Date();if((h[ymd(d)]||0)<3)d.setDate(d.getDate()-1);while((h[ymd(d)]||0)>=3){n++;d.setDate(d.getDate()-1)}return n}
+ /* ---- Deteksi otomatis tugas harian ----
+    Sebelumnya centang hanya berubah bila lingkarannya diketuk sendiri; mengerjakan tugasnya tidak tercatat.
+    Kini tindakan nyata dicatat ke "done" (ikut sinkron dan dihitung untuk hari berturut-turut):
+      srs: kartu jatuh tempo habis setelah menilai kartu | su: NEED.su kalimat diperiksa | hk: NEED.hk latihan dimulai
+      rd: cerita ditandai sudah dibaca, atau dibuka ±READ_SEC detik | err: satu sesi "bank kesalahan" diselesaikan
+    Keadaan "tidak ada yang perlu dikerjakan" (kartu jatuh tempo 0 setelah ada kartu terjadwal, bank kesalahan kosong)
+    hanya ditampilkan sebagai selesai; tidak ditulis dan tidak menambah hari berturut-turut.
+    Hitungan latihan hari ini ada di hsk_prep_cnt (per perangkat, tidak disinkronkan). */
+ const CK='hsk_prep_cnt',NEED={su:5,hk:3},READ_SEC=60;
+ function cnt(){const k=ymd(new Date()),c=ld(CK,{});return c&&typeof c==='object'&&c.d===k?c:{d:k}}
  function tasks(c){
-  const due=srsDueCount(),er=(ld('hsk_error_bank_v1',[])||[]).length;
+  const due=srsDueCount(),all=srsAllCount(),er=(ld('hsk_error_bank_v1',[])||[]).length,n=cnt();
   const lt=k=>()=>{S.review=false;S.mode='lt';S.vm='hsk';S.lk=k;S.ch=0;S.i=0;S.tab='study';S.flip=false;render();scrollTo(0,0)};
+  const prog=(id,u)=>' ('+Math.min(n[id]||0,NEED[id])+' dari '+NEED[id]+' '+u+' hari ini)';
   return [
-   {id:'srs',t:'Ulangi kartu jatuh tempo',d:due+' kartu menunggu',run:()=>{S.review=true;S.mode='hsk';S.vm='hsk';S.lv=0;S.ch=0;S.tab='study';S.i=0;S.flip=false;render();scrollTo(0,0)}},
-   c.lv>=3&&{id:'su',t:'Susun kalimat',d:'Latih urutan kata untuk bagian menulis',run:lt('su')},
-   c.kk&&{id:'hk',t:'Latihan menjawab HSKK',d:'Ucapkan jawaban dengan jelas dan ringkas',run:lt('hk')},
-   c.lv>0&&{id:'rd',t:'Baca satu cerita',d:'Coba tanpa pinyin dulu, lalu periksa',run:()=>{S.review=false;S.mode='rd';S.ch=0;S.i=0;S.tab='study';S.flip=false;render();scrollTo(0,0)}},
-   {id:'err',t:'Perbaiki bank kesalahan',d:er+' kosakata tersimpan',run:()=>renderErrorBank()}
+   {id:'srs',t:'Ulangi kartu jatuh tempo',d:due?due+' kartu menunggu':all?'Semua kartu sudah diulang':'0 kartu menunggu',auto:!due&&all>0,run:()=>{S.review=true;S.mode='hsk';S.vm='hsk';S.lv=0;S.ch=0;S.tab='study';S.i=0;S.flip=false;render();scrollTo(0,0)}},
+   c.lv>=3&&{id:'su',t:'Susun kalimat',d:'Latih urutan kata untuk bagian menulis'+prog('su','kalimat'),run:lt('su')},
+   c.kk&&{id:'hk',t:'Latihan menjawab HSKK',d:'Ucapkan jawaban dengan jelas dan ringkas'+prog('hk','latihan'),run:lt('hk')},
+   c.lv>0&&{id:'rd',t:'Baca satu cerita',d:'Coba tanpa pinyin dulu, lalu tandai sudah dibaca',run:()=>{S.review=false;S.mode='rd';S.ch=0;S.i=0;S.tab='study';S.flip=false;render();scrollTo(0,0)}},
+   {id:'err',t:'Perbaiki bank kesalahan',d:er?er+' kosakata tersimpan':'Tidak ada kesalahan tersimpan',auto:!er,run:()=>renderErrorBank()}
   ].filter(Boolean);
+ }
+ /* Catat satu tugas selesai hari ini. Hanya bila persiapan ujian nyala dan sudah diatur, dan tugas itu memang tampil
+    (menulis ke hsk_prep_v1 saat panel mati akan menyalakannya lewat aturan "pernah dipakai"). */
+ function mark(id){
+  const c=get();
+  if(!c.on||!ready(c)||daysLeft(c)<0)return;
+  if(!({srs:1,err:1,su:c.lv>=3,hk:c.kk,rd:c.lv>0})[id])return;
+  const q=today();if(q.done[id])return;
+  q.done[id]=true;q.hist[q.d]=Object.values(q.done).filter(Boolean).length;wr(PK,q);
+ }
+ function bump(id,by){
+  const c=cnt();c[id]=(c[id]||0)+(by||1);wr(CK,c);
+  if(c[id]>=NEED[id])mark(id);
  }
  let editing=false;
  function title(c){const n=nama(c);return '考试倒计时 · Persiapan Ujian'+(n.length&&!editing?' '+esc(n.join(' dan ')):'')}
@@ -1985,16 +2009,16 @@ function downloadBackup(){
  function draw(el){
   const c=get();
   if(editing||!ready(c)){drawForm(el,c);return}
-  const n=daysLeft(c),ph=phase(n,c),p=today(),T=tasks(c),dn=T.filter(x=>p.done[x.id]).length,st=streak(p.hist);
+  const n=daysLeft(c),ph=phase(n,c),p=today(),T=tasks(c),isD=x=>!!(p.done[x.id]||x.auto),dn=T.filter(isD).length,st=streak(p.hist);
   const top=`<div class="exam-title" style="font-size:17px">${title(c)}</div>
   <div class="prep-top"><div class="prep-n">${n>=0?n:'–'}<small>${n>=0?'hari lagi':'selesai'}</small></div><div class="prep-ph"><b>${ph[0]}</b><span>${ph[1]}</span></div></div>`;
   if(n<0){
    el.innerHTML=top+`<div class="prep-fa"><button type="button" class="prep-ed">Atur ujian berikutnya</button><button type="button" class="prep-off2">Matikan</button></div>`;
   }else{
-   el.innerHTML=top+`<ul class="prep-list">${T.map(x=>`<li class="prep-li${p.done[x.id]?' is-done':''}"><button class="prep-ck" data-ck="${x.id}" aria-pressed="${!!p.done[x.id]}" aria-label="Tandai selesai: ${x.t}">${p.done[x.id]?'✓':''}</button><div class="prep-cp"><b>${x.t}</b><span>${x.d}</span></div><button class="prep-go" data-go="${x.id}">Buka</button></li>`).join('')}</ul>
+   el.innerHTML=top+`<ul class="prep-list">${T.map(x=>`<li class="prep-li${isD(x)?' is-done':''}"><button class="prep-ck" data-ck="${x.id}" aria-pressed="${isD(x)}" aria-label="Tandai selesai: ${x.t}">${isD(x)?'✓':''}</button><div class="prep-cp"><b>${x.t}</b><span>${x.d}</span></div><button class="prep-go" data-go="${x.id}">Buka</button></li>`).join('')}</ul>
   <div class="prep-ft"><span>Hari ini ${dn} dari ${T.length} selesai${st?`, ${st} hari berturut-turut`:''}</span><span class="prep-dt">Ujian ${tgl(c.date)} · <button type="button" class="prep-ed">Ubah</button></span></div>`;
   }
-  el.querySelectorAll('[data-ck]').forEach(b=>b.addEventListener('click',()=>{const q=today();q.done[b.dataset.ck]=!q.done[b.dataset.ck];q.hist[q.d]=Object.values(q.done).filter(Boolean).length;wr(PK,q);draw(el)}));
+  el.querySelectorAll('[data-ck]').forEach(b=>b.addEventListener('click',()=>{const q=today(),x=T.find(y=>y.id===b.dataset.ck);q.done[b.dataset.ck]=x&&x.auto?true:!q.done[b.dataset.ck];q.hist[q.d]=Object.values(q.done).filter(Boolean).length;wr(PK,q);draw(el)}));
   el.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>{const x=T.find(y=>y.id===b.dataset.go);if(x)x.run()}));
   el.querySelectorAll('.prep-ed').forEach(b=>b.addEventListener('click',()=>{editing=true;draw(el)}));
   const o2=el.querySelector('.prep-off2');if(o2)o2.addEventListener('click',()=>setOn(false));
@@ -2022,6 +2046,37 @@ function downloadBackup(){
   list.appendChild(row);upd();
   if(window.hskMenu&&window.hskMenu.el)window.hskMenu.el.addEventListener('am-buka',upd);
  });
+ /* Pendeteksi tindakan. Hanya mendengar klik (fase tangkap, sebelum penangan asli) lalu memeriksa hasilnya setelah penangan asli selesai. */
+ const inS=m=>typeof S!=='undefined'&&S.mode===m,inLt=k=>inS('lt')&&S.lk===k;
+ let lastHk=0;
+ document.addEventListener('click',e=>{
+  const t=e.target;if(!t||!t.closest)return;
+  try{
+   if(t.closest('#b0,#b1')){
+    setTimeout(()=>{try{if(srsAllCount()>0&&srsDueCount()===0)mark('srs')}catch(x){}},0);
+   }else if(inLt('su')&&t.closest('#c')){
+    const b=(typeof LS!=='undefined'&&LS.su&&LS.su.n)||0;   /* LS.su.n naik satu hanya pada pemeriksaan pertama tiap soal */
+    setTimeout(()=>{try{const a=(LS.su&&LS.su.n)||0;if(a>b)bump('su',a-b)}catch(x){}},0);
+   }else if(inLt('hk')&&t.closest('#go,#t2,#p2')){
+    const now=Date.now();if(now-lastHk>5000){lastHk=now;bump('hk')}   /* ketukan beruntun dalam 5 detik dihitung satu */
+   }else if(inS('rd')&&t.closest('#rdone')){
+    const b=Object.keys(RR).length;   /* tombol yang sama juga membatalkan tanda; hanya penambahan yang dihitung */
+    setTimeout(()=>{try{if(Object.keys(RR).length>b)mark('rd')}catch(x){}},0);
+   }
+  }catch(x){}
+ },true);
+ if(typeof exFinish==='function'){
+  const _ef=exFinish;
+  exFinish=function(){const r=_ef.apply(this,arguments);try{if(typeof EX!=='undefined'&&EX.level==='wrong'&&EX.finished)mark('err')}catch(x){}return r};
+ }
+ /* Membaca tanpa menekan "tandai sudah dibaca": cerita terbuka dan layar terlihat READ_SEC detik (diperiksa tiap 5 detik). */
+ let rdSec=0,rdDay='';
+ setInterval(()=>{
+  try{
+   const k=ymd(new Date());if(rdDay!==k){rdDay=k;rdSec=0}
+   if(inS('rd')&&S.ch>0&&document.visibilityState==='visible'&&get().on){rdSec+=5;if(rdSec>=READ_SEC){mark('rd');rdSec=0}}
+  }catch(x){}
+ },5000);
  window.hskPrep={get,setOn};
  const _h7=renderHome;
  renderHome=function(v){_h7(v);upd();if(!v||v.querySelector('#prep-panel')||!get().on)return;const el=document.createElement('section');el.id='prep-panel';el.className='prep';draw(el);const t=v.querySelector('.tiles');t?v.insertBefore(el,t):v.appendChild(el)};
