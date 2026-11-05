@@ -3,12 +3,12 @@
 <script>if(/^#verif=/.test(location.hash)){location.replace("verif.html"+location.hash)}window.hskEsc=function(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]})};window.onerror=function(m){var v=document.getElementById("view");if(!v||!document.getElementById("fb"))return;if(window.hskBootErr&&document.documentElement.classList.contains("booting")){window.hskBootErr(m);return}v.innerHTML='<p class="pos" style="margin:28px 0;line-height:1.6">Kartu gagal dimuat: '+hskEsc(m)+'<br>Muat ulang halaman. Bila masih gagal, coba buka dengan Chrome atau Firefox versi terbaru.</p>'};</script>
 <meta name="author" content="韩冬岳">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>词卡 — 韩冬岳</title>
+<title>Zenta 汉</title>
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#121214" media="(prefers-color-scheme:dark)">
 <meta name="theme-color" content="#F4F4F5" media="(prefers-color-scheme:light)">
-<meta name="apple-mobile-web-app-title" content="词卡">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700&family=Inter:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<meta name="apple-mobile-web-app-title" content="Zenta 汉"><link rel="icon" type="image/png" href="icons/icon-192.png"><link rel="apple-touch-icon" href="icons/icon-192.png">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700&family=Inter:wght@400;600&family=Poppins:wght@600;700&family=Fraunces:wght@700&display=swap" rel="stylesheet">
 <script id="boot-awal">try{var _a=JSON.parse(localStorage.getItem("acct_auth")||"null");if(_a&&typeof _a.token==="string"&&_a.token&&typeof _a.email==="string"&&_a.email&&typeof _a.exp==="number"&&_a.exp>Date.now()/1000+60&&_a.sync&&_a.sync.u&&_a.sync.p&&_a.sync.k)document.documentElement.classList.add("booting")}catch(e){}</script>
 <script id="tema-awal">try{var _t=localStorage.getItem("ui_tema");if(_t==="terang")document.documentElement.setAttribute("data-theme","light");else if(_t==="gelap")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
 <style>
@@ -20,6 +20,7 @@ box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:en
 body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;text-align:center;padding:20px 16px 40px}
 .wrap{max-width:520px;margin:auto}
 h1{font-family:'Noto Serif SC',serif;color:var(--acc);font-size:44px;margin:8px 0 0}
+.zl{display:inline-flex;align-items:center;gap:.2em;font-family:'Fraunces',Georgia,serif;font-weight:700;letter-spacing:-.02em;line-height:1;white-space:nowrap}.zl i{font-style:normal;display:inline-flex;align-items:center;justify-content:center;width:1.45em;height:1.45em;border-radius:.33em;background:var(--e4);color:var(--btnink);font:700 .72em/1 'Noto Serif SC',serif;letter-spacing:0}
 .sub{letter-spacing:.15em;font-size:12px;color:var(--mute);text-transform:uppercase}
 .stats{margin:16px 0;font-size:14px;color:var(--mute)}.stats b{color:var(--ink);font-size:18px}
 .stats .k b{color:var(--acc)}
@@ -294,7 +295,7 @@ html.booting body{overflow:hidden}
 #boot{position:fixed;top:0;right:0;bottom:0;left:0;z-index:99990;flex-direction:column;align-items:center;justify-content:center;padding:calc(env(safe-area-inset-top,0px) + 24px) 24px calc(env(safe-area-inset-bottom,0px) + 24px);background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;text-align:center;transition:opacity .3s ease,visibility .3s}
 #boot.bt-out{opacity:0;visibility:hidden;pointer-events:none}
 #boot .bt-in{width:100%;max-width:320px}
-#boot .bt-logo{font:700 64px/1.1 'Noto Serif SC',serif;color:var(--ink)}
+#boot .bt-logo{font-size:56px;line-height:1.1;color:var(--ink)}
 #boot .bt-sub{margin-top:6px;font-size:14px;letter-spacing:.02em;color:var(--mute)}
 #boot .bt-el{display:flex;justify-content:center;gap:8px;margin:28px 0 26px}
 #boot .bt-el span{width:36px;height:36px;border-radius:11px;display:flex;align-items:center;justify-content:center;font:700 18px 'Noto Serif SC',serif;opacity:.55;animation:bt-wave 1.6s ease-in-out infinite}
@@ -321,8 +322,8 @@ html.boot-fail #boot .bt-el span{animation:none;opacity:.55}
 </style>
 </head><body><div id="boot" role="status" aria-live="polite" aria-busy="true">
  <div class="bt-in">
-  <div class="bt-logo" lang="zh" aria-hidden="true">词卡</div>
-  <div class="bt-sub">Kartu Kosakata Mandarin</div>
+  <div class="bt-logo" aria-hidden="true"><span class="zl">Zenta<i lang="zh">汉</i></span></div>
+  <div class="bt-sub">Belajar Mandarin Harian</div>
   <div class="bt-el" aria-hidden="true"><span>木</span><span>水</span><span>土</span><span>火</span><span>金</span></div>
   <div class="bt-bar" aria-hidden="true"><i></i></div>
   <div class="bt-msg" id="bt-msg">Menyiapkan kartu kosakata…</div>
@@ -440,6 +441,7 @@ button{text-transform:none;letter-spacing:.01em;border-radius:12px}
 #authgate .ag-box{position:relative}#thm-g{position:absolute;right:16px;top:16px}
 /* Gerbang masuk */
 #authgate h1{color:var(--ink);text-align:left;font-size:56px}
+@media (max-width:350px){#authgate h1{font-size:44px}}
 #authgate .ag-sub{text-align:left;text-transform:none;letter-spacing:.02em;font-size:14px}
 .ag-el{display:flex;gap:7px;margin:14px 0 2px}.ag-el span{width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;font:700 16px 'Noto Serif SC',serif}
 .ag-el span:nth-child(1){background:var(--e1t);color:var(--e1d)}.ag-el span:nth-child(2){background:var(--e2t);color:var(--e2d)}
@@ -502,9 +504,9 @@ html.msk-open body{overflow:hidden}
 </style>
 <div id="authgate" hidden role="dialog" aria-modal="true" aria-labelledby="ag-title">
  <div class="ag-box">
-  <h1 id="ag-title">词卡</h1>
+  <h1 id="ag-title"><span class="zl">Zenta<i lang="zh">汉</i></span></h1>
   <div class="ag-el" aria-hidden="true"><span>木</span><span>水</span><span>土</span><span>火</span><span>金</span></div>
-  <div class="ag-sub">Kartu Kosakata Mandarin</div>
+  <div class="ag-sub">Belajar Mandarin Harian</div>
   <div class="ag-tabs" role="tablist"><button type="button" id="ag-t-in" class="on" role="tab" aria-selected="true">Masuk</button><button type="button" id="ag-t-up" role="tab" aria-selected="false">Daftar</button></div>
   <form id="ag-form" novalidate>
    <label for="ag-email">Email</label>
@@ -876,14 +878,14 @@ html.msk-open body{overflow:hidden}
 })();
 </script>
 <div class="wrap"><button id="sbtn" aria-label="Cari">🔍</button>
-<h1>词卡</h1><div class="sub">Kartu Kosakata Mandarin</div>
+<h1><span class="zl">Zenta<i lang="zh">汉</i></span></h1><div class="sub">Belajar Mandarin Harian</div>
 <div class="stats" id="stats"></div>
 <div class="row" id="md"></div>
 <div class="row" id="lv"></div>
 <div class="crumb" id="bc"></div>
 <select id="ch"></select>
 <div class="seg" id="vt"><button id="t-study" class="on">Belajar</button><button id="t-write">Tulis</button><button id="t-sum">Ringkasan</button></div>
-<div id="view"><div id="fb" class="pos" style="margin:28px 0;line-height:1.6;font-size:15px"><noscript>JavaScript nonaktif. Aktifkan JavaScript di browser untuk memakai 词卡.<br></noscript>Memuat kartu…</div></div>
+<div id="view"><div id="fb" class="pos" style="margin:28px 0;line-height:1.6;font-size:15px"><noscript>JavaScript nonaktif. Aktifkan JavaScript di browser untuk memakai Zenta 汉.<br></noscript>Memuat kartu…</div></div>
 <script id="boot-ui">
 /* Mengatur layar pemuatan (#boot). Selesai saat kartu pertama menggantikan #fb di dalam #view.
    Bila terlalu lama atau ada galat sebelum kartu tampil, pesannya berubah dan tombol "Muat ulang" muncul. */
@@ -1848,7 +1850,7 @@ function downloadCSV(){
   document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);
 }
 function downloadBackup(){
-   const pack={schema:BACKUP_SCHEMA,version:BACKUP_VERSION,createdAt:new Date().toISOString(),app:'词卡 — Mandarin Vocabulary',data:backupData()};
+   const pack={schema:BACKUP_SCHEMA,version:BACKUP_VERSION,createdAt:new Date().toISOString(),app:'Zenta 汉 — Mandarin Vocabulary',data:backupData()};
    const blob=new Blob([JSON.stringify(pack,null,2)],{type:'application/json;charset=utf-8'});
    const url=URL.createObjectURL(blob);const a=document.createElement('a');
    const stamp=new Date().toISOString().slice(0,10);a.href=url;a.download='cadangan-kosakata-mandarin-'+stamp+'.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);

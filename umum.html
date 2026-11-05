@@ -2,16 +2,17 @@
 <html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src https://n8n.zenta.web.id; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer"><meta name="robots" content="noindex">
-<title>Kirim pengumuman · 词卡</title>
+<title>Kirim pengumuman · Zenta 汉</title>
 <script>try{var _t=localStorage.getItem("ui_tema");if(_t==="terang")document.documentElement.setAttribute("data-theme","light");else if(_t==="gelap")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
 <style>
-:root{color-scheme:dark;--bg:#121214;--card:#1C1C20;--ink:#F0F0F3;--mute:#A0A1AB;--line:#2E2F36;--soft:#26262B;--ok:#4CC58A;--btn:#F0F0F3;--btnink:#121214;--e1t:#183326;--e1d:#7ED9A6;--e2t:#172745;--e2d:#8FB5FF;--e3t:#382C14;--e3d:#E8BC62;--e4t:#3A1D17;--e4d:#FF9B83;--e5t:#232B35;--e5d:#B4C2D3;--err:#FF9B83}
-@media(prefers-color-scheme:light){:root:not([data-theme="dark"]){color-scheme:light;--bg:#F4F4F5;--card:#FFFFFF;--ink:#1A1A1F;--mute:#5F6068;--line:#DEDFE3;--soft:#E9E9EC;--ok:#1E6B43;--btn:#1A1A1F;--btnink:#FFFFFF;--e1t:#DDEFE3;--e1d:#1E6B43;--e2t:#DEE8FB;--e2d:#1F4FB0;--e3t:#F6E9CC;--e3d:#7F5508;--e4t:#FADFD8;--e4d:#A52F18;--e5t:#E3E8EE;--e5d:#3B4A5C;--err:#A52F18}}
-:root[data-theme="light"]{color-scheme:light;--bg:#F4F4F5;--card:#FFFFFF;--ink:#1A1A1F;--mute:#5F6068;--line:#DEDFE3;--soft:#E9E9EC;--ok:#1E6B43;--btn:#1A1A1F;--btnink:#FFFFFF;--e1t:#DDEFE3;--e1d:#1E6B43;--e2t:#DEE8FB;--e2d:#1F4FB0;--e3t:#F6E9CC;--e3d:#7F5508;--e4t:#FADFD8;--e4d:#A52F18;--e5t:#E3E8EE;--e5d:#3B4A5C;--err:#A52F18}
+:root{color-scheme:dark;--bg:#121214;--card:#1C1C20;--ink:#F0F0F3;--mute:#A0A1AB;--line:#2E2F36;--soft:#26262B;--ok:#4CC58A;--btn:#F0F0F3;--btnink:#121214;--e1t:#183326;--e1d:#7ED9A6;--e2t:#172745;--e2d:#8FB5FF;--e3t:#382C14;--e3d:#E8BC62;--e4:#F2704F;--e4t:#3A1D17;--e4d:#FF9B83;--e5t:#232B35;--e5d:#B4C2D3;--err:#FF9B83}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]){color-scheme:light;--bg:#F4F4F5;--card:#FFFFFF;--ink:#1A1A1F;--mute:#5F6068;--line:#DEDFE3;--soft:#E9E9EC;--ok:#1E6B43;--btn:#1A1A1F;--btnink:#FFFFFF;--e1t:#DDEFE3;--e1d:#1E6B43;--e2t:#DEE8FB;--e2d:#1F4FB0;--e3t:#F6E9CC;--e3d:#7F5508;--e4:#D2452B;--e4t:#FADFD8;--e4d:#A52F18;--e5t:#E3E8EE;--e5d:#3B4A5C;--err:#A52F18}}
+:root[data-theme="light"]{color-scheme:light;--bg:#F4F4F5;--card:#FFFFFF;--ink:#1A1A1F;--mute:#5F6068;--line:#DEDFE3;--soft:#E9E9EC;--ok:#1E6B43;--btn:#1A1A1F;--btnink:#FFFFFF;--e1t:#DDEFE3;--e1d:#1E6B43;--e2t:#DEE8FB;--e2d:#1F4FB0;--e3t:#F6E9CC;--e3d:#7F5508;--e4:#D2452B;--e4t:#FADFD8;--e4d:#A52F18;--e5t:#E3E8EE;--e5d:#3B4A5C;--err:#A52F18}
 *{box-sizing:border-box}
 body{margin:0;min-height:100vh;display:flex;padding:20px 16px;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif}
 .box{width:100%;max-width:400px;margin:auto;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:28px 22px 24px;text-align:center}
-h1{font-family:'Noto Serif SC',serif;color:var(--ink);font-size:52px;line-height:1.1;margin:0}
+h1{color:var(--ink);font-size:46px;line-height:1.1;margin:0}
+.zl{display:inline-flex;align-items:center;gap:.2em;font-family:'Fraunces',Georgia,'Times New Roman',serif;font-weight:700;letter-spacing:-.02em;line-height:1;white-space:nowrap}.zl i{font-style:normal;display:inline-flex;align-items:center;justify-content:center;width:1.45em;height:1.45em;border-radius:.33em;background:var(--e4);color:var(--btnink);font:700 .72em/1 'Noto Serif SC',serif;letter-spacing:0}
 .el{display:flex;gap:7px;justify-content:center;margin:12px 0 4px}.el span{width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;font:700 16px 'Noto Serif SC',serif}
 .el span:nth-child(1){background:var(--e1t);color:var(--e1d)}.el span:nth-child(2){background:var(--e2t);color:var(--e2d)}.el span:nth-child(3){background:var(--e3t);color:var(--e3d)}.el span:nth-child(4){background:var(--e4t);color:var(--e4d)}.el span:nth-child(5){background:var(--e5t);color:var(--e5d)}
 .sub{letter-spacing:.04em;font-size:13px;color:var(--mute);margin-top:8px}
@@ -32,7 +33,7 @@ p{line-height:1.55;margin:18px 0 0;font-size:15px;overflow-wrap:anywhere}
 .btn[disabled],.btn2[disabled]{opacity:.6;cursor:default}
 [hidden]{display:none !important}
 </style></head><body>
-<div class="box"><h1>词卡</h1><div class="el" aria-hidden="true"><span>木</span><span>水</span><span>土</span><span>火</span><span>金</span></div><div class="sub" id="sb">Persetujuan pengumuman</div>
+<div class="box"><h1><span class="zl">Zenta<i lang="zh">汉</i></span></h1><div class="el" aria-hidden="true"><span>木</span><span>水</span><span>土</span><span>火</span><span>金</span></div><div class="sub" id="sb">Persetujuan pengumuman</div>
 <p id="t">Memeriksa tautan…</p>
 <div class="draf" id="draf" hidden><div class="lbl" id="lj">Judul pengumuman</div><div class="jd"><span id="jd"></span><span class="uji" id="uji" hidden>UJI</span></div><div class="lbl l2" id="lp" hidden>Penerima</div><div class="rc" id="rc" hidden></div></div>
 <p class="info" id="info" hidden></p>
@@ -40,7 +41,7 @@ p{line-height:1.55;margin:18px 0 0;font-size:15px;overflow-wrap:anywhere}
 <button class="btn" id="kirim" type="button" hidden>Kirim</button>
 <button class="btn2" id="batal" type="button" hidden>Batalkan draf</button>
 <button class="btn2" id="cek" type="button" hidden>Periksa status lagi</button>
-<a class="btn" id="ke" href="./" hidden>Ke 词卡</a>
+<a class="btn" id="ke" href="./" hidden>Ke Zenta 汉</a>
 </div>
 <script>
 (function(){
