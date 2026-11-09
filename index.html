@@ -1083,10 +1083,16 @@ try{if(document.body)toneApply();else document.addEventListener("DOMContentLoade
 const SRS_KEY="hsk_srs_v1";
 function srsRead(){try{const x=JSON.parse(localStorage.getItem(SRS_KEY)||"{}");return x&&typeof x==="object"?x:{}}catch(e){return {}}}
 function srsWrite(x){try{localStorage.setItem(SRS_KEY,JSON.stringify(x))}catch(e){}}
-function srsDueNow(){const x=srsRead(),now=Date.now();return D.filter((c,i)=>x[i]&&+x[i].due<=now)}
+/* Salinan jadwal HANYA-BACA untuk fungsi hitung/daftar di bawah. Di-parse ulang hanya bila isi localStorage berubah
+   (srsWrite, sinkron, tab lain). Dulu setiap pemanggilan mem-parse seluruh JSON; srsReviewList() malah memanggilnya
+   di dalam pembanding sort(), sekali per perbandingan, sehingga tiap ketukan kartu di mode ulang bisa makan detik.
+   Jangan ubah objek hasilnya; untuk mengubah jadwal pakai srsRead() lalu srsWrite(). */
+let _srsRaw=null,_srsObj=null;
+function srsView(){try{const raw=localStorage.getItem(SRS_KEY)||"{}";if(_srsObj===null||raw!==_srsRaw){const x=JSON.parse(raw);_srsObj=x&&typeof x==="object"?x:{};_srsRaw=raw}return _srsObj}catch(e){_srsObj=null;_srsRaw=null;return {}}}
+function srsDueNow(){const x=srsView(),now=Date.now();return D.filter((c,i)=>x[i]&&+x[i].due<=now)}
 function srsDueCount(){return srsDueNow().length}
-function srsAllCount(){return Object.keys(srsRead()).length}
-function srsReviewList(){return srsDueNow().sort((a,b)=>{const x=srsRead(),ia=D.indexOf(a),ib=D.indexOf(b);return (+x[ia].due||0)-(+x[ib].due||0)})}
+function srsAllCount(){return Object.keys(srsView()).length}
+function srsReviewList(){const x=srsView(),now=Date.now(),a=[];for(let i=0;i<D.length;i++){const r=x[i];if(r&&+r.due<=now)a.push([+r.due||0,i])}a.sort((p,q)=>p[0]-q[0]||p[1]-q[1]);return a.map(p=>D[p[1]])}
 function srsGrade(c,known){
  const i=D.indexOf(c);if(i<0)return;
  const x=srsRead(),old=x[i]||{reps:0};
