@@ -710,7 +710,7 @@ html.msk-open body{overflow:hidden}
   email:function(){return A?A.email:""},
   peran:function(){return A?A.peran:""},
   token:function(){return A?A.token:""},   /* untuk meminta isi khusus pelanggan (hsk-u-isi) */
-  penuh:function(){return !!A&&(A.peran==="owner"||A.peran==="pemilik"||A.jenis==="langganan")},   /* akses penuh: pemilik atau langganan aktif; server memeriksa ulang */
+  penuh:function(){if(!A)return false;if(A.peran==="owner"||A.peran==="pemilik"||A.jenis==="langganan")return true;if(A.jenis==="trial"&&/^\d{4}-\d{2}-\d{2}$/.test(A.sampai||"")){var p=A.sampai.split("-"),n=new Date();return new Date(+p[0],+p[1]-1,+p[2])>=new Date(n.getFullYear(),n.getMonth(),n.getDate())}return false},   /* akses penuh: pemilik, langganan aktif, atau trial bertanggal akhir yang belum lewat; server memeriksa ulang */
   expired:function(m){if(gone)return;gone=true;dropSession(m||"Sesi berakhir. Silakan masuk lagi.");purgeIsi().then(function(){location.reload()})},   /* m: pesan dari server, mis. masa berlaku habis */
   logout:function(){
    if(gone)return Promise.resolve();gone=true;
@@ -2474,8 +2474,9 @@ function downloadBackup(){
  renderHome=function(v){_h7(v);upd();if(!v||v.querySelector('#prep-panel')||!get().on)return;const el=document.createElement('section');el.id='prep-panel';el.className='prep';draw(el);const t=v.querySelector('.tiles');t?v.insertBefore(el,t):v.appendChild(el)};
 })();
 /* === Akses terbatas (akun gratis vs pelanggan) ===
-   Akses penuh = pemilik, atau akun berjenis langganan yang masih berlaku (hskAuth.penuh; jenis akun datang dari server saat
-   login dan tiap tarik sinkron). Akun lain (gratis, permanen lama, trial) mendapat:
+   Akses penuh = pemilik, akun berjenis langganan yang masih berlaku, atau akun trial yang punya tanggal akhir dan belum lewat
+   (hskAuth.penuh; jenis akun datang dari server saat login dan tiap tarik sinkron). Akun lain (gratis, permanen lama, trial
+   tanpa tanggal akhir) mendapat:
    - Kosakata HSK 2.0 (belajar, tulis, ringkasan, ulang kata) dan 汉字: terbuka penuh;
    - HSK 3.0: Set 1 tiap level. Isi penuhnya tidak ada di halaman ini; server hanya mengirimnya kepada pelanggan (blok HSK 3.0);
    - Kosakata Teknis: TEK_GRATIS istilah pertama tiap bidang;
