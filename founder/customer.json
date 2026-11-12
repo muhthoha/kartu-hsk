@@ -1,0 +1,38 @@
+{
+  "business": "Zenta 汉, situs belajar Mandarin harian berbahasa Indonesia untuk persiapan HSK (akses web Rp30.000 per bulan)",
+  "target": "Pelajar Mandarin berbahasa Indonesia yang belajar mandiri atau sambil ikut kelas dan menyiapkan HSK 1 sampai 4",
+  "where": "Indonesia, online",
+  "currency": "Rp",
+  "age": [16, 40],
+  "segments": [
+    {"name": "Pelajar atau mahasiswa", "share": 0.40, "income": [12000000, 36000000]},
+    {"name": "Pekerja muda yang butuh Mandarin untuk karier", "share": 0.35, "income": [48000000, 120000000]},
+    {"name": "Calon penerima beasiswa atau studi ke Tiongkok", "share": 0.25, "income": [12000000, 60000000]}
+  ],
+  "behaviours": [
+    {"name": "Pencari gratisan", "share": 0.25, "how": "Sudah memakai aplikasi kartu kosakata gratis, dek Quizlet atau Anki, dan enggan membayar untuk sesuatu yang ada gratisnya."},
+    {"name": "Mengejar ujian HSK", "share": 0.20, "how": "Punya tanggal ujian, butuh latihan dan kosakata yang pasti dipakai di ujian."},
+    {"name": "Belajar santai harian", "share": 0.15, "how": "Belajar sedikit tiap hari lewat ponsel, tanpa tenggat."},
+    {"name": "Sedang ikut kelas atau kursus", "share": 0.12, "how": "Sudah membayar kelas, mencari alat tambahan untuk mengulang di rumah."},
+    {"name": "Sudah memakai aplikasi berbayar", "share": 0.10, "how": "Pernah membayar langganan aplikasi belajar bahasa dan membandingkan harga serta isinya."},
+    {"name": "Pemburu diskon", "share": 0.10, "how": "Menunggu promo, membandingkan harga sebelum membayar apa pun."},
+    {"name": "Membaca ulasan dulu", "share": 0.08, "how": "Mencari ulasan dan bukti orang lain berhasil sebelum mendaftar."}
+  ],
+  "objections": [
+    "Kosakata HSK sudah ada gratis di aplikasi lain, kenapa bayar Rp30.000?",
+    "HSK 3.0 mulai Desember 2026, apakah daftar kata ini masih berlaku?",
+    "Isinya lengkap sampai level berapa? HSK 5 dan 6 sepertinya belum penuh",
+    "Apakah ada bukti orang lulus HSK memakai ini?",
+    "Aku tidak suka langganan bulanan yang lupa kuhentikan",
+    "Aku butuh latihan soal ujian, bukan hanya kartu kosakata",
+    "Daftarnya pakai kode undangan, dari mana aku dapat kodenya?"
+  ],
+  "habits": [
+    "kamu belajar Mandarin lewat ponsel di perjalanan atau sebelum tidur",
+    "kamu sudah punya aplikasi kamus Mandarin di ponsel",
+    "kamu belajar dari grup WhatsApp atau Telegram belajar Mandarin",
+    "kamu mengikuti kelas Mandarin seminggu dua kali",
+    "kamu menabung untuk ikut ujian HSK",
+    "kuota internetmu terbatas jadi kamu hati-hati dengan aplikasi yang berat"
+  ]
+}
