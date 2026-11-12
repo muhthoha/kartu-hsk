@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' blob: data:; connect-src 'self' https://n8n.zenta.web.id https://cdn.jsdelivr.net; object-src 'none'; base-uri 'self'; form-action 'self'">
+<script>/* anti-clickjacking: halaman ini tidak boleh dimuat di dalam bingkai situs lain (GitHub Pages tidak bisa mengirim header X-Frame-Options) */try{if(window.top!==window.self){document.documentElement.style.visibility="hidden";window.top.location=window.self.location.href}}catch(e){document.documentElement.style.visibility="hidden"}</script>
 <script>if(/^#verif=/.test(location.hash)){location.replace("verif.html"+location.hash)}window.hskEsc=function(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]})};window.onerror=function(m){var v=document.getElementById("view");if(!v||!document.getElementById("fb"))return;if(window.hskBootErr&&document.documentElement.classList.contains("booting")){window.hskBootErr(m);return}v.innerHTML='<p class="pos" style="margin:28px 0;line-height:1.6">Kartu gagal dimuat: '+hskEsc(m)+'<br>Muat ulang halaman. Bila masih gagal, coba buka dengan Chrome atau Firefox versi terbaru.</p>'};</script>
 <meta name="author" content="韩冬岳">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -179,6 +180,22 @@ body:not(.hm) h1{font-size:26px}body:not(.hm) .sub{display:none}
 .srs-panel button{width:100%;text-transform:none;letter-spacing:0;border-radius:9px;padding:11px;font-size:13px}
 .srs-panel button.primary{background:var(--accf);color:var(--accfi);border-color:var(--accf);font-weight:700}
 .srs-badge{display:inline-block;padding:3px 8px;border-radius:999px;border:1px solid var(--line);font-size:11px;color:var(--mute);margin:4px 4px 0 0}
+/* akses terbatas: panel kunci, ajakan berlangganan, catatan status isi */
+.lockp{max-width:520px;margin:18px auto;padding:24px 18px 18px;border:1px solid var(--line);border-radius:16px;background:var(--card);text-align:center}
+.lockp .lk-i{font-size:34px;line-height:1}
+.lockp h3{margin:10px 0 6px;font-size:18px}
+.lockp p{margin:0 0 12px;font-size:14px;line-height:1.65;color:var(--mute)}
+.lockp .lk-s{font-size:12.5px;margin:12px 0 0}
+.lockp .row{justify-content:center}
+.lockp .row button.lk-go,.lockp .row button.lk-go:hover{background:var(--e3);border-color:var(--e3);color:#1b1404;font-weight:700;padding:11px 22px;min-height:44px}
+button.lk-a{min-height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--e3);background:transparent;color:var(--e3d);font-weight:600;font-size:13px;white-space:nowrap}
+.h3up{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin:14px 0 0;padding:10px 12px;border:1px dashed var(--line);border-radius:12px;font-size:13.5px;line-height:1.55;color:var(--mute);text-align:left}
+.h3up b{color:var(--ink)}
+.h3up.aksesinfo{margin:12px 0}
+.h3n{margin:0 0 10px;padding:8px 12px;border-radius:10px;background:var(--soft);font-size:13px;line-height:1.55;color:var(--mute);text-align:left}
+.h3n.warn{border:1px solid var(--e3)}
+.h3n .lk-a{margin-left:6px}
+.gc2.lk,.sc.lk{opacity:.6}
 .srs-empty{text-align:left;padding:20px 14px;border:1px solid var(--line);border-radius:12px;background:var(--card);margin:12px 0}
 .srs-empty h3{margin:0 0 6px;font-size:18px}.srs-empty p{font-size:13px;color:var(--mute);line-height:1.6}
 
@@ -469,21 +486,6 @@ body.hm .wrap{max-width:1040px}
 body.hm .tiles{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:14px 0}
 body.hm .tl{min-height:150px}
 body.hm .tl.w{grid-column:span 2}
-/* akses terbatas: panel kunci, ajakan berlangganan, catatan status isi */
-.lockp{max-width:520px;margin:18px auto;padding:24px 18px 18px;border:1px solid var(--line);border-radius:16px;background:var(--card);text-align:center}
-.lockp .lk-i{font-size:34px;line-height:1}
-.lockp h3{margin:10px 0 6px;font-size:18px}
-.lockp p{margin:0 0 12px;font-size:14px;line-height:1.65;color:var(--mute)}
-.lockp .lk-s{font-size:12.5px;margin:12px 0 0}
-.lockp .row{justify-content:center}
-.lockp .row button.lk-go,.lockp .row button.lk-go:hover{background:var(--e3);border-color:var(--e3);color:#1b1404;font-weight:700;padding:0 22px}
-button.lk-a{min-height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--e3);background:transparent;color:var(--e3d);font-weight:600;font-size:13px;white-space:nowrap}
-.h3up{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin:14px 0 0;padding:10px 12px;border:1px dashed var(--line);border-radius:12px;font-size:13.5px;line-height:1.55;color:var(--mute);text-align:left}
-.h3up b{color:var(--ink)}
-.h3up.aksesinfo{margin:12px 0}
-.h3n{margin:0 0 10px;padding:8px 12px;border-radius:10px;background:var(--soft);font-size:13px;line-height:1.55;color:var(--mute);text-align:left}
-.h3n.warn{border:1px solid var(--e3)}
-.h3n .lk-a{margin-left:6px}
 .card{min-height:420px;padding:48px 40px 28px}
 .card .hz{font-size:96px}
 }
@@ -1860,13 +1862,14 @@ function goLt(k,qi){S.mode="lt";S.lk=k;if(k=="hk"){LS.hk=LS.hk||{};LS.hk.t=qi===
 function buildSx(){
  if(SX)return SX;const V=[],G=[],R=[],L=[];
  D.forEach(c=>{if(c[3]==9||((c[3]==5||c[3]==6)&&!tekOk(c)))return;V.push({t:c[0],s:c[1]+" · "+c[2]+(posT(c)?" · "+posT(c):""),h:(c[0]+" "+posT(c)+" "+c[1]+" "+nz(c[1]).replace(/ /g,"")+" "+c[2]+" "+c[5]).toLowerCase()+" "+nz(c[1]),g:c[3]==7?"HSK 5":c[3]>=5?"Teknis":"HSK "+c[3],go:()=>goVocab(c)})});
- Object.keys(GR.d).forEach(set=>GR.d[set].forEach(x=>{
+ Object.keys(GR.d).forEach(set=>GR.d[set].forEach((x,xi)=>{
+  if(!penuh()&&xi>=GR_GRATIS)return;
   x.p.forEach((p,i)=>G.push({t:p.t,s:p.f+" — "+p.m.replace(/<[^>]+>/g,""),h:(p.t+" "+p.f+" "+p.m+" "+p.z+" "+p.y+" "+nz(p.y)+" "+p.i+" "+(p.w||[]).map(w=>w[0]+" "+w[1]+" "+nz(w[1])+" "+(w[2]||"")).join(" ")).toLowerCase(),g:GN[set]+" · L"+x.l,go:()=>openGr(set,x.l,i)}));
   if(x.c)G.push({t:"比一比 · "+x.c.a+(x.c.b?" vs "+x.c.b:""),s:x.c.s,h:(x.c.a+" "+(x.c.b||"")+" "+x.c.s+" "+x.c.d.map(d=>d.n+d.z+d.y+nz(d.y)+d.i).join(" ")).toLowerCase(),g:GN[set]+" · L"+x.l,go:()=>openGr(set,x.l,"c")})}));
- RD.forEach(s=>{const w=s.p.flat(),tx=w.map(t=>t[0]).join(""),pyx=w.map(t=>t[1]?t[1].join(""):"").join(" ");R.push({t:s.t,s:"Cerita · "+(s.l==5?"Bandara":s.l==7?"HSK 5":"Level "+s.l)+" · "+tx.slice(0,40)+"…",h:(s.t+" "+tx+" "+pyx+" "+nz(pyx)+" "+s.r).toLowerCase(),g:"阅读",go:()=>goRd(s)})});
- LT.su.forEach(x=>L.push({t:x.z,s:x.tr+" · "+x.g,h:(x.z+" "+x.tr+" "+x.g).toLowerCase(),g:"Susun kalimat",go:()=>goLt("su")}));
- LT.qa.forEach((q,i)=>L.push({t:q.q,s:q.qtr+" · HSKK Jawab",h:(q.q+" "+q.qy+" "+nz(q.qy)+" "+q.qtr+" "+q.tp+" "+q.a.map(a=>a.z+a.tr).join(" ")+" "+q.v.map(v=>v[0]+v[2]).join(" ")).toLowerCase(),g:"HSKK",go:()=>goLt("hk",i)}));
- LT.fr.forEach(f=>L.push({t:f.s,s:f.etr+" · HSKK Foto",h:(f.s+" "+f.p.map(x=>x[0]+x[1]).join(" ")+" "+f.e+" "+f.etr).toLowerCase(),g:"HSKK",go:()=>{goLt("hk");LS.hk.t="ft";render()}}));
+ RD.forEach(s=>{if(!rdOk(s))return;const w=s.p.flat(),tx=w.map(t=>t[0]).join(""),pyx=w.map(t=>t[1]?t[1].join(""):"").join(" ");R.push({t:s.t,s:"Cerita · "+(s.l==5?"Bandara":s.l==7?"HSK 5":"Level "+s.l)+" · "+tx.slice(0,40)+"…",h:(s.t+" "+tx+" "+pyx+" "+nz(pyx)+" "+s.r).toLowerCase(),g:"阅读",go:()=>goRd(s)})});
+ if(ltOk("su"))LT.su.forEach(x=>L.push({t:x.z,s:x.tr+" · "+x.g,h:(x.z+" "+x.tr+" "+x.g).toLowerCase(),g:"Susun kalimat",go:()=>goLt("su")}));
+ if(ltOk("hk"))LT.qa.forEach((q,i)=>L.push({t:q.q,s:q.qtr+" · HSKK Jawab",h:(q.q+" "+q.qy+" "+nz(q.qy)+" "+q.qtr+" "+q.tp+" "+q.a.map(a=>a.z+a.tr).join(" ")+" "+q.v.map(v=>v[0]+v[2]).join(" ")).toLowerCase(),g:"HSKK",go:()=>goLt("hk",i)}));
+ if(ltOk("hk"))LT.fr.forEach(f=>L.push({t:f.s,s:f.etr+" · HSKK Foto",h:(f.s+" "+f.p.map(x=>x[0]+x[1]).join(" ")+" "+f.e+" "+f.etr).toLowerCase(),g:"HSKK",go:()=>{goLt("hk");LS.hk.t="ft";render()}}));
  [V,G,R,L].forEach(a=>a.forEach(it=>{it.h=it.h.replace(/[“”‘’"「」]/g,"")}));
  SX={V,G,R,L};return SX}
 const esc=s=>String(s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"})[c]);
@@ -2473,17 +2476,22 @@ function downloadBackup(){
 /* === Akses terbatas (akun gratis vs pelanggan) ===
    Akses penuh = pemilik, atau akun berjenis langganan yang masih berlaku (hskAuth.penuh; jenis akun datang dari server saat
    login dan tiap tarik sinkron). Akun lain (gratis, permanen lama, trial) mendapat:
-   - HSK 2.0 (kosakata, 语法, 阅读, 练习, 汉字): terbuka penuh;
+   - Kosakata HSK 2.0 (belajar, tulis, ringkasan, ulang kata) dan 汉字: terbuka penuh;
    - HSK 3.0: Set 1 tiap level. Isi penuhnya tidak ada di halaman ini; server hanya mengirimnya kepada pelanggan (blok HSK 3.0);
-   - Kosakata Teknis: 30 istilah pertama tiap bidang; Simulasi ujian: terkunci.
-   Kunci untuk isi lama (teknis, ujian) hanya di tampilan, karena datanya sudah ada di halaman ini sejak dulu.
+   - Kosakata Teknis: TEK_GRATIS istilah pertama tiap bidang;
+   - 语法: GR_GRATIS pelajaran pertama tiap set; 阅读: RD_GRATIS cerita pertama tiap level; 练习: jenis di LT_GRATIS saja;
+   - Simulasi ujian: terkunci.
+   Kunci untuk isi lama (teknis, 语法, 阅读, 练习, ujian) hanya di tampilan, karena datanya sudah ada di halaman ini sejak dulu.
    Catatan: memakai var dan function (bukan let/const) supaya aman dipanggil dari kode di atasnya sebelum blok ini dijalankan. */
-var TEK_GRATIS=30,TEKF=null;
+var TEK_GRATIS=30,TEKF=null,GR_GRATIS=2,RD_GRATIS=2,LT_GRATIS=["ar","de"];
 function penuh(){try{return !!(window.hskAuth&&window.hskAuth.penuh&&window.hskAuth.penuh())}catch(e){return false}}
 function tekOk(c){
  if(penuh())return true;
  if(!TEKF){TEKF=new Set();var n={5:0,6:0};D.forEach(function(x){if((x[3]==5||x[3]==6)&&n[x[3]]<TEK_GRATIS){n[x[3]]++;TEKF.add(x)}})}
  return TEKF.has(c)}
+function ltOk(k){return penuh()||LT_GRATIS.indexOf(k)>=0}
+function rdOk(s){return penuh()||RD.filter(function(x){return x.l==s.l}).indexOf(s)<RD_GRATIS}
+function ajakHTML(teks,apa){return '<div class="h3up"><span>'+teks+'</span><button class="lk-a" data-langganan="'+hskEsc(apa)+'">Berlangganan</button></div>'}
 function kunciHTML(judul,teks,apa){
  return '<div class="lockp" role="note"><div class="lk-i" aria-hidden="true">🔒</div><h3>'+judul+'</h3><p>'+teks+'</p><div class="row"><button class="lk-go" data-langganan="'+hskEsc(apa)+'">Hubungi pengelola</button></div><p class="lk-s">Langganan diaktifkan oleh pengelola Zenta 汉. Progres belajarmu tetap tersimpan.</p></div>'}
 function ajakLangganan(apa,el){
@@ -2495,17 +2503,55 @@ document.addEventListener("click",function(e){var b=e.target&&e.target.closest?e
 var _renderDasar=render;
 render=function(){
  _renderDasar();
- if(S.mode!=="tek"||penuh()||S.review)return;
+ if(penuh())return;
+ if(S.mode==="lt")$("lv").querySelectorAll("button").forEach(function(b){if(!ltOk(b.dataset.v)&&b.textContent.indexOf("🔒")<0)b.insertAdjacentHTML("beforeend"," 🔒")});
+ if(S.mode!=="tek"||S.review)return;
  var v=$("view"),semua=D.filter(function(c){return c[3]==S.tk}).length,nama=S.tk==5?"Bandara":"Harga & Business Deal";
  if(!list().length)v.innerHTML=kunciHTML("Bagian ini khusus pelanggan","Akun gratis bisa membuka <b>"+TEK_GRATIS+" istilah pertama</b> di tiap bidang Kosakata Teknis. Dengan berlangganan, semua istilah terbuka, termasuk bidang "+hskEsc(nama)+" ("+semua+" istilah).","Kosakata Teknis")+'<div class="row"><button id="tek-semua">Lihat cuplikan</button></div>';
  else v.insertAdjacentHTML("beforeend",'<div class="h3up"><span>🔒 Bidang '+hskEsc(nama)+' berisi <b>'+semua+'</b> istilah. Yang terbuka sekarang <b>'+Math.min(TEK_GRATIS,semua)+'</b> istilah cuplikan.</span><button class="lk-a" data-langganan="Kosakata Teknis">Berlangganan</button></div>');
  var s=document.getElementById("tek-semua");if(s)s.onclick=function(){S.ch=0;S.i=0;S.flip=false;render()}};
+/* 语法: akun gratis hanya GR_GRATIS pelajaran pertama tiap set */
+var _renderGrDasar=renderGr;
+renderGr=function(v){
+ if(penuh()){_renderGrDasar(v);return}
+ var G=GR.d[S.gs]||[];
+ if(S.ch>GR_GRATIS&&G[S.ch-1]){
+  var x=G[S.ch-1],tot=0;Object.keys(GR.d).forEach(function(k){GR.d[k].forEach(function(y){tot+=y.p.length})});
+  $("bc").innerHTML="<b>语法</b> › "+GN[S.gs]+" › L"+x.l;
+  v.innerHTML=kunciHTML("Pelajaran ini khusus pelanggan","Akun gratis bisa membuka <b>"+GR_GRATIS+" pelajaran pertama</b> di tiap set 语法. Dengan berlangganan, semua pelajaran HSK 2–5 dan Tips terbuka ("+tot+" poin tata bahasa, lengkap dengan contoh dan latihan).","语法 (tata bahasa)")+'<div class="row"><button id="gr-daftar">← Daftar pelajaran</button></div>';
+  document.getElementById("gr-daftar").onclick=function(){S.ch=0;S.gt=null;render();scrollTo(0,0)};return}
+ _renderGrDasar(v);
+ if(S.ch&&G[S.ch-1])return;
+ var n=0;v.querySelectorAll(".gc2").forEach(function(b){if(+b.dataset.i>GR_GRATIS){n++;b.classList.add("lk");var c=b.querySelector(".ck");if(c)c.textContent="🔒"}});
+ if(n){var r=v.querySelector(".rl");if(r)r.insertAdjacentHTML("afterend",ajakHTML("🔒 Set "+hskEsc(GN[S.gs])+" berisi <b>"+G.length+"</b> pelajaran. Yang terbuka sekarang <b>"+Math.min(GR_GRATIS,G.length)+"</b> pelajaran pertama.","语法 (tata bahasa)"))}};
+/* 阅读: akun gratis hanya RD_GRATIS cerita pertama tiap level */
+var _renderRdDasar=renderRd;
+renderRd=function(v){
+ if(penuh()){_renderRdDasar(v);return}
+ var lv=+S.rl.slice(1),all=RD.filter(function(s){return s.l==lv}),lvn=lv==5?"Bandara":lv==7?"HSK 5":"Level "+lv;
+ if(S.ch>RD_GRATIS&&S.ch<=all.length){
+  $("ch").style.display="none";$("bc").innerHTML="<b>阅读</b> › "+lvn;
+  v.innerHTML=kunciHTML("Cerita ini khusus pelanggan","Akun gratis bisa membaca <b>"+RD_GRATIS+" cerita pertama</b> di tiap level. Dengan berlangganan, semua <b>"+RD.length+"</b> cerita terbuka, lengkap dengan pinyin, warna nada, terjemahan, dan audio.","阅读 (cerita)")+'<div class="row"><button id="rd-daftar">← Daftar cerita</button></div>';
+  document.getElementById("rd-daftar").onclick=function(){S.ch=0;render();scrollTo(0,0)};return}
+ _renderRdDasar(v);
+ if(S.ch)return;
+ var n=0;v.querySelectorAll(".sc").forEach(function(e){if(+e.dataset.n>RD_GRATIS){n++;e.classList.add("lk");var d=e.querySelector(".sd");if(d)d.textContent="🔒"}});
+ if(n)v.insertAdjacentHTML("beforeend",ajakHTML("🔒 "+lvn+" berisi <b>"+all.length+"</b> cerita. Yang terbuka sekarang <b>"+Math.min(RD_GRATIS,all.length)+"</b> cerita pertama.","阅读 (cerita)"))};
+/* 练习: akun gratis hanya jenis latihan di LT_GRATIS */
+var LT_NAMA={su:"Susun kalimat",is:"Isian kata",po:"Pola kalimat",ar:"Arti kata",de:"Dengar & pilih",ur:"Urutan kalimat",tu:"Buat kalimat",hk:"HSKK"};
+var _renderLtDasar=renderLt,_goModeDasar=goMode;
+renderLt=function(v){
+ if(ltOk(S.lk)){_renderLtDasar(v);return}
+ $("bc").innerHTML="<b>练习</b> › "+(LT_NAMA[S.lk]||"");
+ v.innerHTML=kunciHTML((LT_NAMA[S.lk]||"Latihan ini")+" khusus pelanggan","Akun gratis bisa memakai latihan "+LT_GRATIS.map(function(k){return "<b>"+LT_NAMA[k].replace("&","&amp;")+"</b>"}).join(" dan ")+". Dengan berlangganan, kedelapan jenis latihan terbuka: susun kalimat, isian kata, pola kalimat, urutan, buat kalimat, dan HSKK.","练习 (latihan)")+'<div class="row">'+LT_GRATIS.map(function(k){return '<button data-lt="'+k+'">Buka '+LT_NAMA[k].replace("&","&amp;")+'</button>'}).join("")+'</div>';
+ v.querySelectorAll("[data-lt]").forEach(function(b){b.onclick=function(){S.lk=b.dataset.lt;S.ch=0;render()}})};
+goMode=function(m,rs){if(m==="lt"&&!ltOk(S.lk))S.lk=LT_GRATIS[0];_goModeDasar(m,rs)};   /* masuk 练习 dari beranda/menu: mulai di jenis yang terbuka */
 /* Simulasi ujian & latihan ulang dari bank kesalahan: khusus pelanggan */
 var _renderExamDasar=renderExam,_exStartDasar=exStart,_exStartWrongDasar=exStartWrong;
 renderExam=function(v,msg){
  if(penuh()){_renderExamDasar(v,msg);return}
  try{clearInterval(EX.interval);EX.active=false}catch(e){}
- v.innerHTML=kunciHTML("Simulasi ujian khusus pelanggan","Simulasi ujian berisi soal acak berbatas waktu, nilai akhir, dan koreksi jawaban. Fitur ini terbuka untuk akun langganan. Kosakata HSK 2.0, 语法, 阅读, 练习, dan 汉字 tetap bisa kamu pakai gratis.","Simulasi Ujian")+'<div class="row"><button id="ex-back">Kembali ke beranda</button></div>';
+ v.innerHTML=kunciHTML("Simulasi ujian khusus pelanggan","Simulasi ujian berisi soal acak berbatas waktu, nilai akhir, dan koreksi jawaban. Fitur ini terbuka untuk akun langganan. Seluruh kosakata HSK 2.0 tetap bisa kamu pelajari gratis.","Simulasi Ujian")+'<div class="row"><button id="ex-back">Kembali ke beranda</button></div>';
  document.getElementById("ex-back").onclick=function(){S.mode="hm";render()}};
 exStart=function(){if(penuh())_exStartDasar();else renderExam($("view"))};
 exStartWrong=function(){if(penuh())_exStartWrongDasar();else{S.mode="exam";renderExam($("view"))}};
@@ -2514,15 +2560,15 @@ var _renderHomeDasar=renderHome;
 renderHome=function(v){
  _renderHomeDasar(v);
  if(penuh())return;
- v.querySelectorAll('.tl[data-m="h3"] .m,.tl[data-m="tek"] .m').forEach(function(e){e.insertAdjacentHTML("beforeend"," · 🔒 cuplikan")});
+ v.querySelectorAll('.tl[data-m="h3"] .m,.tl[data-m="tek"] .m,.tl[data-m="gr"] .m,.tl[data-m="rd"] .m,.tl[data-m="lt"] .m').forEach(function(e){e.insertAdjacentHTML("beforeend"," · 🔒 cuplikan")});
  var b=document.getElementById("home-exam-start");if(b)b.textContent="🔒 Simulasi ujian (pelanggan)";
  var t=v.querySelector(".tiles");
- if(t)t.insertAdjacentHTML("afterend",'<div class="h3up aksesinfo"><span><b>Akun gratis.</b> Semua materi HSK 2.0 terbuka. HSK 3.0 dan Kosakata Teknis berupa cuplikan, dan Simulasi ujian khusus pelanggan.</span><button class="lk-a" data-langganan="semua materi">Berlangganan</button></div>')};
+ if(t)t.insertAdjacentHTML("afterend",'<div class="h3up aksesinfo"><span><b>Akun gratis.</b> Seluruh kosakata HSK 2.0 terbuka. HSK 3.0, Kosakata Teknis, 语法, 阅读, dan 练习 berupa cuplikan; Simulasi ujian khusus pelanggan.</span><button class="lk-a" data-langganan="semua materi">Berlangganan</button></div>')};
 /* jenis akun berubah (mis. baru diaktifkan sebagai pelanggan, terbaca saat tarik sinkron): buka/kunci tanpa perlu muat ulang */
 try{if(window.hskAuth&&window.hskAuth.onMasa)window.hskAuth.onMasa(function(){
  TEKF=null;try{SX=null}catch(e){}
  try{if(H3.ok)h3Full()}catch(e){}
- try{if(S.mode==="hm"||S.mode==="tek"||S.mode==="h3")render()}catch(e){}})}catch(e){}
+ try{if(S.mode==="hm"||S.mode==="tek"||S.mode==="h3"||S.mode==="gr"||S.mode==="rd"||S.mode==="lt")render()}catch(e){}})}catch(e){}
 STRP.then(render);
 </script><script id="n8n-sync">
 /* Sinkronisasi progres antar perangkat (HP ⇄ laptop) dan dengan bot Telegram, lewat n8n + Google Sheets.
