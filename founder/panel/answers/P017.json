@@ -1,0 +1,13 @@
+{
+  "id": "P017",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "price",
+  "reason": "Aku sudah pakai Quizlet dan Anki gratis, dan kelas dua kali seminggu sudah cukup. Rp30.000 sebulan buat sesuatu yang bisa kudapat gratis, apalagi langganan yang gampang kulupa hentikan, tidak sepadan.",
+  "objection": "Kenapa harus bayar bulanan kalau deck HSK gratis di Quizlet dan Anki sudah ada, dan aku takut lupa berhenti langganan.",
+  "would_change_my_mind": "Uji coba gratis yang jelas tanpa auto-debit, atau opsi bayar sekali untuk periode tertentu, plus bukti isinya jauh lebih baik dari deck gratis.",
+  "price_too_cheap": 5000,
+  "price_cheap": 10000,
+  "price_expensive": 25000,
+  "price_too_expensive": 40000
+}

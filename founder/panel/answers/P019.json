@@ -1,0 +1,13 @@
+{
+  "id": "P019",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "habit",
+  "reason": "Saya sudah pakai Anki dan Quizlet gratis plus aplikasi kamus di ponsel, jadi bayar Rp30.000 sebulan untuk hal yang mirip terasa tidak perlu. Saya tidak mau bayar kalau yang gratis masih cukup.",
+  "objection": "HSK 5 dan 6 belum lengkap, dan semua kartu kosakata ini sudah ada gratis di Anki dan Quizlet. Apa bedanya sampai harus bayar tiap bulan?",
+  "would_change_my_mind": "Masa coba gratis yang cukup lama atau sebagian isi gratis supaya saya bisa membandingkannya dengan Anki, dan daftar kata HSK 5 dan 6 yang sudah penuh.",
+  "price_too_cheap": 5000,
+  "price_cheap": 10000,
+  "price_expensive": 25000,
+  "price_too_expensive": 40000
+}
