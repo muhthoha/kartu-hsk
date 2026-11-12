@@ -1,0 +1,222 @@
+[
+ {
+  "id": "P001",
+  "name": "Lena",
+  "age": 34,
+  "segment": "Calon penerima beasiswa atau studi ke Tiongkok",
+  "income": 18454000,
+  "behaviour": "Pemburu diskon",
+  "behaviour_how": "Menunggu promo, membandingkan harga sebelum membayar apa pun.",
+  "objection": "Aku butuh latihan soal ujian, bukan hanya kartu kosakata",
+  "habit": "kamu belajar Mandarin lewat ponsel di perjalanan atau sebelum tidur"
+ },
+ {
+  "id": "P002",
+  "name": "Wes",
+  "age": 33,
+  "segment": "Pelajar atau mahasiswa",
+  "income": 16976000,
+  "behaviour": "Membaca ulasan dulu",
+  "behaviour_how": "Mencari ulasan dan bukti orang lain berhasil sebelum mendaftar.",
+  "objection": "Aku tidak suka langganan bulanan yang lupa kuhentikan",
+  "habit": "kuota internetmu terbatas jadi kamu hati-hati dengan aplikasi yang berat"
+ },
+ {
+  "id": "P003",
+  "name": "Ben",
+  "age": 33,
+  "segment": "Pelajar atau mahasiswa",
+  "income": 19358000,
+  "behaviour": "Pemburu diskon",
+  "behaviour_how": "Menunggu promo, membandingkan harga sebelum membayar apa pun.",
+  "objection": "Isinya lengkap sampai level berapa? HSK 5 dan 6 sepertinya belum penuh",
+  "habit": "kamu menabung untuk ikut ujian HSK"
+ },
+ {
+  "id": "P004",
+  "name": "Felix",
+  "age": 34,
+  "segment": "Calon penerima beasiswa atau studi ke Tiongkok",
+  "income": 20848000,
+  "behaviour": "Sedang ikut kelas atau kursus",
+  "behaviour_how": "Sudah membayar kelas, mencari alat tambahan untuk mengulang di rumah.",
+  "objection": "Kosakata HSK sudah ada gratis di aplikasi lain, kenapa bayar Rp30.000?",
+  "habit": "kuota internetmu terbatas jadi kamu hati-hati dengan aplikasi yang berat"
+ },
+ {
+  "id": "P005",
+  "name": "Darius",
+  "age": 28,
+  "segment": "Pekerja muda yang butuh Mandarin untuk karier",
+  "income": 118938000,
+  "behaviour": "Mengejar ujian HSK",
+  "behaviour_how": "Punya tanggal ujian, butuh latihan dan kosakata yang pasti dipakai di ujian.",
+  "objection": "Aku tidak suka langganan bulanan yang lupa kuhentikan",
+  "habit": "kamu mengikuti kelas Mandarin seminggu dua kali"
+ },
+ {
+  "id": "P006",
+  "name": "Min",
+  "age": 22,
+  "segment": "Pelajar atau mahasiswa",
+  "income": 32987000,
+  "behaviour": "Belajar santai harian",
+  "behaviour_how": "Belajar sedikit tiap hari lewat ponsel, tanpa tenggat.",
+  "objection": "Daftarnya pakai kode undangan, dari mana aku dapat kodenya?",
+  "habit": "kuota internetmu terbatas jadi kamu hati-hati dengan aplikasi yang berat"
+ },
+ {
+  "id": "P007",
+  "name": "Luca",
+  "age": 23,
+  "segment": "Pekerja muda yang butuh Mandarin untuk karier",
+  "income": 55033000,
+  "behaviour": "Pencari gratisan",
+  "behaviour_how": "Sudah memakai aplikasi kartu kosakata gratis, dek Quizlet atau Anki, dan enggan membayar untuk sesuatu yang ada gratisnya.",
+  "objection": "Aku tidak suka langganan bulanan yang lupa kuhentikan",
+  "habit": "kamu mengikuti kelas Mandarin seminggu dua kali"
+ },
+ {
+  "id": "P008",
+  "name": "Ravi",
+  "age": 23,
+  "segment": "Pekerja muda yang butuh Mandarin untuk karier",
+  "income": 108585000,
+  "behaviour": "Membaca ulasan dulu",
+  "behaviour_how": "Mencari ulasan dan bukti orang lain berhasil sebelum mendaftar.",
+  "objection": "Daftarnya pakai kode undangan, dari mana aku dapat kodenya?",
+  "habit": "kamu belajar dari grup WhatsApp atau Telegram belajar Mandarin"
+ },
+ {
+  "id": "P009",
+  "name": "Fatima",
+  "age": 34,
+  "segment": "Pelajar atau mahasiswa",
+  "income": 35065000,
+  "behaviour": "Mengejar ujian HSK",
+  "behaviour_how": "Punya tanggal ujian, butuh latihan dan kosakata yang pasti dipakai di ujian.",
+  "objection": "Isinya lengkap sampai level berapa? HSK 5 dan 6 sepertinya belum penuh",
+  "habit": "kamu belajar dari grup WhatsApp atau Telegram belajar Mandarin"
+ },
+ {
+  "id": "P010",
+  "name": "Finn",
+  "age": 39,
+  "segment": "Pelajar atau mahasiswa",
+  "income": 29665000,
+  "behaviour": "Pencari gratisan",
+  "behaviour_how": "Sudah memakai aplikasi kartu kosakata gratis, dek Quizlet atau Anki, dan enggan membayar untuk sesuatu yang ada gratisnya.",
+  "objection": "Daftarnya pakai kode undangan, dari mana aku dapat kodenya?",
+  "habit": "kamu menabung untuk ikut ujian HSK"
+ },
+ {
+  "id": "P011",
+  "name": "Lina",
+  "age": 20,
+  "segment": "Pelajar atau mahasiswa",
+  "income": 21917000,
+  "behaviour": "Belajar santai harian",
+  "behaviour_how": "Belajar sedikit tiap hari lewat ponsel, tanpa tenggat.",
+  "objection": "Aku butuh latihan soal ujian, bukan hanya kartu kosakata",
+  "habit": "kamu belajar Mandarin lewat ponsel di perjalanan atau sebelum tidur"
+ },
+ {
+  "id": "P012",
+  "name": "Ethan",
+  "age": 18,
+  "segment": "Pelajar atau mahasiswa",
+  "income": 13334000,
+  "behaviour": "Sedang ikut kelas atau kursus",
+  "behaviour_how": "Sudah membayar kelas, mencari alat tambahan untuk mengulang di rumah.",
+  "objection": "Kosakata HSK sudah ada gratis di aplikasi lain, kenapa bayar Rp30.000?",
+  "habit": "kuota internetmu terbatas jadi kamu hati-hati dengan aplikasi yang berat"
+ },
+ {
+  "id": "P013",
+  "name": "Farah",
+  "age": 34,
+  "segment": "Pekerja muda yang butuh Mandarin untuk karier",
+  "income": 84879000,
+  "behaviour": "Mengejar ujian HSK",
+  "behaviour_how": "Punya tanggal ujian, butuh latihan dan kosakata yang pasti dipakai di ujian.",
+  "objection": "Aku tidak suka langganan bulanan yang lupa kuhentikan",
+  "habit": "kamu menabung untuk ikut ujian HSK"
+ },
+ {
+  "id": "P014",
+  "name": "Leah",
+  "age": 31,
+  "segment": "Pekerja muda yang butuh Mandarin untuk karier",
+  "income": 74350000,
+  "behaviour": "Pencari gratisan",
+  "behaviour_how": "Sudah memakai aplikasi kartu kosakata gratis, dek Quizlet atau Anki, dan enggan membayar untuk sesuatu yang ada gratisnya.",
+  "objection": "Kosakata HSK sudah ada gratis di aplikasi lain, kenapa bayar Rp30.000?",
+  "habit": "kamu belajar Mandarin lewat ponsel di perjalanan atau sebelum tidur"
+ },
+ {
+  "id": "P015",
+  "name": "Noor",
+  "age": 20,
+  "segment": "Calon penerima beasiswa atau studi ke Tiongkok",
+  "income": 42809000,
+  "behaviour": "Sudah memakai aplikasi berbayar",
+  "behaviour_how": "Pernah membayar langganan aplikasi belajar bahasa dan membandingkan harga serta isinya.",
+  "objection": "Aku tidak suka langganan bulanan yang lupa kuhentikan",
+  "habit": "kuota internetmu terbatas jadi kamu hati-hati dengan aplikasi yang berat"
+ },
+ {
+  "id": "P016",
+  "name": "Kofi",
+  "age": 34,
+  "segment": "Pelajar atau mahasiswa",
+  "income": 16466000,
+  "behaviour": "Belajar santai harian",
+  "behaviour_how": "Belajar sedikit tiap hari lewat ponsel, tanpa tenggat.",
+  "objection": "Kosakata HSK sudah ada gratis di aplikasi lain, kenapa bayar Rp30.000?",
+  "habit": "kuota internetmu terbatas jadi kamu hati-hati dengan aplikasi yang berat"
+ },
+ {
+  "id": "P017",
+  "name": "Adrian",
+  "age": 34,
+  "segment": "Pekerja muda yang butuh Mandarin untuk karier",
+  "income": 51211000,
+  "behaviour": "Pencari gratisan",
+  "behaviour_how": "Sudah memakai aplikasi kartu kosakata gratis, dek Quizlet atau Anki, dan enggan membayar untuk sesuatu yang ada gratisnya.",
+  "objection": "Aku tidak suka langganan bulanan yang lupa kuhentikan",
+  "habit": "kamu mengikuti kelas Mandarin seminggu dua kali"
+ },
+ {
+  "id": "P018",
+  "name": "Amara",
+  "age": 26,
+  "segment": "Pekerja muda yang butuh Mandarin untuk karier",
+  "income": 86248000,
+  "behaviour": "Mengejar ujian HSK",
+  "behaviour_how": "Punya tanggal ujian, butuh latihan dan kosakata yang pasti dipakai di ujian.",
+  "objection": "Apakah ada bukti orang lulus HSK memakai ini?",
+  "habit": "kuota internetmu terbatas jadi kamu hati-hati dengan aplikasi yang berat"
+ },
+ {
+  "id": "P019",
+  "name": "Bilal",
+  "age": 33,
+  "segment": "Calon penerima beasiswa atau studi ke Tiongkok",
+  "income": 54096000,
+  "behaviour": "Pencari gratisan",
+  "behaviour_how": "Sudah memakai aplikasi kartu kosakata gratis, dek Quizlet atau Anki, dan enggan membayar untuk sesuatu yang ada gratisnya.",
+  "objection": "Isinya lengkap sampai level berapa? HSK 5 dan 6 sepertinya belum penuh",
+  "habit": "kamu sudah punya aplikasi kamus Mandarin di ponsel"
+ },
+ {
+  "id": "P020",
+  "name": "Ava",
+  "age": 28,
+  "segment": "Calon penerima beasiswa atau studi ke Tiongkok",
+  "income": 48166000,
+  "behaviour": "Sudah memakai aplikasi berbayar",
+  "behaviour_how": "Pernah membayar langganan aplikasi belajar bahasa dan membandingkan harga serta isinya.",
+  "objection": "Aku butuh latihan soal ujian, bukan hanya kartu kosakata",
+  "habit": "kamu belajar dari grup WhatsApp atau Telegram belajar Mandarin"
+ }
+]

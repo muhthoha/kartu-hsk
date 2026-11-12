@@ -1,0 +1,13 @@
+{
+  "id": "P008",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "trust",
+  "reason": "Harganya murah, tapi aku belum lihat satu pun ulasan atau bukti ada orang yang lolos HSK pakai ini. Daftarnya juga harus pakai kode undangan yang aku nggak tahu dapat dari mana, jadi aku berhenti di situ.",
+  "objection": "Kodenya dari mana, dan ada nggak orang lain yang sudah berhasil belajar di sini? Aku nggak mau bayar buat situs yang belum terbukti.",
+  "would_change_my_mind": "Ulasan atau testimoni nyata dari pelajar HSK, plus kode undangan yang gampang didapat atau coba gratis dulu beberapa hari tanpa kode.",
+  "price_too_cheap": 8000,
+  "price_cheap": 20000,
+  "price_expensive": 45000,
+  "price_too_expensive": 80000
+}

@@ -1,0 +1,13 @@
+{
+  "id": "P002",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "trust",
+  "reason": "Aku biasanya cari ulasan dan bukti orang lain berhasil dulu, dan di sini aku belum lihat satu pun. Ditambah ini langganan bulanan, dan aku tidak suka yang lupa kuhentikan.",
+  "objection": "Belum ada ulasan atau bukti orang lain lulus HSK pakai ini, dan Rp30.000 tiap bulan itu langganan yang gampang kulupakan. Uangku terbatas, dan harus pakai kode undangan juga bikin ragu.",
+  "would_change_my_mind": "Ulasan nyata dari pelajar HSK lain, uji coba gratis atau contoh pelajaran yang bisa dicoba tanpa daftar, dan pilihan bayar sekali atau tanpa perpanjangan otomatis.",
+  "price_too_cheap": 5000,
+  "price_cheap": 15000,
+  "price_expensive": 30000,
+  "price_too_expensive": 50000
+}

@@ -1,0 +1,13 @@
+{
+  "id": "P003",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "price",
+  "reason": "Aku lagi nabung buat daftar ujian HSK, dan buat belajar sudah ada aplikasi gratis dan kartu kata yang bisa kupakai. Rp30.000 sebulan belum tentu sepadan kalau belum bisa dicoba, dan aku biasanya nunggu promo dulu.",
+  "objection": "Aku belum tahu isinya lebih bagus dari yang gratis, dan harus daftar pakai kode undangan padahal belum bisa coba. Kalau bayar tiap bulan sementara ujianku HSK 3 atau 4, rasanya sayang uangnya.",
+  "would_change_my_mind": "Percobaan gratis tanpa kode undangan, atau harga promo pelajar sekitar Rp15.000 sampai Rp20.000 per bulan, atau diskon kalau bayar beberapa bulan sekaligus.",
+  "price_too_cheap": 5000,
+  "price_cheap": 15000,
+  "price_expensive": 30000,
+  "price_too_expensive": 50000
+}

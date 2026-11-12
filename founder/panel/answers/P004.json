@@ -1,0 +1,13 @@
+{
+  "id": "P004",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "price",
+  "reason": "Kelas sudah saya bayar dan kosakata HSK banyak yang gratis di aplikasi lain. Rp30.000 sebulan terasa lumayan buat saya, apalagi penghasilan saya pas-pasan dan masih harus nabung buat persiapan ke Tiongkok.",
+  "objection": "Kosakata HSK sudah ada gratis di aplikasi lain, kenapa bayar Rp30.000? Saya juga belum tahu apakah situsnya ringan, kuota saya terbatas.",
+  "would_change_my_mind": "Coba gratis dulu beberapa hari atau satu level HSK tanpa bayar, plus bukti halamannya ringan di kuota kecil dan bisa dipakai offline.",
+  "price_too_cheap": 5000,
+  "price_cheap": 10000,
+  "price_expensive": 20000,
+  "price_too_expensive": 35000
+}

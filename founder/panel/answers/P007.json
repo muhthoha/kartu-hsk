@@ -1,0 +1,13 @@
+{
+  "id": "P007",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "price",
+  "reason": "Aku sudah pakai Quizlet dan Anki yang gratis, dan kelas dua kali seminggu sudah cukup. Bayar Rp30.000 tiap bulan untuk sesuatu yang bisa kudapat gratis tidak masuk akal buatku.",
+  "objection": "Aku tidak suka langganan bulanan yang lupa kuhentikan, dan Anki sudah gratis. Aku tidak melihat alasan cukup kuat untuk bayar setiap bulan.",
+  "would_change_my_mind": "Ada akses gratis untuk HSK 1 sampai 4 atau uji coba yang jelas, dan opsi bayar sekali tanpa perpanjangan otomatis, sehingga aku bisa lihat sendiri lebih bagus dari Anki.",
+  "price_too_cheap": 5000,
+  "price_cheap": 10000,
+  "price_expensive": 25000,
+  "price_too_expensive": 40000
+}

@@ -1,0 +1,13 @@
+{
+  "id": "P010",
+  "buys": false,
+  "purchases_first_month": 0,
+  "reason_code": "price",
+  "reason": "Aku sudah pakai Anki gratis dan itu cukup buat hafalan. Uangku lagi kutabung buat biaya ujian HSK, jadi Rp30.000 sebulan buat sesuatu yang ada gratisnya terasa tidak perlu.",
+  "objection": "Kenapa harus bayar kalau Quizlet dan Anki gratis? Ditambah daftarnya pakai kode undangan, aku tidak tahu dapat kodenya dari mana, jadi bahkan buat coba dulu saja sudah ribet.",
+  "would_change_my_mind": "Bisa dicoba gratis tanpa kode undangan, dan kalau memang ada hal yang tidak ada di Anki (misalnya simulasi HSK yang bagus) baru aku mau bayar kalau harganya jauh lebih murah.",
+  "price_too_cheap": 5000,
+  "price_cheap": 10000,
+  "price_expensive": 20000,
+  "price_too_expensive": 30000
+}
