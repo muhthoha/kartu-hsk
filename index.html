@@ -124,20 +124,14 @@ body:not(.hm) h1{font-size:26px}body:not(.hm) .sub{display:none}
 .hmt{font-size:22px;font-weight:600;text-align:left;margin:14px 0 4px}.hms{font-size:13px;letter-spacing:.06em;color:var(--mute);text-align:left;margin:22px 0 8px;font-weight:600}
 .rsm{width:100%;display:flex;align-items:center;gap:10px;text-align:left;text-transform:none;letter-spacing:0;padding:14px;border-radius:12px;background:color-mix(in srgb,var(--acc) 14%,transparent);border-color:var(--acc);margin:10px 0}
 .rsm small{display:block;font-size:11px;letter-spacing:.08em;color:var(--acc);text-transform:uppercase}.rsm b{display:block;font-size:15px;margin-top:3px;color:var(--ink);line-height:1.35}.rsm>span:last-child{margin-left:auto;font-size:22px;color:var(--acc)}.rsm>span:first-child{flex:1}
-.tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
-.tl{display:flex;flex-direction:column;align-items:flex-start;gap:4px;text-align:left;text-transform:none;letter-spacing:0;padding:14px;border-radius:12px;background:var(--card);min-height:112px}
-.tl .t{font-size:17px;font-weight:600;color:var(--ink)}.tl .m{font-size:12px;color:var(--mute);line-height:1.4}.tl .l{font-size:11px;color:var(--acc);line-height:1.35;margin-top:auto}
-.tl.w{grid-column:1/-1;min-height:0}
-.bm{width:100%;text-align:left;text-transform:none;letter-spacing:0;padding:11px 12px;margin:6px 0;display:flex;gap:8px;align-items:baseline;font-size:14px}.bm small{margin-left:auto;color:var(--mute);font-size:11px;text-align:right}
 .gc2{display:flex;align-items:center;gap:12px;text-align:left;text-transform:none;letter-spacing:0;padding:12px 14px;border-radius:10px;background:var(--card);width:100%}
 .gc2 .n{flex:0 0 30px;height:30px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--mute)}
 .gc2 .b{flex:1;display:flex;flex-direction:column;gap:4px;min-width:0}.gc2 .t{font-family:'Noto Serif SC',serif;font-size:17px;color:var(--ink)}.gc2 .m{font-size:12px;color:var(--mute)}
 .gc2 .mb{display:block;height:3px;background:var(--line);border-radius:3px;overflow:hidden}.gc2 .mb u{display:block;height:100%;background:var(--acc);text-decoration:none}
 .gc2 .ck{color:var(--acc);font-size:20px}.gc2.dn{border-color:var(--ok)}.gc2.dn .ck{color:var(--ok)}.gc2.dn .mb u{background:var(--ok)}
 .gp.dn summary b{color:var(--ok)}
-.wrap{position:relative}#sbtn{position:absolute;right:0;top:8px;border:0;font-size:20px;padding:6px 10px;background:none;z-index:3}
+.wrap{position:relative}#sbtn{position:absolute;right:0;top:9px;width:34px;height:34px;padding:0;border:1px solid var(--line);border-radius:50%;background:var(--card);color:var(--ink);display:flex;align-items:center;justify-content:center;letter-spacing:0;z-index:3}#sbtn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
 .pc{display:inline-block;font-size:11px;color:var(--acc);border:1px solid var(--acc);background:color-mix(in srgb,var(--acc) 10%,transparent);border-radius:999px;padding:2px 10px;margin:4px 0}
-.sbar{width:100%;text-align:left;text-transform:none;letter-spacing:0;padding:13px 14px;border-radius:999px;background:var(--card);color:var(--mute);font-size:14px;margin:10px 0}
 #srch{display:none;position:fixed;inset:0;z-index:20;background:var(--bg);overflow-y:auto;padding:14px 16px calc(40px + env(safe-area-inset-bottom,0px))}
 #srch .sh{display:flex;gap:8px;position:sticky;top:0;background:var(--bg);padding:2px 0 8px;z-index:2}
 #sq{flex:1;background:var(--card);color:var(--ink);border:1px solid var(--acc);border-radius:999px;padding:11px 16px;font-size:16px;outline:none;min-width:0}
@@ -150,35 +144,6 @@ body:not(.hm) h1{font-size:26px}body:not(.hm) .sub{display:none}
 .why{text-align:left;margin:12px 0;padding:10px 12px;border-left:3px solid var(--acc);background:color-mix(in srgb,var(--acc) 8%,transparent);border-radius:0 8px 8px 0;font-size:14px;line-height:1.65}.why p{margin:6px 0}.why>b:first-child{color:var(--acc)}
 .fb .y{color:var(--ok)}
 
-/* Improvisasi: dashboard belajar harian */
-.daily-panel{margin:16px 0 20px;padding:16px;background:var(--card);border:1px solid var(--line);border-radius:14px;text-align:left}
-.daily-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
-.daily-head h3{font-size:16px;margin:0;color:var(--ink)}
-.daily-head p{font-size:12px;color:var(--mute);margin:5px 0 0;line-height:1.45}
-.daily-count{font-size:24px;font-weight:700;color:var(--acc);white-space:nowrap}
-.daily-track{height:7px;background:var(--line);border-radius:99px;overflow:hidden;margin:14px 0 6px}
-.daily-track span{height:100%;display:block;background:var(--acc);border-radius:99px;transition:width .25s ease}
-.daily-meta{display:flex;justify-content:space-between;gap:8px;font-size:11px;color:var(--mute)}
-.daily-goals{display:flex;gap:6px;margin:12px 0}
-.daily-goals button{flex:1;padding:8px 5px;font-size:12px;letter-spacing:0;text-transform:none;border-radius:999px}
-.daily-goals button.on{border-color:var(--acc);color:var(--acc);background:color-mix(in srgb,var(--acc) 12%,transparent)}
-.daily-custom{display:flex;align-items:center;gap:8px;margin:0 0 4px}
-.daily-custom label{font-size:12px;color:var(--mute);white-space:nowrap}
-.daily-custom input{flex:1;min-width:0;padding:8px 12px;font-size:13px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);font-family:inherit}
-.daily-custom input:focus{outline:none;border-color:var(--acc)}
-.daily-custom button{padding:8px 16px;font-size:12px;letter-spacing:0;text-transform:none;border-radius:999px}
-.daily-custom button.on{border-color:var(--acc);color:var(--acc);background:color-mix(in srgb,var(--acc) 12%,transparent)}
-.daily-custom-msg{font-size:11px;color:var(--mute);min-height:0;margin-top:4px}
-.daily-custom-msg:empty{display:none}
-.weekly-activity{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:7px;margin:14px 0 4px}
-.weekday{text-align:center;min-width:0}
-.weekbar{height:48px;display:flex;align-items:flex-end;justify-content:center;background:rgba(128,128,128,.08);border-radius:6px;overflow:hidden}
-.weekbar span{display:block;width:100%;min-height:3px;background:var(--acc);border-radius:4px 4px 0 0}
-.weekday small{display:block;font-size:10px;color:var(--mute);margin-top:5px}
-.daily-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
-.daily-actions button{padding:11px 8px;font-size:12px;letter-spacing:0;text-transform:none;border-radius:9px}
-.daily-actions button:first-child{background:color-mix(in srgb,var(--acc) 12%,transparent);border-color:var(--acc)}
-@media(min-width:420px){.daily-panel{padding:18px}.daily-actions button{font-size:13px}}
 
 
 /* Tahap 1: spaced repetition */
@@ -209,28 +174,6 @@ button.lk-a{min-height:36px;padding:0 14px;border-radius:999px;border:1px solid 
 .srs-empty h3{margin:0 0 6px;font-size:18px}.srs-empty p{font-size:13px;color:var(--mute);line-height:1.6}
 
 
-/* Tahap 2: analitik penguasaan materi */
-.analytics{margin:12px 0 18px;padding:15px;background:var(--card);border:1px solid var(--line);border-radius:13px;text-align:left}
-.analytics h3{margin:0 0 5px;font-size:16px;color:var(--ink)}
-.analytics .an-sub{font-size:12px;color:var(--mute);line-height:1.55;margin:0 0 13px}
-.an-kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:12px 0}
-.an-kpi{padding:11px;background:rgba(128,128,128,.07);border:1px solid var(--line);border-radius:10px;min-width:0}
-.an-kpi strong{display:block;font-size:22px;line-height:1.2;color:var(--ink);font-variant-numeric:tabular-nums}
-.an-kpi span{display:block;font-size:11px;color:var(--mute);margin-top:4px;line-height:1.35}
-.an-kpi.ac strong{color:var(--acc)}.an-kpi.ok strong{color:var(--ok)}
-.an-section-title{font-size:11px;letter-spacing:.08em;color:var(--mute);font-weight:700;margin:17px 0 9px}
-.an-row{margin:10px 0 13px}
-.an-row-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px;font-size:13px;margin-bottom:6px}
-.an-row-top b{font-weight:600;color:var(--ink)}.an-row-top span{font-size:11px;color:var(--mute);text-align:right}
-.an-stack{height:9px;display:flex;overflow:hidden;border-radius:999px;background:var(--line)}
-.an-stack i{height:100%;display:block}.an-stack .known{background:var(--ok)}.an-stack .learning{background:var(--acc)}.an-stack .unseen{background:var(--mute);opacity:.38}
-.an-legend{display:flex;flex-wrap:wrap;gap:10px 13px;font-size:11px;color:var(--mute);margin:10px 0}
-.an-legend span{display:inline-flex;align-items:center;gap:5px}.an-dot{display:inline-block;width:8px;height:8px;border-radius:2px}
-.an-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
-.an-actions button{padding:10px 8px;font-size:12px;letter-spacing:0;text-transform:none;border-radius:9px}
-.an-actions .an-primary{background:color-mix(in srgb,var(--acc) 12%,transparent);border-color:var(--acc)}
-.an-foot{font-size:11px;line-height:1.5;color:var(--mute);margin:12px 0 0}
-@media(min-width:440px){.analytics{padding:17px}.an-kpis{grid-template-columns:repeat(4,minmax(0,1fr))}}
 
 
 /* Stage 3: simulasi ujian */
@@ -238,10 +181,8 @@ button.lk-a{min-height:36px;padding:0 14px;border-radius:999px;border:1px solid 
 @media(max-width:380px){.exam-grid{grid-template-columns:1fr}.exam-main{font-size:23px}}
 
 
-/* Stage 6: adaptive study plan */
-.adaptive-steps{display:grid;gap:10px;margin:14px 0}.adaptive-step{display:flex;align-items:center;gap:11px;padding:12px;border:1px solid var(--line, #ddd);border-radius:12px}.adaptive-step.is-done{opacity:.7}.adaptive-num{display:flex;align-items:center;justify-content:center;flex:0 0 30px;height:30px;border-radius:50%;background:var(--soft, #f1f3f5);font-weight:700}.adaptive-copy{display:flex;flex:1;min-width:0;flex-direction:column;gap:3px}.adaptive-copy span,.adaptive-note{font-size:12px;color:var(--mute, #666)}.adaptive-step button{flex-shrink:0}@media(max-width:600px){.adaptive-step{align-items:flex-start;flex-wrap:wrap}.adaptive-copy{flex-basis:calc(100% - 45px)}.adaptive-step button{margin-left:41px}}
 </style>
-<style id="stage4-error-bank-style">.exam-home{margin:14px 0;padding:16px;border:1px solid var(--line, #ddd);border-radius:14px;background:var(--card,transparent)}.exam-home p{font-size:14px;line-height:1.55}.exam-review{padding:10px 0;border-bottom:1px solid var(--line,#ddd)}.er-q{font-weight:700}.er-a{font-size:14px;line-height:1.7;margin-top:5px}.exam-muted{opacity:.78;font-size:13px}.exam-title{font-weight:750;font-size:20px;margin-bottom:8px}.exam-stats{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:10px 0}</style>
+<style id="stage4-error-bank-style">.exam-review{padding:10px 0;border-bottom:1px solid var(--line,#ddd)}.er-q{font-weight:700}.er-a{font-size:14px;line-height:1.7;margin-top:5px}.exam-muted{opacity:.78;font-size:13px}.exam-title{font-weight:750;font-size:20px;margin-bottom:8px}.exam-stats{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:10px 0}</style>
 <style id="stage5-backup-style">
 .backup-panel{margin:14px 0;padding:16px;border:1px solid var(--line,#ddd);border-radius:14px;background:var(--panel,transparent)}
 .backup-panel p{font-size:13px;line-height:1.6;color:var(--mute);margin:6px 0 12px}
@@ -299,16 +240,6 @@ body.tone-on .tn5{color:var(--mute)}
 .lvsum{font-size:12.5px;color:var(--mute);margin-top:6px}
 /* Kartu info versi daftar */
 .vchip{display:inline-block;font-size:11.5px;font-weight:600;letter-spacing:.04em;padding:2px 7px;border-radius:99px;background:var(--e5t);color:var(--e5d);border:1px solid var(--line);vertical-align:middle}
-details.vnote{margin:14px 0 2px;border:1px solid var(--line);border-radius:12px;background:rgba(128,128,128,.05);padding:0}
-details.vnote>summary{cursor:pointer;padding:10px 12px;font-size:13.5px;font-weight:600;list-style:none}
-details.vnote>summary::-webkit-details-marker{display:none}
-details.vnote>summary::before{content:"\25B8  ";color:var(--mute)}
-details.vnote[open]>summary::before{content:"\25BE  "}
-details.vnote .vbd{padding:0 12px 12px;font-size:13px;color:var(--mute);line-height:1.6}
-details.vnote .vbd b{color:var(--ink)}
-.tonerow{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:14px 0 0;flex-wrap:wrap}
-.tonerow>div:first-child{flex:1 1 200px;min-width:0}
-.tonerow .tlbl{font-size:13.5px;font-weight:600}
 .thint{font-size:12.5px;color:var(--mute);line-height:1.5}
 .backlog{margin:12px 0 0;padding:10px 12px;border-radius:10px;font-size:13px;line-height:1.55;border:1px solid var(--line);background:var(--e3t);color:var(--ink)}
 </style>
@@ -383,7 +314,7 @@ html.gated body{overflow:hidden}
 #authgate .ag-go[disabled]{opacity:.6;cursor:default}
 #authgate .ag-note{margin:16px 0 0;font-size:12.5px;line-height:1.5;color:var(--mute);text-align:center}
 #authgate button:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
-#acct{position:absolute;right:44px;top:9px;width:34px;height:34px;padding:0;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--acc);font:700 14px Inter,system-ui,sans-serif;cursor:pointer;z-index:3}
+#acct{position:absolute;right:42px;top:9px;width:34px;height:34px;padding:0;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--acc);font:700 14px Inter,system-ui,sans-serif;cursor:pointer;z-index:3}
 /* Menu profil */
 #acct-menu{position:absolute;right:0;top:50px;z-index:4;width:292px;max-width:calc(100vw - 32px);padding:6px;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:20px;text-align:left;box-shadow:0 14px 36px rgba(0,0,0,.32);transform-origin:top right;animation:am-in .14s ease-out}
 @keyframes am-in{from{opacity:0;transform:translateY(-4px) scale(.98)}to{opacity:1;transform:none}}
@@ -437,24 +368,11 @@ button{text-transform:none;letter-spacing:.01em;border-radius:12px}
 .acts button.yes{background:var(--ok);border-color:var(--ok);color:var(--okink)}
 .rs.no{background:var(--e4t);color:var(--e4d)}.op.no{border-color:var(--e4d);background:var(--e4t)}
 .st-0,.fb .n{color:var(--e4d)}
-.exam-home,.backup-panel{border-color:var(--e5);background:var(--e5t)}
+.backup-panel{border-color:var(--e5);background:var(--e5t)}
 /* Beranda */
 .hmt{font:600 26px/1.2 Poppins,Inter,system-ui,sans-serif}
 .rsm{background:var(--soft);border:1px solid var(--line);border-radius:18px}
 .rsm small{color:var(--mute);text-transform:none;letter-spacing:.02em;font-size:12px}
-.tiles{gap:10px;margin:14px 0}
-.tl{position:relative;overflow:hidden;border:0;border-radius:24px;padding:16px;min-height:118px;background:var(--tt);color:var(--tc)}
-.tl[data-m="hsk"],.tl[data-m="h3"],.tl[data-m="tek"]{--tc:var(--e1d);--tt:var(--e1t);--tg:var(--e1)}
-.tl[data-m="gr"]{--tc:var(--e2d);--tt:var(--e2t);--tg:var(--e2)}
-.tl[data-m="rd"]{--tc:var(--e3d);--tt:var(--e3t);--tg:var(--e3)}
-.tl[data-m="lt"]{--tc:var(--e4d);--tt:var(--e4t);--tg:var(--e4)}
-.tl[data-m="hz"]{--tc:var(--e5d);--tt:var(--e5t);--tg:var(--e5)}
-.tl::after{position:absolute;right:-16px;bottom:-34px;font:700 100px/1 'Noto Serif SC',serif;color:var(--tg);opacity:var(--gop);pointer-events:none}
-.tl[data-m="hsk"]::after,.tl[data-m="h3"]::after,.tl[data-m="tek"]::after{content:"木"}.tl[data-m="gr"]::after{content:"水"}
-.tl[data-m="rd"]::after{content:"土"}.tl[data-m="lt"]::after{content:"火"}.tl[data-m="hz"]::after{content:"金"}
-.tl>span{position:relative;max-width:70%}.tl.w>span{max-width:82%}
-.tl .t{font:600 16px/1.3 Poppins,Inter,system-ui,sans-serif;color:var(--tc)}
-.tl .m{color:var(--tc);opacity:.92}.tl .l{color:var(--tc);font-weight:600}
 /* Menu bawah */
 #nav button{font-size:10.5px;font-weight:500;letter-spacing:0;color:var(--mute)}
 #nav button svg{box-sizing:content-box;width:22px;height:22px;padding:4px 15px;border-radius:15px}
@@ -492,11 +410,215 @@ body{padding:28px 40px 48px 248px}
 #sheet{left:248px}
 .wrap{max-width:740px;margin:0 auto}
 body.hm .wrap{max-width:1040px}
-body.hm .tiles{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:14px 0}
-body.hm .tl{min-height:150px}
-body.hm .tl.w{grid-column:span 2}
 .card{min-height:420px;padding:48px 40px 28px}
 .card .hz{font-size:96px}
+}
+</style>
+<style id="beranda-css">
+/* ===== Beranda (主页) =====
+   Semua aturan tata letak beranda ada di sini dan dibatasi ke .hb, supaya halaman lain tidak ikut berubah.
+   Urutan isi: salam, cari, lanjutkan, persiapan ujian (#hb-siap), hari ini (#hb-hari), materi (#hb-materi), rencana, ujian, bookmark, analitik, info.
+   Warna unsur (五行) hanya dipakai di kartu materi; panel lain netral (--card + --line).
+   Ikon: satu keluarga garis (IK di skrip utama). Cap 木水土火金 memakai bentuk yang sama dengan layar pemuatan. */
+.hb{display:flex;flex-direction:column;gap:14px;margin-top:16px;text-align:left}
+.hb h2,.hb h3,.hb h4,.hb p,.hb ol{margin:0}
+.hb button{font:600 14px/1.3 Inter,system-ui,sans-serif;letter-spacing:0;text-transform:none;color:var(--ink)}
+.hb svg{flex:none}
+.hb button:focus-visible,.hb summary:focus-visible,.hb input:focus-visible,.hb a:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.hb-slot,.hb-sec{position:relative;display:flex;flex-direction:column;gap:14px}
+.hb-slot:empty{display:none}
+.hb-sr{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.hb .hmt{font:600 26px/1.2 Poppins,Inter,system-ui,sans-serif;color:var(--ink)}
+.hb .hb-sub{margin-top:4px;font-size:14px;line-height:1.5;color:var(--mute)}
+.hb-lb{margin-top:6px;font:600 14px/1.3 Inter,system-ui,sans-serif;color:var(--mute)}
+/* cari + lanjutkan */
+.hb .sbar{display:flex;align-items:center;gap:10px;width:100%;min-height:48px;margin:0;padding:0 16px;border:1px solid var(--line);border-radius:99px;background:var(--card);color:var(--mute);font-size:14.5px;font-weight:400;text-align:left}
+.hb .rsm{display:flex;align-items:center;gap:12px;width:100%;margin:0;padding:13px 14px 13px 16px;border:1px solid var(--line);border-radius:18px;background:var(--soft);text-align:left}
+.hb .rsm>span:first-child{flex:1;min-width:0}
+.hb .rsm small{display:block;font-size:12px;font-weight:400;letter-spacing:0;text-transform:none;color:var(--mute)}
+.hb .rsm b{display:block;margin-top:2px;font-size:15px;font-weight:600;line-height:1.35;color:var(--ink)}
+.hb .rsm>span:last-child{display:flex;margin:0;font-size:0;color:var(--mute)}
+/* panel netral, tombol, keterangan kecil */
+.hb .hb-card{margin:0;padding:16px;border:1px solid var(--line);border-radius:20px;background:var(--card);text-align:left}
+.hb .hb-card h3{margin:0;font:600 16px/1.3 Poppins,'Noto Sans SC',Inter,system-ui,sans-serif;color:var(--ink)}
+.hb .hb-card p{font-size:13.5px;line-height:1.55;color:var(--mute)}
+.hb .hb-card p b{color:var(--ink);font-weight:600}
+.hb-card-h{display:flex;align-items:center;justify-content:space-between;gap:6px 10px;flex-wrap:wrap}
+.hb-card-h+p{margin-top:6px}
+.hb .hb-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:auto;min-height:44px;margin:0;padding:0 16px;border:1px solid var(--line);border-radius:12px;background:transparent;color:var(--ink);font-size:14px;font-weight:600;white-space:nowrap}
+.hb .hb-btn.pri{background:var(--btn);border-color:var(--btn);color:var(--btnink)}
+.hb .hb-btn svg{width:17px;height:17px}
+.hb-idle{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--mute);white-space:nowrap}
+.hb-idle svg{width:16px;height:16px}
+.hb-chip{flex:none;padding:3px 10px;border-radius:99px;background:var(--soft);font-size:12px;font-weight:600;color:var(--mute);white-space:nowrap}
+/* target belajar harian */
+.hb .daily-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.hb .daily-head p{margin-top:4px}
+.hb .daily-count{flex:none;padding-top:2px;font-size:13px;color:var(--mute);white-space:nowrap}
+.hb .daily-count b{font:600 28px/1 Poppins,Inter,system-ui,sans-serif;color:var(--ink);font-variant-numeric:tabular-nums}
+.hb .daily-track{height:8px;margin-top:14px;border-radius:99px;background:var(--soft);overflow:hidden}
+.hb .daily-track span{display:block;height:100%;border-radius:99px;background:var(--ok);transition:width .25s ease}
+.hb .daily-week-h{display:flex;justify-content:space-between;align-items:baseline;gap:4px 10px;flex-wrap:wrap;margin-top:18px;font-size:12.5px;color:var(--mute)}
+.hb .daily-week-h span:first-child,.hb .daily-week-h b{font-weight:600;color:var(--ink)}
+.hb .weekly-activity{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;margin-top:8px}
+.hb .weekday{min-width:0;text-align:center}
+.hb .weekbar{display:flex;align-items:flex-end;height:44px;border-radius:8px;background:var(--soft);overflow:hidden}
+.hb .weekbar span{display:block;width:100%;border-radius:8px 8px 0 0;background:var(--ok)}
+.hb .weekday small{display:block;margin-top:5px;font-size:11px;color:var(--mute)}
+.hb .weekday.now small{font-weight:600;color:var(--ink)}
+.hb .backlog{margin-top:14px;padding:10px 12px;border:0;border-radius:12px;background:var(--e3t);font-size:13px;line-height:1.5;color:var(--ink)}
+.hb .daily-goals{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-top:16px}
+.hb .daily-goals button{min-height:40px;margin:0;padding:0 4px;border:1px solid var(--line);border-radius:99px;background:transparent;font-size:13px;color:var(--mute);white-space:nowrap}
+.hb .daily-goals button.on{background:var(--soft);border-color:var(--ink);color:var(--ink)}
+.hb .daily-custom{display:flex;align-items:center;gap:8px;margin-top:10px}
+.hb .daily-custom[hidden]{display:none}
+.hb .daily-custom label{font-size:13px;color:var(--mute);white-space:nowrap}
+.hb .daily-custom input{flex:1;min-width:0;height:42px;padding:0 14px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);font:16px Inter,system-ui,sans-serif}
+.hb .daily-custom button{min-height:42px;margin:0;padding:0 16px;border:1px solid var(--line);border-radius:12px;background:transparent}
+.hb .daily-custom-msg{margin-top:6px;font-size:12.5px;color:var(--e4d)}
+.hb .daily-custom-msg:empty{display:none}
+.hb .daily-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:16px}
+.hb .daily-actions .hb-btn{padding:0 8px}
+.hb .hb-card .thint{margin-top:12px;font-size:12px;line-height:1.5}
+/* pengulangan kosakata */
+.hb .srs-panel{display:flex;align-items:center;gap:10px 12px;flex-wrap:wrap}
+.hb .srs-panel .hb-tx{flex:1 1 180px;min-width:0}
+.hb .srs-panel p{margin-top:3px}
+/* persiapan ujian */
+.hb .prep-top{margin-top:12px}
+.hb .prep-n{min-width:76px;font:600 48px/1 Poppins,Inter,system-ui,sans-serif;color:var(--ink);font-variant-numeric:tabular-nums}
+.hb .prep-n small{font:400 12px/1.3 Inter,system-ui,sans-serif}
+.hb .prep-ph b{font-size:14.5px;font-weight:600;color:var(--ink)}
+.hb .prep-li{padding:11px 0}
+.hb .prep-go{min-height:40px;padding:0 14px;font-size:13.5px}
+.hb .prep-cp b{color:var(--ink)}
+.hb .prep-fa button{min-height:44px}
+/* kartu materi: lima unsur */
+.hb .tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0}
+.hb-voc{--tc:var(--e1d);--tt:var(--e1t);--tg:var(--e1)}
+.hb .tl[data-m="gr"]{--tc:var(--e2d);--tt:var(--e2t);--tg:var(--e2)}
+.hb .tl[data-m="rd"]{--tc:var(--e3d);--tt:var(--e3t);--tg:var(--e3)}
+.hb .tl[data-m="lt"]{--tc:var(--e4d);--tt:var(--e4t);--tg:var(--e4)}
+.hb .tl[data-m="hz"]{--tc:var(--e5d);--tt:var(--e5t);--tg:var(--e5)}
+.hb-seal{flex:none;display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:11px;background:var(--tg);color:var(--fi);font:700 20px/1 'Noto Serif SC','Songti SC',serif}
+.hb .tl{margin:0;border:0;color:var(--tc);text-align:left;cursor:pointer}
+.hb .tl .t,.hb-voc-h .t{font-size:13px;font-weight:600;line-height:1.35;color:var(--tc)}
+.hb .tl .t b,.hb-voc-h .t b{display:block;font:600 21px/1.25 Poppins,'Noto Sans SC',Inter,system-ui,sans-serif}
+.hb .tl .m{font-size:12.5px;font-weight:400;line-height:1.4;color:var(--tc)}
+.hb .tl .l{font-size:11.5px;font-weight:600;line-height:1.4;color:var(--tc);word-break:keep-all;overflow-wrap:anywhere}
+.hb-bar{display:block;height:4px;border-radius:99px;background:color-mix(in srgb,var(--tg) 24%,transparent);overflow:hidden}
+.hb-bar u{display:block;height:100%;border-radius:99px;background:var(--tg);text-decoration:none}
+.hb-lk{display:inline-flex;align-items:center;gap:4px;padding:3px 9px 3px 6px;border-radius:99px;background:color-mix(in srgb,var(--tg) 20%,transparent);font-size:11px;font-weight:600;line-height:1.3;color:var(--tc);white-space:nowrap}
+.hb-lk svg{width:13px;height:13px}
+.hb .tiles>.tl{position:relative;display:flex;flex-direction:column;align-items:flex-start;min-height:158px;padding:14px;border-radius:22px;background:var(--tt)}
+.hb .tiles>.tl .t{margin-top:12px}
+.hb .tiles>.tl .m{margin-top:6px}
+.hb .tiles>.tl .hb-bar{width:100%;margin-top:10px}
+.hb .tiles>.tl .l{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;margin-top:auto;padding-top:10px}
+.hb .tiles>.tl .hb-lk{position:absolute;top:14px;right:14px}
+@media(max-width:359px){.hb .tiles>.tl .hb-lk{gap:0;padding:6px;font-size:0}}   /* layar sangat sempit: tanda cuplikan tinggal ikon gembok */
+/* 词汇: satu kartu, tiga daftar */
+.hb-voc{grid-column:1/-1;display:flex;flex-direction:column;padding:14px 14px 2px;border-radius:22px;background:var(--tt);color:var(--tc)}
+.hb-voc-h{display:flex;align-items:center;gap:12px;padding-bottom:12px}
+.hb-voc .tl{display:grid;grid-template-columns:minmax(0,1fr) auto 20px;align-items:center;gap:7px 10px;width:100%;padding:12px 0;border-top:1px solid color-mix(in srgb,var(--tg) 26%,transparent);border-radius:0;background:none}
+.hb-voc .tl .t{grid-column:1;font:600 15px/1.3 Poppins,Inter,system-ui,sans-serif}
+.hb-voc .tl .m{grid-column:2;text-align:right}
+.hb-voc .tl .hb-go{grid-column:3;grid-row:1/span 2;display:flex;opacity:.75}
+.hb-voc .tl .hb-bar{grid-column:1/3;grid-row:2}
+.hb-voc .tl .l{grid-column:1/3}
+.hb-voc .tl .hb-lk{grid-column:1/3;justify-self:start}
+.hb .aksesinfo{margin:0;padding:12px 14px;border:1px solid var(--line);border-radius:16px;background:var(--card)}
+.hb .lk-a{min-height:40px;font-size:13px;color:var(--e3d)}
+/* rencana belajar */
+.hb .adaptive-steps{list-style:none;margin-top:12px;padding:0}
+.hb .adaptive-step{display:grid;grid-template-columns:28px minmax(0,1fr) auto;align-items:center;gap:8px 12px;padding:12px 0;border-top:1px solid var(--line)}
+.hb .adaptive-num{display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:var(--soft);font-size:13px;font-weight:600;color:var(--ink)}
+.hb .adaptive-copy{display:flex;flex-direction:column;gap:2px;min-width:0}
+.hb .adaptive-copy b{font-size:14.5px;font-weight:600;line-height:1.35;color:var(--ink)}
+.hb .adaptive-copy span{font-size:12.5px;line-height:1.4;color:var(--mute)}
+.hb .adaptive-step.is-done .adaptive-num,.hb .adaptive-step.is-done .adaptive-copy b{color:var(--mute)}
+.hb .hb-card .adaptive-note{padding-top:12px;border-top:1px solid var(--line);font-size:12px;line-height:1.5}
+@media(max-width:479px){
+.hb .adaptive-step{grid-template-columns:28px minmax(0,1fr)}
+.hb .adaptive-step>.hb-btn,.hb .adaptive-step>.hb-idle{grid-column:2;justify-self:start}
+}
+/* simulasi ujian + bank kesalahan */
+.hb-duo{display:grid;grid-template-columns:minmax(0,1fr)}
+.hb .hb-act{display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.hb .hb-act p{margin-top:5px}
+.hb .hb-act .hb-btn{margin-top:auto}
+@media(min-width:560px){.hb-duo{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* bookmark tata bahasa */
+.hb-list{border:1px solid var(--line);border-radius:18px;background:var(--card);overflow:hidden}
+.hb .bm{display:flex;align-items:center;gap:10px;width:100%;min-height:48px;margin:0;padding:8px 14px;border:0;border-top:1px solid var(--line);border-radius:0;background:none;font-size:14.5px;text-align:left}
+.hb .bm:first-child{border-top:0}
+.hb .bm svg{width:18px;height:18px;color:var(--mute)}
+.hb .bm b{flex:1;min-width:0;font-weight:600}
+.hb .bm small{flex:none;margin:0;font-size:12px;font-weight:400;color:var(--mute);white-space:nowrap}
+/* analitik penguasaan materi */
+.hb .analytics .an-sub{margin-top:4px}
+.hb .an-kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:14px}
+.hb .an-kpi{min-width:0;padding:12px;border-radius:14px;background:var(--bg)}
+.hb .an-kpi strong{display:block;font:600 22px/1.2 Poppins,Inter,system-ui,sans-serif;color:var(--ink);font-variant-numeric:tabular-nums}
+.hb .an-kpi span{display:block;margin-top:4px;font-size:12px;line-height:1.35;color:var(--mute)}
+.hb .an-kpi.ok strong{color:var(--ok)}
+.hb .an-kpi.ac strong{color:var(--e3d)}
+.hb .an-section-title{margin-top:22px;font:600 14px/1.3 Inter,system-ui,sans-serif;letter-spacing:0;color:var(--ink)}
+.hb .an-legend{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:8px;font-size:12px;color:var(--mute)}
+.hb .an-legend span{display:inline-flex;align-items:center;gap:6px}
+.hb .an-dot{width:9px;height:9px;border-radius:3px;background:var(--line)}
+.hb .an-dot.known,.hb .an-stack .known{background:var(--ok)}
+.hb .an-dot.learning,.hb .an-stack .learning{background:var(--e3)}
+.hb .an-rows{display:grid;grid-template-columns:minmax(0,1fr);margin-top:4px}
+.hb .an-row{display:grid;grid-template-columns:minmax(0,1fr) 20px;align-items:center;gap:6px 10px;width:100%;margin:0;padding:12px 0;border:0;border-top:1px solid var(--line);border-radius:0;background:none;text-align:left}
+.hb .an-rows .an-row:first-child{border-top:0}
+.hb .an-row-top{grid-column:1;display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin:0}
+.hb .an-row-top b{font-size:14.5px;font-weight:600;color:var(--ink)}
+.hb .an-row-top span{font-size:13px;font-weight:600;color:var(--mute);font-variant-numeric:tabular-nums}
+.hb .an-stack{grid-column:1;display:flex;height:8px;border-radius:99px;background:var(--line);overflow:hidden}
+.hb .an-stack i{display:block;height:100%}
+.hb .an-row-sub{grid-column:1;font-size:12px;font-weight:400;line-height:1.4;color:var(--mute)}
+.hb .an-row>svg{grid-column:2;grid-row:1/span 3;color:var(--mute)}
+.hb .hb-card .an-foot{margin-top:14px;font-size:12px;line-height:1.5}
+@media(min-width:560px){.hb .an-kpis{grid-template-columns:repeat(4,minmax(0,1fr))}.hb .an-kpis.two{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* catatan daftar kosakata */
+.hb details.vnote{border:1px solid var(--line);border-radius:16px}
+.hb details.vnote>summary{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:48px;padding:8px 14px;cursor:pointer;list-style:none;font-size:13.5px;font-weight:600;line-height:1.4;color:var(--mute)}
+.hb details.vnote>summary::-webkit-details-marker{display:none}
+.hb details.vnote>summary svg{width:18px;height:18px;transition:transform .15s ease}
+.hb details.vnote[open]>summary svg{transform:rotate(90deg)}
+.hb details.vnote .vbd{padding:0 14px 6px;font-size:13px;line-height:1.6;color:var(--mute)}
+.hb details.vnote .vbd p{margin:0 0 8px}
+.hb details.vnote .vbd b,.hb details.vnote .vbd a{color:var(--ink)}
+@media (prefers-reduced-motion:reduce){.hb .daily-track span,.hb details.vnote>summary svg{transition:none}}
+/* layar lebar: hari ini di kiri, materi di kanan */
+@media (min-width:1024px){
+.hb{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;gap:16px 20px}
+.hb>*{grid-column:1/-1}
+.hb>.hb-hi{grid-column:1;align-self:center}
+.hb>.sbar{grid-column:2}
+.hb>#hb-hari{grid-column:1}
+.hb>#hb-materi{grid-column:2}
+.hb>#hb-rencana{grid-column:1}
+.hb>#hb-uji{grid-column:2;grid-template-columns:minmax(0,1fr)}
+.hb-slot,.hb-sec{gap:16px}
+.hb .hb-card{padding:20px}
+.hb .tiles{gap:12px}
+.hb .an-rows{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:32px}
+.hb .an-rows .an-row:nth-child(2){border-top:0}
+/* dua kolom sama tinggi: kolom yang lebih pendek mengisi sisa ruang (grafik 7 hari atau kartu materi ikut meninggi) */
+.hb>#hb-hari,.hb>#hb-materi,.hb>#hb-rencana,.hb>#hb-uji{align-self:stretch}
+.hb #hb-hari .daily-panel{flex:1;display:flex;flex-direction:column}
+.hb #hb-hari .weekly-activity{flex:1}
+.hb #hb-hari .weekday{display:flex;flex-direction:column}
+.hb #hb-hari .weekbar{flex:1;min-height:44px}
+.hb #hb-materi .tiles{flex:1;grid-template-rows:auto 1fr 1fr}
+.hb #hb-rencana .hb-card{flex:1}
+.hb>#hb-uji{grid-auto-rows:1fr}
+/* persiapan ujian selebar halaman: hitung mundur di kiri, tugas harian di kanan */
+.hb .prep:has(.prep-list){display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);column-gap:32px;align-items:start}
+.hb .prep:has(.prep-list)>.exam-title,.hb .prep:has(.prep-list)>.prep-ft{grid-column:1/-1}
+.hb .prep:has(.prep-list)>.prep-list{margin-top:6px}
 }
 </style>
 <style id="hanzi-css">
@@ -1172,7 +1294,7 @@ html.booting #authgate{display:none!important}
  });
 })();
 </script>
-<div class="wrap"><button id="sbtn" aria-label="Cari">🔍</button>
+<div class="wrap"><button id="sbtn" type="button" aria-label="Cari"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></button>
 <h1><span class="zl">Zenta<i lang="zh">汉</i></span></h1><div class="sub">Belajar Mandarin Harian</div>
 <div class="stats" id="stats"></div>
 <div class="row" id="md"></div>
@@ -1416,16 +1538,46 @@ function goMode(m,rs){
   if(m=="gr"&&rs&&GL&&GR.d[GL.s]){S.gs=GL.s;const ix=GR.d[GL.s].findIndex(y=>y.l==GL.l);if(ix>=0){S.ch=ix+1;S.gt=GL.i}}
  S.flip=false;scrollTo(0,0);render()}
 function openGr(set,l,i){S.gs=set;const G=GR.d[set]||[],ix=G.findIndex(x=>String(x.l)==String(l));S.mem.gr={ch:ix+1,i:0,tab:S.tab};S.gt=i;S.mode="hm";goMode("gr")}
+/* Ikon garis beranda: satu keluarga (kotak 24, garis 1.8, ujung membulat), sama dengan ikon menu navigasi. */
+const IKS='<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">';
+const IK={cari:IKS+'<circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>',
+ maju:IKS+'<path d="M9 6l6 6-6 6"/></svg>',
+ tanda:IKS+'<path d="M7 4h10a1 1 0 011 1v15l-6-4-6 4V5a1 1 0 011-1z"/></svg>',
+ kunci:IKS+'<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg>',
+ cek:IKS+'<path d="M5 12.5l4.5 4.5L19 7.5"/></svg>'};
+/* Tempat panel tambahan di beranda. Panel dari blok lain masuk ke wadah bernama, bukan ditumpuk di akhir halaman:
+   #hb-siap (persiapan ujian), #hb-hari (target harian, pengulangan), #hb-rencana, #hb-uji (simulasi ujian, bank kesalahan),
+   #hb-progres (analitik), #hb-info. Bila wadahnya tidak ada, panel masuk ke v. */
+function hbSlot(v,id){return (v&&v.querySelector("#"+id))||v}
 function renderHome(v){
  const hs=D.filter(isH),tk=D.filter(c=>c[3]==5||c[3]==6),kn=a=>a.filter(c=>S.m["k"+D.indexOf(c)]==1).length;
  let gt=0;Object.values(GR.d).forEach(L=>L.forEach(x=>gt+=gitems(x)));const gd=Object.values(GP).filter(Boolean).length;
  let rdn={};try{rdn=JSON.parse(localStorage.getItem("hsk_rdone")||"{}")}catch(e){}
- const T=[["hsk","Kosakata HSK 2.0",`${kn(hs)} / ${hs.length} kartu dikenali`,LM.hsk],["h3","Kosakata HSK 3.0",`${Object.values(M3).filter(x=>x==1).length} / ${H3.ok?H3.tot:H3N} kartu dikenali`,LM.h3],["tek","Kosakata Teknis",`${kn(tk)} / ${tk.length} kartu dikenali`,LM.tek],["gr","语法 · Tata bahasa",`${gd} / ${gt} poin dipahami`,LM.gr],["rd","阅读 · Membaca",`${Object.keys(rdn).length} / ${RD.length} cerita dibaca`,LM.rd],["lt","练习 · Latihan","8 jenis latihan: susun, isian, pola, arti, dengar, urutan, tulis, HSKK",LM.lt],["hz","汉字 · Aksara","214 radikal, 38 goresan, 7 aturan urutan",LM.hz]];
+ const nf=n=>Number(n).toLocaleString("id-ID"),rn=Object.keys(rdn).length;
+ const bar=(a,b)=>`<i class="hb-bar" aria-hidden="true"><u style="width:${a&&b?Math.max(3,Math.min(100,Math.round(a/b*100))):0}%"></u></i>`;
+ const lst=l=>l?`<span class="l">Terakhir: ${l.replace(/^[^·]+· /,"")}</span>`:"";
+ const seal=z=>`<span class="hb-seal" lang="zh" aria-hidden="true">${z}</span>`;
+ /* 词汇: tiga daftar kosakata dalam satu kartu, sama seperti satu menu 词汇 di navigasi. [mode, nama, dikenali, total, terakhir] */
+ const V=[["hsk","HSK 2.0",kn(hs),hs.length,LM.hsk],["h3","HSK 3.0",Object.values(M3).filter(x=>x==1).length,H3.ok?H3.tot:H3N,LM.h3],["tek","Teknis",kn(tk),tk.length,LM.tek]];
+ /* empat bagian lain. [mode, unsur, hanzi, nama, keterangan, selesai, total (0 = tanpa batang progres), terakhir] */
+ const T=[["gr","水","语法","Tata bahasa",`${nf(gd)} / ${nf(gt)} poin dipahami`,gd,gt,LM.gr],["rd","土","阅读","Membaca",`${rn} / ${RD.length} cerita dibaca`,rn,RD.length,LM.rd],["lt","火","练习","Latihan","8 jenis latihan, termasuk HSKK",0,0,LM.lt],["hz","金","汉字","Aksara","214 radikal, 38 goresan, 7 aturan urutan",0,0,LM.hz]];
  const last=LM._&&LM[LM._]?LM[LM._]:"";
  const bms=Object.keys(GB).filter(k=>GB[k]).map(k=>{const[s,l,i]=k.split("|"),G=GR.d[s]||[],x=G.find(y=>String(y.l)==l);if(!x)return null;const t=i=="c"?(x.c?"比一比 · "+x.c.a+(x.c.b?" vs "+x.c.b:""):""):(x.p[+i]||{}).t;return t?{k,s,l,i,t}:null}).filter(Boolean);
- v.innerHTML=`<div class="hmt">Selamat belajar 👋</div><button class="sbar" id="hs">🔍 Cari kosakata, tata bahasa, cerita…</button>${last?`<button class="rsm" id="rsm"><span><small>Lanjutkan belajar</small><b>${last}</b></span><span>›</span></button>`:`<p class="pos" style="text-align:left">Pilih bagian di bawah untuk mulai.</p>`}
-<div class="tiles">${T.map(([m,t,s,l],i)=>`<button class="tl${i>=6?" w":""}" data-m="${m}"><span class="t">${t}</span><span class="m">${s}</span>${l?`<span class="l">Terakhir: ${l.replace(/^[^·]+· /,"")}</span>`:""}</button>`).join("")}</div>
-${bms.length?`<div class="hms">BOOKMARK TATA BAHASA (${bms.length})</div>`+bms.slice(0,10).map(b=>`<button class="bm" data-k="${b.k}">🔖 <b>${b.t}</b><small>${GN[b.s]} · L${b.l}</small></button>`).join(""):""}`;
+ v.innerHTML=`<div class="hb">
+<div class="hb-hi"><h2 class="hmt">Selamat belajar</h2>${last?"":`<p class="hb-sub">Pilih bagian di bawah untuk mulai.</p>`}</div>
+<button type="button" class="sbar" id="hs">${IK.cari}<span>Cari kosakata, tata bahasa, cerita…</span></button>
+${last?`<button type="button" class="rsm" id="rsm"><span><small>Lanjutkan belajar</small><b>${last}</b></span><span>${IK.maju}</span></button>`:""}
+<div class="hb-slot" id="hb-siap"></div>
+<div class="hb-slot" id="hb-hari"></div>
+<section class="hb-sec" id="hb-materi" aria-labelledby="hb-materi-h"><h3 class="hb-sr" id="hb-materi-h">Materi belajar</h3>
+<div class="tiles"><div class="hb-voc" role="group" aria-labelledby="hb-voc-h"><div class="hb-voc-h" id="hb-voc-h">${seal("木")}<span class="t"><b lang="zh">词汇</b> Kosakata</span></div>${V.map(([m,t,a,b,l])=>`<button type="button" class="tl" data-m="${m}"><span class="t">${t}</span><span class="m">${nf(a)} / ${nf(b)} kartu dikenali</span>${bar(a,b)}${lst(l)}<span class="hb-go">${IK.maju}</span></button>`).join("")}</div>
+${T.map(([m,z,h,n,d,a,b,l])=>`<button type="button" class="tl" data-m="${m}">${seal(z)}<span class="t"><b lang="zh">${h}</b> ${n}</span><span class="m">${d}</span>${b?bar(a,b):""}${lst(l)}</button>`).join("")}</div></section>
+<div class="hb-slot" id="hb-rencana"></div>
+<div class="hb-slot hb-duo" id="hb-uji"></div>
+${bms.length?`<section class="hb-sec" aria-labelledby="hb-bm-h"><h3 class="hb-lb" id="hb-bm-h">Bookmark tata bahasa (${bms.length})</h3><div class="hb-list">`+bms.slice(0,10).map(b=>`<button type="button" class="bm" data-k="${b.k}">${IK.tanda}<b>${b.t}</b><small>${GN[b.s]} · L${b.l}</small></button>`).join("")+`</div></section>`:""}
+<div class="hb-slot" id="hb-progres"></div>
+<div class="hb-slot" id="hb-info"></div>
+</div>`;
  v.querySelectorAll(".tl").forEach(b=>b.onclick=()=>goMode(b.dataset.m));$("hs").onclick=openS;
  if($("rsm"))$("rsm").onclick=()=>goMode(LM._,true);
  v.querySelectorAll(".bm").forEach(b=>b.onclick=()=>{const[s,l,i]=b.dataset.k.split("|");openGr(s,l,i)});
@@ -2125,55 +2277,57 @@ document.addEventListener("keydown",e=>{if(e.key=="Escape"&&$("srch").style.disp
     let dueN=0;try{if(typeof srsDueCount==="function")dueN=srsDueCount()|0}catch(e){}
     const dueBig=dueN>Math.max(40,goal*4);
     try{toneApply()}catch(e){}
+    const custom=!PRESETS.includes(goal);
     const panel=document.createElement("section");
-    panel.className="daily-panel";
+    panel.className="daily-panel hb-card";
     panel.innerHTML=`
       <div class="daily-head">
-        <div><h3>Target belajar harian</h3><p>Setiap kali menilai kartu kosakata, progres harian bertambah.</p></div>
-        <div class="daily-count">${today}<span style="font-size:13px;color:var(--mute);font-weight:500"> / ${goal}</span></div>
+        <div><h3>Target belajar harian</h3><p>${today>=goal?"Target hari ini tercapai.":`Tinggal ${goal-today} kartu untuk mencapai target.`}</p></div>
+        <div class="daily-count"><b>${today}</b> / ${goal} kartu</div>
       </div>
-      <div class="daily-track" role="progressbar" aria-valuenow="${Math.min(today,goal)}" aria-valuemin="0" aria-valuemax="${goal}"><span style="width:${pct}%"></span></div>
-      <div class="daily-meta"><span>${today>=goal?"Target hari ini tercapai.":`Tinggal ${goal-today} kartu untuk mencapai target.`}</span><span>${pct}%</span></div>
-      <div class="daily-goals" aria-label="Pilih target harian">
-        ${PRESETS.map(n=>`<button data-goal="${n}" class="${n===goal?"on":""}">${n} kartu</button>`).join("")}
+      <div class="daily-track" role="progressbar" aria-label="Progres target hari ini" aria-valuenow="${Math.min(today,goal)}" aria-valuemin="0" aria-valuemax="${goal}"><span style="width:${pct}%"></span></div>
+      <div class="daily-week-h"><span>7 hari terakhir</span><span>Runtun <b>${streak}</b> hari, aktif <b>${wk}</b> dari 7 hari</span></div>
+      <div class="weekly-activity" role="img" aria-label="Kartu dinilai tujuh hari terakhir: ${days.map(d=>d.label+" "+d.n).join(", ")}">
+        ${days.map((d,i)=>`<div class="weekday${i===6?" now":""}" title="${d.k}: ${d.n} kartu"><div class="weekbar">${d.n?`<span style="height:${Math.max(12,Math.round(d.n/max*100))}%"></span>`:""}</div><small>${d.label}</small></div>`).join("")}
       </div>
-      <form class="daily-custom" autocomplete="off">
+      ${dueBig?`<div class="backlog"><b>${dueN} kartu menunggu diulang.</b> Selesaikan tunggakan ini dulu sebelum menambah kartu baru, supaya jadwal pengulangan tidak makin menumpuk.</div>`:""}
+      <div class="daily-goals" role="group" aria-label="Pilih target harian">
+        ${PRESETS.map(n=>`<button type="button" data-goal="${n}" class="${n===goal?"on":""}" aria-pressed="${n===goal}">${n} kartu</button>`).join("")}
+        <button type="button" data-goal-lain class="${custom?"on":""}" aria-pressed="${custom}" aria-expanded="false" aria-controls="daily-custom">${custom?goal+" kartu":"Lainnya"}</button>
+      </div>
+      <form class="daily-custom" id="daily-custom" autocomplete="off" hidden>
         <label for="daily-custom-input">Atur sendiri</label>
-        <input id="daily-custom-input" type="number" inputmode="numeric" min="${GOAL_MIN}" max="${GOAL_MAX}" step="1" placeholder="${GOAL_MIN}–${GOAL_MAX}" value="${PRESETS.includes(goal)?"":goal}">
-        <button type="submit" class="${PRESETS.includes(goal)?"":"on"}">Simpan</button>
+        <input id="daily-custom-input" type="number" inputmode="numeric" min="${GOAL_MIN}" max="${GOAL_MAX}" step="1" placeholder="${GOAL_MIN}–${GOAL_MAX}" value="${custom?goal:""}">
+        <button type="submit">Simpan</button>
       </form>
       <div class="daily-custom-msg" role="status" aria-live="polite"></div>
-      <div class="hms" style="margin:18px 0 8px">AKTIVITAS 7 HARI · RUNTUN ${streak} HARI · AKTIF ${wk} DARI 7 HARI</div>
-      <div class="weekly-activity" aria-label="Aktivitas belajar tujuh hari">
-        ${days.map(d=>`<div class="weekday" title="${d.k}: ${d.n} kartu"><div class="weekbar"><span style="height:${d.n?Math.max(8,Math.round(d.n/max*100)):3}%"></span></div><small>${d.label}</small></div>`).join("")}
-      </div>
-      <p class="thint" style="margin:8px 0 0">Runtun tetap jalan kalau kamu bolong satu hari; dua hari berurutan baru memutusnya.</p>
-      ${dueBig?`<div class="backlog"><b>${dueN} kartu menunggu diulang.</b> Selesaikan tunggakan ini dulu sebelum menambah kartu baru, supaya jadwal pengulangan tidak makin menumpuk.</div>`:""}
       <div class="daily-actions">
-        <button data-daily-action="vocab">Mulai belajar kosakata</button>
-        <button data-daily-action="practice">Mulai latihan</button>
+        <button type="button" class="hb-btn pri" data-daily-action="vocab">Belajar kosakata</button>
+        <button type="button" class="hb-btn" data-daily-action="practice">Buka latihan</button>
       </div>
-      <div class="tonerow">
-        <div><div class="tlbl">Warna nada pada pinyin</div><div class="thint">Memakai palet 五行. Tanda nada tetap ditampilkan, warna hanya pelengkap.</div></div>
-        <button type="button" id="tone-tg" class="${toneOn()?"on":""}" aria-pressed="${toneOn()?"true":"false"}">${toneOn()?"Hidup":"Mati"}</button>
-      </div>
-      <details class="vnote">
-        <summary>Daftar kosakata: ${HSKV.std} · HSK 1–5 · ${HSKV.total.toLocaleString("id-ID")} kata</summary>
+      <p class="thint">Progres bertambah setiap kali kamu menilai kartu kosakata. Runtun tetap jalan kalau kamu bolong satu hari; dua hari berurutan baru memutusnya.</p>`;
+    hbSlot(v,"hb-hari").appendChild(panel);
+    /* catatan daftar kosakata: paling bawah beranda */
+    const info=document.createElement("details");
+    info.className="vnote";
+    info.innerHTML=`
+        <summary><span>Daftar kosakata: ${HSKV.std} · HSK 1–5 · ${HSKV.total.toLocaleString("id-ID")} kata</span>${IK.maju}</summary>
         <div class="vbd">
           <p>Situs ini memakai daftar <b>${HSKV.std}</b>: ${HSKV.levels.map(L=>HSKV.per[L].toLocaleString("id-ID")).join(" + ")} = <b>${HSKV.total.toLocaleString("id-ID")}</b> kata untuk HSK 1–5. HSK 5 memakai daftar resmi 1.300 kata dan dikelompokkan per pelajaran buku 5上 dan 5下.</p>
           <p>Menurut sumber sekunder per ${HSKV.asof}, ujian HSK reguler format lama yang terakhir dijadwalkan <b>${HSKV.last20}</b>, dan ujian format baru (HSK 3.0) yang pertama <b>${HSKV.first30}</b>. Pada HSK 3.0, HSK 4 berisi <b>2.000 kata</b>, sekitar 800 kata lebih banyak daripada daftar HSK 1–4 di situs ini (${(HSKV.total-HSKV.per[7]).toLocaleString("id-ID")} kata).</p>
           <p>Tanggal itu <b>belum dipastikan ke sumber resmi</b>. Kalau kamu akan ikut ujian, periksa <a href="${HSKV.src}" target="_blank" rel="noopener noreferrer">chinesetest.cn</a> dan pusat ujian tempatmu mendaftar.</p>
-        </div>
-      </details>`;
-    const viewHead=v.querySelector(".hmt");
-    if(viewHead) viewHead.insertAdjacentElement("afterend",panel); else v.prepend(panel);
+        </div>`;
+    hbSlot(v,"hb-info").appendChild(info);
     panel.querySelectorAll("[data-goal]").forEach(b=>b.addEventListener("click",()=>{
       localStorage.setItem(GOAL,b.dataset.goal);
       renderHome(v);
     }));
-    const toneBtn=panel.querySelector("#tone-tg");
-    if(toneBtn)toneBtn.addEventListener("click",()=>{toneSet(!toneOn());renderHome(v)});
-    const customForm=panel.querySelector(".daily-custom");
+    const customForm=panel.querySelector(".daily-custom"),lain=panel.querySelector("[data-goal-lain]");
+    lain.addEventListener("click",()=>{
+      const buka=customForm.hidden;
+      customForm.hidden=!buka;lain.setAttribute("aria-expanded",String(buka));
+      if(buka)customForm.querySelector("input").focus();
+    });
     customForm.addEventListener("submit",e=>{
       e.preventDefault();
       const raw=customForm.querySelector("input").value.trim();
@@ -2204,12 +2358,12 @@ document.addEventListener("keydown",e=>{if(e.key=="Escape"&&$("srch").style.disp
   baseHome(v);
   const due=srsDueCount(),all=srsAllCount();
   const panel=document.createElement("section");
-  panel.className="srs-panel";
-  panel.innerHTML=`<h3>Pengulangan kosakata</h3><p>Sistem menjadwalkan ulang kartu berdasarkan penilaian Anda.</p><div class="srs-number">${due}<span style="font-size:13px;font-weight:500;color:var(--mute)"> kartu perlu diulang</span></div><p>${all} kartu sudah memiliki jadwal pengulangan. Jadwal tersimpan di browser ini.</p><div style="margin-top:12px"><button class="primary" id="srs-start" ${due===0?"disabled":""}>${due===0?"Belum ada kartu jatuh tempo":"Mulai pengulangan ("+due+")"}</button></div>`;
+  panel.className="srs-panel hb-card";
+  panel.innerHTML=`<div class="hb-tx"><h3>Pengulangan kosakata</h3><p>${due?`<b>${due}</b> kartu perlu diulang hari ini.`:"Belum ada kartu jatuh tempo."} ${all.toLocaleString("id-ID")} kartu sudah terjadwal.</p></div>${due?`<button type="button" class="hb-btn pri" id="srs-start">Mulai pengulangan</button>`:""}`;
   const daily=v.querySelector(".daily-panel");
-  if(daily)daily.insertAdjacentElement("afterend",panel);else v.prepend(panel);
+  if(daily)daily.insertAdjacentElement("afterend",panel);else hbSlot(v,"hb-hari").appendChild(panel);
   const start=panel.querySelector("#srs-start");
-  start.addEventListener("click",()=>{S.review=true;S.mode="hsk";S.vm="hsk";S.lv=0;S.ch=0;S.tab="study";S.i=0;S.flip=false;render();scrollTo(0,0)});
+  if(start)start.addEventListener("click",()=>{S.review=true;S.mode="hsk";S.vm="hsk";S.lv=0;S.ch=0;S.tab="study";S.i=0;S.flip=false;render();scrollTo(0,0)});
  };
 })();
 
@@ -2225,7 +2379,7 @@ document.addEventListener("keydown",e=>{if(e.key=="Escape"&&$("srch").style.disp
  }
  function barRow(label,st,mode,level){
    const pct=n=>st.total?Math.round(n/st.total*100):0;
-   return `<div class="an-row"><div class="an-row-top"><b>${label}</b><span>${st.known} dikenal · ${st.learning} diulang · ${st.unseen} belum dinilai</span></div><div class="an-stack" role="img" aria-label="${label}: ${st.known} dikenal, ${st.learning} masih belajar, ${st.unseen} belum dinilai"><i class="known" style="width:${pct(st.known)}%"></i><i class="learning" style="width:${pct(st.learning)}%"></i><i class="unseen" style="width:${pct(st.unseen)}%"></i></div><div style="display:flex;justify-content:space-between;align-items:center;margin-top:5px;font-size:11px;color:var(--mute)"><span>${st.total?Math.round(st.known/st.total*100):0}% dinilai sudah tahu</span><button class="sm an-open" data-mode="${mode}" data-level="${level}" style="margin:0">Lihat materi →</button></div></div>`;
+   return `<button type="button" class="an-row an-open" data-mode="${mode}" data-level="${level}" aria-label="${label}: ${st.known} dikenal, ${st.learning} masih belajar, ${st.unseen} belum dinilai. Buka materi."><span class="an-row-top"><b>${label}</b><span>${pct(st.known)}%</span></span><span class="an-stack"><i class="known" style="width:${pct(st.known)}%"></i><i class="learning" style="width:${pct(st.learning)}%"></i></span><span class="an-row-sub">${st.known.toLocaleString("id-ID")} dikenal · ${st.learning.toLocaleString("id-ID")} diulang · ${st.unseen.toLocaleString("id-ID")} belum dinilai</span>${IK.maju}</button>`;
  }
  renderHome=function(v){
    baseHomeAnalytics(v);
@@ -2237,36 +2391,33 @@ document.addEventListener("keydown",e=>{if(e.key=="Escape"&&$("srch").style.disp
    const GPnow=readObj('hsk_gp');let grammarTotal=0;Object.values(GR.d).forEach(arr=>arr.forEach(x=>grammarTotal+=gitems(x)));
    const grammarDone=Object.values(GPnow).filter(Boolean).length;
    const rdn=readObj('hsk_rdone');
-   const panel=document.createElement('section');panel.className='analytics';panel.id='analytics-panel';
+   const nf=n=>Number(n).toLocaleString('id-ID');
+   const panel=document.createElement('section');panel.className='analytics hb-card';panel.id='analytics-panel';
    panel.innerHTML=`
     <h3>Analitik penguasaan materi</h3>
     <p class="an-sub">Ringkasan berdasarkan penilaian kartu, jadwal pengulangan, dan progres materi yang tersimpan di browser ini.</p>
     <div class="an-kpis">
-      <div class="an-kpi ok"><strong>${all.known}</strong><span>Kartu dinilai sudah tahu</span></div>
-      <div class="an-kpi ac"><strong>${all.learning}</strong><span>Kartu masih perlu dipelajari</span></div>
-      <div class="an-kpi"><strong>${all.unseen}</strong><span>Kartu belum dinilai</span></div>
-      <div class="an-kpi ac"><strong>${due}</strong><span>Kartu jatuh tempo untuk SRS</span></div>
+      <div class="an-kpi ok"><strong>${nf(all.known)}</strong><span>Kartu dinilai sudah tahu</span></div>
+      <div class="an-kpi ac"><strong>${nf(all.learning)}</strong><span>Kartu masih perlu dipelajari</span></div>
+      <div class="an-kpi"><strong>${nf(all.unseen)}</strong><span>Kartu belum dinilai</span></div>
+      <div class="an-kpi"><strong>${nf(due)}</strong><span>Kartu jatuh tempo untuk SRS</span></div>
     </div>
-    <div class="an-section-title">KOSAKATA HSK</div>
-    <div class="an-legend"><span><i class="an-dot" style="background:var(--ok)"></i>Dinilai sudah tahu</span><span><i class="an-dot" style="background:var(--acc)"></i>Masih belajar</span><span><i class="an-dot" style="background:#a69a88"></i>Belum dinilai</span></div>
-    ${hskRows.map(r=>barRow(lvT(r.l),r.st,'hsk',r.l)).join('')}
-    <div class="an-section-title">KOSAKATA TEKNIS</div>
-    ${techRows.map(r=>barRow(r.l===5?'Bandara':'Harga & Business Deal',r.st,'tek',r.l)).join('')}
-    <div class="an-section-title">MATERI LAIN</div>
-    <div class="an-kpis">
-      <div class="an-kpi"><strong>${grammarDone}/${grammarTotal}</strong><span>Poin tata bahasa ditandai paham</span></div>
-      <div class="an-kpi"><strong>${Object.keys(rdn).length}/${RD.length}</strong><span>Cerita bacaan tercatat dibaca</span></div>
+    <h4 class="an-section-title">Kosakata HSK</h4>
+    <div class="an-legend" aria-hidden="true"><span><i class="an-dot known"></i>Dinilai sudah tahu</span><span><i class="an-dot learning"></i>Masih belajar</span><span><i class="an-dot"></i>Belum dinilai</span></div>
+    <div class="an-rows">${hskRows.map(r=>barRow(lvT(r.l),r.st,'hsk',r.l)).join('')}</div>
+    <h4 class="an-section-title">Kosakata teknis</h4>
+    <div class="an-rows">${techRows.map(r=>barRow(r.l===5?'Bandara':'Harga & Business Deal',r.st,'tek',r.l)).join('')}</div>
+    <h4 class="an-section-title">Materi lain</h4>
+    <div class="an-kpis two">
+      <div class="an-kpi"><strong>${nf(grammarDone)} / ${nf(grammarTotal)}</strong><span>Poin tata bahasa ditandai paham</span></div>
+      <div class="an-kpi"><strong>${Object.keys(rdn).length} / ${RD.length}</strong><span>Cerita bacaan tercatat dibaca</span></div>
     </div>
-    <p class="an-foot">Catatan: “Sudah tahu” berasal dari penilaian mandiri, bukan hasil tes objektif. Jumlah bacaan menunjukkan catatan cerita yang dibaca, bukan bukti pemahaman. ${scheduled} kartu memiliki jadwal SRS.</p>
-    <div class="an-actions"><button class="an-primary" id="an-review" ${due===0?'disabled':''}>${due?'Mulai pengulangan ('+due+')':'Tidak ada kartu jatuh tempo'}</button><button id="an-test">Buka latihan</button></div>`;
-   const srsPanel=v.querySelector('.srs-panel');
-   if(srsPanel)srsPanel.insertAdjacentElement('afterend',panel);else{const daily=v.querySelector('.daily-panel');if(daily)daily.insertAdjacentElement('afterend',panel);else v.appendChild(panel)}
+    <p class="an-foot">Catatan: “Sudah tahu” berasal dari penilaian mandiri, bukan hasil tes objektif. Jumlah bacaan menunjukkan catatan cerita yang dibaca, bukan bukti pemahaman. ${nf(scheduled)} kartu memiliki jadwal SRS.</p>`;
+   hbSlot(v,'hb-progres').appendChild(panel);
    panel.querySelectorAll('.an-open').forEach(b=>b.addEventListener('click',()=>{
      const mode=b.dataset.mode,level=+b.dataset.level;
      S.review=false;S.mode=mode;S.vm=mode;S.lv=mode==='hsk'?level:0;S.tk=mode==='tek'?level:S.tk;S.ch=0;S.i=0;S.tab='study';S.flip=false;render();scrollTo(0,0);
    }));
-   panel.querySelector('#an-review').addEventListener('click',()=>{if(!due)return;S.review=true;S.mode='hsk';S.vm='hsk';S.lv=0;S.ch=0;S.tab='study';S.i=0;S.flip=false;render();scrollTo(0,0)});
-   panel.querySelector('#an-test').addEventListener('click',()=>{S.review=false;S.mode='lt';S.lk='su';S.ch=0;S.i=0;render();scrollTo(0,0)});
  };
 })();
 
@@ -2311,7 +2462,7 @@ function renderExam(v,msg=''){
 }
 // Sisipkan pintasan ujian ke dashboard yang sudah ada tanpa mengganti fitur lama.
 const _renderHomeBeforeExam=renderHome;
-renderHome=function(v){_renderHomeBeforeExam(v);const panel=document.createElement('section');panel.className='exam-home';panel.innerHTML='<div class="exam-title" style="font-size:17px">模拟考试 · Simulasi Ujian</div><p>Uji kosakata dengan soal acak, batas waktu, nilai akhir, dan koreksi jawaban yang salah.</p><div class="row"><button id="home-exam-start">Mulai simulasi ujian</button></div>';v.appendChild(panel);panel.querySelector('#home-exam-start').onclick=()=>{S.mode='exam';renderExam($('view'))}}
+renderHome=function(v){_renderHomeBeforeExam(v);const panel=document.createElement('section');panel.className='exam-home hb-card hb-act';panel.innerHTML='<div><h3 class="exam-title">模拟考试 · Simulasi Ujian</h3><p>Uji kosakata dengan soal acak, batas waktu, nilai akhir, dan koreksi jawaban yang salah.</p></div><button type="button" class="hb-btn" id="home-exam-start">Mulai simulasi ujian</button>';hbSlot(v,'hb-uji').appendChild(panel);panel.querySelector('#home-exam-start').onclick=()=>{S.mode='exam';renderExam($('view'))}}
 
 
 
@@ -2352,7 +2503,7 @@ function renderErrorBank(msg=''){
 }
 // Pintasan bank kesalahan ditambahkan ke panel simulasi ujian di dashboard.
 const _renderHomeStage4=renderHome;
-renderHome=function(v){_renderHomeStage4(v);const panel=document.createElement('section');panel.className='exam-home';const bank=errRead();panel.innerHTML=`<div class="exam-title" style="font-size:17px">错题本 · Bank Kesalahan</div><p>${bank.length?`${bank.length} kosakata tersimpan untuk diulang. Prioritas latihan berdasarkan frekuensi kesalahan.`:'Kosakata yang salah atau belum dijawab saat ujian akan disimpan di sini.'}</p><div class="row"><button id="home-error-bank">Buka bank kesalahan (${bank.length})</button></div>`;v.appendChild(panel);panel.querySelector('#home-error-bank').onclick=()=>renderErrorBank()};
+renderHome=function(v){_renderHomeStage4(v);const panel=document.createElement('section');panel.className='exam-home hb-card hb-act';const bank=errRead();panel.innerHTML=`<div><h3 class="exam-title">错题本 · Bank Kesalahan</h3><p>${bank.length?`${bank.length} kosakata tersimpan untuk diulang. Prioritas latihan berdasarkan frekuensi kesalahan.`:'Kosakata yang salah atau belum dijawab saat ujian akan disimpan di sini.'}</p></div><button type="button" class="hb-btn" id="home-error-bank">Buka bank kesalahan (${bank.length})</button>`;hbSlot(v,'hb-uji').appendChild(panel);panel.querySelector('#home-error-bank').onclick=()=>renderErrorBank()};
 // Tombol dari hasil ujian memudahkan perpindahan langsung ke bank kesalahan.
 const _exResultsStage4=exResults;
 exResults=function(){_exResultsStage4();const host=$('view');if(host&&!host.querySelector('#ex-error-bank')){const b=document.createElement('button');b.id='ex-error-bank';b.textContent='Buka bank kesalahan';b.style.marginTop='10px';const actions=host.querySelector('.exam-card .exam-actions');if(actions)actions.appendChild(b);b.onclick=()=>renderErrorBank()}};
@@ -2458,7 +2609,7 @@ function downloadBackup(){
    const steps=[
      {id:'review',title:'Ulangi kartu yang jatuh tempo',detail:`${due} kartu menunggu pengulangan`,count:due,mins:Math.max(1,Math.ceil(due*0.4)),action:'review'},
      {id:'errors',title:'Perbaiki kosakata yang sering salah',detail:`${errors} kosakata di bank kesalahan`,count:errors,mins:Math.max(1,Math.ceil(errors*0.6)),action:'errors'},
-     {id:'new',title:'Lanjutkan belajar kosakata',detail:`${unseen} kartu belum pernah dinilai`,count:unseen,mins:5,action:'new'}
+     {id:'new',title:'Lanjutkan belajar kosakata',detail:`${unseen.toLocaleString('id-ID')} kartu belum pernah dinilai`,count:unseen,mins:5,action:'new'}
    ];
    const active=steps.filter(x=>x.count>0);
    return {steps,active,unseen,due,errors,mins:active.reduce((n,x)=>n+x.mins,0)};
@@ -2467,13 +2618,14 @@ function downloadBackup(){
    _renderHomeStage6(v);
    if(!v||v.querySelector('#adaptive-study-plan'))return;
    const p=getStudyPlan();
-   const panel=document.createElement('section');panel.id='adaptive-study-plan';panel.className='exam-home';
-   panel.innerHTML=`<div class="exam-title" style="font-size:17px">学习计划 · Rencana Belajar Adaptif</div>
+   const panel=document.createElement('section');panel.id='adaptive-study-plan';panel.className='exam-home hb-card';
+   const lbl=x=>x.count===0?'Mulai':(x.action==='review'?'Ulangi sekarang':x.action==='errors'?'Latih kesalahan':'Mulai belajar');
+   const utama=p.active.length?p.active[0].id:'';   /* langkah berprioritas tertinggi yang masih ada isinya */
+   panel.innerHTML=`<div class="hb-card-h"><h3 class="exam-title">学习计划 · Rencana Belajar Adaptif</h3>${p.mins?`<span class="hb-chip">Sekitar ${p.mins} menit</span>`:''}</div>
      <p>Urutan sesi disusun dari data yang tersimpan di perangkat: pengulangan yang jatuh tempo, bank kesalahan, lalu kosakata yang belum dinilai. Estimasi waktu bersifat perkiraan, bukan batas waktu.</p>
-     <div class="exam-stats"><span>Perkiraan durasi: <b>${p.mins} menit</b></span><span>Pengulangan: <b>${p.due}</b></span><span>Kesalahan: <b>${p.errors}</b></span><span>Belum dinilai: <b>${p.unseen}</b></span></div>
-     <div class="adaptive-steps">${p.steps.map((x,i)=>`<div class="adaptive-step ${x.count===0?'is-done':''}"><div class="adaptive-num">${i+1}</div><div class="adaptive-copy"><b>${x.title}</b><span>${x.detail} · sekitar ${x.mins} menit</span></div><button data-adaptive="${x.action}" ${x.count===0&&x.action!=='new'?'disabled':''}>${x.count===0?(x.action==='new'?'Mulai':'Selesai'):(x.action==='review'?'Ulangi sekarang':x.action==='errors'?'Latih kesalahan':'Mulai belajar')}</button></div>`).join('')}</div>
+     <ol class="adaptive-steps">${p.steps.map((x,i)=>`<li class="adaptive-step ${x.count===0?'is-done':''}"><span class="adaptive-num" aria-hidden="true">${i+1}</span><div class="adaptive-copy"><b>${x.title}</b><span>${x.detail} · sekitar ${x.mins} menit</span></div>${x.count===0&&x.action!=='new'?`<span class="hb-idle">${IK.cek}Selesai</span>`:`<button type="button" class="hb-btn${x.id===utama?' pri':''}" data-adaptive="${x.action}">${lbl(x)}</button>`}</li>`).join('')}</ol>
      <p class="adaptive-note">Saran praktis: selesaikan sesi yang prioritasnya lebih tinggi terlebih dahulu. Jika tidak ada kartu jatuh tempo atau kesalahan, langsung mulai kosakata baru.</p>`;
-   const backup=v.querySelector('#backup-panel');if(backup)backup.insertAdjacentElement('afterend',panel);else v.appendChild(panel);
+   hbSlot(v,'hb-rencana').appendChild(panel);
    panel.querySelectorAll('[data-adaptive]').forEach(b=>b.addEventListener('click',()=>{
      const a=b.dataset.adaptive;
      if(a==='review'){S.review=true;S.mode='hsk';S.vm='hsk';S.lv=0;S.ch=0;S.tab='study';S.i=0;S.flip=false;render();scrollTo(0,0)}
@@ -2566,7 +2718,7 @@ function downloadBackup(){
  function title(c){const n=nama(c);return '考试倒计时 · Persiapan Ujian'+(n.length&&!editing?' '+esc(n.join(' dan ')):'')}
  function drawForm(el,c){
   const first=!ready(c),kk=c.kk,lv=first&&c.lv===0&&!kk?-1:c.lv,min=ymd(new Date());   /* -1: belum memilih (tidak ada yang tertandai) */
-  el.innerHTML=`<div class="exam-title" style="font-size:17px">${title(c)}</div>
+  el.innerHTML=`<h3 class="exam-title">${title(c)}</h3>
   <p class="prep-intro">${first?'Pilih ujian yang kamu ikuti dan tanggalnya. Hitung mundur dan tugas harian akan menyesuaikan.':'Ubah ujian atau tanggalnya.'}</p>
   <div class="prep-fl" id="pf-lv-lb">Ujian tertulis</div>
   <div class="prep-chips" role="radiogroup" aria-labelledby="pf-lv-lb">${[0,1,2,3,4,5].map(i=>`<button type="button" role="radio" aria-checked="${lv===i}" data-lv="${i}">${i?'HSK '+i:'Tidak ikut'}</button>`).join('')}</div>
@@ -2594,7 +2746,7 @@ function downloadBackup(){
   const c=get();
   if(editing||!ready(c)){drawForm(el,c);return}
   const n=daysLeft(c),ph=phase(n,c),p=today(),T=tasks(c),isD=x=>!!(p.done[x.id]||x.auto),dn=T.filter(isD).length,st=streak(p.hist);
-  const top=`<div class="exam-title" style="font-size:17px">${title(c)}</div>
+  const top=`<h3 class="exam-title">${title(c)}</h3>
   <div class="prep-top"><div class="prep-n">${n>=0?n:'–'}<small>${n>=0?'hari lagi':'selesai'}</small></div><div class="prep-ph"><b>${ph[0]}</b><span>${ph[1]}</span></div></div>`;
   if(n<0){
    el.innerHTML=top+`<div class="prep-fa"><button type="button" class="prep-ed">Atur ujian berikutnya</button><button type="button" class="prep-off2">Matikan</button></div>`;
@@ -2663,8 +2815,19 @@ function downloadBackup(){
  },5000);
  window.hskPrep={get,setOn};
  const _h7=renderHome;
- renderHome=function(v){_h7(v);upd();if(!v||v.querySelector('#prep-panel')||!get().on)return;const el=document.createElement('section');el.id='prep-panel';el.className='prep';draw(el);const t=v.querySelector('.tiles');t?v.insertBefore(el,t):v.appendChild(el)};
+ renderHome=function(v){_h7(v);upd();if(!v||v.querySelector('#prep-panel')||!get().on)return;const el=document.createElement('section');el.id='prep-panel';el.className='prep hb-card';draw(el);hbSlot(v,'hb-siap').appendChild(el)};
 })();
+/* Warna nada pinyin: sakelar di menu profil (#am-list, dibuat skrip "auth-gate"), di bawah "Persiapan ujian".
+   Dulu berupa tombol Hidup/Mati di panel target harian beranda; dipindah karena ini pengaturan tampilan, bukan progres. */
+document.addEventListener("DOMContentLoaded",function(){
+ var list=document.getElementById("am-list");if(!list)return;
+ var r=document.createElement("button");r.type="button";r.id="acct-nada";r.className="am-row";r.setAttribute("role","switch");
+ r.innerHTML='<span class="am-ic"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5s6 6 6 10.5a6 6 0 01-12 0c0-4.5 6-10.5 6-10.5z"/></svg></span><span class="am-tx">Warna nada pinyin<small>Palet 五行, tanda nada tetap tampil</small></span><span class="am-sw" aria-hidden="true"></span>';
+ function upd(){r.setAttribute("aria-checked",String(toneOn()))}
+ r.addEventListener("click",function(){toneSet(!toneOn());upd()});
+ list.appendChild(r);upd();
+ if(window.hskMenu&&window.hskMenu.el)window.hskMenu.el.addEventListener("am-buka",upd);
+});
 /* === Akses terbatas (akun gratis vs pelanggan) ===
    Akses penuh = pemilik, akun berjenis langganan yang masih berlaku, atau akun trial yang punya tanggal akhir dan belum lewat
    (hskAuth.penuh; jenis akun datang dari server saat login dan tiap tarik sinkron). Akun lain (gratis, permanen lama, trial
@@ -2753,8 +2916,8 @@ var _renderHomeDasar=renderHome;
 renderHome=function(v){
  _renderHomeDasar(v);
  if(penuh())return;
- v.querySelectorAll('.tl[data-m="h3"] .m,.tl[data-m="tek"] .m,.tl[data-m="gr"] .m,.tl[data-m="rd"] .m,.tl[data-m="lt"] .m').forEach(function(e){e.insertAdjacentHTML("beforeend"," · 🔒 cuplikan")});
- var b=document.getElementById("home-exam-start");if(b)b.textContent="🔒 Simulasi ujian (pelanggan)";
+ v.querySelectorAll('.tl[data-m="h3"],.tl[data-m="tek"],.tl[data-m="gr"],.tl[data-m="rd"],.tl[data-m="lt"]').forEach(function(e){e.insertAdjacentHTML("beforeend",'<span class="hb-lk">'+IK.kunci+'Cuplikan</span>')});
+ var b=document.getElementById("home-exam-start");if(b)b.innerHTML=IK.kunci+"<span>Simulasi ujian (pelanggan)</span>";
  var t=v.querySelector(".tiles");
  if(t)t.insertAdjacentHTML("afterend",'<div class="h3up aksesinfo"><span><b>Akun gratis.</b> Seluruh kosakata HSK 2.0 terbuka. HSK 3.0, Kosakata Teknis, 语法, 阅读, dan 练习 berupa cuplikan; Simulasi ujian khusus pelanggan.</span><button class="lk-a" data-langganan="semua materi">Berlangganan</button></div>')};
 /* jenis akun berubah (mis. baru diaktifkan sebagai pelanggan, terbaca saat tarik sinkron): buka/kunci tanpa perlu muat ulang */
