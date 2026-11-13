@@ -11,6 +11,10 @@ mengisinya di tempat (tanpa mengubah posisi) setelah isi penuh diterima dari ser
 progres ("k<posisi>" di hsk_m dan jadwal ulang SRS), jadi urutan ini TIDAK boleh berubah, dan baris baru apa pun
 harus ditambahkan sesudah baris terakhir.
 
+Catatan tampilan: Bandara Lanjutan (level 12, paket ban) tidak punya chip sendiri di situs. index.html memindahkan barisnya ke level 5
+(Bandara) saat halaman dimuat dan menjadikan bab 1-3 sebagai bab 19-21 (bagian L-N) di Bandara; posisi di D tidak berubah. Berkas ini,
+berkas data penuh, dan isi hsk_isi tetap memakai level 12 / bab 1-3 dan tidak perlu diubah.
+
 Pakai:
   python3 tools/pasang_teknis.py --data /jalur/teknis-penuh.json --html index.html --server /jalur/hsk_isi_teknis.json
 
