@@ -133,6 +133,8 @@ body:not(.hm) h1{font-size:26px}body:not(.hm) .sub{display:none}
 .ik-bk{width:1.05em;height:1.05em;margin-right:.3em;vertical-align:-.17em;flex:none}
 .ik-i{width:1.1em;height:1.1em;margin-right:.3em;vertical-align:-.2em;flex:none}
 .ik-i.ik-0{margin:0}
+.lu{width:1.1em;height:1.1em;vertical-align:-.2em;flex:none}.lu.lm{margin-right:.35em}.lu.lr{margin-left:.35em}
+#authgate .ag-eye .lu,.mk-x .lu,#sx2 .lu,#sheet .x .lu,.prep-ck .lu{margin:0;vertical-align:middle}.gc2 .ck .lu{width:1em;height:1em;vertical-align:-.15em}
 .lockp .lk-i .ik-i{width:1em;height:1em;vertical-align:baseline;color:var(--mute)}
 .wrap{position:relative}#sbtn{position:absolute;right:0;top:9px;width:34px;height:34px;padding:0;border:1px solid var(--line);border-radius:50%;background:var(--card);color:var(--ink);display:flex;align-items:center;justify-content:center;letter-spacing:0;z-index:3}#sbtn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
 .pc{display:inline-block;font-size:11px;color:var(--acc);border:1px solid var(--acc);background:color-mix(in srgb,var(--acc) 10%,transparent);border-radius:999px;padding:2px 10px;margin:4px 0}
@@ -864,7 +866,7 @@ html.booting #authgate{display:none!important}
      <label for="ag-email">Email</label>
      <input id="ag-email" name="email" type="email" inputmode="email" autocomplete="username" autocapitalize="off" autocorrect="off" spellcheck="false">
      <label for="ag-pw">Password</label>
-     <div class="ag-pwrow"><input id="ag-pw" name="password" type="password" autocomplete="current-password" autocapitalize="off" spellcheck="false"><button type="button" class="ag-eye" id="ag-eye" aria-label="Tampilkan password" title="Tampilkan password">👁</button></div>
+     <div class="ag-pwrow"><input id="ag-pw" name="password" type="password" autocomplete="current-password" autocapitalize="off" spellcheck="false"><button type="button" class="ag-eye" id="ag-eye" aria-label="Tampilkan password" title="Tampilkan password"><svg class="lu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg></button></div>
      <div id="ag-kwrap" hidden>
       <button type="button" class="ag-ktog" id="ag-ktog" aria-expanded="false" aria-controls="ag-kfield">Punya kode undangan?</button>
       <div id="ag-kfield" hidden><label for="ag-kode">Kode undangan (boleh dikosongkan)</label><input id="ag-kode" name="kode" type="text" autocomplete="off" autocapitalize="characters" autocorrect="off" spellcheck="false"></div>
@@ -916,9 +918,23 @@ html.booting #authgate{display:none!important}
    <details class="lp-q"><summary>Saya lupa password. Bagaimana?</summary><p>Kirim pesan ke pengelola lewat ikon pesan di kotak masuk dan sertakan emailmu. Password-mu akan diatur ulang.</p></details>
   </section>
 
-  <footer class="lp-foot">© 2026 <b>韩冬岳</b>. Zenta 汉, belajar Mandarin harian.</footer>
+  <footer class="lp-foot">© 2026 <b>韩冬岳</b>. Zenta 汉, belajar Mandarin harian. Ikon: Lucide (lisensi ISC).</footer>
  </main>
 </div>
+<script id="ikon-lu">
+/* Ikon garis dari Lucide (https://lucide.dev), lisensi ISC. Copyright (c) for portions of Lucide are held by Cole Bemis 2013-2022 as part of Feather (MIT). All other copyright (c) for Lucide are held by Lucide Contributors 2022.
+   Izin memakai, menyalin, mengubah, dan membagikan diberikan dengan syarat pemberitahuan hak cipta ini disertakan. ikL(nama,kelas) menghasilkan teks SVG; ukurannya 1em mengikuti huruf di sekitarnya (kelas lm/lr = jarak kanan/kiri). */
+const IKL={
+ mata:'<path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/>',
+ matas:'<path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49"/><path d="M14.084 14.158a3 3 0 0 1-4.242-4.242"/><path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143"/><path d="m2 2 20 20"/>',
+ tutup:'<path d="M18 6 6 18"/><path d="m6 6 12 12"/>',
+ putar:'<polygon points="6 3 20 12 6 21 6 3"/>',
+ langkah:'<line x1="6" x2="6" y1="4" y2="20"/><polygon points="10,4 20,12 10,20"/>',
+ cek:'<path d="M20 6 9 17l-5-5"/>',
+ awas:'<path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/>',
+ sinkron:'<path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/>'};
+const ikL=(n,c)=>'<svg class="lu'+(c?' '+c:'')+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">'+IKL[n]+'</svg>';
+</script>
 <script id="auth-gate">
 /* Halaman depan + login. Berjalan paling awal, sebelum aplikasi.
    - Tanpa sesi yang sah, aplikasi disembunyikan dan halaman depan (penjelasan situs + kotak masuk/daftar) ditampilkan.
@@ -1129,7 +1145,7 @@ html.booting #authgate{display:none!important}
  })();
  eye.addEventListener("click",function(){
   var show=pw.type==="password";pw.type=show?"text":"password";
-  eye.setAttribute("aria-label",show?"Sembunyikan password":"Tampilkan password");eye.title=eye.getAttribute("aria-label");
+  eye.setAttribute("aria-label",show?"Sembunyikan password":"Tampilkan password");eye.title=eye.getAttribute("aria-label");eye.innerHTML=ikL(show?"matas":"mata");
  });
  if(!LS){msg("Penyimpanan browser dinonaktifkan, jadi login tidak bisa dipakai. Aktifkan penyimpanan situs (cookie/data situs) lalu muat ulang.");go.disabled=true}
  else{
@@ -1230,7 +1246,7 @@ html.booting #authgate{display:none!important}
  function build(){
   dlg=document.createElement("div");dlg.id="msk-dlg";dlg.hidden=true;
   dlg.innerHTML='<div class="mk-box" role="dialog" aria-modal="true" aria-labelledby="mk-ttl">'+
-   '<div class="mk-hd"><h2 id="mk-ttl">Saran &amp; masukan</h2><button type="button" class="mk-x" id="mk-x" aria-label="Tutup">✕</button></div>'+
+   '<div class="mk-hd"><h2 id="mk-ttl">Saran &amp; masukan</h2><button type="button" class="mk-x" id="mk-x" aria-label="Tutup">'+ikL("tutup")+'</button></div>'+
    '<p class="mk-sub">Ada ide, kata yang salah, atau bagian yang membingungkan? Ceritakan di sini.<br>Untuk <b>Usul fitur</b>, mana yang paling kamu butuhkan: audio tiap kata, latihan menulis, kalimat contoh, pengingat Telegram, atau mode luring?</p>'+
    '<form id="mk-form" novalidate>'+
    '<div class="mk-kinds" id="mk-kinds" role="radiogroup" aria-label="Jenis masukan"><button type="button" role="radio" data-k="saran" aria-checked="true">Saran</button><button type="button" role="radio" data-k="masalah" aria-checked="false">Masalah</button><button type="button" role="radio" data-k="fitur" aria-checked="false">Usul fitur</button><button type="button" role="radio" data-k="lain" aria-checked="false">Lainnya</button></div>'+
@@ -1355,9 +1371,9 @@ html.booting #authgate{display:none!important}
 })();
 </script>
 <nav id="nav"><button id="n-hm"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-7 8 7"/><path d="M6 10v9h12v-9"/></svg>主页</button><button id="n-vc"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M8 10h8M8 14h5"/></svg>词汇</button><button id="n-gr"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h11a3 3 0 013 3v13H8a3 3 0 01-3-3z"/><path d="M9 9h6M9 13h4"/></svg>语法</button><button id="n-rd"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6c3-1.5 6-1.5 9 0 3-1.5 6-1.5 9 0v13c-3-1.5-6-1.5-9 0-3-1.5-6-1.5-9 0z"/><path d="M12 6v13"/></svg>阅读</button><button id="n-lt"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1-4L16 5l3 3L8 19z"/><path d="M14 7l3 3"/></svg>练习</button><button id="n-hz"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M12 4v16M4 12h16" stroke-dasharray="2 2.4"/></svg>汉字</button></nav>
-<div id="srch"><div class="sh"><input id="sq" type="search" placeholder="Cari hanzi, pinyin, atau arti…" autocomplete="off"><button id="sx2" aria-label="Tutup">✕</button></div><div class="sf" id="sf"></div><div id="sr"></div></div>
+<div id="srch"><div class="sh"><input id="sq" type="search" placeholder="Cari hanzi, pinyin, atau arti…" autocomplete="off"><button id="sx2" aria-label="Tutup"><svg class="lu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="sf" id="sf"></div><div id="sr"></div></div>
 <div id="sheet"></div>
-<div class="foot">© 2026 <b>韩冬岳</b>. Hak cipta dilindungi.<br>Data goresan: Hanzi Writer &amp; Make Me a Hanzi (lisensi sumber terbuka masing-masing).</div>
+<div class="foot">© 2026 <b>韩冬岳</b>. Hak cipta dilindungi.<br>Data goresan: Hanzi Writer &amp; Make Me a Hanzi (lisensi sumber terbuka masing-masing). Ikon: Lucide (lisensi ISC).</div>
 </div>
 <script>/**
  * Hanzi Writer v3.7.3 | https://chanind.github.io/hanzi-writer
@@ -1528,7 +1544,7 @@ function renderWrite(L,v){
  }
  if(S.i>=L.length)S.i=0;const c=L[S.i],cs=[...c[0]].filter(x=>STR[x]);
  v.innerHTML=`<div class="wi"><div class="hz" style="font-size:44px">${c[0]}</div><div class="py">${pyHTML(c[1])}</div><div class="ar">${c[2]}</div>${posC(c)}${abr(c)}</div>`+cs.map((ch,n)=>`<div class="wc"><div class="wb" id="wb${n}"></div><div class="pos" id="wl${n}" style="margin-top:8px">${ch} · ${STR[ch].strokes.length} goresan</div>
- <div class="wctl"><button data-a="s">Langkah ▶</button><button data-a="a">Animasi</button><button data-a="q">Latihan</button><button data-a="r">Reset</button></div>
+ <div class="wctl"><button data-a="s">Langkah${ikL("langkah","lr")}</button><button data-a="a">Animasi</button><button data-a="q">Latihan</button><button data-a="r">Reset</button></div>
  <div class="steps">${STR[ch].strokes.map((_,k)=>`<figure>${stepSVG(STR[ch].strokes,k)}<figcaption>${k+1}</figcaption></figure>`).join("")}</div></div>`).join("")
  +`<div class="pos">${S.i+1} / ${L.length}</div><div class="row"><button id="pv">← Sebelumnya</button><button id="nx">Berikutnya →</button></div>`;
  cs.forEach((ch,n)=>{
@@ -1538,7 +1554,7 @@ function renderWrite(L,v){
    const a=b.dataset.a,N=STR[ch].strokes.length;w.cancelQuiz();
    if(a=="s"){if(k==0||k>=N){k=0;await w.hideCharacter({duration:0})}lab(`langkah ${k+1}/${N}`);await w.animateStroke(k);k++;if(k>=N)lab("selesai")}
    else if(a=="a"){k=0;lab("");w.animateCharacter()}
-   else if(a=="q"){k=0;lab("gambar goresan dengan jari");await w.hideCharacter({duration:0});w.quiz({showHintAfterMisses:2,onComplete:()=>lab("benar semua ✓")})}
+   else if(a=="q"){k=0;lab("gambar goresan dengan jari");await w.hideCharacter({duration:0});w.quiz({showHintAfterMisses:2,onComplete:()=>lab("benar semua")})}
    else{k=0;lab("");w.showCharacter({duration:0})}
   })});
  const go=d=>{S.i=(S.i+d+L.length)%L.length;render()};$("pv").onclick=()=>go(-1);$("nx").onclick=()=>go(1);
@@ -1560,16 +1576,16 @@ function goMode(m,rs){
 function openGr(set,l,i){S.gs=set;const G=GR.d[set]||[],ix=G.findIndex(x=>String(x.l)==String(l));S.mem.gr={ch:ix+1,i:0,tab:S.tab};S.gt=i;S.mode="hm";goMode("gr")}
 /* Ikon garis beranda: satu keluarga (kotak 24, garis 1.8, ujung membulat), sama dengan ikon menu navigasi. */
 const IKS='<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">';
-const IK={cari:IKS+'<circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>',
- maju:IKS+'<path d="M9 6l6 6-6 6"/></svg>',
- tanda:IKS+'<path d="M7 4h10a1 1 0 011 1v15l-6-4-6 4V5a1 1 0 011-1z"/></svg>',
- kunci:IKS+'<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg>',
- cek:IKS+'<path d="M5 12.5l4.5 4.5L19 7.5"/></svg>'};
+const IK={cari:IKS+'<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>',
+ maju:IKS+'<path d="m9 18 6-6-6-6"/></svg>',
+ tanda:IKS+'<path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>',
+ kunci:IKS+'<rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>',
+ cek:IKS+'<path d="M20 6 9 17l-5-5"/></svg>'};
 /* Ikon bookmark yang sama dengan daftar bookmark di beranda (IK.tanda), ukurannya ikut huruf. Dipakai di halaman 语法 menggantikan emoji. */
 const IKB=IK.tanda.replace("<svg ",'<svg class="ik-bk" ');
-/* Ikon garis audio dan gembok (keluarga yang sama dengan IK), ukurannya ikut huruf. Menggantikan emoji 🔊 dan 🔒 di UI.
+/* Ikon garis audio dan gembok (Lucide, keluarga yang sama dengan IK), ukurannya ikut huruf. Menggantikan emoji speaker dan gembok di UI.
    IKA/IKK dipakai di depan teks; IKA0/IKK0 untuk tombol atau penanda yang hanya berisi ikon. */
-const IKA=IKS.replace("<svg ",'<svg class="ik-i" ')+'<path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5H4z"/><path d="M15.5 9a4 4 0 010 6"/><path d="M18 6.5a8 8 0 010 11"/></svg>';
+const IKA=IKS.replace("<svg ",'<svg class="ik-i" ')+'<path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z"/><path d="M16 9a5 5 0 0 1 0 6"/><path d="M19.364 18.364a9 9 0 0 0 0-12.728"/></svg>';
 const IKK=IK.kunci.replace("<svg ",'<svg class="ik-i" ');
 const IKA0=IKA.replace('class="ik-i"','class="ik-i ik-0"'),IKK0=IKK.replace('class="ik-i"','class="ik-i ik-0"');
 /* Tempat panel tambahan di beranda. Panel dari blok lain masuk ke wadah bernama, bukan ditumpuk di akhir halaman:
@@ -1617,7 +1633,7 @@ function renderGr(v){
   const tot=G.reduce((a,x)=>a+gitems(x),0),dn=G.reduce((a,x)=>a+gdone(x),0),lg=GL&&GL.s==S.gs?GL:null,lx=lg?G.find(x=>x.l==lg.l):null;
   v.innerHTML=`<div class="pbar" style="margin-top:14px"><i style="width:${Math.round(dn/tot*100)}%"></i></div><p class="pos" style="text-align:left;margin:4px 0 10px"><b>${dn}</b> dari ${tot} poin dipahami · ${G.filter(x=>gdone(x)==gitems(x)).length}/${G.length} pelajaran selesai</p>
 ${lx?`<button class="rsm" id="gres"><span><small>Lanjutkan di sini</small><b>L${lx.l} · ${lx.n}</b></span><span>›</span></button>`:""}
-<div class="rl">${G.map((x,ix)=>{const d=gdone(x),n=gitems(x);let bk=0;x.p.forEach((_,i)=>{if(GB[gkey(x.l,i)])bk++});if(x.c&&GB[gkey(x.l,"c")])bk++;return `<button class="gc2${d==n?" dn":""}" data-i="${ix+1}"><span class="n">${x.l}</span><span class="b"><span class="t">${x.n}</span><span class="m">${d}/${n} poin dipahami${bk?" · "+IKB+bk:""}${lg&&lg.l==x.l?" · terakhir dibuka":""}</span><i class="mb"><u style="width:${Math.round(d/n*100)}%"></u></i></span><span class="ck">${d==n?"✓":"›"}</span></button>`}).join("")}</div>
+<div class="rl">${G.map((x,ix)=>{const d=gdone(x),n=gitems(x);let bk=0;x.p.forEach((_,i)=>{if(GB[gkey(x.l,i)])bk++});if(x.c&&GB[gkey(x.l,"c")])bk++;return `<button class="gc2${d==n?" dn":""}" data-i="${ix+1}"><span class="n">${x.l}</span><span class="b"><span class="t">${x.n}</span><span class="m">${d}/${n} poin dipahami${bk?" · "+IKB+bk:""}${lg&&lg.l==x.l?" · terakhir dibuka":""}</span><i class="mb"><u style="width:${Math.round(d/n*100)}%"></u></i></span><span class="ck">${d==n?ikL("cek"):"›"}</span></button>`}).join("")}</div>
 <div class="gn">Pinyin dibuat otomatis dan bisa keliru pada kata berbacaan ganda. Contoh bertanda "tambahan" ditulis oleh Claude dan belum dikoreksi guru atau penutur asli.</div>`;
   v.querySelectorAll(".gc2").forEach(b=>b.onclick=()=>{S.ch=+b.dataset.i;S.gt=null;render();scrollTo(0,0)});
   if($("gres"))$("gres").onclick=()=>{S.ch=G.findIndex(x=>x.l==lg.l)+1;S.gt=lg.i;render();scrollTo(0,0)};
@@ -1627,7 +1643,7 @@ ${lx?`<button class="rsm" id="gres"><span><small>Lanjutkan di sini</small><b>L${
  $("bc").innerHTML=`<b>语法</b> › ${GN[S.gs]} › L${x.l}`;
  const WC=w=>`<span><b>${w[0]}</b><small>${w[1]}</small>${w[2]?`<i>${w[2]}</i>`:""}</span>`,WS={laoshi:"Dari slide laoshi",sumber:"Dari referensi (kamus & situs belajar)",susun:"Contoh tambahan (disusun Claude, belum dikoreksi laoshi)"},WL=ws=>ws.some(w=>w[3])?["laoshi","sumber","susun"].map(s=>{const g=ws.filter(w=>w[3]==s);return g.length?`<div class="wlc">${WS[s]}</div><div class="wl">${g.map(WC).join("")}</div>`:""}).join(""):`<div class="wl">${ws.map(WC).join("")}</div>`;
  const E=(z,y,i,s)=>`<div class="gx"><div class="gz">${z}${AU[z]?` <button class="pl sm" data-aud="${enc(z)}">${IKA0}</button>`:""}</div><div class="gpy">${y}</div><div class="gi">${i}</div><div class="tg">${s=="b"?"contoh dari buku":s=="l"?"contoh dari laoshi":s=="r"?"contoh dari referensi":"contoh tambahan"}</div></div>`;
- const blk=(i,cls,title,sub,body)=>{const k=gkey(x.l,i),u=GP[k],b=GB[k];return `<details class="gp ${cls}${u?" dn":""}" data-i="${i}"${op.includes(String(i))?" open":""}><summary><b>${u?"✓ ":""}${b?IKB:""}${PYT(title)}</b><span>${sub}</span></summary><div class="bd">${body}<div class="row" style="justify-content:flex-start;margin-top:10px"><button class="pl sm gk ${u?"on":""}" data-k="u" data-i="${i}">${u?"✓ Sudah paham":"Tandai paham"}</button><button class="pl sm gk ${b?"on":""}" data-k="b" data-i="${i}">${IKB}${b?"Tersimpan":"Bookmark"}</button></div></div></details>`};
+ const blk=(i,cls,title,sub,body)=>{const k=gkey(x.l,i),u=GP[k],b=GB[k];return `<details class="gp ${cls}${u?" dn":""}" data-i="${i}"${op.includes(String(i))?" open":""}><summary><b>${u?ikL("cek","lm"):""}${b?IKB:""}${PYT(title)}</b><span>${sub}</span></summary><div class="bd">${body}<div class="row" style="justify-content:flex-start;margin-top:10px"><button class="pl sm gk ${u?"on":""}" data-k="u" data-i="${i}">${u?ikL("cek","lm")+"Sudah paham":"Tandai paham"}</button><button class="pl sm gk ${b?"on":""}" data-k="b" data-i="${i}">${IKB}${b?"Tersimpan":"Bookmark"}</button></div></div></details>`};
  v.innerHTML=`<div class="rt"><button id="gb">← Daftar pelajaran</button><span class="pos">${S.ch} / ${G.length}</span></div><h3 class="rh">${x.n}</h3><div class="pos" style="text-align:left;margin-bottom:6px">Pelajaran ${x.l} · ${gdone(x)}/${gitems(x)} poin dipahami</div>`
  +x.p.map((p,i)=>blk(i,"",p.t,p.f,`<p>${p.m}</p>${p.w?WL(p.w):""}${p.z?E(p.z,p.y,p.i,p.s):""}`)).join("")
  +(x.c?blk("c","gc","比一比 · "+x.c.a+(x.c.b?" vs "+x.c.b:""),x.c.s,`<div class="tg">${x.c.t=="b"?"perbandingan dari buku":"perbandingan tambahan (disusun Claude)"}</div>${x.c.d.map(d=>`<p>${d.n}</p>${E(d.z,d.y,d.i,d.s)}`).join("")}`):"")
@@ -1662,7 +1678,7 @@ const RP={"一个":"mq","一些":"mq","一家":"mq","一份":"mq","一壶":"mq",
 const posT=c=>(c&&c[6]?c[6].split(",").map(x=>POSL[x]||x).join(" · "):""),posC=c=>posT(c)?`<div class="pc">${posT(c)}</div>`:"";
 function openWord(t,sent){
  const c=vmap[t[0]],sh=$("sheet");
- sh.innerHTML=`<button class="x" id="sx">✕</button><div class="gz" style="font-size:34px">${t[0]}</div><div class="gpy" style="font-size:18px">${t[1].join(" ")}</div><div style="margin-top:6px">${c?c[2]:"Kata ini belum ada di daftar kosakata web."}</div>${(()=>{const l=c?posT(c):(RP[t[0]]||"").split(",").map(x=>POSL[x]||"").filter(Boolean).join(" · ");return l?`<div class="pc">${l}</div>`:""})()}${c?`<div class="tg">${c[3]==9?"Di luar daftar HSK 2 buku":c[3]==7?"HSK 5":c[3]>=5?"Kosakata Teknis":"HSK "+c[3]}</div>`:""}<div class="row">${AU[sent]?`<button class="pl" data-aud="${enc(sent)}">${IKA}Dengar kalimat</button>`:""}<button class="wd" data-say="${t[0]}">${IKA}Kata</button></div>`;
+ sh.innerHTML=`<button class="x" id="sx">${ikL("tutup")}</button><div class="gz" style="font-size:34px">${t[0]}</div><div class="gpy" style="font-size:18px">${t[1].join(" ")}</div><div style="margin-top:6px">${c?c[2]:"Kata ini belum ada di daftar kosakata web."}</div>${(()=>{const l=c?posT(c):(RP[t[0]]||"").split(",").map(x=>POSL[x]||"").filter(Boolean).join(" · ");return l?`<div class="pc">${l}</div>`:""})()}${c?`<div class="tg">${c[3]==9?"Di luar daftar HSK 2 buku":c[3]==7?"HSK 5":c[3]>=5?"Kosakata Teknis":"HSK "+c[3]}</div>`:""}<div class="row">${AU[sent]?`<button class="pl" data-aud="${enc(sent)}">${IKA}Dengar kalimat</button>`:""}<button class="wd" data-say="${t[0]}">${IKA}Kata</button></div>`;
  sh.style.display="block";$("sx").onclick=()=>{sh.style.display="none";document.querySelectorAll(".rw.sel").forEach(x=>x.classList.remove("sel"))};
  
 }
@@ -1675,10 +1691,10 @@ function renderRd(v){
  const n=S.ch>0&&S.ch<=all.length?S.ch:0;S.ch=n;$("ch").style.display="none";
  if(!n){
   $("bc").innerHTML=`<b>阅读</b> › ${lvn}`;
-  v.innerHTML=`<div class="pos" style="text-align:left;margin:6px 0 4px">${all.length} cerita · ketuk untuk membaca</div>`+all.map((s,i)=>{const[k,t]=stCov(s,lv),f=s.p[0].map(x=>x[0]).join("").slice(0,20);return `<div class="sc" data-n="${i+1}"><div class="rsn">${String(i+1).padStart(2,"0")}</div><div class="rsb"><b>${s.t}</b><em>${f}…</em><span>≈${cjkN(s)} karakter · ${s.p.length} paragraf · ${Math.round(k/t*100)}% kata ada di daftar</span></div><div class="sd">${RR[s.t]?"✓":"›"}</div></div>`}).join("");
+  v.innerHTML=`<div class="pos" style="text-align:left;margin:6px 0 4px">${all.length} cerita · ketuk untuk membaca</div>`+all.map((s,i)=>{const[k,t]=stCov(s,lv),f=s.p[0].map(x=>x[0]).join("").slice(0,20);return `<div class="sc" data-n="${i+1}"><div class="rsn">${String(i+1).padStart(2,"0")}</div><div class="rsb"><b>${s.t}</b><em>${f}…</em><span>≈${cjkN(s)} karakter · ${s.p.length} paragraf · ${Math.round(k/t*100)}% kata ada di daftar</span></div><div class="sd">${RR[s.t]?ikL("cek"):"›"}</div></div>`}).join("");
   v.querySelectorAll(".sc").forEach(e=>e.onclick=()=>{S.ch=+e.dataset.n;render();scrollTo(0,0)});return}
  const s=all[n-1];RC=[s];$("bc").innerHTML=`<b>阅读</b> › ${lvn} › ${s.t}`;const[k,t]=stCov(s,lv);
- v.innerHTML=`<button class="bk" id="bk">← Daftar cerita</button><div class="pos" style="text-align:right;margin:8px 0 0">Cerita ${n} dari ${all.length} · ${lvn}</div><h2 class="rt">${s.t}</h2><div class="pos" style="text-align:left">${k} dari ${t} kata berbeda ada di daftar ${lv==5?"kosakata web":lv==7?"HSK 1–5":"HSK 1–"+lv} (${Math.round(k/t*100)}%)</div>${AU["story|"+s.t]?`<div class="row" style="justify-content:flex-start;margin:6px 0"><button class="pl" data-aud="${enc("story|"+s.t)}">${IKA}Dengarkan cerita</button></div>`:""}<div class="rc"><button data-k="py" class="${RS.py?"on":""}">Pinyin</button><button data-k="tc" class="${RS.tc?"on":""}">Warna nada</button><button data-k="tr" class="${RS.tr?"on":""}">Terjemahan</button><button data-k="a-">A−</button><button data-k="a+">A+</button></div><div class="rdc"><div class="rd ${RS.py?"":"nopy"} ${RS.tc?"tc":""}" style="font-size:${RS.sz}px">`+s.p.map((p,pi)=>`<p>${p.map((t,ti)=>t[1]?`<span class="rw" data-s="0" data-p="${pi}" data-t="${ti}">`+[...t[0]].map((c,i)=>`<ruby${RS.tc?` style="color:${TC[t[2][i]]}"`:""}>${c}<rt>${t[1][i]}</rt></ruby>`).join("")+`</span>`:t[0]).join("")}</p>`).join("")+`</div></div>${RS.tr?`<div class="trn"><b>Terjemahan</b><br>${s.r}</div>`:""}<div class="row rn"><button id="rdone" class="${RR[s.t]?"on":""}">${RR[s.t]?"✓ Sudah dibaca":"Tandai sudah dibaca"}</button></div><div class="row"><button id="rp"${n==1?" disabled":""}>← Sebelumnya</button><button id="rx"${n==all.length?" disabled":""}>Berikutnya →</button></div><div class="gn">Ketuk kata untuk melihat arti. Cerita ditulis oleh Claude untuk latihan membaca dan belum dikoreksi guru atau penutur asli. Pinyin dibuat otomatis, lalu disamakan dengan daftar kosakata untuk kata yang ada di sana.</div><div style="height:190px"></div>`;
+ v.innerHTML=`<button class="bk" id="bk">← Daftar cerita</button><div class="pos" style="text-align:right;margin:8px 0 0">Cerita ${n} dari ${all.length} · ${lvn}</div><h2 class="rt">${s.t}</h2><div class="pos" style="text-align:left">${k} dari ${t} kata berbeda ada di daftar ${lv==5?"kosakata web":lv==7?"HSK 1–5":"HSK 1–"+lv} (${Math.round(k/t*100)}%)</div>${AU["story|"+s.t]?`<div class="row" style="justify-content:flex-start;margin:6px 0"><button class="pl" data-aud="${enc("story|"+s.t)}">${IKA}Dengarkan cerita</button></div>`:""}<div class="rc"><button data-k="py" class="${RS.py?"on":""}">Pinyin</button><button data-k="tc" class="${RS.tc?"on":""}">Warna nada</button><button data-k="tr" class="${RS.tr?"on":""}">Terjemahan</button><button data-k="a-">A−</button><button data-k="a+">A+</button></div><div class="rdc"><div class="rd ${RS.py?"":"nopy"} ${RS.tc?"tc":""}" style="font-size:${RS.sz}px">`+s.p.map((p,pi)=>`<p>${p.map((t,ti)=>t[1]?`<span class="rw" data-s="0" data-p="${pi}" data-t="${ti}">`+[...t[0]].map((c,i)=>`<ruby${RS.tc?` style="color:${TC[t[2][i]]}"`:""}>${c}<rt>${t[1][i]}</rt></ruby>`).join("")+`</span>`:t[0]).join("")}</p>`).join("")+`</div></div>${RS.tr?`<div class="trn"><b>Terjemahan</b><br>${s.r}</div>`:""}<div class="row rn"><button id="rdone" class="${RR[s.t]?"on":""}">${RR[s.t]?ikL("cek","lm")+"Sudah dibaca":"Tandai sudah dibaca"}</button></div><div class="row"><button id="rp"${n==1?" disabled":""}>← Sebelumnya</button><button id="rx"${n==all.length?" disabled":""}>Berikutnya →</button></div><div class="gn">Ketuk kata untuk melihat arti. Cerita ditulis oleh Claude untuk latihan membaca dan belum dikoreksi guru atau penutur asli. Pinyin dibuat otomatis, lalu disamakan dengan daftar kosakata untuk kata yang ada di sana.</div><div style="height:190px"></div>`;
  v.querySelectorAll(".rc button").forEach(b=>b.onclick=()=>{const k=b.dataset.k;if(k=="a-")RS.sz=Math.max(16,RS.sz-2);else if(k=="a+")RS.sz=Math.min(36,RS.sz+2);else RS[k]=!RS[k];try{localStorage.setItem("hsk_r",JSON.stringify(RS))}catch(e){}const y=scrollY;render();scrollTo(0,y)});
  v.querySelectorAll(".rw").forEach(e=>e.onclick=()=>{v.querySelectorAll(".rw.sel").forEach(x=>x.classList.remove("sel"));e.classList.add("sel");{const P=RC[0].p[+e.dataset.p],ti=+e.dataset.t;openWord(P[ti],sentOf(P,ti))}});
  $("bk").onclick=()=>{S.ch=0;render();scrollTo(0,0)};
@@ -1710,7 +1726,7 @@ function chunk(tk){const W=wd(tk),o=[];for(let i=0;i<W.length;){const a=W[i],b=W
 const SUTIME=new Set("今天 昨天 明天 现在 每天 后来 那时 那时候 上午 下午 晚上 早上 中午 周末 去年 今年 明年 上个月 下个月 下个星期 上周 这时 当时 最近 有一天 第二天 平时 以前 以后 刚才 小时候 每年 那天 今晚 昨晚".split(" ")),
  SUSUBJ=new Set("我 你 他 她 它 我们 你们 他们 她们 大家 爸爸 妈妈 哥哥 姐姐 弟弟 妹妹 奶奶 爷爷 老师 同学 朋友".split(" "));
 const noP=s=>String(s).replace(/[^\u4e00-\u9fff0-9A-Za-z]/g,"");
-/* Urutan lain yang juga benar: daftar a (soal buatan) + kata waktu ⇄ subjek di awal kalimat */
+/* Urutan lain yang juga benar: daftar a (soal buatan) + kata waktu dan subjek di awal kalimat */
 function suAlts(it,W){const o=(it.a||[]).map(noP);if(W.length>=3&&((SUTIME.has(W[0])&&SUSUBJ.has(W[1]))||(SUSUBJ.has(W[0])&&SUTIME.has(W[1]))))o.push(noP([W[1],W[0],...W.slice(2)].join("")));return o}
 /* Arti dianggap sama bila ada satu istilah yang persis sama (keterangan dalam kurung ikut dibandingkan) */
 const glT=g=>new Set(String(g||"").toLowerCase().split(/[;；,，/]/).map(s=>s.trim()).filter(Boolean));
@@ -1753,7 +1769,7 @@ function lSu(v){
  $("h").onclick=()=>{let q=0;while(q<L.sel.length&&L.W[L.sel[q]]==L.W[q])q++;L.sel=L.sel.slice(0,q);const i=L.pool.find(x=>!L.sel.includes(x)&&L.W[x]==L.W[q]);if(i!==undefined)L.sel.push(i);L.res=null;lSu(v)};
  $("c").onclick=()=>{if(L.sel.length<L.W.length){L.res='<div class="rs no">Belum semua kata dipakai.</div>';lSu(v);return}
   const got=noP(L.sel.map(i=>L.W[i]).join("")),key=noP(L.W.join("")),alt=got!=key&&suAlts(L.it,L.W).includes(got),ok=got==key||alt;if(!L.fin){L.n++;if(ok)L.ok++;L.fin=1}
-  L.res=`<div class="rs ${ok?"ok":"no"}">${ok?(alt?"✓ Benar. Urutanmu juga tepat. Urutan pada kunci jawaban:":"✓ Benar"):"✗ Belum tepat. Bandingkan dengan jawaban di bawah"}</div><div class="gx"><div class="gz">${L.it.z} ${aub(L.it.z)}</div><div class="gpy">${pyT(L.it.t)}</div>${L.it.tr?`<div class="gi">${L.it.tr}</div>`:""}</div>${ok?"":whySu(L)}${gloss(wd(L.it.t))}`;lSu(v)};
+  L.res=`<div class="rs ${ok?"ok":"no"}">${ok?ikL("cek","lm")+(alt?"Benar. Urutanmu juga tepat. Urutan pada kunci jawaban:":"Benar"):ikL("tutup","lm")+"Belum tepat. Bandingkan dengan jawaban di bawah"}</div><div class="gx"><div class="gz">${L.it.z} ${aub(L.it.z)}</div><div class="gpy">${pyT(L.it.t)}</div>${L.it.tr?`<div class="gi">${L.it.tr}</div>`:""}</div>${ok?"":whySu(L)}${gloss(wd(L.it.t))}`;lSu(v)};
 }
 function lIs(v){
  const L=LS.is=LS.is||{lv:4,ok:0,n:0,wr:false};let WR=[];try{WR=JSON.parse(localStorage.getItem("hsk_wr")||"[]")}catch(e){}
@@ -1765,7 +1781,7 @@ function lIs(v){
  v.innerHTML=`<div class="ltb">${[2,3,4,7].map(n=>`<button class="pl ${L.lv==n?"on":""}" data-l="${n}">${lvT(n)}</button>`).join("")}<button class="pl ${L.wr?"on":""}" id="wr">Kata yang salah (${WR.length})</button><span class="pos">Skor ${L.ok}/${L.n}</span></div>
 ${q?`<p class="lq">Pilih kata yang tepat untuk mengisi bagian kosong</p><div class="bl">${q.c[5].replace(q.c[0],'<span style="color:var(--acc)">＿＿＿</span>')}</div>
 <div class="ops">${q.o.map((x,j)=>`<button class="op ${q.p===null?"":x===q.c?"ok":j==q.p?"no":""}" data-j="${j}"><span class="hz2">${x[0]}</span>${q.p!==null?`<small>${x[1]} · ${x[2]}${posT(x)?" · "+posT(x):""}</small>`:""}</button>`).join("")}</div>
-${q.p!==null?`<div class="rs ${q.o[q.p]===q.c?"ok":"no"}">${q.o[q.p]===q.c?"✓ Benar":"✗ Jawaban benar: "+q.c[0]}</div><div class="gx"><div class="gz">${q.c[5].replace(q.c[0],"<b style='color:var(--acc)'>"+q.c[0]+"</b>")} ${aub(q.c[5])}</div><div class="gi"><b>${q.c[0]}</b> ${q.c[1]}: ${q.c[2]}${posT(q.c)?" · "+posT(q.c):""}</div></div>${q.o[q.p]!==q.c?whyIs(q):""}`:""}
+${q.p!==null?`<div class="rs ${q.o[q.p]===q.c?"ok":"no"}">${q.o[q.p]===q.c?ikL("cek","lm")+"Benar":ikL("tutup","lm")+"Jawaban benar: "+q.c[0]}</div><div class="gx"><div class="gz">${q.c[5].replace(q.c[0],"<b style='color:var(--acc)'>"+q.c[0]+"</b>")} ${aub(q.c[5])}</div><div class="gi"><b>${q.c[0]}</b> ${q.c[1]}: ${q.c[2]}${posT(q.c)?" · "+posT(q.c):""}</div></div>${q.o[q.p]!==q.c?whyIs(q):""}`:""}
 <div class="row"><button id="n">Soal berikutnya</button></div>`:`<p class="pos" style="margin:30px 0">${L.wr?"Belum ada kata yang salah di level ini. Matikan filter untuk soal biasa.":"Tidak ada soal untuk level ini."}</p>`}`;
  v.querySelectorAll(".ltb [data-l]").forEach(b=>b.onclick=()=>{L.lv=+b.dataset.l;nw();lIs(v)});
  $("wr").onclick=()=>{L.wr=!L.wr;nw();lIs(v)};
@@ -1789,7 +1805,7 @@ function lPo(v){
  v.innerHTML=`<div class="ltb">${[["all","Semua"],["2","HSK 2"],["3","HSK 3"],["4","HSK 4"]].map(([k,t])=>`<button class="pl ${L.f==k?"on":""}" data-f="${k}">${t}</button>`).join("")}<span class="pos">Skor ${L.ok}/${L.n}</span></div>
 <p class="lq">Pilih kata tata bahasa yang tepat untuk bagian kosong</p><div class="bl">${it.z.replace(it.k,'<span style="color:var(--acc)">＿＿</span>')}</div>${it.i?`<p class="pos" style="text-align:left;margin:-4px 0 8px">Arti: ${it.i}</p>`:""}
 ${mcq(v,L,q,q.o,q.p,"")}
-${q.p!==null?`<div class="rs ${q.o[q.p].ok?"ok":"no"}">${q.o[q.p].ok?"✓ Benar":"✗ Jawaban benar: "+it.k}</div><div class="gx"><div class="gz">${it.z.replace(it.k,"<b style='color:var(--acc)'>"+it.k+"</b>")} ${aub(it.z)}</div><div class="gpy">${it.y}</div><div class="gi">${it.i}</div><div class="tg">${it.w} · ${it.t}</div></div><p class="pos" style="text-align:left;margin-top:8px">${it.m}</p>${q.o[q.p].ok?"":whyPo(q)}`:""}
+${q.p!==null?`<div class="rs ${q.o[q.p].ok?"ok":"no"}">${q.o[q.p].ok?ikL("cek","lm")+"Benar":ikL("tutup","lm")+"Jawaban benar: "+it.k}</div><div class="gx"><div class="gz">${it.z.replace(it.k,"<b style='color:var(--acc)'>"+it.k+"</b>")} ${aub(it.z)}</div><div class="gpy">${it.y}</div><div class="gi">${it.i}</div><div class="tg">${it.w} · ${it.t}</div></div><p class="pos" style="text-align:left;margin-top:8px">${it.m}</p>${q.o[q.p].ok?"":whyPo(q)}`:""}
 <div class="row"><button id="n">Soal berikutnya</button></div>`;
  v.querySelectorAll(".ltb [data-f]").forEach(b=>b.onclick=()=>{L.f=b.dataset.f;nw();lPo(v)});
  v.querySelectorAll(".op").forEach(b=>b.onclick=()=>{if(q.p!==null)return;q.p=+b.dataset.j;L.n++;if(q.o[q.p].ok)L.ok++;lPo(v)});$("n").onclick=()=>{nw();lPo(v)};
@@ -1805,7 +1821,7 @@ function lAr(v){
 ${q?`<p class="lq">${L.dir=="zi"?"Apa arti kata ini?":"Pilih hanzi yang sesuai dengan arti ini"}</p>
 <div class="bl" style="text-align:center;font-size:${L.dir=="zi"?36:20}px">${L.dir=="zi"?c[0]:sh2(c[2])}</div>${posC(c)}
 ${mcq(v,L,q,q.o.map(o=>({t:L.dir=="zi"?sh2(o.x[2]):o.x[0],ok:o.ok,sub:L.dir=="zi"?"":o.x[1]+" · "+sh2(o.x[2])})),q.p,"")}
-${q.p!==null?`<div class="rs ${q.o[q.p].ok?"ok":"no"}">${q.o[q.p].ok?"✓ Benar":"✗ Jawaban benar:"}</div><div class="gx"><div class="gz">${c[0]} ${AU[c[5]]?aub(c[5]):""}</div><div class="gpy">${c[1]}</div><div class="gi">${c[2]}${posT(c)?" · "+posT(c):""}</div>${c[5]?`<div class="gi" style="color:var(--mute)">${c[5]}</div>`:""}</div>${q.o[q.p].ok?"":whyAr(q,L)}`:""}
+${q.p!==null?`<div class="rs ${q.o[q.p].ok?"ok":"no"}">${q.o[q.p].ok?ikL("cek","lm")+"Benar":ikL("tutup","lm")+"Jawaban benar:"}</div><div class="gx"><div class="gz">${c[0]} ${AU[c[5]]?aub(c[5]):""}</div><div class="gpy">${c[1]}</div><div class="gi">${c[2]}${posT(c)?" · "+posT(c):""}</div>${c[5]?`<div class="gi" style="color:var(--mute)">${c[5]}</div>`:""}</div>${q.o[q.p].ok?"":whyAr(q,L)}`:""}
 <div class="row"><button id="n">Soal berikutnya</button></div>`:`<p class="pos" style="margin:30px 0">${L.wr?"Belum ada kata yang salah di level ini.":"Tidak ada soal."}</p>`}`;
  v.querySelectorAll(".ltb [data-l]").forEach(b=>b.onclick=()=>{L.lv=+b.dataset.l;nw();lAr(v)});v.querySelectorAll(".ltb [data-d]").forEach(b=>b.onclick=()=>{L.dir=b.dataset.d;lAr(v)});
  $("wr").onclick=()=>{L.wr=!L.wr;nw();lAr(v)};
@@ -1822,7 +1838,7 @@ function lDe(v){
 <p class="lq">Dengarkan, lalu pilih kalimat yang kamu dengar</p>
 <div class="row"><button class="pl" id="pp" style="padding:12px 22px">${IKA}Putar audio</button></div>
 ${mcq(v,L,q,q.o.map(o=>({t:key(o.x),ok:o.ok,sub:L.src=="tk"?o.x[2]:o.x[0]+" "+o.x[1]+": "+o.x[2]})),q.p,"")}
-${q.p!==null?`<div class="rs ${q.o[q.p].ok?"ok":"no"}">${q.o[q.p].ok?"✓ Benar":"✗ Yang benar: "+key(c)}</div>${q.o[q.p].ok?"":whyDe(q,key)}`:""}
+${q.p!==null?`<div class="rs ${q.o[q.p].ok?"ok":"no"}">${q.o[q.p].ok?ikL("cek","lm")+"Benar":ikL("tutup","lm")+"Yang benar: "+key(c)}</div>${q.o[q.p].ok?"":whyDe(q,key)}`:""}
 <div class="row"><button id="n">Soal berikutnya</button></div>`;
  v.querySelectorAll(".ltb [data-s]").forEach(b=>b.onclick=()=>{if(b.dataset.s=="tk"&&!penuh()){ajakLangganan("latihan dengar Kalimat Bandara",b);return}L.src=b.dataset.s=="tk"?"tk":+b.dataset.s;nw();lDe(v)});
  const play=()=>{if(!playAud(key(c),$("pp")))$("pp").textContent="Audio tidak tersedia"};
@@ -1881,7 +1897,7 @@ function bindDur(hb,L,rr){
   if(!n)m="Ketik atau tempel naskahmu untuk memperkirakan durasi.";
   else if(sec<lo){const nd=Math.round((lo-sec)*p);m=`<span class="n">Perkiraan ${mm(sec)}</span>, kurang ±${Math.round(lo-sec)} detik. Tambahkan ±${nd} karakter (≈ ${Math.max(1,Math.round(nd/14))} kalimat pendek): contoh pribadi, alasan kedua, atau perbandingan dulu dan sekarang.`}
   else if(sec>hi){const ct=Math.round((sec-hi)*p);m=`<span class="n">Perkiraan ${mm(sec)}</span>, lebih ±${Math.round(sec-hi)} detik. Kurangi ±${ct} karakter (≈ ${Math.max(1,Math.round(ct/14))} kalimat): ringkas contoh atau hapus satu alasan.`}
-  else m=`<span class="y">✓ Perkiraan ${mm(sec)}</span>, masuk target 1:50–2:00. Beri jeda singkat antarkalimat saat berbicara.`;
+  else m=`<span class="y">${ikL("cek","lm")}Perkiraan ${mm(sec)}</span>, masuk target 1:50–2:00. Beri jeda singkat antarkalimat saat berbicara.`;
   $("dres").innerHTML=`${n} karakter · ${(z.match(/[。？！]/g)||[]).length} kalimat · kecepatan ${p.toFixed(1).replace(".",",")} karakter/detik<br>${m}<br><span style="color:var(--mute);font-size:12px">Ini perkiraan; cek dengan stopwatch asli saat latihan.</span>`};
  $("dtx").oninput=calc;
  hb.querySelectorAll("[data-pc]").forEach(b=>b.onclick=()=>{sp(+b.dataset.pc);L.dk=true;rr()});
@@ -1902,7 +1918,7 @@ ${L.o.map((x,j)=>`<button class="sn ${L.pk.includes(x)?"in":""}" data-x="${x}"><
  $("r").onclick=()=>{L.pk=[];L.res=null;lUr(v)};$("n").onclick=()=>{nw();lUr(v)};
  $("c").onclick=()=>{if(L.pk.length<3){L.res='<div class="rs no">Pilih ketiga kalimat dulu (ketuk berurutan).</div>';lUr(v);return}
   const ok=L.pk.join()=="0,1,2";if(!L.fin){L.n++;if(ok)L.ok++;L.fin=1}
-  L.res=`<div class="rs ${ok?"ok":"no"}">${ok?"✓ Benar":"✗ Urutan yang benar:"}</div>`+L.it.t.map((t,j)=>`<div class="gx"><div class="gz">${j+1}. ${txtT(t)} ${aub(txtT(t))}</div><div class="gpy">${pyT(t)}</div></div>`).join("")+(ok?"":whyUr(L))+`<div class="pos" style="text-align:left">${L.it.h?"Topik":"Dari cerita"}: ${L.it.s}. Perhatikan kata penghubung dan kata penunjuk waktu untuk menebak urutan.</div>`;lUr(v)};
+  L.res=`<div class="rs ${ok?"ok":"no"}">${ok?ikL("cek","lm")+"Benar":ikL("tutup","lm")+"Urutan yang benar:"}</div>`+L.it.t.map((t,j)=>`<div class="gx"><div class="gz">${j+1}. ${txtT(t)} ${aub(txtT(t))}</div><div class="gpy">${pyT(t)}</div></div>`).join("")+(ok?"":whyUr(L))+`<div class="pos" style="text-align:left">${L.it.h?"Topik":"Dari cerita"}: ${L.it.s}. Perhatikan kata penghubung dan kata penunjuk waktu untuk menebak urutan.</div>`;lUr(v)};
 }
 function lTu(v){
  const L=LS.tu=LS.tu||{lv:4};
@@ -1917,7 +1933,7 @@ ${L.fb?`<div class="fb">${L.fb}</div>`:""}${L.sh?`<div class="gx"><div class="gz
  v.querySelectorAll(".ltb [data-l]").forEach(b=>b.onclick=()=>{L.lv=+b.dataset.l;nw();lTu(v)});
  $("ta").oninput=e=>{L.tx=e.target.value};
  $("c").onclick=()=>{const z=$("ta").value.trim();L.tx=z;const ck=[[z.includes(c[0]),"Memakai kata "+c[0]],[hanN(z)>=8,"Panjang minimal 8 karakter Mandarin (sekarang "+hanN(z)+")"],[/[。？！]$/.test(z),"Diakhiri tanda baca (。？！)"],[!/[A-Za-z]/.test(z),"Tidak ada huruf Latin"],[/[，。？！]/.test(z)||hanN(z)>=8,"Struktur: Subjek + (waktu/tempat) + Kata kerja + Objek"]];
-  L.fb=z?ck.map(x=>`<div class="${x[0]?"y":"n"}">${x[0]?"✓":"✗"} ${x[1]}</div>`).join("")+'<div class="pos" style="text-align:left;margin-top:6px">Pemeriksaan otomatis hanya mengecek bentuk, bukan tata bahasa. Bandingkan dengan contoh, atau minta guru memeriksa.</div>':'<div class="n">Tulis kalimatmu dulu.</div>';lTu(v)};
+  L.fb=z?ck.map(x=>`<div class="${x[0]?"y":"n"}">${ikL(x[0]?"cek":"tutup","lm")}${x[1]}</div>`).join("")+'<div class="pos" style="text-align:left;margin-top:6px">Pemeriksaan otomatis hanya mengecek bentuk, bukan tata bahasa. Bandingkan dengan contoh, atau minta guru memeriksa.</div>':'<div class="n">Tulis kalimatmu dulu.</div>';lTu(v)};
  $("s").onclick=()=>{L.sh=!L.sh;lTu(v)};$("n").onclick=()=>{nw();lTu(v)};
 }
 function lHk(v){
@@ -1932,7 +1948,7 @@ function hUl(hb,L,v){
  if(!L.list){L.list=sh(D.filter(c=>c[3]>=3&&c[3]<=4&&c[5]&&AU[c[5]]&&hanN(c[5])>=9&&hanN(c[5])<=18)).slice(0,10);L.i=0;L.show=false}
  const c=L.list[L.i];
  hb.innerHTML=`<p class="lq">Dengarkan satu kali, lalu ulangi kalimat dalam <b>10 detik</b> (seperti 听后重复). Soal ${L.i+1} / ${L.list.length}.</p>
-<div class="row"><button id="go">▶ Putar lalu ulangi</button>${aub(c[5],"Putar lagi")}</div><div class="tmr" id="tm">&nbsp;</div>
+<div class="row"><button id="go">${ikL("putar","lm")}Putar lalu ulangi</button>${aub(c[5],"Putar lagi")}</div><div class="tmr" id="tm">&nbsp;</div>
 ${L.show?`<div class="gx"><div class="gz">${c[5]}</div><div class="gi"><b>${c[0]}</b> ${c[1]}: ${c[2]}${posT(c)?" · "+posT(c):""}</div></div>`:`<div class="row"><button id="sw">Tampilkan teks</button></div>`}
 <div class="row"><button id="pv" ${L.i==0?"disabled":""}>← Sebelumnya</button><button id="nx">${L.i+1>=L.list.length?"Sesi baru":"Berikutnya →"}</button></div>`;
  $("go").onclick=e=>{clearInterval(LTI);const t=$("tm");t.textContent="Mendengarkan…";if(!playAud(c[5],e.currentTarget,()=>timer(10,t,"Selesai")))t.textContent="Audio tidak tersedia"};
@@ -2060,7 +2076,7 @@ function render(){
  {const kk=S.mode=="tek"?TEKN[S.tk]:(S.lv?lvT(S.lv):"Semua level"),sc=K()&&CH[K()]&&S.ch?CH[K()][S.ch-1]:"semua bagian";noteLast(S.mode,(S.mode=="tek"?"Kosakata Teknis":"Kosakata HSK 2.0")+" · "+kk+" · "+sc+(S.tab=="study"?" · kartu "+(Math.min(S.i,Math.max(L.length-1,0))+1)+"/"+L.length:S.tab=="write"?" · tulis":" · ringkasan"))}
  if(S.tab=="write"){renderWrite(L.filter(c=>c[3]<5||(()=>{const z=c[0].match(/[\u4e00-\u9fff]/g)||[];return z.length>0&&z.length<=6&&z.every(x=>STR[x])})()),v);return}
  if(S.tab=="sum"){
-  v.innerHTML=`<table>${L.map(c=>`<tr><td class="hzs">${c[0]}</td><td>${c[1]}</td><td style="text-align:left">${c[2]}${posT(c)?`<br><small style="color:var(--acc)">${posT(c)}</small>`:""}</td><td class="st-${S.m["k"+D.indexOf(c)]}">${S.m["k"+D.indexOf(c)]==1?"✓":S.m["k"+D.indexOf(c)]==0?"…":"–"}</td></tr>`).join("")}</table><div class="row"><button id="rs">Reset progres</button></div>`;
+  v.innerHTML=`<table>${L.map(c=>`<tr><td class="hzs">${c[0]}</td><td>${c[1]}</td><td style="text-align:left">${c[2]}${posT(c)?`<br><small style="color:var(--acc)">${posT(c)}</small>`:""}</td><td class="st-${S.m["k"+D.indexOf(c)]}">${S.m["k"+D.indexOf(c)]==1?ikL("cek"):S.m["k"+D.indexOf(c)]==0?"…":"–"}</td></tr>`).join("")}</table><div class="row"><button id="rs">Reset progres</button></div>`;
   $("rs").onclick=()=>{if(confirm("Hapus semua progres?")){S.m={};save();render()}};return}
  if(!L.length){v.innerHTML="<p>Tidak ada kartu.</p>";return}
  if(S.i>=L.length)S.i=0;const c=L[S.i];
@@ -2212,7 +2228,7 @@ function renderH3(v){
  noteLast("h3","Kosakata HSK 3.0 · Level "+S.hl+" · "+sc+(S.tab=="study"?" · kartu "+(Math.min(S.i,Math.max(A.length-1,0))+1)+"/"+A.length:S.tab=="write"?" · tulis":" · ringkasan"));
  if(S.tab=="write"){renderWrite(A.map(i=>D3[i]).filter(c=>{const z=c[0].match(/[一-鿿]/g)||[];return z.length>0&&z.length<=6&&z.every(x=>STR[x])}),v);if(note||h3Ajak()){v.insertAdjacentHTML("afterbegin",note);v.insertAdjacentHTML("beforeend",h3Ajak());hook()}return}
  if(S.tab=="sum"){
-  v.innerHTML=note+`<table>${A.map(i=>{const c=D3[i],m=M3["w"+i];return `<tr><td class="hzs">${hskEsc(c[0])}</td><td>${hskEsc(c[1])}</td><td style="text-align:left">${hskEsc(c[2])}${posT(c)?`<br><small style="color:var(--acc)">${posT(c)}</small>`:""}</td><td class="st-${m}">${m==1?"✓":m==0?"…":"–"}</td></tr>`}).join("")}</table>${h3Ajak()}<div class="row"><button id="rs">Reset progres HSK 3.0</button></div>`;
+  v.innerHTML=note+`<table>${A.map(i=>{const c=D3[i],m=M3["w"+i];return `<tr><td class="hzs">${hskEsc(c[0])}</td><td>${hskEsc(c[1])}</td><td style="text-align:left">${hskEsc(c[2])}${posT(c)?`<br><small style="color:var(--acc)">${posT(c)}</small>`:""}</td><td class="st-${m}">${m==1?ikL("cek"):m==0?"…":"–"}</td></tr>`}).join("")}</table>${h3Ajak()}<div class="row"><button id="rs">Reset progres HSK 3.0</button></div>`;
   $("rs").onclick=()=>{if(confirm("Hapus semua progres HSK 3.0? Progres HSK 2.0 tidak terpengaruh.")){M3={};save3();render()}};hook();return}
  if(!A.length){v.innerHTML=note+"<p>Tidak ada kartu.</p>";hook();return}
  if(S.i>=A.length)S.i=0;const ix=A[S.i],c=D3[ix];
@@ -2819,7 +2835,7 @@ function downloadBackup(){
   if(n<0){
    el.innerHTML=top+`<div class="prep-fa"><button type="button" class="prep-ed">Atur ujian berikutnya</button><button type="button" class="prep-off2">Matikan</button></div>`;
   }else{
-   el.innerHTML=top+`<ul class="prep-list">${T.map(x=>`<li class="prep-li${isD(x)?' is-done':''}"><button class="prep-ck" data-ck="${x.id}" aria-pressed="${isD(x)}" aria-label="Tandai selesai: ${x.t}">${isD(x)?'✓':''}</button><div class="prep-cp"><b>${x.t}</b><span>${x.d}</span></div><button class="prep-go" data-go="${x.id}">Buka</button></li>`).join('')}</ul>
+   el.innerHTML=top+`<ul class="prep-list">${T.map(x=>`<li class="prep-li${isD(x)?' is-done':''}"><button class="prep-ck" data-ck="${x.id}" aria-pressed="${isD(x)}" aria-label="Tandai selesai: ${x.t}">${isD(x)?ikL('cek'):''}</button><div class="prep-cp"><b>${x.t}</b><span>${x.d}</span></div><button class="prep-go" data-go="${x.id}">Buka</button></li>`).join('')}</ul>
   <div class="prep-ft"><span>Hari ini ${dn} dari ${T.length} selesai${st?`, ${st} hari berturut-turut`:''}</span><span class="prep-dt">Ujian ${tgl(c.date)} · <button type="button" class="prep-ed">Ubah</button></span></div>`;
   }
   el.querySelectorAll('[data-ck]').forEach(b=>b.addEventListener('click',()=>{const q=today(),x=T.find(y=>y.id===b.dataset.ck);q.done[b.dataset.ck]=x&&x.auto?true:!q.done[b.dataset.ck];q.hist[q.d]=Object.values(q.done).filter(Boolean).length;wr(PK,q);draw(el)}));
@@ -3073,7 +3089,7 @@ try{if(window.hskAuth&&window.hskAuth.onMasa)window.hskAuth.onMasa(function(){
 STRP.then(render);
 STRP.then(function(){try{tkFull()}catch(e){}});
 </script><script id="n8n-sync">
-/* Sinkronisasi progres antar perangkat (HP ⇄ laptop) dan dengan bot Telegram, lewat n8n + Google Sheets.
+/* Sinkronisasi progres antar perangkat (HP dan laptop) dan dengan bot Telegram, lewat n8n + Google Sheets.
    Tidak mengubah logika aplikasi; hanya "mendengar" penyimpanan hsk_* lalu menggabungkan.
    Alamat server dan kunci diisi otomatis oleh halaman login (skrip "auth-gate" di awal halaman) setelah masuk; tanpa login tidak ada yang disinkronkan.
    Alur: tarik data dari server -> gabungkan dengan data di sini -> tulis hasilnya ke sini -> kirim hasilnya ke server.
@@ -3305,9 +3321,9 @@ STRP.then(function(){try{tkFull()}catch(e){}});
          counts:{known:known,learning:learn.length,total:total,gdone:gdone,gtotal:gtotal}};
  }
 
- function toast(msg){
+ function toast(msg,ic){
   try{
-   var d=document.createElement("div");d.textContent=msg;d.setAttribute("role","status");
+   var d=document.createElement("div");if(ic){var s=document.createElement("span");s.innerHTML=ikL(ic,"lm");d.appendChild(s.firstChild)}d.appendChild(document.createTextNode(msg));d.setAttribute("role","status");
    d.style.cssText="position:fixed;left:50%;bottom:22px;transform:translateX(-50%);max-width:88vw;padding:10px 16px;border-radius:999px;font-size:13px;background:var(--card,#2a2420);color:var(--ink,#f3ece2);border:1px solid var(--line,#5a4e44);box-shadow:0 4px 18px rgba(0,0,0,.35);z-index:9999;opacity:0;transition:opacity .25s;pointer-events:none";
    document.body.appendChild(d);
    setTimeout(function(){d.style.opacity="1"},20);
@@ -3324,7 +3340,7 @@ STRP.then(function(){try{tkFull()}catch(e){}});
   if(msg==="401"&&window.hskAuth&&window.hskAuth.mode()==="tabel"){lastErr=what+": sesi berakhir";window.hskAuth.expired(pesan401);return}   /* sesi tidak sah lagi (password diganti / akun dinonaktifkan / kedaluwarsa) */
   lastErr=what+": "+msg;failN++;
   try{console.warn("Sinkron "+what+" gagal:",e)}catch(_){}
-  if(!told){told=true;toast("⚠️ Sinkron "+what+" gagal ("+(msg==="401"?"kode rahasia salah":msg.slice(0,60))+"). Progres tetap aman di perangkat ini.")}
+  if(!told){told=true;toast("Sinkron "+what+" gagal ("+(msg==="401"?"kode rahasia salah":msg.slice(0,60))+"). Progres tetap aman di perangkat ini.","awas")}
   if(!retryT&&failN<=5)retryT=setTimeout(function(){retryT=null;sync(true)},60000);
  }
  function push(c,ps,nb,ka){
@@ -3360,8 +3376,8 @@ STRP.then(function(){try{tkFull()}catch(e){}});
   if(st){if(st.n.m)parts.push(st.n.m+" tanda kata");if(st.n.g)parts.push(st.n.g+" 语法");if(st.n.r)parts.push(st.n.r+" bacaan");if(st.n.o)parts.push(st.n.o+" data lain")}
   if(nS)parts.push(nS+" jadwal ulang");
   changed=parts.length>0;
-  if(changed){toast("🔗 Disinkronkan: "+parts.join(", "));okShown=true}
-  else if(!okShown){okShown=true;toast("🔗 Tersinkron")}
+  if(changed){toast("Disinkronkan: "+parts.join(", "),"sinkron");okShown=true}
+  else if(!okShown){okShown=true;toast("Tersinkron","sinkron")}
   if(any)push(c,ps,st?st.nb:null,ka);
   else if(st)saveBase(st.nb);
   if(changed){try{if(typeof S!=="undefined"&&S.mode==="hm"&&typeof render==="function")render()}catch(e){}}
