@@ -1,0 +1,29 @@
+# ai-marketing-skills: sumber dan lisensi
+
+Skill di folder ini (selain founder-*) berasal dari https://github.com/ericosiu/ai-marketing-skills
+Dipasang dari commit: ebc19c1b90b23df66f61699caa3f12b3eb1b743e (2026-11-13)
+Tidak dipasang sengaja: telemetry/, security/, eval/, content-os-portable-starter/, reimagine-work/ (bukan skill mandiri, atau tidak dipakai Zenta).
+
+---
+
+MIT License
+
+Copyright (c) 2026 Single Grain
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
