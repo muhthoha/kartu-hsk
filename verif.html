@@ -35,6 +35,16 @@ p{line-height:1.55;margin:18px 0 0;font-size:15px;overflow-wrap:anywhere}
  var URL_V="https://n8n.zenta.web.id/webhook/hsk-verif";
  var $=function(i){return document.getElementById(i)},t=$("t"),em=$("em"),st=$("st"),go=$("go"),lnk=$("in");
  function say(c,s){st.className=c||"";st.textContent=s||""}
+
+ /* Pencatatan pemakaian tanpa identitas (kode acak per perangkat, tanpa email dan tanpa IP). Dilewati bila Do Not Track / Global Privacy Control aktif. Gagal diam-diam. */
+ function fv(){
+  try{
+   var N=navigator;if(/^(1|yes)$/.test(String(N.doNotTrack||window.doNotTrack||N.msDoNotTrack||""))||N.globalPrivacyControl===true)return;
+   var d=localStorage.getItem("zenta_did")||"",a,i;
+   if(!/^[0-9a-f]{16}$/.test(d)){a=new Uint8Array(8);crypto.getRandomValues(a);d="";for(i=0;i<8;i++)d+=("0"+a[i].toString(16)).slice(-2);localStorage.setItem("zenta_did",d)}
+   fetch("https://n8n.zenta.web.id/webhook/hsk-ev",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({did:d,e:[{ev:"verifikasi",info:""}]}),mode:"cors",credentials:"omit",keepalive:true}).then(null,function(){});
+  }catch(e){}
+ }
  var tok="",email="";
  try{
   var p=new URLSearchParams(location.hash.replace(/^#/,""));
@@ -53,7 +63,7 @@ p{line-height:1.55;margin:18px 0 0;font-size:15px;overflow-wrap:anywhere}
   fetch(URL_V,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email:email,token:tok}),mode:"cors",signal:ctl?ctl.signal:undefined})
    .then(function(r){return r.json().then(function(j){return{s:r.status,j:j}},function(){return{s:r.status,j:null}})})
    .then(function(x){
-    if(x.j&&x.j.ok===true){done=true;t.textContent="Email berhasil diverifikasi.";em.hidden=true;go.hidden=true;say("ok",(x.j.info?String(x.j.info).slice(0,200)+" ":"")+"Sekarang kamu bisa masuk.");lnk.hidden=false}
+    if(x.j&&x.j.ok===true){done=true;fv();t.textContent="Email berhasil diverifikasi.";em.hidden=true;go.hidden=true;say("ok",(x.j.info?String(x.j.info).slice(0,200)+" ":"")+"Sekarang kamu bisa masuk.");lnk.hidden=false}
     else if(x.s===400||x.s===429){done=true;go.hidden=true;lnk.hidden=false;say("err",(x.j&&x.j.pesan)||"Tautan tidak valid.")}
     else say("err","Gagal ("+x.s+"). Coba lagi sebentar lagi.");
    })
