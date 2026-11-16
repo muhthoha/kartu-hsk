@@ -33,7 +33,6 @@ ul{margin:10px 0 0;padding-left:20px}li{margin:6px 0;overflow-wrap:anywhere}
 .kt{border:1px solid var(--line);border-left:4px solid var(--e1);border-radius:14px;padding:14px 16px 12px;margin-top:12px}
 .kt:nth-of-type(5n+2){border-left-color:var(--e2)}.kt:nth-of-type(5n+3){border-left-color:var(--e3)}.kt:nth-of-type(5n+4){border-left-color:var(--e4)}.kt:nth-of-type(5n+5){border-left-color:var(--e5)}
 .kt dl{margin:0}.kt dt{font-size:12.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--mute);margin:10px 0 0}.kt dd{margin:2px 0 0;overflow-wrap:anywhere}
-.pihak{margin:10px 0 0;padding:0;list-style:none}.pihak li{border-top:1px solid var(--line);padding:10px 0;margin:0}.pihak li:first-child{border-top:0}.pihak b{display:block}
 .tandai{background:var(--e3t);color:var(--e3d);border-radius:6px;padding:1px 6px;font-weight:600;font-size:.94em}
 .ft{margin-top:22px;padding-top:16px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:6px 18px;font-size:14px}
 .ft a{color:var(--ink);min-height:44px;display:inline-flex;align-items:center}
@@ -50,98 +49,78 @@ a{color:var(--ink)}
 
 <div class="ring"><b class="tt">Ringkasnya</b>
 <ul>
-<li>Untuk belajar, kamu memakai akun. Kami menyimpan emailmu, password dalam bentuk hash (sandi satu arah, bukan password aslinya), dan kemajuan belajarmu.</li>
+<li>Kami menyimpan emailmu, password dalam bentuk hash (sandi satu arah, bukan password aslinya), dan kemajuan belajarmu.</li>
 <li>Kami tidak menjual datamu, tidak memasang iklan, dan tidak memakai alat analitik dari pihak ketiga.</li>
 <li>Zenta mencatat peristiwa pemakaian dengan kode acak per perangkat, tanpa email dan tanpa alamat IP, untuk melihat bagian mana yang perlu diperbaiki.</li>
-<li>Alamat IP tetap dipakai di tempat lain, untuk membatasi tebakan password dan penyalahgunaan. Rinciannya ada di bagian 2.</li>
-<li>Situs ini tidak memproses pembayaran. Kamu membayar lewat QRIS di aplikasi pembayaranmu sendiri.</li>
-<li>Kamu bisa meminta akun dan datamu dihapus kapan saja (bagian 4).</li>
+<li>Alamat IP tetap dipakai terpisah untuk keamanan (bagian 2).</li>
+<li>Situs tidak memproses pembayaran. Kamu membayar lewat QRIS di aplikasi pembayaranmu sendiri.</li>
+<li>Kamu bisa meminta akun dan datamu dihapus kapan saja (bagian 3).</li>
 </ul></div>
 
-<h2 id="siapa">1. Siapa yang mengelola Zenta 汉</h2>
-<p>Zenta 汉 dikelola oleh 韩冬岳 (Sir Thoha), pengelola perorangan <span class="tandai">[ISI: konfirmasi nama dan sebutan yang ingin ditampilkan]</span>. Pertanyaan atau permintaan soal datamu bisa dikirim lewat tombol Saran &amp; masukan (ikon gelembung pesan di bagian atas situs) atau lewat Telegram @axntsu. <span class="tandai">[ISI: alamat email kontak, bila ingin ditampilkan]</span></p>
+<h2 id="siapa">1. Pengelola dan kontak</h2>
+<p>Zenta 汉 dikelola oleh 韩冬岳 (Sir Thoha), pengelola perorangan <span class="tandai">[ISI: konfirmasi nama dan sebutan yang ingin ditampilkan]</span>. Pertanyaan atau permintaan soal datamu bisa dikirim lewat tombol Saran &amp; masukan di situs atau lewat Telegram @axntsu. <span class="tandai">[ISI: alamat email kontak, bila ingin ditampilkan]</span></p>
 
 <h2 id="data">2. Data yang kami simpan dan alasannya</h2>
 
-<section class="kt"><h3>Akun</h3><dl>
-<dt>Apa</dt><dd>Email, hash password, jenis akun (gratis, trial, atau langganan) beserta tanggal berakhirnya, status akun, waktu akun dibuat dan terakhir masuk, serta penghitung salah password. Untuk membatasi percobaan masuk, kami juga menyimpan sidik singkat (hash) dari alamat IP.</dd>
-<dt>Untuk apa</dt><dd>Membuat dan mengamankan akun, serta mengatur akses gratis dan langganan.</dd>
-<dt>Berapa lama</dt><dd>Selama akunmu ada.</dd></dl></section>
-
-<section class="kt"><h3>Kemajuan belajar</h3><dl>
-<dt>Apa</dt><dd>Kata yang sudah kamu kuasai dan jadwal ulangnya, kemajuan 语法, 阅读, dan latihan, riwayat simulasi ujian, bank kesalahan, aktivitas dan target harian, serta tanggal ujian dan daftar persiapanmu.</dd>
-<dt>Untuk apa</dt><dd>Menyamakan kemajuanmu di semua perangkat. Salinannya juga ada di perangkatmu.</dd>
+<section class="kt"><h3>Akun dan kemajuan belajar</h3><dl>
+<dt>Apa</dt><dd>Email, hash password, jenis akun (gratis, trial, atau langganan) dan tanggal berakhirnya, status, waktu dibuat dan terakhir masuk, serta penghitung salah password. Juga kemajuan belajarmu: kata yang dikuasai dan jadwal ulangnya, 语法, 阅读, latihan, riwayat simulasi ujian, bank kesalahan, target harian, dan tanggal ujian. Untuk membatasi percobaan masuk, kami menyimpan sidik singkat (hash) dari alamat IP.</dd>
+<dt>Untuk apa</dt><dd>Membuat dan mengamankan akun, mengatur akses gratis dan langganan, serta menyamakan kemajuanmu di semua perangkat.</dd>
 <dt>Berapa lama</dt><dd>Selama akunmu ada.</dd></dl></section>
 
 <section class="kt"><h3>Saran &amp; masukan</h3><dl>
-<dt>Apa</dt><dd>Isi pesan, jenisnya, kontak bila kamu mengisinya, dan email akunmu bila kamu sudah masuk (keterangan dari peramban, belum diverifikasi), serta apakah pesan dikirim dari halaman masuk atau dari dalam aplikasi.</dd>
+<dt>Apa</dt><dd>Isi pesan, jenisnya, kontak bila kamu mengisinya, email akunmu bila kamu sudah masuk (keterangan dari peramban, belum diverifikasi), dan halaman asal pesan.</dd>
 <dt>Untuk apa</dt><dd>Menjawab dan memperbaiki situs. Pesan diteruskan ke Telegram pengelola.</dd>
-<dt>Berapa lama</dt><dd>Pesan di Telegram disimpan sampai pengelola menghapusnya <span class="tandai">[ISI: kebiasaan menghapus, bila ada]</span>. Salinan di catatan teknis server dihapus otomatis sekitar 14 hari kemudian <span class="tandai">[CEK: masa simpan eksekusi n8n]</span>.</dd></dl></section>
+<dt>Berapa lama</dt><dd>Di Telegram sampai pengelola menghapusnya <span class="tandai">[ISI: kebiasaan menghapus, bila ada]</span>. Salinan di catatan teknis server terhapus otomatis sekitar 14 hari kemudian <span class="tandai">[CEK: masa simpan eksekusi n8n]</span>.</dd></dl></section>
 
 <section class="kt"><h3>Catatan pemakaian</h3><dl>
-<dt>Apa</dt><dd>Peristiwa seperti halaman depan dibuka, pendaftaran, verifikasi email, kartu pertama dibuka, kembali di hari berikutnya, bagian khusus pelanggan dilihat, cara bayar dibuka, dan tombol Tanya soal langganan atau Sudah bayar ditekan. Tiap catatan berisi kode acak per perangkat, nama peristiwa, tanggal, dan waktu. Tanpa email dan tanpa alamat IP. Kode ini pseudonim, bukan anonim: orang yang memakai perangkat yang sama dikenali sebagai satu kode.</dd>
+<dt>Apa</dt><dd>Peristiwa seperti halaman depan dibuka, pendaftaran, verifikasi email, kartu pertama dibuka, kembali di hari berikutnya, bagian khusus pelanggan dilihat, cara bayar dibuka, serta tombol Tanya soal langganan dan Sudah bayar ditekan. Tiap catatan berisi kode acak per perangkat, nama peristiwa, dan waktu, tanpa email dan tanpa alamat IP. Kode ini pseudonim, bukan anonim.</dd>
 <dt>Untuk apa</dt><dd>Melihat bagian mana yang perlu diperbaiki. Pencatatan tidak berjalan bila peramban mengirim sinyal Do Not Track atau Global Privacy Control, atau bila penyimpanan situs dimatikan.</dd>
-<dt>Berapa lama</dt><dd>90 hari, lalu dihapus otomatis. Satu pengecualian: penanda bahwa sebuah akun menjadi langganan disimpan sebagai sidik (hash) email dengan garam rahasia, bukan email, dan tidak ikut terhapus otomatis.</dd></dl></section>
+<dt>Berapa lama</dt><dd>90 hari, lalu dihapus otomatis. Pengecualian: penanda bahwa akun menjadi langganan disimpan sebagai hash email (bukan email) dan tidak ikut terhapus.</dd></dl></section>
 
 <section class="kt"><h3>Alamat IP dan catatan keamanan</h3><dl>
-<dt>Apa</dt><dd>Saat kamu mendaftar, masuk, atau mengirim saran, alamat IP-mu (untuk IPv6, bagian awalnya saja) ditulis di tabel batas laju. IP yang memicu pengiriman email pendaftaran juga ditulis di catatan pengiriman email, berdampingan dengan alamat email tujuan.</dd>
+<dt>Apa</dt><dd>Saat kamu mendaftar, masuk, atau mengirim saran, alamat IP-mu (IPv6: bagian awalnya saja) ditulis di tabel batas laju. IP yang memicu email pendaftaran juga ditulis di catatan pengiriman email, berdampingan dengan email tujuan.</dd>
 <dt>Untuk apa</dt><dd>Membatasi tebakan password, pendaftaran massal, dan spam.</dd>
-<dt>Berapa lama</dt><dd>Catatan batas laju untuk pencatatan pemakaian dihapus otomatis setelah 2 hari (di sana IP hanya berupa hash yang berganti tiap hari). Catatan lainnya belum dihapus otomatis <span class="tandai">[ISI: jadwal hapus, mis. 30 hari, setelah pembersihan otomatis dipasang]</span>.</dd></dl></section>
+<dt>Berapa lama</dt><dd>Belum dihapus otomatis <span class="tandai">[ISI: jadwal hapus, mis. 30 hari, setelah pembersihan otomatis dipasang]</span>. Pengecualian: catatan batas laju untuk pencatatan pemakaian (di sana IP berupa hash harian) dihapus setelah 2 hari.</dd></dl></section>
 
 <section class="kt"><h3>Email yang kami kirim</h3><dl>
-<dt>Apa</dt><dd>Email verifikasi pendaftaran, kode undangan bila pengelola mengundangmu, password baru bila kamu meminta diatur ulang, pengumuman pembaruan, dan pengingat masa berlaku trial atau langganan. Pengumuman dan pengingat hanya dikirim setelah disetujui pengelola. Email dikirim dari noreply@mail.zenta.web.id, jadi balasan ke alamat itu tidak terbaca.</dd>
-<dt>Untuk apa</dt><dd>Menjalankan akunmu dan memberi kabar tentang situs. Tiap pengumuman punya tautan berhenti berlangganan. Email penting tentang akunmu, seperti verifikasi dan pengingat masa berlaku, tetap dikirim walau kamu berhenti dari pengumuman.</dd>
-<dt>Berapa lama</dt><dd>Hasil pengiriman (email tujuan, waktu, status) dicatat di catatan pengiriman, dengan masa simpan yang sama seperti catatan keamanan di atas.</dd></dl></section>
+<dt>Apa</dt><dd>Email verifikasi, kode undangan, password baru bila kamu minta diatur ulang, pengumuman pembaruan, dan pengingat masa berlaku. Pengumuman dan pengingat baru dikirim setelah disetujui pengelola. Balasan ke email ini tidak terbaca.</dd>
+<dt>Untuk apa</dt><dd>Menjalankan akunmu dan memberi kabar tentang situs. Pengumuman punya tautan berhenti berlangganan. Email penting tentang akun tetap dikirim walau kamu berhenti dari pengumuman.</dd>
+<dt>Berapa lama</dt><dd>Hasil pengiriman (email tujuan, waktu, status) dicatat dengan masa simpan yang sama seperti catatan IP di atas.</dd></dl></section>
 
 <section class="kt"><h3>Pembayaran Zenta 汉+</h3><dl>
-<dt>Apa</dt><dd>Situs tidak memproses dan tidak menyimpan data pembayaran. Kamu membayar lewat QRIS di aplikasi pembayaranmu, lalu menekan tombol Sudah bayar. Telegram terbuka dengan pesan berisi nama paket dan email akunmu, dan bukti bayar kamu lampirkan sendiri. Pengelola mencatat masa aktif langganan di akunmu.</dd>
+<dt>Apa</dt><dd>Situs tidak memproses dan tidak menyimpan data pembayaran. Setelah membayar lewat QRIS, kamu menekan Sudah bayar, lalu Telegram terbuka dengan pesan berisi nama paket dan email akunmu. Bukti bayar kamu lampirkan sendiri.</dd>
 <dt>Untuk apa</dt><dd>Mengaktifkan langgananmu secara manual.</dd>
-<dt>Berapa lama</dt><dd>Data pembayaranmu ada pada penyedia pembayaranmu. Pesan dan bukti bayar di Telegram disimpan sampai pengelola menghapusnya <span class="tandai">[ISI: kebiasaan menghapus, bila ada]</span>.</dd></dl></section>
+<dt>Berapa lama</dt><dd>Data pembayaranmu ada pada penyedia pembayaranmu. Pesan dan bukti di Telegram sampai pengelola menghapusnya <span class="tandai">[ISI: kebiasaan menghapus, bila ada]</span>.</dd></dl></section>
 
 <section class="kt"><h3>Di perangkatmu</h3><dl>
-<dt>Apa</dt><dd>Situs tidak memasang cookie. Situs memakai penyimpanan peramban (localStorage, sessionStorage, dan Cache API) untuk: tanda masuk dan emailmu, salinan kemajuan belajar, pilihan tema, kode acak perangkat untuk catatan pemakaian, dan isi khusus pelanggan yang sudah kamu muat.</dd>
-<dt>Untuk apa</dt><dd>Menjaga kamu tetap masuk, membuat situs cepat, dan membuat kartu bisa dipakai lagi tanpa memuat ulang.</dd>
-<dt>Berapa lama</dt><dd>Sampai kamu keluar atau menghapus data situs di pengaturan peramban. Sesi masuk berlaku 14 hari. Isi khusus pelanggan dibuang saat kamu keluar. Di perangkat bersama, hapus data situs setelah selesai belajar.</dd></dl></section>
+<dt>Apa</dt><dd>Situs tidak memasang cookie. Situs memakai penyimpanan peramban (localStorage, sessionStorage, Cache API) untuk tanda masuk dan emailmu, salinan kemajuan belajar, pilihan tema, kode acak perangkat, dan isi khusus pelanggan yang sudah kamu muat.</dd>
+<dt>Untuk apa</dt><dd>Menjaga kamu tetap masuk dan membuat situs cepat.</dd>
+<dt>Berapa lama</dt><dd>Sampai kamu keluar atau menghapus data situs. Sesi masuk berlaku 14 hari. Di perangkat bersama, hapus data situs setelah belajar.</dd></dl></section>
 
-<h2 id="pihak">3. Pihak lain yang ikut memproses data</h2>
-<p>Zenta 汉 memakai layanan berikut. Sebagian berada di luar Indonesia.</p>
-<ul class="pihak">
-<li><b>GitHub Pages</b>Menyajikan halaman situs. GitHub menerima alamat IP dan permintaan halaman sesuai kebijakannya sendiri.</li>
-<li><b>Cloudflare</b>Lalu lintas ke server (n8n.zenta.web.id) melewati Cloudflare, termasuk email dan password yang kamu kirim saat masuk atau daftar. <span class="tandai">[CEK: apakah domain zenta.web.id juga lewat Cloudflare]</span></li>
-<li><b>Server pengelola</b>Akun, kemajuan belajar, dan catatan di atas disimpan di server n8n milik pengelola <span class="tandai">[ISI: nama penyedia VPS dan lokasi server]</span>.</li>
-<li><b>Google Fonts</b>Saat halaman utama dimuat, peramban mengunduh huruf dari Google, yang menerima alamat IP dan keterangan peramban.</li>
-<li><b>jsDelivr</b>Saat kamu membuka animasi goresan 汉字, peramban mengunduh data dari jsDelivr, yang menerima alamat IP dan karakter yang diminta.</li>
-<li><b>Resend</b>Mengirim email dari Zenta 汉, sehingga menerima alamat email tujuan dan isi email.</li>
-<li><b>Telegram</b>Menerima pesan Saran &amp; masukan yang kamu kirim, email calon pendaftar yang dimasukkan pengelola untuk mengirim undangan, dan laporan ringkas pemakaian situs untuk pengelola.</li>
-</ul>
+<p>Untuk menjalankan situs, kami memakai layanan hosting, pengiriman email, dan Telegram. Mereka memproses data sesuai kebijakan masing-masing, dan sebagian berada di luar Indonesia.</p>
 
-<h2 id="hak">4. Hakmu atas datamu</h2>
+<h2 id="hak">3. Hakmu atas datamu</h2>
 <ul>
-<li><b>Melihat dan menyalin.</b> Di menu akun, bagian Progres &amp; cadangan, kamu bisa mengunduh cadangan kemajuan belajar (.json) dan mengekspor kosakata (.csv). Untuk salinan data lain, kirim permintaan.</li>
-<li><b>Memperbaiki.</b> Bila ada data yang salah, kirim permintaan.</li>
-<li><b>Menghapus.</b> Kamu bisa meminta akun dihapus. Kami menghapus akunmu, kemajuan belajarmu, dan catatan yang memuat emailmu di server kami. Pesan di Telegram dan riwayat di Resend mengikuti kebijakan masing-masing, dan kami hapus bagian yang ada di tangan kami. Salinan di perangkatmu tetap ada sampai kamu menghapus data situs.</li>
+<li><b>Melihat dan menyalin.</b> Di menu akun, bagian Progres &amp; cadangan, kamu bisa mengunduh cadangan kemajuan (.json) dan mengekspor kosakata (.csv). Untuk data lain, kirim permintaan.</li>
+<li><b>Memperbaiki.</b> Kirim permintaan bila ada data yang salah.</li>
+<li><b>Menghapus.</b> Kamu bisa meminta akun dihapus. Kami menghapus akunmu, kemajuan belajarmu, dan catatan yang memuat emailmu di server kami, serta pesan di Telegram yang ada di tangan kami. Salinan di layanan lain mengikuti kebijakan layanan itu. Salinan di perangkatmu tetap ada sampai kamu menghapus data situs.</li>
 <li><b>Berhenti dari pengumuman.</b> Pakai tautan berhenti berlangganan di email pengumuman.</li>
 <li><b>Menolak pencatatan pemakaian.</b> Aktifkan Do Not Track atau Global Privacy Control di peramban, atau matikan penyimpanan situs.</li>
 </ul>
-<p>Cara mengajukan: kirim permintaan lewat Saran &amp; masukan saat kamu sudah masuk, atau lewat Telegram. Kami bisa meminta konfirmasi bahwa akun itu milikmu. Kami berusaha menanggapi dalam <span class="tandai">[ISI: jumlah hari, mis. 7 hari]</span>.</p>
+<p>Cara mengajukan: lewat Saran &amp; masukan saat kamu sudah masuk, atau lewat Telegram. Kami bisa meminta konfirmasi bahwa akun itu milikmu. Kami berusaha menanggapi dalam <span class="tandai">[ISI: jumlah hari; cek batas 3x24 jam di PP 33/2026]</span>.</p>
 
-<h2 id="aman">5. Keamanan</h2>
+<h2 id="aman">4. Keamanan</h2>
 <ul>
-<li>Password disimpan sebagai hash PBKDF2-SHA256 dengan 200.000 putaran dan garam acak, bukan password aslinya.</li>
-<li>Password asli hanya diproses sebentar di server untuk dibandingkan dengan hash-nya. Server tidak menyimpan catatan permintaan masuk dan daftar yang berhasil. Bila terjadi galat teknis, catatan galatnya bisa tersimpan sementara dan memuat data yang sedang diproses saat galat terjadi.</li>
+<li>Password disimpan sebagai hash PBKDF2-SHA256 (200.000 putaran, garam acak). Password asli hanya diproses sebentar di server untuk dicocokkan. Bila terjadi galat teknis, catatan galat bisa tersimpan sementara dan memuat data yang sedang diproses.</li>
 <li>Sesi masuk memakai token bertanda tangan yang berlaku 14 hari. Salah password 5 kali mengunci percobaan masuk sementara. Pendaftaran memerlukan verifikasi email.</li>
-<li>Situs dan server memakai HTTPS. <span class="tandai">[CEK: pastikan Enforce HTTPS aktif di pengaturan GitHub Pages]</span></li>
 <li>Tidak ada sistem yang sepenuhnya kebal. Bila kamu menemukan celah, beri tahu kami lewat Saran &amp; masukan.</li>
 </ul>
 
-<h2 id="anak">6. Pengguna di bawah 18 tahun</h2>
+<h2 id="anak">5. Pengguna di bawah 18 tahun</h2>
 <p><span class="tandai">[TINJAU: keputusan dan wording]</span> Zenta 汉 dibuat untuk pelajar bahasa Mandarin secara umum. Bila kamu belum berusia 18 tahun, mintalah izin orang tua atau walimu sebelum mendaftar. Orang tua atau wali bisa meminta penghapusan akun lewat kontak di bagian 1.</p>
 
-<h2 id="ubah">7. Perubahan kebijakan</h2>
-<p>Bila kebijakan ini berubah, tanggal pembaruan di bagian atas halaman ikut berubah. Untuk perubahan yang penting, kami memberi tahu di halaman depan atau lewat email <span class="tandai">[ISI: cara memberi tahu]</span>.</p>
-
-<h2 id="kontak">8. Kontak</h2>
-<p>Pertanyaan soal privasi: Saran &amp; masukan di situs, atau Telegram @axntsu. <span class="tandai">[ISI: alamat email kontak, bila ingin ditampilkan]</span></p>
+<h2 id="ubah">6. Perubahan kebijakan</h2>
+<p>Bila kebijakan ini berubah, tanggal pembaruan di bagian atas ikut berubah. Untuk perubahan penting, kami memberi tahu di halaman depan atau lewat email <span class="tandai">[ISI: cara memberi tahu]</span>.</p>
 
 <div class="ft"><a href="syarat.html">Syarat Penggunaan</a><a href="./">Kembali ke Zenta 汉</a></div>
 </main>
