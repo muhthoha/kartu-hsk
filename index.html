@@ -320,6 +320,8 @@ html.gated body{overflow:hidden}
 #authgate .ag-go{width:100%;border:0;border-radius:12px;padding:13px 0;font:700 16px Inter,system-ui,sans-serif;background:var(--acc);color:#2b2620;cursor:pointer}
 #authgate .ag-go[disabled]{opacity:.6;cursor:default}
 #authgate .ag-note{margin:16px 0 0;font-size:12.5px;line-height:1.5;color:var(--mute);text-align:center}
+#authgate .ag-priv{margin:14px 0 0}
+#authgate .lp-foot .lp-priv{margin:8px 0 0;line-height:1.5}
 #authgate button:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
 #acct{position:absolute;right:42px;top:9px;width:34px;height:34px;padding:0;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--acc);font:700 14px Inter,system-ui,sans-serif;cursor:pointer;z-index:3}
 /* Menu profil */
@@ -965,6 +967,7 @@ html.booting #authgate{display:none!important}
      <div class="ag-msg" id="ag-msg" role="alert" aria-live="polite"></div>
      <button type="submit" class="ag-go" id="ag-go">Masuk</button>
     </form>
+    <p class="ag-note ag-priv" id="ag-priv">Zenta mencatat peristiwa pemakaian dengan kode acak per perangkat, tanpa email dan tanpa alamat IP, untuk melihat bagian mana yang perlu diperbaiki.</p>
     <p class="ag-note" id="ag-note">Lupa password? Kirim pesan ke pengelola lewat ikon pesan di pojok kanan atas kotak ini.</p>
    </section>
   </div>
@@ -1072,7 +1075,7 @@ html.booting #authgate{display:none!important}
    <details class="lp-q"><summary>Saya lupa password. Bagaimana?</summary><p>Kirim pesan ke pengelola lewat ikon pesan di kotak masuk dan sertakan emailmu. Password-mu akan diatur ulang.</p></details>
   </section>
 
-  <footer class="lp-foot">© 2026 <b>韩冬岳</b>. Zenta 汉, belajar Mandarin harian. Ikon: Lucide (lisensi ISC).</footer>
+  <footer class="lp-foot">© 2026 <b>韩冬岳</b>. Zenta 汉, belajar Mandarin harian. Ikon: Lucide (lisensi ISC).<p class="lp-priv">Zenta mencatat peristiwa pemakaian dengan kode acak per perangkat, tanpa email dan tanpa alamat IP, untuk melihat bagian mana yang perlu diperbaiki.</p></footer>
  </main>
 </div>
 <script id="ikon-lu">
