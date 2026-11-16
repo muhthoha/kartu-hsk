@@ -743,6 +743,95 @@ html.msk-open body{overflow:hidden}
 #msk-dlg .mk-note{margin:12px 0 0;font-size:12.5px;line-height:1.5;color:var(--mute);text-align:center;word-break:break-word}
 #msk-dlg button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
 </style>
+<style id="bayar-css">
+/* Harga, cara bayar, dan panel gembok untuk paket Zenta 汉+. Bagian Harga dan Cara bayar ada di halaman depan (#harga, #cara-bayar);
+   dialog #byr-dlg memuat isi Cara bayar yang sama di dalam aplikasi (dari <template id="byr-tpl">). */
+.byr-eb{margin:0 0 10px;font:700 12px Inter,system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+.byr-eb.e3{color:var(--e3d)}.byr-eb.e2{color:var(--e2d)}
+.byr-lnk{display:inline-block;border:0;background:none;padding:12px 4px;margin:-12px -4px;color:var(--ink);font:600 15px/1.4 Inter,system-ui,sans-serif;letter-spacing:0;text-transform:none;text-decoration:underline;text-underline-offset:3px;cursor:pointer;min-height:0;border-radius:4px}   /* area ketuk 44 px tanpa mengubah letak kalimat */
+.byr-lnk:focus-visible,.byr-go:focus-visible,.hrg-btn:focus-visible,.lockp button:focus-visible,#byr-dlg button:focus-visible,.byr-st a:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+/* kartu harga */
+.hrg{display:grid;gap:16px;margin-top:22px;max-width:780px;text-align:left}
+.hrg-c{display:flex;flex-direction:column;padding:20px;border:1px solid var(--line);border-radius:16px;background:var(--card)}
+.hrg-pro{border:2px solid var(--e3);padding:19px}
+.hrg-h{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.hrg-h h3{margin:0;font:700 22px/1.2 Fraunces,Georgia,'Noto Sans SC',serif;letter-spacing:0;text-transform:none;color:var(--ink)}
+.hrg-big{font:700 28px/1.2 Fraunces,Georgia,serif;color:var(--ink)}
+.hrg-chip{padding:4px 10px;border-radius:999px;background:var(--e3t);color:var(--e3d);font:700 12px Inter,system-ui,sans-serif;letter-spacing:.04em}
+.hrg-pr{display:flex;align-items:baseline;gap:8px;margin:12px 0 4px}
+.hrg-pr strong{font:700 40px/1.1 Fraunces,Georgia,serif;color:var(--ink)}
+.hrg-pr span{font-size:15px;color:var(--mute)}
+.hrg-pn{margin:4px 0 16px;font-size:14px;line-height:1.5;color:var(--mute)}
+.hrg-ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;flex:1}
+.hrg-ul li{display:flex;gap:10px;font-size:15px;line-height:1.5;color:var(--ink)}
+.hrg-ul svg{flex:none;margin-top:2px;color:var(--e1d)}
+.hrg-pro .hrg-ul svg{color:var(--e3d)}
+.hrg-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:48px;margin-top:20px;padding:0 18px;border-radius:12px;font:700 16px Inter,system-ui,sans-serif;letter-spacing:0;text-transform:none;cursor:pointer}
+.hrg-btn.o{border:1px solid var(--line);background:none;color:var(--ink)}
+.hrg-btn.f{border:0;background:var(--btn);color:var(--btnink)}
+.hrg-nt{margin:12px 0 0;text-align:center;font-size:12.5px;line-height:1.5;color:var(--mute)}
+.hrg-ask{margin:22px 0 0;font-size:15px;color:var(--mute)}
+@media(min-width:720px){.hrg{grid-template-columns:1fr 1fr}}
+/* cara bayar */
+.byr-grid{display:grid;gap:26px;margin-top:20px;text-align:left}
+.byr-card{padding:20px;border:1px solid var(--line);border-radius:16px;background:var(--card)}
+.byr-pk{display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
+.byr-k{font-size:13px;color:var(--mute)}
+.byr-v{margin-top:2px;font-size:16px;font-weight:600;color:var(--ink)}
+.byr-v small{display:block;margin-top:1px;font-size:12.5px;font-weight:400;color:var(--mute)}
+.byr-r{text-align:right}
+.byr-amt{margin-top:2px;font:700 24px/1.2 Fraunces,Georgia,serif;color:var(--ink)}
+.byr-hr{height:1px;margin:16px 0;border:0;background:var(--line)}
+.byr-qr{display:flex;justify-content:center}
+.byr-qr img{display:block;width:100%;max-width:300px;height:auto;border-radius:12px;background:#fff;border:1px solid var(--line)}
+.byr-nm{margin:16px 0 0;text-align:center;font-size:14.5px;line-height:1.5;color:var(--ink)}
+.byr-sm{margin:4px 0 0;text-align:center;font-size:12.5px;line-height:1.5;color:var(--mute)}
+.byr-ol{list-style:none;margin:0;padding:0}
+.byr-ol li{position:relative;display:flex;gap:14px;padding-bottom:22px}
+.byr-ol li:not(:last-child)::after{content:"";position:absolute;left:13px;top:34px;bottom:2px;width:2px;background:var(--line)}
+.byr-n{flex:none;width:28px;height:28px;border-radius:50%;border:1.5px solid;display:flex;align-items:center;justify-content:center;font:700 14px Inter,system-ui,sans-serif}
+.byr-ol li:nth-child(1) .byr-n{background:var(--e1t);border-color:var(--e1);color:var(--e1d)}
+.byr-ol li:nth-child(2) .byr-n{background:var(--e2t);border-color:var(--e2);color:var(--e2d)}
+.byr-ol li:nth-child(3) .byr-n{background:var(--e3t);border-color:var(--e3);color:var(--e3d)}
+.byr-ol li:nth-child(4) .byr-n{background:var(--e4t);border-color:var(--e4);color:var(--e4d)}
+.byr-ol li>div{flex:1;min-width:0;padding-top:2px}
+.byr-ol b{display:block;font-weight:600;font-size:15.5px;line-height:1.4;color:var(--ink)}
+.byr-t{display:block;margin-top:3px;font-size:14px;line-height:1.55;color:var(--mute)}
+.byr-go{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:48px;margin-top:6px;padding:0 18px;border:0;border-radius:12px;background:var(--btn);color:var(--btnink);font:700 16px Inter,system-ui,sans-serif;letter-spacing:0;text-transform:none;cursor:pointer}
+.byr-st{margin:10px 0 0;min-height:20px;font-size:14px;line-height:1.5;color:var(--mute);text-align:left}
+.byr-st a{color:var(--ink);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.byr-lb{margin:12px 0 8px;font:700 12px Inter,system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.byr-msg{padding:14px;border-radius:14px;background:var(--soft);font-size:14.5px;line-height:1.6;color:var(--ink);word-break:break-word}
+.byr-msg .to{margin-bottom:8px;font-size:12.5px;color:var(--mute)}
+.byr-msg .to b{color:var(--e3d)}
+.byr-wt{display:flex;gap:10px;margin-top:20px;font-size:14px;line-height:1.55;color:var(--mute)}
+.byr-wt svg{flex:none;margin-top:2px;color:var(--e5d)}
+@media(min-width:860px){#authgate .byr-grid{grid-template-columns:minmax(0,360px) minmax(0,1fr);gap:48px;align-items:start}}
+/* dialog Cara bayar di dalam aplikasi */
+html.byr-open body{overflow:hidden}
+#byr-dlg{position:fixed;top:0;right:0;bottom:0;left:0;z-index:100001;display:flex;overflow:auto;-webkit-overflow-scrolling:touch;background:rgba(0,0,0,.55);padding:calc(env(safe-area-inset-top,0px) + 16px) 16px calc(env(safe-area-inset-bottom,0px) + 16px);font-family:Inter,system-ui,sans-serif;color:var(--ink);text-align:left}
+#byr-dlg[hidden]{display:none!important}
+#byr-dlg .byr-box{width:100%;max-width:440px;margin:auto;background:var(--bg);border:1px solid var(--line);border-radius:22px;padding:20px 18px 22px;box-shadow:0 12px 44px rgba(0,0,0,.35)}
+#byr-dlg .byr-hd{display:flex;align-items:center;justify-content:space-between;gap:12px}
+#byr-dlg h2{margin:0;font:700 24px/1.2 Fraunces,Georgia,'Noto Sans SC',serif;letter-spacing:-.01em;text-transform:none;color:var(--ink)}
+#byr-dlg .byr-x{width:34px;height:34px;padding:0;flex:none;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--mute);display:flex;align-items:center;justify-content:center;letter-spacing:0;text-transform:none}
+#byr-dlg .byr-sub{margin:8px 0 0;font-size:14.5px;line-height:1.55;color:var(--mute)}
+#byr-dlg .byr-grid{display:block;margin-top:18px}
+#byr-dlg .byr-side{margin-top:24px}
+#byr-dlg .byr-ask{margin:20px 0 0;text-align:center;font-size:15px;color:var(--mute)}
+/* panel gembok (.lockp): nama paket, harga, tombol Lihat paket langganan dan Nanti saja */
+.lockp .lk-i{display:inline-flex;width:56px;height:56px;border-radius:50%;background:var(--e3t);align-items:center;justify-content:center;font-size:26px;line-height:1}
+.lockp .lk-i .ik-i{color:var(--e3d)}
+.lockp h3{margin:12px 0 8px;font:700 20px/1.25 Fraunces,Georgia,'Noto Sans SC',serif;letter-spacing:0;text-transform:none;color:var(--ink)}
+.lockp .lk-pk{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 14px;padding:12px 14px;border-radius:12px;background:var(--soft);text-align:left}
+.lockp .lk-pk b{display:block;font-size:14px;font-weight:600;color:var(--ink)}
+.lockp .lk-pk small{display:block;margin-top:2px;font-size:12.5px;color:var(--mute)}
+.lockp .lk-pk strong{font:700 20px/1.2 Fraunces,Georgia,serif;color:var(--ink)}
+.lockp .lk-bt{display:flex;flex-direction:column;gap:8px}
+.lockp .lk-go,.lockp .lk-no{display:flex;align-items:center;justify-content:center;width:100%;border-radius:12px;font:700 15.5px Inter,system-ui,sans-serif;letter-spacing:0;text-transform:none;cursor:pointer}
+.lockp .lk-go{min-height:46px;padding:0 22px;border:1px solid var(--e3);background:var(--e3);color:#1b1404}
+.lockp .lk-no{min-height:44px;padding:0 18px;border:1px solid var(--line);background:none;color:var(--ink);font-size:16px}
+</style>
 <style id="lp-css">
 /* Halaman depan untuk pengunjung yang belum masuk. #authgate kini satu halaman penuh: penjelasan situs + kotak masuk/daftar.
    Pengguna yang sudah masuk tidak pernah melihatnya (kelas "booting" dipasang skrip boot-awal; skrip auth-gate juga menyembunyikannya). */
@@ -895,7 +984,7 @@ html.booting #authgate{display:none!important}
      <tr><th scope="row"><div class="lp-r"><span class="lp-el e5" aria-hidden="true">金</span><span class="lp-nm"><b><span lang="zh">汉字</span> Aksara</b><small>214 radikal dan jenis goresan</small></span></div></th><td data-l="Gratis" class="lp-all">Semua</td><td data-l="Langganan" class="lp-all">Semua</td></tr>
     </tbody>
    </table>
-   <p class="lp-p lp-sub">Langganan diaktifkan langsung oleh pengelola untuk akunmu. <button type="button" class="lp-link" id="lp-tanya">Tanya soal langganan</button></p>
+   <p class="lp-p lp-sub">Langganan <b>Zenta 汉+</b> Rp 30.000 untuk 1 bulan, dibayar lewat QRIS. <button type="button" class="lp-link" data-ke="harga">Lihat harga dan cara bayar</button> atau <button type="button" class="lp-link" id="lp-tanya">Tanya soal langganan</button>.</p>
   </section>
 
   <section class="lp-sec" aria-labelledby="lp-mulai">
@@ -908,12 +997,76 @@ html.booting #authgate{display:none!important}
    <button type="button" class="lp-btn" data-ag="daftar">Daftar gratis</button>
   </section>
 
+  <section class="lp-sec" id="harga" aria-labelledby="lp-harga">
+   <div class="byr-eb e3">Langganan</div>
+   <h2 id="lp-harga">Mulai gratis. Buka semuanya kalau sudah siap.</h2>
+   <p class="lp-p">Kosakata HSK 2.0 dan <span lang="zh">汉字</span> tetap bisa dipakai gratis. Langganan membuka sisanya.</p>
+   <div class="hrg">
+    <div class="hrg-c">
+     <div class="hrg-h"><h3>Gratis</h3><strong class="hrg-big">Rp 0</strong></div>
+     <p class="hrg-pn">Untuk mulai belajar hari ini.</p>
+     <ul class="hrg-ul">
+      <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Semua kosakata HSK 2.0 level 1 sampai 5 (2.500 kata)</span></li>
+      <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><span lang="zh">汉字</span>: 214 radikal dan jenis goresan</span></li>
+      <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>50 kata pertama tiap level HSK 3.0</span></li>
+      <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>30 istilah pertama tiap bidang teknis</span></li>
+      <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>2 pelajaran <span lang="zh">语法</span> tiap set, 2 cerita <span lang="zh">阅读</span> tiap level</span></li>
+     </ul>
+     <button type="button" class="hrg-btn o" data-ag="daftar">Daftar gratis</button>
+    </div>
+    <div class="hrg-c hrg-pro">
+     <div class="hrg-h"><h3>Langganan</h3><span class="hrg-chip">Zenta 汉+</span></div>
+     <div class="hrg-pr"><strong>Rp 30.000</strong><span>/ 1 bulan</span></div>
+     <p class="hrg-pn">Dibayar lewat QRIS.</p>
+     <ul class="hrg-ul">
+      <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Semua yang ada di paket Gratis</span></li>
+      <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>HSK 3.0 lengkap (3.600 kata)</span></li>
+      <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Kosakata teknis semua bidang</span></li>
+      <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Semua pelajaran <span lang="zh">语法</span> dan cerita <span lang="zh">阅读</span></span></li>
+      <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Semua jenis <span lang="zh">练习</span> dan simulasi ujian</span></li>
+     </ul>
+     <button type="button" class="hrg-btn f" data-ke="cara-bayar">Berlangganan</button>
+     <p class="hrg-nt">Akun diaktifkan langsung oleh pengelola.</p>
+    </div>
+   </div>
+   <p class="hrg-ask">Masih ragu? <button type="button" class="byr-lnk" data-byr-tanya>Tanya soal langganan</button></p>
+  </section>
+
+  <section class="lp-sec" id="cara-bayar" aria-labelledby="lp-bayar-h">
+   <div class="byr-eb e2">Cara bayar</div>
+   <h2 id="lp-bayar-h">Bayar lewat QRIS, lalu kabari pengelola.</h2>
+   <div class="byr-body" data-byr-root>
+   <div class="byr-grid">
+    <div class="byr-card">
+     <div class="byr-pk"><div><div class="byr-k">Paket</div><div class="byr-v">Zenta 汉+<small>1 bulan</small></div></div><div class="byr-r"><div class="byr-k">Nominal</div><div class="byr-amt">Rp 30.000</div></div></div>
+     <hr class="byr-hr">
+     <div class="byr-qr"><img src="icons/qris-zenta.png" width="720" height="863" alt="Kode QRIS pembayaran Zenta, atas nama ZENTA" loading="lazy" decoding="async"></div>
+     <p class="byr-nm">Atas nama <b>ZENTA</b></p>
+     <p class="byr-sm">Cek nama merchant sebelum membayar.</p>
+    </div>
+    <div class="byr-side">
+     <ol class="byr-ol">
+      <li><span class="byr-n" aria-hidden="true">1</span><div><b>Buka aplikasi pembayaran</b><span class="byr-t">Bank atau dompet digital apa saja yang mendukung QRIS.</span></div></li>
+      <li><span class="byr-n" aria-hidden="true">2</span><div><b>Scan dan isi nominal</b><span class="byr-t">Nominal harus sama dengan harga paket.</span></div></li>
+      <li><span class="byr-n" aria-hidden="true">3</span><div><b>Simpan bukti bayar</b><span class="byr-t">Tangkapan layar sudah cukup.</span></div></li>
+      <li><span class="byr-n" aria-hidden="true">4</span><div><b>Tekan Sudah bayar</b><span class="byr-t">Pesan ke pengelola sudah terisi email akunmu. Kirim, lalu lampirkan bukti bayar.</span></div></li>
+     </ol>
+     <button type="button" class="byr-go" data-byr-sudah><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>Sudah bayar</button>
+     <p class="byr-st" role="status" aria-live="polite" data-byr-st></p>
+     <div class="byr-lb">Pesan yang terisi otomatis</div>
+     <div class="byr-msg"><div class="to">Dikirim ke Telegram <b>@axntsu</b></div><div>Halo, saya sudah bayar langganan Zenta 汉.</div><div>Paket: Zenta 汉+ (Rp 30.000, 1 bulan)</div><div>Email akun: <span data-byr-email>(terisi setelah kamu masuk)</span></div><div>Bukti bayar saya lampirkan di bawah.</div></div>
+     <div class="byr-wt"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Pengelola mengecek bukti bayar lalu mengaktifkan akunmu paling lambat 1x24 jam. Selama menunggu, bagian gratis tetap bisa dipakai.</span></div>
+    </div>
+   </div>
+   </div>
+  </section>
+
   <section class="lp-sec" aria-labelledby="lp-tanyajawab">
    <h2 id="lp-tanyajawab">Pertanyaan yang sering muncul</h2>
    <details class="lp-q"><summary>Apakah akun gratis ada batas waktunya?</summary><p>Tidak. Seluruh kosakata HSK 1–5 dan menu 汉字 tetap terbuka selama akunmu ada. Bagian lain bisa dicoba sebagian, seperti di tabel di atas.</p></details>
    <details class="lp-q"><summary>Apa beda HSK 2.0 dan HSK 3.0?</summary><p>HSK 2.0 adalah susunan lama dengan 6 level. HSK 3.0 adalah susunan baru dengan 9 level dan daftar kata yang lebih panjang. Di Zenta 汉 keduanya dipisah supaya tidak tercampur.</p></details>
    <details class="lp-q"><summary>Bisa dipakai di HP?</summary><p>Bisa. Zenta 汉 berjalan di browser HP dan komputer, dan bisa dipasang ke layar utama seperti aplikasi.</p></details>
-   <details class="lp-q"><summary>Bagaimana cara berlangganan?</summary><p>Daftar gratis dulu, lalu kirim pesan ke pengelola lewat tombol "Tanya soal langganan" atau ikon pesan di dalam situs. Langganan diaktifkan untuk akunmu setelah itu.</p></details>
+   <details class="lp-q"><summary>Bagaimana cara berlangganan?</summary><p>Daftar gratis dulu, lalu bayar Rp 30.000 lewat QRIS di bagian Harga dan Cara bayar. Tekan "Sudah bayar" untuk mengirim bukti bayar ke pengelola. Akunmu diaktifkan paling lambat 1x24 jam, dan masa aktifnya 1 bulan.</p></details>
    <details class="lp-q"><summary>Emailku dipakai untuk apa?</summary><p>Untuk masuk, verifikasi akun, dan sesekali kabar pembaruan situs. Tiap kabar punya tautan berhenti berlangganan.</p></details>
    <details class="lp-q"><summary>Saya lupa password. Bagaimana?</summary><p>Kirim pesan ke pengelola lewat ikon pesan di kotak masuk dan sertakan emailmu. Password-mu akan diatur ulang.</p></details>
   </section>
@@ -1319,6 +1472,113 @@ const ikL=(n,c)=>'<svg class="lu'+(c?' '+c:'')+'" viewBox="0 0 24 24" fill="none
   var sb=document.getElementById("sbtn");if(sb&&sb.parentNode)sb.parentNode.insertBefore(mk("msk-btn"),sb);
   var box=document.querySelector("#authgate .ag-box");if(box)box.appendChild(mk("msk-btn-g"));
  });
+})();
+</script>
+<template id="byr-tpl">
+<div class="byr-grid">
+    <div class="byr-card">
+     <div class="byr-pk"><div><div class="byr-k">Paket</div><div class="byr-v">Zenta 汉+<small>1 bulan</small></div></div><div class="byr-r"><div class="byr-k">Nominal</div><div class="byr-amt">Rp 30.000</div></div></div>
+     <hr class="byr-hr">
+     <div class="byr-qr"><img src="icons/qris-zenta.png" width="720" height="863" alt="Kode QRIS pembayaran Zenta, atas nama ZENTA" loading="lazy" decoding="async"></div>
+     <p class="byr-nm">Atas nama <b>ZENTA</b></p>
+     <p class="byr-sm">Cek nama merchant sebelum membayar.</p>
+    </div>
+    <div class="byr-side">
+     <ol class="byr-ol">
+      <li><span class="byr-n" aria-hidden="true">1</span><div><b>Buka aplikasi pembayaran</b><span class="byr-t">Bank atau dompet digital apa saja yang mendukung QRIS.</span></div></li>
+      <li><span class="byr-n" aria-hidden="true">2</span><div><b>Scan dan isi nominal</b><span class="byr-t">Nominal harus sama dengan harga paket.</span></div></li>
+      <li><span class="byr-n" aria-hidden="true">3</span><div><b>Simpan bukti bayar</b><span class="byr-t">Tangkapan layar sudah cukup.</span></div></li>
+      <li><span class="byr-n" aria-hidden="true">4</span><div><b>Tekan Sudah bayar</b><span class="byr-t">Pesan ke pengelola sudah terisi email akunmu. Kirim, lalu lampirkan bukti bayar.</span></div></li>
+     </ol>
+     <button type="button" class="byr-go" data-byr-sudah><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>Sudah bayar</button>
+     <p class="byr-st" role="status" aria-live="polite" data-byr-st></p>
+     <div class="byr-lb">Pesan yang terisi otomatis</div>
+     <div class="byr-msg"><div class="to">Dikirim ke Telegram <b>@axntsu</b></div><div>Halo, saya sudah bayar langganan Zenta 汉.</div><div>Paket: Zenta 汉+ (Rp 30.000, 1 bulan)</div><div>Email akun: <span data-byr-email>(terisi setelah kamu masuk)</span></div><div>Bukti bayar saya lampirkan di bawah.</div></div>
+     <div class="byr-wt"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Pengelola mengecek bukti bayar lalu mengaktifkan akunmu paling lambat 1x24 jam. Selama menunggu, bagian gratis tetap bisa dipakai.</span></div>
+    </div>
+   </div>
+</template>
+<script id="bayar-ui">
+/* Cara bayar paket Zenta 汉+ dan tombol "Sudah bayar".
+   - Pembayaran terjadi lewat QRIS di luar situs. Situs tidak memproses pembayaran dan tidak menyimpan apa pun.
+   - "Sudah bayar" membuka chat Telegram pengelola dengan pesan terisi (paket dan email akun yang sedang masuk).
+     Bukti bayar dilampirkan sendiri oleh pelanggan, karena tautan tidak bisa membawa gambar.
+   - Aktivasi tetap manual: tabel hsk_pengguna, kolom jenis = langganan dan berlaku_sampai.
+   - Mengubah nama paket, harga, atau kontak: ubah konstanta di sini, teks bagian Harga dan Cara bayar di halaman depan,
+     isi <template id="byr-tpl">, dan fungsi kunciHTML (panel gembok). */
+(function(){
+ var TG="axntsu",NAMA="Zenta 汉+",HARGA="Rp 30.000",DUR="1 bulan";
+ var dlg=null,opener=null;
+ function who(){try{return window.hskAuth&&window.hskAuth.email?String(window.hskAuth.email()||""):""}catch(e){return""}}
+ function pesan(e){return["Halo, saya sudah bayar langganan Zenta 汉.","Paket: "+NAMA+" ("+HARGA+", "+DUR+")","Email akun: "+e,"Bukti bayar saya lampirkan di bawah."].join("\n")}
+ function tautan(e){return"https://t.me/"+TG+"?text="+encodeURIComponent(pesan(e))}
+ function segar(root){var e=who(),n=root.querySelectorAll("[data-byr-email]"),i;for(i=0;i<n.length;i++)n[i].textContent=e||"(terisi setelah kamu masuk)"}
+ function say(root,t,href){
+  var st=root.querySelector("[data-byr-st]");if(!st)return;
+  st.textContent=t||"";
+  if(href){var a=document.createElement("a");a.href=href;a.target="_blank";a.rel="noopener noreferrer";a.textContent="Buka Telegram @"+TG;st.appendChild(document.createTextNode(" "));st.appendChild(a)}
+ }
+ function sudah(btn){
+  var root=btn.closest("[data-byr-root]")||document,e=who();
+  if(!e){
+   say(root,"Masuk dulu supaya email akunmu ikut terisi di pesan.");
+   var g=document.querySelector('#authgate [data-ag="masuk"]');
+   if(g&&document.documentElement.classList.contains("gated"))g.click();
+   return}
+  var u=tautan(e),a=document.createElement("a");
+  a.href=u;a.target="_blank";a.rel="noopener noreferrer";a.style.display="none";document.body.appendChild(a);a.click();document.body.removeChild(a);
+  say(root,"Membuka Telegram. Kirim pesannya, lalu lampirkan bukti bayar. Tidak terbuka?",u);
+ }
+ function ke(id){
+  var el=document.getElementById(id);if(!el)return;
+  var red=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  try{el.scrollIntoView({behavior:red?"auto":"smooth",block:"start"})}catch(e){el.scrollIntoView()}
+ }
+ function tanya(el){try{if(window.hskSaran&&window.hskSaran.buka)window.hskSaran.buka("Halo, saya ingin bertanya soal langganan Zenta 汉.",el||null)}catch(e){}}
+ function build(){
+  var tpl=document.getElementById("byr-tpl");if(!tpl||!tpl.content)return false;
+  dlg=document.createElement("div");dlg.id="byr-dlg";dlg.hidden=true;
+  dlg.innerHTML='<div class="byr-box" role="dialog" aria-modal="true" aria-labelledby="byr-ttl"><div class="byr-hd"><h2 id="byr-ttl">Langganan '+NAMA+'</h2><button type="button" class="byr-x" id="byr-x" aria-label="Tutup">'+(typeof ikL==="function"?ikL("tutup"):"&times;")+'</button></div>'+
+   '<p class="byr-sub">'+HARGA+' untuk '+DUR+'. Bayar lewat QRIS, lalu kabari pengelola.</p><div class="byr-body" data-byr-root></div>'+
+   '<p class="byr-ask">Masih ragu? <button type="button" class="byr-lnk" data-byr-tanya>Tanya soal langganan</button></p></div>';
+  document.body.appendChild(dlg);
+  dlg.querySelector(".byr-body").appendChild(tpl.content.cloneNode(true));
+  var im=dlg.querySelector("img");if(im)im.loading="eager";
+  document.getElementById("byr-x").addEventListener("click",tutup);
+  dlg.addEventListener("click",function(e){if(e.target===dlg)tutup()});
+  dlg.addEventListener("keydown",function(e){
+   if(e.key==="Escape"){e.stopPropagation();tutup();return}
+   if(e.key!=="Tab")return;
+   var all=dlg.querySelectorAll("button:not([disabled]),a[href]"),v=[],i;
+   for(i=0;i<all.length;i++)if(all[i].offsetParent!==null)v.push(all[i]);
+   if(!v.length)return;
+   var a=document.activeElement,f=v[0],l=v[v.length-1];
+   if(e.shiftKey&&(a===f||!dlg.contains(a))){e.preventDefault();l.focus()}
+   else if(!e.shiftKey&&(a===l||!dlg.contains(a))){e.preventDefault();f.focus()}
+  });
+  return true;
+ }
+ function buka(apa,el){
+  if(!dlg&&!build())return false;
+  opener=el||null;segar(dlg);say(dlg,"");
+  dlg.hidden=false;dlg.scrollTop=0;document.documentElement.classList.add("byr-open");
+  setTimeout(function(){var x=document.getElementById("byr-x");if(x)x.focus()},30);
+  return true;
+ }
+ function tutup(){
+  if(!dlg||dlg.hidden)return;
+  dlg.hidden=true;document.documentElement.classList.remove("byr-open");
+  if(opener&&opener.focus&&document.contains(opener)){try{opener.focus()}catch(e){}}
+ }
+ window.hskBayar={buka:buka,tutup:tutup};
+ document.addEventListener("click",function(ev){
+  var t=ev.target&&ev.target.closest?ev.target.closest("[data-byr-sudah],[data-byr-tanya],[data-ke],[data-nanti]"):null;if(!t)return;
+  if(t.hasAttribute("data-byr-sudah")){ev.preventDefault();sudah(t)}
+  else if(t.hasAttribute("data-byr-tanya")){ev.preventDefault();tanya(t)}
+  else if(t.hasAttribute("data-ke")){ev.preventDefault();ke(t.getAttribute("data-ke"))}
+  else{ev.preventDefault();var h=document.getElementById("n-hm");if(h)h.click();try{window.scrollTo(0,0)}catch(e){}}   /* Nanti saja: kembali ke beranda */
+ });
+ document.addEventListener("DOMContentLoaded",function(){segar(document)});
 })();
 </script>
 <div class="wrap"><button id="sbtn" type="button" aria-label="Cari"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></button>
@@ -3029,8 +3289,9 @@ function ltOk(k){return penuh()||LT_GRATIS.indexOf(k)>=0}
 function rdOk(s){return penuh()||RD.filter(function(x){return x.l==s.l}).indexOf(s)<RD_GRATIS}
 function ajakHTML(teks,apa){return '<div class="h3up"><span>'+teks+'</span><button class="lk-a" data-langganan="'+hskEsc(apa)+'">Berlangganan</button></div>'}
 function kunciHTML(judul,teks,apa){
- return '<div class="lockp" role="note"><div class="lk-i" aria-hidden="true">'+IKK0+'</div><h3>'+judul+'</h3><p>'+teks+'</p><div class="row"><button class="lk-go" data-langganan="'+hskEsc(apa)+'">Hubungi pengelola</button></div><p class="lk-s">Langganan diaktifkan oleh pengelola Zenta 汉. Progres belajarmu tetap tersimpan.</p></div>'}
+ return '<div class="lockp" role="note"><div class="lk-i" aria-hidden="true">'+IKK0+'</div><h3>'+judul+'</h3><p>'+teks+'</p><div class="lk-pk"><div><b>Zenta 汉+</b><small>1 bulan</small></div><strong>Rp 30.000</strong></div><div class="lk-bt"><button type="button" class="lk-go" data-langganan="'+hskEsc(apa)+'">Lihat paket langganan</button><button type="button" class="lk-no" data-nanti>Nanti saja</button></div><p class="lk-s">Kosakata HSK 2.0 dan 汉字 tetap gratis.</p></div>'}
 function ajakLangganan(apa,el){
+ if(!penuh()){try{if(window.hskBayar&&window.hskBayar.buka(apa,el))return}catch(e){}}
  var t="Halo, saya ingin berlangganan Zenta 汉"+(apa?" untuk membuka "+apa:"")+". Mohon info cara dan biayanya.";
  try{if(window.hskSaran&&window.hskSaran.buka){window.hskSaran.buka(t,el);return}}catch(e){}
  try{var b=document.getElementById("msk-btn");if(b)b.click()}catch(e){}}
