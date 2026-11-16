@@ -321,6 +321,9 @@ html.gated body{overflow:hidden}
 #authgate .ag-go[disabled]{opacity:.6;cursor:default}
 #authgate .ag-note{margin:16px 0 0;font-size:12.5px;line-height:1.5;color:var(--mute);text-align:center}
 #authgate .ag-priv{margin:14px 0 0}
+#authgate .ag-note a,#authgate .lp-foot a{color:var(--ink)}
+#authgate .lp-legal{display:flex;flex-wrap:wrap;gap:0 18px}
+#authgate .lp-legal a{display:inline-flex;align-items:center;min-height:44px}
 #authgate .lp-foot .lp-priv{margin:8px 0 0;line-height:1.5}
 #authgate button:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
 #acct{position:absolute;right:42px;top:9px;width:34px;height:34px;padding:0;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--acc);font:700 14px Inter,system-ui,sans-serif;cursor:pointer;z-index:3}
@@ -985,6 +988,7 @@ html.booting #authgate{display:none!important}
      <div class="ag-msg" id="ag-msg" role="alert" aria-live="polite"></div>
      <button type="submit" class="ag-go" id="ag-go">Masuk</button>
     </form>
+    <p class="ag-note ag-legal" id="ag-legal" hidden>Dengan mendaftar, kamu menyetujui <a href="syarat.html" target="_blank" rel="noopener">Syarat Penggunaan</a> dan <a href="privasi.html" target="_blank" rel="noopener">Kebijakan Privasi</a>.</p>
     <p class="ag-note ag-priv" id="ag-priv">Zenta mencatat peristiwa pemakaian dengan kode acak per perangkat, tanpa email dan tanpa alamat IP, untuk melihat bagian mana yang perlu diperbaiki.</p>
     <p class="ag-note" id="ag-note">Lupa password? Kirim pesan ke pengelola lewat ikon pesan di pojok kanan atas kotak ini.</p>
    </section>
@@ -1093,7 +1097,7 @@ html.booting #authgate{display:none!important}
    <details class="lp-q"><summary>Saya lupa password. Bagaimana?</summary><p>Kirim pesan ke pengelola lewat ikon pesan di kotak masuk dan sertakan emailmu. Password-mu akan diatur ulang.</p></details>
   </section>
 
-  <footer class="lp-foot">© 2026 <b>韩冬岳</b>. Zenta 汉, belajar Mandarin harian. Ikon: Lucide (lisensi ISC).<p class="lp-priv">Zenta mencatat peristiwa pemakaian dengan kode acak per perangkat, tanpa email dan tanpa alamat IP, untuk melihat bagian mana yang perlu diperbaiki.</p></footer>
+  <footer class="lp-foot">© 2026 <b>韩冬岳</b>. Zenta 汉, belajar Mandarin harian. Ikon: Lucide (lisensi ISC).<p class="lp-priv">Zenta mencatat peristiwa pemakaian dengan kode acak per perangkat, tanpa email dan tanpa alamat IP, untuk melihat bagian mana yang perlu diperbaiki.</p><p class="lp-priv lp-legal"><a href="privasi.html">Kebijakan Privasi</a><a href="syarat.html">Syarat Penggunaan</a></p></footer>
  </main>
 </div>
 <script id="ikon-lu">
@@ -1380,7 +1384,7 @@ const ikL=(n,c)=>'<svg class="lu'+(c?' '+c:'')+'" viewBox="0 0 24 24" fill="none
   up=u;
   tIn.className=u?"":"on";tUp.className=u?"on":"";
   tIn.setAttribute("aria-selected",u?"false":"true");tUp.setAttribute("aria-selected",u?"true":"false");
-  kw.hidden=!u;go.textContent=u?"Daftar gratis":"Masuk";ttl.textContent=u?"Buat akun gratis":"Masuk ke akunmu";
+  kw.hidden=!u;$g("ag-legal").hidden=!u;go.textContent=u?"Daftar gratis":"Masuk";ttl.textContent=u?"Buat akun gratis":"Masuk ke akunmu";
   pw.setAttribute("autocomplete",u?"new-password":"current-password");
   note.textContent=u?"Password minimal 8 karakter. Setelah mendaftar, kami mengirim tautan verifikasi ke emailmu.":"Lupa password? Kirim pesan ke pengelola lewat ikon pesan di pojok kanan atas kotak ini.";
   msg("");
