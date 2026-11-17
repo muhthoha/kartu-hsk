@@ -185,6 +185,49 @@ button.lk-a{min-height:36px;padding:0 14px;border-radius:999px;border:1px solid 
 
 /* Stage 3: simulasi ujian */
 .exam-shell{max-width:760px;margin:0 auto}.exam-card{border:1px solid var(--line);background:var(--panel);border-radius:16px;padding:16px;margin:12px 0}.exam-title{font-size:20px;font-weight:750;margin:4px 0 8px}.exam-muted{font-size:12px;color:var(--mute);line-height:1.55}.exam-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:12px 0}.exam-field{display:flex;flex-direction:column;gap:6px;font-size:12px;color:var(--mute)}.exam-field select{width:100%;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);padding:11px;font:inherit}.exam-main{font-size:27px;font-weight:800;text-align:center;line-height:1.35;padding:22px 8px;overflow-wrap:anywhere}.exam-sub{font-size:14px;color:var(--mute);text-align:center;margin-top:4px}.exam-choices{display:grid;gap:9px}.exam-choice{width:100%;text-align:left;padding:13px 14px;border:1px solid var(--line);border-radius:11px;background:var(--bg);color:var(--ink);font:inherit;cursor:pointer;min-height:46px}.exam-choice:disabled{opacity:.9;cursor:default}.exam-choice.chosen{border-color:var(--acc);background:color-mix(in srgb,var(--acc) 12%,transparent)}.exam-choice.correct{border-color:#32966e;background:rgba(50,150,110,.12)}.exam-choice.wrong{border-color:#d45d56;background:rgba(212,93,86,.12)}.exam-progress{height:7px;border-radius:8px;background:var(--line);overflow:hidden;margin:10px 0}.exam-progress i{display:block;height:100%;background:var(--acc)}.exam-stats{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:var(--mute)}.exam-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.exam-actions button{flex:1;min-width:115px}.exam-score{font-size:42px;line-height:1.1;font-weight:850;text-align:center;margin:14px 0 5px}.exam-review{border-top:1px solid var(--line);padding:13px 0}.exam-review:last-child{border-bottom:0}.exam-review .er-q{font-weight:700;margin-bottom:5px}.exam-review .er-a{font-size:13px;line-height:1.6}.exam-badge{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:4px 9px;font-size:11px;color:var(--mute)}.exam-home{border:1px solid var(--line);border-radius:15px;padding:15px;margin:14px 0;background:var(--panel)}.exam-home .row{margin-top:10px}.exam-home p{font-size:13px;color:var(--mute);line-height:1.55;margin:6px 0}
+/* Simulasi ujian: lembar jawaban kertas ujian HSK asli. Warna status memakai unsur yang sudah ada: 木 (e1) benar, 火 (e4) salah, 土 (e3) sedang dikerjakan. */
+.uj{text-align:left}.uj h3,.uj h4{margin:0;font-size:16px;font-weight:700;line-height:1.3}.uj h4{font-size:14px}.uj h2.exam-title{line-height:1.25}
+.uj-hd{display:flex;align-items:center;justify-content:space-between;gap:6px 12px;flex-wrap:wrap;margin:0 0 10px}.uj-hd2{margin-top:18px}
+.uj-seg{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0 0}
+.uj-seg button,.uj-t,.uj-o,.uj-c,.uj-m,.uj-jam{letter-spacing:0;text-transform:none;background:transparent;color:var(--ink);border:1px solid var(--line);cursor:pointer}
+.uj-seg button{flex:1 1 auto;min-height:44px;padding:0 12px;border-radius:10px;font-size:14px;font-weight:600}
+.uj-lv{display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}.uj-lv button{padding:0 2px;white-space:nowrap}
+.uj-seg button.on,.uj-o.on{background:var(--btn);color:var(--btnink);border-color:var(--btn)}
+.uj-kotak{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.uj-k{border:1px solid var(--line);border-radius:10px;padding:10px 12px;display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 6px;min-width:0}
+.uj-k span{flex-basis:100%;font-size:12px;color:var(--mute)}.uj-k b{font-size:22px;font-weight:750;line-height:1.25;font-variant-numeric:tabular-nums}.uj-k b.ok{color:var(--f1)}.uj-k b.no{color:var(--f4)}.uj-k small{font-size:12px;color:var(--mute)}
+.uj-cek{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-size:13px;color:var(--mute);cursor:pointer}.uj-cek input{width:18px;height:18px;margin:0;accent-color:var(--ink);cursor:pointer}
+.uj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px}
+.uj-t{display:flex;flex-direction:column;gap:2px;align-items:stretch;text-align:left;min-height:44px;padding:10px 12px;border-radius:10px;font-size:13px}
+.uj-tk{display:flex;align-items:center;justify-content:space-between;gap:6px}.uj-tk b{font-size:15px;font-variant-numeric:tabular-nums}.uj-tk svg{width:16px;height:16px;flex:none;color:var(--mute)}
+.uj-ts{font-size:12px;color:var(--mute);line-height:1.45}
+.uj-t.jal{background:var(--e3t);border-color:var(--e3)}.uj-t.jal .uj-ts,.uj-t.jal svg{color:var(--e3d)}
+.uj-t.sel{background:var(--e1t);border-color:var(--e1)}.uj-t.sel .uj-ts,.uj-t.sel svg{color:var(--e1d)}
+.uj-t.on{box-shadow:inset 0 0 0 2px var(--ink);border-color:var(--ink)}
+.uj-tanda{display:grid;grid-template-columns:repeat(auto-fill,minmax(44px,1fr));gap:6px;margin-bottom:10px}
+.uj-c{display:inline-flex;align-items:center;justify-content:center;gap:2px;min-height:44px;padding:0 2px;border-radius:8px;font-size:13px;font-weight:600;font-variant-numeric:tabular-nums}
+.uj-c svg{width:12px;height:12px;flex:none}.uj-c.ok{background:var(--e1t);border-color:var(--e1);color:var(--e1d)}.uj-c.no{background:var(--e4t);border-color:var(--e4);color:var(--e4d)}.uj-c.isi{background:var(--soft)}
+.uj-dot{width:6px;height:6px;border-radius:50%;background:currentColor;flex:none}
+.uj-alat{display:flex;align-items:center;gap:8px 12px;flex-wrap:wrap;margin:16px 0 4px}
+.uj-jam{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border-radius:10px;font-size:14px;font-weight:600;font-variant-numeric:tabular-nums}.uj-jam svg{width:18px;height:18px;flex:none}.uj-jam.habis{border-color:var(--e4);color:var(--f4)}
+.uj-bag{margin:18px 0 6px;font-size:12.5px;font-weight:600;color:var(--mute)}
+.uj-q{display:grid;grid-template-columns:36px minmax(0,1fr);align-items:center;gap:6px 8px;padding:7px 0;border-top:1px solid var(--line);scroll-margin-top:90px}
+.uj-no{font-size:14px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--mute)}.uj-q.ok .uj-no{color:var(--f1)}.uj-q.no .uj-no{color:var(--f4)}
+.uj-op{display:flex;flex-wrap:wrap;gap:6px;min-width:0}
+.uj-o{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:0 10px;border-radius:8px;font-size:15px;font-weight:600}.uj-o svg{width:18px;height:18px}.uj-w{font-size:13.5px;padding:0 14px}
+.uj-r,.uj-sm{grid-column:2;display:flex;align-items:center;flex-wrap:wrap;gap:6px;font-size:13px}.uj-r svg{width:15px;height:15px;flex:none}.uj-r.ok{color:var(--f1)}.uj-r.no{color:var(--f4)}
+.uj-m{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 12px;border-style:dashed;border-radius:8px;color:var(--mute);font-size:13px;font-weight:600}.uj-m svg{width:15px;height:15px;flex:none}
+.uj-m.on{border-style:solid}.uj-m.on.ok{background:var(--e1t);border-color:var(--e1);color:var(--e1d)}.uj-m.on.no{background:var(--e4t);border-color:var(--e4);color:var(--e4d)}
+.uj-hl{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--mute)}.uj-han{width:64px;min-height:44px;padding:0 6px;text-align:center;font-size:20px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+.uj-msg{margin:12px 0 0;font-size:13.5px;line-height:1.6;color:var(--ink)}.uj-msg:empty{display:none}
+.uj-nl{margin:14px 0 0;padding:0;list-style:none;font-size:13.5px;line-height:1.7}
+.uj-sr{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.uj a{color:inherit;text-decoration:underline;text-underline-offset:2px}.uj .exam-actions button{min-height:44px}
+.uj-seg button:hover,.uj-t:hover,.uj-o:hover,.uj-c:hover,.uj-m:hover,.uj-jam:hover,.uj-han:hover{border-color:var(--ink)}
+.uj-seg button:active,.uj-t:active,.uj-o:active,.uj-c:active,.uj-m:active,.uj-jam:active{transform:translateY(1px)}
+.uj button:focus-visible,.uj input:focus-visible,.uj a:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+@media(max-width:520px){.uj-kotak,.uj-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:400px){.uj-q{grid-template-columns:minmax(0,1fr)}.uj-r,.uj-sm{grid-column:1}.uj-no{font-size:12.5px}}
 @media(max-width:380px){.exam-grid{grid-template-columns:1fr}.exam-main{font-size:23px}}
 
 
@@ -1211,7 +1254,7 @@ const ikL=(n,c)=>'<svg class="lu'+(c?' '+c:'')+'" viewBox="0 0 24 24" fill="none
  var AUTH_URL="https://n8n.zenta.web.id/webhook/hsk-auth";
  var root=document.documentElement,LS=null,A=null,gone=false;
  try{LS=window.localStorage;LS.getItem("acct_auth")}catch(e){LS=null}
- var PROG=["hsk_m","hsk_m3","hsk_gp","hsk_gb","hsk_rr","hsk_rdone","hsk_wr","hsk_wa","hsk_error_bank_v1","hsk_exam_history","hsk_daily_activity_v1","hsk_prep_v1","hsk_srs_v1"];
+ var PROG=["hsk_m","hsk_m3","hsk_gp","hsk_gb","hsk_rr","hsk_rdone","hsk_wr","hsk_wa","hsk_error_bank_v1","hsk_exam_history","hsk_ujian_v1","hsk_daily_activity_v1","hsk_prep_v1","hsk_srs_v1"];
  function $g(id){return document.getElementById(id)}
  function jget(k){try{return JSON.parse(LS.getItem(k)||"null")}catch(e){return null}}
  function readAuth(){
@@ -2903,47 +2946,190 @@ document.addEventListener("keydown",e=>{if(e.key=="Escape"&&$("srch").style.disp
 })();
 
 
-// ===== Simulasi ujian kosakata: pilihan ganda, timer, koreksi, dan analisis kesalahan =====
+// ===== Kuis kosakata pilihan ganda: mesin untuk "Latih semua kesalahan" di Bank Kesalahan (simulasi ujian kosakata lama sudah diganti lembar jawaban di bawah) =====
 const EX={active:false,level:'all',count:20,direction:'mix',questions:[],at:0,answers:[],started:0,ends:0,interval:null,finished:false};
 function exShuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 function exLevelName(v){return ({all:'Semua level',1:'HSK 1',2:'HSK 2',3:'HSK 3',4:'HSK 4',7:'HSK 5',5:'Bandara',6:'Harga & Business Deal',10:'Finance & Akuntansi',11:'Pertambangan & Smelter'})[v]||'Semua level'}
-function exCandidates(level){return D.map((c,i)=>({c,i})).filter(x=>level==='all'||String(x.c[3])===String(level)).filter(x=>typeof x.c[0]==='string'&&x.c[0].trim()&&typeof x.c[2]==='string'&&x.c[2].trim())}
-function exBuild(level,count,direction){
- let pool=exCandidates(level);if(pool.length<4)return [];
- exShuffle(pool);pool=pool.slice(0,Math.min(+count,pool.length));
- return pool.map(({c,i})=>{let dir=direction==='mix'?(Math.random()<.5?'zh-id':'id-zh'):direction;let correct=dir==='zh-id'?c[2]:c[0];let seen=new Set([String(correct)]);let distractors=[];for(const x of exShuffle(exCandidates(level).filter(y=>y.i!==i))){let val=dir==='zh-id'?x.c[2]:x.c[0];if(!val||seen.has(String(val)))continue;seen.add(String(val));distractors.push(val);if(distractors.length===3)break}return {i,c,dir,correct,choices:exShuffle([correct,...distractors])}}).filter(q=>q.choices.length===4);
-}
 function exFormatTime(sec){sec=Math.max(0,Math.floor(sec));return String(Math.floor(sec/60)).padStart(2,'0')+':'+String(sec%60).padStart(2,'0')}
-function exStart(){
- clearInterval(EX.interval);EX.level=document.querySelector('#ex-level')?.value||'all';EX.count=+(document.querySelector('#ex-count')?.value||20);EX.direction=document.querySelector('#ex-direction')?.value||'mix';EX.questions=exBuild(EX.level,EX.count,EX.direction);EX.at=0;EX.answers=Array(EX.questions.length).fill(null);EX.started=Date.now();EX.ends=EX.started+Math.max(5,Math.ceil(EX.questions.length*.6))*60*1000;EX.finished=false;EX.active=true;
- if(!EX.questions.length){renderExam($('view'),'Kosakata pada filter ini belum cukup untuk membuat soal pilihan ganda.');return}
- exQuestion();EX.interval=setInterval(()=>{const el=document.querySelector('#ex-clock');if(!el)return;let left=Math.ceil((EX.ends-Date.now())/1000);el.textContent=exFormatTime(left);if(left<=0)exFinish(true)},1000);
-}
 function exQuestion(){
  const v=$('view');if(EX.finished)return exResults();const q=EX.questions[EX.at];if(!q)return exFinish(false);
  const answered=EX.answers.filter(x=>x!==null).length;let prompt=q.dir==='zh-id'?q.c[0]:q.c[2];let sub=q.dir==='zh-id'?(q.c[1]||'Pilih arti bahasa Indonesia yang tepat'):'Pilih kosakata Mandarin yang tepat';
- v.innerHTML=`<div class="exam-shell"><div class="exam-card"><div class="exam-stats"><span>Soal ${EX.at+1} dari ${EX.questions.length}</span><span>Waktu tersisa: <b id="ex-clock">${exFormatTime(Math.ceil((EX.ends-Date.now())/1000))}</b></span></div><div class="exam-progress"><i style="width:${(EX.at+1)/EX.questions.length*100}%"></i></div><div class="exam-stats"><span>${exLevelName(EX.level)}</span><span>${answered} dijawab</span></div><div class="exam-main">${prompt}</div><div class="exam-sub">${sub}</div><div class="exam-choices" id="ex-choices">${q.choices.map((a,i)=>`<button class="exam-choice" data-choice="${i}">${String.fromCharCode(65+i)}. ${a}</button>`).join('')}</div><div class="exam-actions"><button id="ex-prev" ${EX.at===0?'disabled':''}>← Sebelumnya</button><button id="ex-next">${EX.at===EX.questions.length-1?'Selesaikan ujian':'Soal berikutnya →'}</button></div><div class="exam-muted" style="margin-top:10px">Jawaban tersimpan saat dipilih. Anda dapat kembali ke soal sebelumnya sebelum menyelesaikan ujian.</div></div><div class="exam-actions"><button id="ex-cancel">Keluar dari ujian</button></div></div>`;
+ v.innerHTML=`<div class="exam-shell"><div class="exam-card"><div class="exam-stats"><span>Soal ${EX.at+1} dari ${EX.questions.length}</span><span>Waktu tersisa: <b id="ex-clock">${exFormatTime(Math.ceil((EX.ends-Date.now())/1000))}</b></span></div><div class="exam-progress"><i style="width:${(EX.at+1)/EX.questions.length*100}%"></i></div><div class="exam-stats"><span>${exLevelName(EX.level)}</span><span>${answered} dijawab</span></div><div class="exam-main">${prompt}</div><div class="exam-sub">${sub}</div><div class="exam-choices" id="ex-choices">${q.choices.map((a,i)=>`<button class="exam-choice" data-choice="${i}">${String.fromCharCode(65+i)}. ${a}</button>`).join('')}</div><div class="exam-actions"><button id="ex-prev" ${EX.at===0?'disabled':''}>← Sebelumnya</button><button id="ex-next">${EX.at===EX.questions.length-1?'Selesaikan latihan':'Soal berikutnya →'}</button></div><div class="exam-muted" style="margin-top:10px">Jawaban tersimpan saat dipilih. Anda dapat kembali ke soal sebelumnya sebelum menyelesaikan latihan.</div></div><div class="exam-actions"><button id="ex-cancel">Keluar dari latihan</button></div></div>`;
  v.querySelectorAll('[data-choice]').forEach(b=>{const idx=+b.dataset.choice;if(EX.answers[EX.at]===idx)b.classList.add('chosen');b.onclick=()=>{EX.answers[EX.at]=idx;exQuestion()}});
  $('#ex-prev').onclick=()=>{if(EX.at>0){EX.at--;exQuestion()}};
  $('#ex-next').onclick=()=>{if(EX.at<EX.questions.length-1){EX.at++;exQuestion()}else exFinish(false)};
- $('#ex-cancel').onclick=()=>{if(confirm('Keluar dari ujian ini? Jawaban sementara tidak akan dinilai.')){clearInterval(EX.interval);EX.active=false;S.mode='hm';render()}};
+ $('#ex-cancel').onclick=()=>{if(confirm('Keluar dari latihan ini? Jawaban sementara tidak akan dinilai.')){clearInterval(EX.interval);EX.active=false;S.mode='hm';render()}};
 }
 function exFinish(timeout){clearInterval(EX.interval);EX.finished=true;EX.active=false;EX.timeout=timeout;try{const old=JSON.parse(localStorage.getItem('hsk_exam_history')||'[]');const score=EX.questions.reduce((n,q,i)=>n+(EX.answers[i]!==null&&q.choices[EX.answers[i]]===q.correct?1:0),0);old.unshift({date:new Date().toISOString(),level:EX.level,total:EX.questions.length,score,percent:EX.questions.length?Math.round(score/EX.questions.length*100):0});localStorage.setItem('hsk_exam_history',JSON.stringify(old.slice(0,20)))}catch(e){}exResults()}
 function exResults(){
  const v=$('view'),total=EX.questions.length,correct=EX.questions.reduce((n,q,i)=>n+(EX.answers[i]!==null&&q.choices[EX.answers[i]]===q.correct?1:0),0),wrong=EX.questions.filter((q,i)=>EX.answers[i]===null||q.choices[EX.answers[i]]!==q.correct),pct=total?Math.round(correct/total*100):0;
  const wrongMean={};wrong.forEach(q=>{const key=String(q.c[2]);wrongMean[key]=(wrongMean[key]||0)+1});
- v.innerHTML=`<div class="exam-shell"><div class="exam-card"><div class="exam-title">${EX.timeout?'Waktu ujian habis':'Ujian selesai'}</div><div class="exam-muted">${exLevelName(EX.level)} · ${total} soal · ${EX.answers.filter(x=>x!==null).length} dijawab</div><div class="exam-score">${pct}%</div><div style="text-align:center;font-weight:700">${correct} benar dari ${total} soal</div><div class="exam-progress"><i style="width:${pct}%"></i></div><div class="exam-stats"><span>Benar: ${correct}</span><span>Salah/kosong: ${total-correct}</span></div><p class="exam-muted" style="margin-top:12px">Nilai dihitung dari jawaban yang benar. Soal yang tidak dijawab dianggap salah.</p><div class="exam-actions"><button id="ex-retry">Ujian baru</button><button id="ex-home">Kembali ke beranda</button></div></div><div class="exam-card"><div class="exam-title">Analisis kesalahan</div><p class="exam-muted">Daftar soal yang salah atau belum dijawab, beserta jawaban yang benar.</p>${wrong.length?EX.questions.map((q,i)=>({q,i})).filter(x=>wrong.includes(x.q)).map(({q,i})=>`<div class="exam-review"><div class="er-q">${i+1}. ${q.dir==='zh-id'?q.c[0]+' · '+(q.c[1]||''):q.c[2]}</div><div class="er-a">Jawaban Anda: <b>${EX.answers[i]===null?'Belum dijawab':q.choices[EX.answers[i]]}</b><br>Jawaban benar: <b>${q.correct}</b><br><span class="exam-muted">Arti: ${q.c[2]}${q.c[1]?' · Pinyin: '+q.c[1]:''}</span></div></div>`).join(''):'<p>Semua jawaban benar. Tidak ada kesalahan untuk ditinjau.</p>'}</div><div class="exam-card"><div class="exam-title">Ringkasan yang perlu diulang</div>${wrong.length?Object.entries(wrongMean).sort((a,b)=>b[1]-a[1]).slice(0,8).map(([meaning,n])=>`<div class="exam-review"><b>${meaning}</b><div class="exam-muted">Muncul dalam ${n} soal yang salah/kosong</div></div>`).join(''):'Pertahankan konsistensi latihan; semua soal dijawab benar.'}</div></div>`;
- $('#ex-retry').onclick=()=>{S.mode='exam';render()};$('#ex-home').onclick=()=>{S.mode='hm';render()};
+ v.innerHTML=`<div class="exam-shell"><div class="exam-card"><div class="exam-title">${EX.timeout?'Waktu latihan habis':'Latihan selesai'}</div><div class="exam-muted">${exLevelName(EX.level)} · ${total} soal · ${EX.answers.filter(x=>x!==null).length} dijawab</div><div class="exam-score">${pct}%</div><div style="text-align:center;font-weight:700">${correct} benar dari ${total} soal</div><div class="exam-progress"><i style="width:${pct}%"></i></div><div class="exam-stats"><span>Benar: ${correct}</span><span>Salah/kosong: ${total-correct}</span></div><p class="exam-muted" style="margin-top:12px">Nilai dihitung dari jawaban yang benar. Soal yang tidak dijawab dianggap salah.</p><div class="exam-actions"><button id="ex-retry">Latih lagi</button><button id="ex-home">Kembali ke beranda</button></div></div><div class="exam-card"><div class="exam-title">Analisis kesalahan</div><p class="exam-muted">Daftar soal yang salah atau belum dijawab, beserta jawaban yang benar.</p>${wrong.length?EX.questions.map((q,i)=>({q,i})).filter(x=>wrong.includes(x.q)).map(({q,i})=>`<div class="exam-review"><div class="er-q">${i+1}. ${q.dir==='zh-id'?q.c[0]+' · '+(q.c[1]||''):q.c[2]}</div><div class="er-a">Jawaban Anda: <b>${EX.answers[i]===null?'Belum dijawab':q.choices[EX.answers[i]]}</b><br>Jawaban benar: <b>${q.correct}</b><br><span class="exam-muted">Arti: ${q.c[2]}${q.c[1]?' · Pinyin: '+q.c[1]:''}</span></div></div>`).join(''):'<p>Semua jawaban benar. Tidak ada kesalahan untuk ditinjau.</p>'}</div><div class="exam-card"><div class="exam-title">Ringkasan yang perlu diulang</div>${wrong.length?Object.entries(wrongMean).sort((a,b)=>b[1]-a[1]).slice(0,8).map(([meaning,n])=>`<div class="exam-review"><b>${meaning}</b><div class="exam-muted">Muncul dalam ${n} soal yang salah/kosong</div></div>`).join(''):'Pertahankan konsistensi latihan; semua soal dijawab benar.'}</div></div>`;
+ $('#ex-retry').onclick=()=>exStartWrong();$('#ex-home').onclick=()=>{S.mode='hm';render()};
+}
+// ===== Simulasi ujian: lembar jawaban untuk kertas ujian HSK asli (kode resmi) dan statistik per paket =====
+/* Teks soal dan audio ujian tidak ada di situs: pengguna mengerjakan dari buku atau PDF kertas ujiannya, mengisi jawaban di sini, lalu memeriksa.
+   data/ujian.json = {v:1,paket:{"1":[["H10901","<kunci>"],...]}}. Kunci satu karakter per nomor:
+   T/X benar/salah, A-F pilihan, 1-6 urutan kalimat (ABC ACB BAC BCA CAB CBA), hanzi (HSK 3 no. 76-80), "-" atau "?" = dinilai sendiri. Kunci "" = paket tanpa kunci.
+   Kunci baru dibuat dengan tools/kunci_ujian.py dari halaman 卷答案 PDF kertas ujian.
+   Progres: localStorage hsk_ujian_v1 = {KODE:{a,m,t}}. a = jawaban (" " kosong, "*" sudah dikerjakan untuk 书写), m = tanda (" " belum diperiksa, "1" benar, "0" salah). */
+const UJ_LV={
+ 1:{n:40,maks:200,lulus:120,s:[['听力',1,20,15],['阅读',21,40,17]],j:[[5,'tf'],[10,'abc'],[15,'af'],[20,'abc'],[25,'tf'],[40,'af']],b:[1,6,11,16,21,26,31,36]},
+ 2:{n:60,maks:200,lulus:120,s:[['听力',1,35,25],['阅读',36,60,22]],j:[[10,'tf'],[20,'af'],[35,'abc'],[45,'af'],[50,'tf'],[60,'af']],b:[1,11,21,31,36,41,46,51]},
+ 3:{n:80,maks:300,lulus:180,s:[['听力',1,40,35],['阅读',41,70,30],['书写',71,80,15]],j:[[10,'af'],[20,'tf'],[40,'abc'],[60,'af'],[70,'abc'],[75,'tulis'],[80,'han']],b:[1,11,21,31,41,51,61,71,76]},
+ 4:{n:100,maks:300,lulus:180,s:[['听力',1,45,30],['阅读',46,85,40],['书写',86,100,25]],j:[[10,'tf'],[45,'abcd'],[55,'af'],[65,'ord'],[85,'abcd'],[100,'tulis']],b:[1,11,26,46,56,66,86,96]},
+ 5:{n:100,maks:300,lulus:180,s:[['听力',1,45,30],['阅读',46,90,45],['书写',91,100,40]],j:[[90,'abcd'],[100,'tulis']],b:[1,21,46,61,71,91,99]}
+};
+const UJ_ORD=['ABC','ACB','BAC','BCA','CAB','CBA'],UJ_KEY='hsk_ujian_v1',UJ_UI='hsk_ujian_ui';
+const UJ={data:null,p:null,lv:0,kode:null,sek:0,auto:false,tm:null,buka:{}};
+const UJ_IK={ok:IKS+'<path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',no:IKS+'<path d="M6 6l12 12M18 6 6 18"/></svg>',jalan:IKS+'<circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor" stroke="none"/></svg>',belum:IKS+'<circle cx="12" cy="12" r="8"/></svg>',jam:IKS+'<circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg>'};
+function ujMuat(){if(!UJ.p)UJ.p=fetch('data/ujian.json?v=1').then(r=>{if(!r.ok)throw new Error('http '+r.status);return r.json()}).then(j=>{if(!j||j.v!==1||!j.paket||![1,2,3,4,5].every(n=>Array.isArray(j.paket[n])&&j.paket[n].length))throw new Error('format');UJ.data=j;return j}).catch(e=>{UJ.p=null;throw e});return UJ.p}
+function ujPaket(lv){return (UJ.data&&UJ.data.paket[lv])||[]}
+function ujKunci(kode){const p=ujPaket(UJ.lv).find(x=>x[0]===kode);return p&&typeof p[1]==='string'?p[1]:''}
+function ujJenis(lv,n){const j=UJ_LV[lv].j;for(let i=0;i<j.length;i++)if(n<=j[i][0])return j[i][1];return 'tulis'}
+function ujOpsi(t){return t==='tf'?[['T','Benar',UJ_IK.ok],['X','Salah',UJ_IK.no]]:t==='ord'?UJ_ORD.map((s,i)=>[String(i+1),'Urutan '+s,s]):(t==='abc'?'ABC':t==='abcd'?'ABCD':'ABCDEF').split('').map(c=>[c,'Pilihan '+c,c])}
+function ujLabel(t,c){return t==='tf'?(c==='T'?'benar (√)':'salah (×)'):t==='ord'?(UJ_ORD[+c-1]||c):c}
+function ujAda(k,lv,n){const c=k?k.charAt(n-1):'';if(!c||c==='-'||c==='?')return false;const t=ujJenis(lv,n);return t==='tulis'?false:t==='han'?/[一-鿿]/.test(c):true}
+function ujBaca(){try{const x=JSON.parse(localStorage.getItem(UJ_KEY)||'{}');return x&&typeof x==='object'&&!Array.isArray(x)?x:{}}catch(e){return {}}}
+function ujTulis(x){try{localStorage.setItem(UJ_KEY,JSON.stringify(x))}catch(e){}}
+function ujRek(st,kode,n){const r=st[kode]&&typeof st[kode]==='object'?st[kode]:{};const pad=s=>((typeof s==='string'?s:'')+' '.repeat(n)).slice(0,n);return {a:pad(r.a),m:pad(r.m)}}
+function ujSimpan(st,kode,r){if(!r.a.trim()&&!r.m.trim())delete st[kode];else st[kode]={a:r.a,m:r.m,t:Date.now()};ujTulis(st)}
+function ujGanti(s,n,c){return s.slice(0,n-1)+c+s.slice(n)}
+function ujSetJawab(kode,n,v){const N=UJ_LV[UJ.lv].n,st=ujBaca(),r=ujRek(st,kode,N);r.a=ujGanti(r.a,n,v||' ');r.m=ujGanti(r.m,n,' ');ujSimpan(st,kode,r)}
+function ujSetTanda(kode,n,v){const N=UJ_LV[UJ.lv].n,st=ujBaca(),r=ujRek(st,kode,N);r.m=ujGanti(r.m,n,v||' ');ujSimpan(st,kode,r)}
+function ujHit(r,dari,sampai){let d=0,b=0,s=0;for(let i=dari-1;i<sampai;i++){if(r.a.charAt(i)!==' ')d++;const c=r.m.charAt(i);if(c==='1')b++;else if(c==='0')s++}return {d,b,s}}
+function ujPeriksa(kode,dari,sampai){
+ const lv=UJ.lv,k=ujKunci(kode),st=ujBaca(),r=ujRek(st,kode,UJ_LV[lv].n);let oto=0,sendiri=0,isi=0;
+ for(let n=dari;n<=sampai;n++){const a=r.a.charAt(n-1);if(a===' ')continue;isi++;if(ujAda(k,lv,n)){r.m=ujGanti(r.m,n,a===k.charAt(n-1)?'1':'0');oto++}else if(r.m.charAt(n-1)===' ')sendiri++}
+ if(oto)ujSimpan(st,kode,r);return {oto,sendiri,isi};
+}
+function ujUiSimpan(){try{localStorage.setItem(UJ_UI,UJ.lv+'|'+(UJ.kode||''))}catch(e){}}
+function ujUiAwal(){
+ if(UJ.lv)return;let lv=0,kode='';
+ try{const u=String(localStorage.getItem(UJ_UI)||'').split('|');if(/^[1-5]$/.test(u[0])){lv=+u[0];kode=u[1]||''}}catch(e){}
+ if(!lv){try{const m=/^on\|[^|]*\|([1-5])\|/.exec(localStorage.getItem('hsk_exam_date')||'');if(m)lv=+m[1]}catch(e){}}
+ UJ.lv=lv||1;UJ.kode=ujPaket(UJ.lv).some(p=>p[0]===kode)?kode:null;
+}
+function ujJamStop(){if(UJ.tm){clearInterval(UJ.tm.i);UJ.tm=null}}
+function ujJamTeks(){
+ const b=document.getElementById('uj-jam');if(!b)return;const s=UJ_LV[UJ.lv].s[UJ.sek],t=UJ.tm,aktif=!!t&&t.kode===UJ.kode&&t.sek===UJ.sek;
+ const sisa=aktif?(t.jalan?Math.max(0,Math.ceil((t.end-Date.now())/1000)):t.sisa):s[3]*60,habis=aktif&&sisa<=0;
+ b.innerHTML=UJ_IK.jam+'<span>'+(habis?'Waktu habis, ulangi':aktif?(t.jalan?'Jeda ':'Lanjut ')+exFormatTime(sisa):'Mulai waktu '+exFormatTime(sisa))+'</span>';b.classList.toggle('habis',habis);
+}
+function ujJamKlik(){
+ const s=UJ_LV[UJ.lv].s[UJ.sek];let t=UJ.tm;
+ if(!t||t.kode!==UJ.kode||t.sek!==UJ.sek){ujJamStop();t=UJ.tm={kode:UJ.kode,sek:UJ.sek,sisa:s[3]*60,jalan:false,end:0,i:null}}
+ if(t.jalan){t.sisa=Math.max(0,Math.ceil((t.end-Date.now())/1000));t.jalan=false;clearInterval(t.i)}
+ else{
+  if(t.sisa<=0)t.sisa=s[3]*60;t.end=Date.now()+t.sisa*1000;t.jalan=true;
+  t.i=setInterval(()=>{const x=UJ.tm;if(!x||!document.getElementById('uj-jam')){ujJamStop();return}
+   if(x.jalan&&Date.now()>=x.end){x.jalan=false;x.sisa=0;clearInterval(x.i);const h=document.getElementById('uj-hasil');if(h)h.textContent='Waktu bagian ini habis. Kamu masih bisa mengisi dan memeriksa jawaban.'}
+   ujJamTeks()},1000);
+ }
+ ujJamTeks();
+}
+function ujStat(){
+ const el=document.getElementById('uj-stat');if(!el)return;const lv=UJ.lv,L=UJ_LV[lv],pk=ujPaket(lv),st=ujBaca();let d=0,b=0,s=0,sel=0,jal=0;
+ pk.forEach(p=>{const h=ujHit(ujRek(st,p[0],L.n),1,L.n);d+=h.d;b+=h.b;s+=h.s;if(h.d===L.n&&h.b+h.s===L.n)sel++;else if(h.d||h.b||h.s)jal++});
+ const tot=pk.length*L.n,cek=b+s,pr=tot?Math.round(d/tot*100):0;
+ const kotak=[['Total soal dikerjakan',d,'dari '+tot,''],['Jawaban benar',b,'','ok'],['Jawaban salah',s,'','no'],['Akurasi diperiksa',cek?Math.round(b/cek*100)+'%':'Belum ada','',''],['Sudah diperiksa',cek,'',''],['Paket selesai',sel,'dari '+pk.length,'']];
+ el.innerHTML='<div class="uj-hd"><h3>Statistik HSK '+lv+' · '+pk.length+' paket</h3><span class="exam-muted">'+sel+' paket selesai · '+pr+'% progres</span></div><div class="uj-kotak">'+kotak.map(x=>'<div class="uj-k"><span>'+x[0]+'</span><b'+(x[3]?' class="'+x[3]+'"':'')+'>'+x[1]+'</b>'+(x[2]?'<small>'+x[2]+'</small>':'')+'</div>').join('')+'</div><div class="exam-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="'+pr+'" aria-label="Progres pengerjaan HSK '+lv+'"><i style="width:'+pr+'%"></i></div><p class="exam-muted">'+jal+' paket sedang dikerjakan · '+(pk.length-sel-jal)+' paket belum dimulai</p>';
+}
+function ujGrid(){
+ const el=document.getElementById('uj-grid');if(!el)return;const lv=UJ.lv,L=UJ_LV[lv],st=ujBaca(),semua=ujPaket(lv),pk=UJ.auto?semua.filter(p=>p[1]):semua;
+ el.innerHTML=pk.map(p=>{const h=ujHit(ujRek(st,p[0],L.n),1,L.n),sel=h.d===L.n&&h.b+h.s===L.n,jal=!sel&&(h.d||h.b||h.s),on=p[0]===UJ.kode;
+  return '<button type="button" class="uj-t'+(sel?' sel':jal?' jal':'')+(on?' on':'')+'" data-ujk="'+hskEsc(p[0])+'" aria-pressed="'+on+'"><span class="uj-tk"><b>'+hskEsc(p[0])+'</b>'+(sel?UJ_IK.ok:jal?UJ_IK.jalan:UJ_IK.belum)+'</span><span class="uj-sr">'+(sel?'Selesai.':jal?'Sedang dikerjakan.':'Belum dimulai.')+'</span><span class="uj-ts">'+h.d+'/'+L.n+' dikerjakan</span><span class="uj-ts">'+h.b+' benar · '+h.s+' salah</span><span class="uj-ts">'+(p[1]?'Koreksi otomatis':'Periksa sendiri')+'</span></button>'}).join('');
+ const k=document.getElementById('uj-grid-ket');if(k)k.textContent=pk.length+' dari '+semua.length+' paket ditampilkan. Tekan paket untuk membuka lembar jawabannya.';
+}
+function ujBaris(lv,n,r,k){
+ const t=ujJenis(lv,n),a=r.a.charAt(n-1),m=r.m.charAt(n-1),ada=ujAda(k,lv,n);let op,ekor='';
+ if(t==='tulis')op='<button type="button" class="uj-o uj-w'+(a!==' '?' on':'')+'" data-ujt="'+n+'" aria-pressed="'+(a!==' ')+'">Sudah dikerjakan</button>';
+ else if(t==='han')op='<label class="uj-hl">Hanzi <input class="uj-han" data-n="'+n+'" type="text" maxlength="4" autocomplete="off" autocapitalize="off" spellcheck="false" lang="zh" value="'+(a===' '?'':hskEsc(a))+'"></label>';
+ else op=ujOpsi(t).map(o=>'<button type="button" class="uj-o'+(a===o[0]?' on':'')+'" data-n="'+n+'" data-v="'+o[0]+'" aria-pressed="'+(a===o[0])+'" aria-label="Nomor '+n+': '+o[1]+'">'+o[2]+'</button>').join('');
+ if(ada){if(m==='1')ekor='<span class="uj-r ok">'+UJ_IK.ok+'<span>Benar</span></span>';else if(m==='0')ekor='<span class="uj-r no">'+UJ_IK.no+'<span>Salah, kunci: '+hskEsc(ujLabel(t,k.charAt(n-1)))+'</span></span>'}
+ else if(a!==' ')ekor='<span class="uj-sm" role="group" aria-label="Tandai nomor '+n+'">'+[['1','ok','Benar'],['0','no','Salah']].map(x=>'<button type="button" class="uj-m'+(m===x[0]?' on '+x[1]:'')+'" data-ujm="'+x[0]+'" data-n="'+n+'" aria-pressed="'+(m===x[0])+'">'+UJ_IK[x[1]]+'<span>'+x[2]+'</span></button>').join('')+'</span>';
+ return '<div class="uj-q'+(m==='1'?' ok':m==='0'?' no':'')+'" id="uj-q-'+n+'"><span class="uj-no"><span class="uj-sr">Nomor </span>'+n+'</span><div class="uj-op">'+op+'</div>'+ekor+'</div>';
+}
+function ujTandaGambar(){
+ const el=document.getElementById('uj-tanda');if(!el||!UJ.kode)return;const L=UJ_LV[UJ.lv],s=L.s[UJ.sek],r=ujRek(ujBaca(),UJ.kode,L.n);let h='';
+ for(let n=s[1];n<=s[2];n++){const a=r.a.charAt(n-1),m=r.m.charAt(n-1);h+='<button type="button" class="uj-c'+(m==='1'?' ok':m==='0'?' no':a!==' '?' isi':'')+'" data-ujn="'+n+'" aria-label="Nomor '+n+', '+(m==='1'?'benar':m==='0'?'salah':a!==' '?'dijawab, belum diperiksa':'belum dikerjakan')+'">'+n+(m==='1'?UJ_IK.ok:m==='0'?UJ_IK.no:a!==' '?'<i class="uj-dot"></i>':'')+'</button>'}
+ el.innerHTML=h;const x=ujHit(r,s[1],s[2]),k=document.getElementById('uj-tanda-ket');if(k)k.textContent=x.d+' dari '+(s[2]-s[1]+1)+' dikerjakan';
+}
+function ujNilai(){
+ const el=document.getElementById('uj-nilai');if(!el||!UJ.kode)return;const lv=UJ.lv,L=UJ_LV[lv],r=ujRek(ujBaca(),UJ.kode,L.n);let lengkap=true,ada=false,total=0;
+ const li=L.s.map(s=>{const x=ujHit(r,s[1],s[2]),n=s[2]-s[1]+1,c=x.b+x.s;if(c)ada=true;if(c<n)lengkap=false;total+=Math.round(x.b/n*100);return '<li><span lang="zh">'+s[0]+'</span>: '+(c?x.b+' benar dan '+x.s+' salah dari '+c+' yang diperiksa ('+n+' nomor)':'belum ada yang diperiksa')+'</li>'}).join('');
+ el.innerHTML=ada?'<ul class="uj-nl">'+li+'</ul>'+(lengkap?'<p class="uj-msg">Perkiraan nilai: <b>'+total+' dari '+L.maks+'</b>. Batas lulus yang biasa dipakai untuk HSK '+lv+' adalah '+L.lulus+'. Ini hitungan kasar dari persentase benar tiap bagian, bukan nilai resmi.</p>':''):'';
+}
+function ujPanel(){
+ const el=document.getElementById('uj-panel');if(!el)return;const kode=UJ.kode;
+ if(UJ.tm&&(UJ.tm.kode!==kode||UJ.tm.sek!==UJ.sek))ujJamStop();
+ if(!kode){el.innerHTML='<div class="exam-card"><p class="exam-muted">Pilih satu paket di atas untuk membuka lembar jawabannya.</p></div>';return}
+ const lv=UJ.lv,L=UJ_LV[lv];if(!L.s[UJ.sek])UJ.sek=0;const k=ujKunci(kode),r=ujRek(ujBaca(),kode,L.n),s=L.s[UJ.sek];let rows='',bag=0;
+ for(let n=s[1];n<=s[2];n++){const i=L.b.indexOf(n);if(i>=0){bag++;const akhir=Math.min(s[2],(L.b[i+1]||L.n+1)-1);rows+='<div class="uj-bag"><span lang="zh">第'+'一二三四'.charAt(bag-1)+'部分</span> · nomor '+n+'-'+akhir+'</div>'}rows+=ujBaris(lv,n,r,k)}
+ el.innerHTML='<div class="exam-card" id="uj-kertas"><div class="uj-hd"><h3>Kertas '+hskEsc(kode)+'</h3><span class="exam-muted">HSK '+lv+' · '+L.n+' nomor</span></div>'
+  +'<p class="exam-muted">'+(k?'Kunci paket ini tersedia. Jawaban pilihan dikoreksi otomatis saat kamu menekan Periksa.'+(lv>=3?' Nomor menulis kalimat di <span lang="zh">书写</span> kamu nilai sendiri.':''):'Kunci paket ini belum ada di Zenta. Cocokkan jawabanmu dengan halaman <span lang="zh">答案</span> di kertas ujianmu, lalu tandai benar atau salah.')+'</p>'
+  +'<div class="uj-seg" role="group" aria-label="Bagian ujian">'+L.s.map((x,i)=>'<button type="button" data-ujs="'+i+'" aria-pressed="'+(i===UJ.sek)+'"'+(i===UJ.sek?' class="on"':'')+'><span lang="zh">'+x[0]+'</span> · '+x[1]+'-'+x[2]+'</button>').join('')+'</div>'
+  +'<div class="uj-hd uj-hd2"><h4>Penanda nomor</h4><span class="exam-muted" id="uj-tanda-ket"></span></div><div class="uj-tanda" id="uj-tanda"></div>'
+  +'<p class="exam-muted">Centang hijau: benar setelah diperiksa. Silang merah: salah setelah diperiksa. Bertitik: dijawab, belum diperiksa. Polos: belum dikerjakan. Akurasi dihitung dari jawaban yang sudah diperiksa.</p>'
+  +'<div class="uj-alat"><button type="button" class="uj-jam" id="uj-jam"></button><span class="exam-muted">Waktu resmi bagian ini sekitar '+s[3]+' menit.</span></div>'
+  +'<div id="uj-lembar">'+rows+'</div><p class="uj-msg" id="uj-hasil" role="status" aria-live="polite"></p>'
+  +'<div class="exam-actions"><button type="button" id="uj-periksa">Periksa bagian ini</button><button type="button" id="uj-reset">Kosongkan paket ini</button></div><div id="uj-nilai"></div></div>';
+ ujTandaGambar();ujNilai();ujJamTeks();
+}
+function ujSegar(n,fokus){
+ const kode=UJ.kode,lv=UJ.lv,L=UJ_LV[lv],el=document.getElementById('uj-q-'+n);
+ if(el){el.outerHTML=ujBaris(lv,n,ujRek(ujBaca(),kode,L.n),ujKunci(kode));if(fokus){const f=document.querySelector('#uj-q-'+n+' '+fokus);if(f)f.focus()}}
+ ujTandaGambar();ujStat();ujGrid();ujNilai();
+}
+function ujKlik(e){
+ const b=e.target.closest('button');if(!b)return;const d=b.dataset,kode=UJ.kode,hasil=document.getElementById('uj-hasil');
+ if(b.id==='ex-back'){ujJamStop();S.mode='hm';render();return}
+ if(d.ujlv){UJ.buka[UJ.lv]=UJ.kode;UJ.lv=+d.ujlv;UJ.kode=UJ.buka[UJ.lv]||null;UJ.sek=0;ujUiSimpan();ujGambar($('view'));const f=document.querySelector('[data-ujlv="'+UJ.lv+'"]');if(f)f.focus();return}
+ if(d.ujk){UJ.kode=d.ujk;UJ.sek=0;ujUiSimpan();ujGrid();ujPanel();const p=document.getElementById('uj-kertas');if(p)p.scrollIntoView({block:'start'});const f=document.querySelector('[data-ujs="0"]');if(f)f.focus({preventScroll:true});return}
+ if(!kode)return;
+ if(d.ujs){UJ.sek=+d.ujs;ujPanel();const f=document.querySelector('[data-ujs="'+UJ.sek+'"]');if(f)f.focus();return}
+ if(d.ujn){const q=document.getElementById('uj-q-'+d.ujn);if(q){q.scrollIntoView({block:'center'});const f=q.querySelector('button,input');if(f)f.focus({preventScroll:true})}return}
+ if(d.ujm){const n=+d.n,r=ujRek(ujBaca(),kode,UJ_LV[UJ.lv].n);ujSetTanda(kode,n,r.m.charAt(n-1)===d.ujm?' ':d.ujm);ujSegar(n,'[data-ujm="'+d.ujm+'"]');return}
+ if(d.ujt){const n=+d.ujt,r=ujRek(ujBaca(),kode,UJ_LV[UJ.lv].n);ujSetJawab(kode,n,r.a.charAt(n-1)===' '?'*':' ');ujSegar(n,'[data-ujt]');return}
+ if(d.v&&d.n){const n=+d.n,r=ujRek(ujBaca(),kode,UJ_LV[UJ.lv].n);ujSetJawab(kode,n,r.a.charAt(n-1)===d.v?' ':d.v);if(hasil)hasil.textContent='';ujSegar(n,'[data-v="'+d.v+'"]');return}
+ if(b.id==='uj-jam'){ujJamKlik();return}
+ if(b.id==='uj-periksa'){const s=UJ_LV[UJ.lv].s[UJ.sek],x=ujPeriksa(kode,s[1],s[2]);ujPanel();ujStat();ujGrid();const h=document.getElementById('uj-hasil');
+  if(h)h.textContent=!x.isi?'Belum ada jawaban di bagian ini.':(x.oto?x.oto+' jawaban dikoreksi otomatis. ':'')+(x.sendiri?x.sendiri+' nomor perlu kamu tandai sendiri: cocokkan dengan kunci di kertas ujianmu, lalu tekan Benar atau Salah.':x.oto?'':'Semua jawaban di bagian ini sudah ditandai.');
+  const f=document.getElementById('uj-periksa');if(f)f.focus({preventScroll:true});return}
+ if(b.id==='uj-reset'){if(confirm('Kosongkan semua jawaban dan tanda di paket '+kode+'? Tindakan ini tidak bisa dibatalkan.')){const st=ujBaca();delete st[kode];ujTulis(st);ujJamStop();ujPanel();ujStat();ujGrid();const h=document.getElementById('uj-hasil');if(h)h.textContent='Paket '+kode+' sudah dikosongkan.'}return}
+}
+function ujKetik(e){
+ const t=e.target;if(t.id==='uj-auto'){UJ.auto=t.checked;ujGrid();return}
+ if(!t.classList||!t.classList.contains('uj-han')||e.isComposing||!UJ.kode)return;
+ const n=+t.dataset.n,c=(t.value.match(/[一-鿿]/g)||[]).pop()||'';if(t.value&&!c)return;t.value=c;
+ ujSetJawab(UJ.kode,n,c);ujTandaGambar();ujStat();ujGrid();ujNilai();
+ const q=document.getElementById('uj-q-'+n);if(q){q.classList.remove('ok','no');const x=q.querySelector('.uj-r,.uj-sm');if(x)x.remove();if(c&&!ujAda(ujKunci(UJ.kode),UJ.lv,n)){const tmp=document.createElement('div');tmp.innerHTML=ujBaris(UJ.lv,n,ujRek(ujBaca(),UJ.kode,UJ_LV[UJ.lv].n),ujKunci(UJ.kode));const sm=tmp.querySelector('.uj-sm');if(sm)q.appendChild(sm)}}
+}
+function ujGambar(v,msg){
+ ujUiAwal();const lv=UJ.lv;
+ v.innerHTML='<div class="exam-shell uj"><div class="exam-card"><h2 class="exam-title"><span lang="zh">模拟考试</span> · Simulasi Ujian</h2><p class="exam-muted">Lembar jawaban untuk kertas ujian HSK asli. Kerjakan dari buku atau PDF kertas ujianmu, isi jawaban di sini, lalu periksa.</p>'+(msg?'<p class="uj-msg" role="status">'+hskEsc(msg)+'</p>':'')
+  +'<div class="uj-seg uj-lv" role="group" aria-label="Level ujian">'+[1,2,3,4,5].map(n=>'<button type="button" data-ujlv="'+n+'" aria-pressed="'+(n===lv)+'"'+(n===lv?' class="on"':'')+'>HSK '+n+'</button>').join('')+'</div></div>'
+  +'<div class="exam-card" id="uj-stat"></div>'
+  +'<div class="exam-card"><div class="uj-hd"><h3>Rincian setiap paket</h3><label class="uj-cek"><input type="checkbox" id="uj-auto"'+(UJ.auto?' checked':'')+'> Hanya yang dikoreksi otomatis</label></div><div class="uj-grid" id="uj-grid"></div><p class="exam-muted" id="uj-grid-ket"></p></div>'
+  +'<div id="uj-panel"></div>'
+  +'<div class="exam-card"><h3>Kertas ujiannya dari mana?</h3><p class="exam-muted">Kode seperti H41001 adalah nomor kertas ujian HSK resmi. Zenta tidak memuat teks soal dan audionya. Pakai buku <span lang="zh">《HSK真题集》</span> atau contoh kertas ujian dari situs resmi <a href="https://www.chinesetest.cn/" target="_blank" rel="noopener">chinesetest.cn</a>, lalu catat dan periksa jawabanmu di sini. Progres simulasi tersimpan di perangkat ini.</p></div>'
+  +'<div class="exam-actions"><button type="button" id="ex-back">Kembali ke beranda</button></div></div>';
+ const root=v.querySelector('.uj');root.addEventListener('click',ujKlik);root.addEventListener('input',ujKetik);root.addEventListener('change',ujKetik);
+ ujStat();ujGrid();ujPanel();
 }
 function renderExam(v,msg=''){
  clearInterval(EX.interval);EX.finished=false;EX.active=false;
- v.innerHTML=`<div class="exam-shell"><div class="exam-card"><div class="exam-title">Simulasi ujian kosakata</div><p class="exam-muted">Uji pemahaman kosakata dengan soal pilihan ganda acak. Hasil akhir menampilkan nilai, jawaban benar, dan daftar kesalahan.</p>${msg?`<p style="color:var(--acc)">${msg}</p>`:''}<div class="exam-grid"><label class="exam-field">Level kosakata<select id="ex-level"><option value="all">Semua level</option><option value="1">HSK 1</option><option value="2">HSK 2</option><option value="3">HSK 3</option><option value="4">HSK 4</option><option value="7">HSK 5</option><option value="5">Kosakata Bandara</option><option value="6">Harga &amp; Business Deal</option></select></label><label class="exam-field">Jumlah soal<select id="ex-count"><option value="10">10 soal</option><option value="20" selected>20 soal</option><option value="30">30 soal</option><option value="50">50 soal</option></select></label><label class="exam-field" style="grid-column:1/-1">Arah pertanyaan<select id="ex-direction"><option value="mix">Campuran Mandarin → arti dan arti → Mandarin</option><option value="zh-id">Mandarin → arti bahasa Indonesia</option><option value="id-zh">Arti bahasa Indonesia → Mandarin</option></select></label></div><p class="exam-muted">Waktu otomatis: sekitar 36 detik per soal. Urutan soal dan pilihan jawaban diacak setiap ujian. Mode ini menguji kosakata, bukan tata bahasa atau kemampuan menyimak.</p><div class="exam-actions"><button id="ex-start">Mulai ujian</button><button id="ex-back">Kembali ke beranda</button></div></div><div class="exam-card"><div class="exam-title" style="font-size:16px">Riwayat singkat</div><div id="ex-history" class="exam-muted"></div></div></div>`;
- try{const h=JSON.parse(localStorage.getItem('hsk_exam_history')||'[]');$('#ex-history').innerHTML=h.length?h.slice(0,5).map(x=>`${new Date(x.date).toLocaleDateString('id-ID')} · ${exLevelName(x.level)} · <b>${hskEsc(x.score)}/${hskEsc(x.total)} (${hskEsc(x.percent)}%)</b>`).join('<br>'):'Belum ada ujian yang diselesaikan.'}catch(e){$('#ex-history').textContent='Riwayat belum tersedia.'}
- $('#ex-start').onclick=exStart;$('#ex-back').onclick=()=>{S.mode='hm';render()};
+ if(UJ.data){ujGambar(v,msg);return}
+ const kepala='<div class="exam-shell uj"><div class="exam-card"><h2 class="exam-title"><span lang="zh">模拟考试</span> · Simulasi Ujian</h2>';
+ v.innerHTML=kepala+'<p class="exam-muted" role="status">Memuat daftar paket ujian…</p></div></div>';
+ ujMuat().then(()=>{if(S.mode==='exam'&&!EX.active)ujGambar($('view'),msg)}).catch(()=>{
+  if(S.mode!=='exam'||EX.active)return;const w=$('view');
+  w.innerHTML=kepala+'<p class="uj-msg" role="alert">Daftar paket ujian belum bisa dimuat. Periksa koneksi internet, lalu coba lagi.</p><div class="exam-actions"><button type="button" id="uj-ulang">Coba lagi</button><button type="button" id="ex-back">Kembali ke beranda</button></div></div></div>';
+  w.querySelector('#uj-ulang').onclick=()=>renderExam($('view'));w.querySelector('#ex-back').onclick=()=>{S.mode='hm';render()}});
 }
-// Sisipkan pintasan ujian ke dashboard yang sudah ada tanpa mengganti fitur lama.
+// Pintasan simulasi ujian di beranda.
 const _renderHomeBeforeExam=renderHome;
-renderHome=function(v){_renderHomeBeforeExam(v);const panel=document.createElement('section');panel.className='exam-home hb-card hb-act';panel.innerHTML='<div><h3 class="exam-title">模拟考试 · Simulasi Ujian</h3><p>Uji kosakata dengan soal acak, batas waktu, nilai akhir, dan koreksi jawaban yang salah.</p></div><button type="button" class="hb-btn" id="home-exam-start">Mulai simulasi ujian</button>';hbSlot(v,'hb-uji').appendChild(panel);panel.querySelector('#home-exam-start').onclick=()=>{S.mode='exam';renderExam($('view'))}}
+renderHome=function(v){_renderHomeBeforeExam(v);const panel=document.createElement('section');panel.className='exam-home hb-card hb-act';panel.innerHTML='<div><h3 class="exam-title">模拟考试 · Simulasi Ujian</h3><p>Lembar jawaban untuk kertas ujian HSK asli, HSK 1 sampai 5. Isi jawaban, periksa, lalu lihat statistik tiap paket.</p></div><button type="button" class="hb-btn" id="home-exam-start">Buka simulasi ujian</button>';hbSlot(v,'hb-uji').appendChild(panel);panel.querySelector('#home-exam-start').onclick=()=>{S.mode='exam';renderExam($('view'))}}
 
 
 
@@ -3319,7 +3505,7 @@ document.addEventListener("DOMContentLoaded",function(){
    - 语法: GR_GRATIS pelajaran pertama tiap set; 阅读: RD_GRATIS cerita pertama tiap level; 练习: jenis di LT_GRATIS saja;
    - Simulasi ujian: terkunci.
    Isi lama (teknis lama, 语法, 阅读, 练习) dikunci di server: halaman ini hanya memuat cuplikan gratis, sisanya diminta dari server (blok "Isi lama dari server").
-   Simulasi ujian dan latihan Isian kata / Buat kalimat dikunci di tampilan saja: soalnya dibuat dari kosakata HSK 2.0 yang memang gratis, jadi tidak ada isi berbayar yang bisa dipindahkan ke server.
+   Latihan Isian kata / Buat kalimat dikunci di tampilan saja: soalnya dibuat dari kosakata HSK 2.0 yang memang gratis. Simulasi ujian juga dikunci di tampilan saja: data/ujian.json hanya berisi kode kertas ujian dan kunci huruf, bukan teks soal.
    Catatan: memakai var dan function (bukan let/const) supaya aman dipanggil dari kode di atasnya sebelum blok ini dijalankan. */
 var TEK_GRATIS=30,TEKF=null,GR_GRATIS=2,RD_GRATIS=2,LT_GRATIS=["ar","de"];
 function penuh(){try{return !!(window.hskAuth&&window.hskAuth.penuh&&window.hskAuth.penuh())}catch(e){return false}}
@@ -3574,13 +3760,12 @@ renderLt=function(v){
  v.querySelectorAll("[data-lt]").forEach(function(b){b.onclick=function(){S.lk=b.dataset.lt;S.ch=0;render()}})};
 goMode=function(m,rs){if(m==="lt"&&!ltOk(S.lk))S.lk=LT_GRATIS[0];_goModeDasar(m,rs)};   /* masuk 练习 dari beranda/menu: mulai di jenis yang terbuka */
 /* Simulasi ujian & latihan ulang dari bank kesalahan: khusus pelanggan */
-var _renderExamDasar=renderExam,_exStartDasar=exStart,_exStartWrongDasar=exStartWrong;
+var _renderExamDasar=renderExam,_exStartWrongDasar=exStartWrong;
 renderExam=function(v,msg){
  if(penuh()){_renderExamDasar(v,msg);return}
  try{clearInterval(EX.interval);EX.active=false}catch(e){}
- v.innerHTML=kunciHTML("Simulasi ujian khusus pelanggan","Simulasi ujian berisi soal acak berbatas waktu, nilai akhir, dan koreksi jawaban. Fitur ini terbuka untuk akun langganan. Seluruh kosakata HSK 2.0 tetap bisa kamu pelajari gratis.","Simulasi Ujian")+'<div class="row"><button id="ex-back">Kembali ke beranda</button></div>';
+ v.innerHTML=kunciHTML("Simulasi ujian khusus pelanggan","Simulasi ujian berisi lembar jawaban untuk kertas ujian HSK asli (HSK 1 sampai 5), koreksi, dan statistik tiap paket. Fitur ini terbuka untuk akun langganan. Seluruh kosakata HSK 2.0 tetap bisa kamu pelajari gratis.","Simulasi Ujian")+'<div class="row"><button id="ex-back">Kembali ke beranda</button></div>';
  document.getElementById("ex-back").onclick=function(){S.mode="hm";render()}};
-exStart=function(){if(penuh())_exStartDasar();else renderExam($("view"))};
 exStartWrong=function(){if(penuh())_exStartWrongDasar();else{S.mode="exam";renderExam($("view"))}};
 /* Beranda: tandai bagian yang berupa cuplikan dan jelaskan isi akun gratis */
 var _renderHomeDasar=renderHome;
