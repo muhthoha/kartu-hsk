@@ -1,0 +1,652 @@
+{
+ "v": 1,
+ "lv": 2,
+ "paket": [
+  {
+   "id": "L2-01",
+   "judul": "Latihan 1",
+   "grup": [
+    {
+     "d": 11,
+     "s": 15,
+     "o": [
+      "Seorang laki-laki sedang berlari di taman",
+      "Seorang perempuan sedang berbicara lewat telepon",
+      "Dua orang sedang makan mi di restoran",
+      "Seorang dokter memeriksa pasien di rumah sakit",
+      "Seorang anak sedang bermain basket",
+      "Sebuah bus berhenti di halte"
+     ]
+    },
+    {
+     "d": 16,
+     "s": 20,
+     "o": [
+      "Seorang perempuan sedang membeli baju di toko",
+      "Seorang laki-laki sedang tidur di tempat tidur",
+      "Seorang anak sedang minum susu",
+      "Dua orang sedang berenang",
+      "Seorang laki-laki sedang bertanya arah kepada seorang perempuan",
+      "Seorang perempuan sedang memasak di dapur"
+     ]
+    },
+    {
+     "d": 36,
+     "s": 40,
+     "o": [
+      "Seorang laki-laki sedang mencuci baju",
+      "Dua anak sedang bermain bola di lapangan",
+      "Seorang perempuan sedang minum obat",
+      "Seorang perempuan melihat ponsel sambil tersenyum",
+      "Seorang laki-laki sedang membaca koran di bangku",
+      "Sebuah kereta api memasuki stasiun"
+     ]
+    },
+    {
+     "d": 41,
+     "s": 45,
+     "o": [
+      "Seorang laki-laki menulis dengan pensil",
+      "Seekor ikan di dalam air",
+      "Seorang laki-laki sedang membeli tiket di loket",
+      "Seorang perempuan bernyanyi memakai baju putih",
+      "Dua orang berjalan di bawah hujan",
+      "Seorang anak makan telur"
+     ]
+    },
+    {
+     "d": 51,
+     "s": 55,
+     "o": [
+      "我想去那家饭馆吃饭。",
+      "对不起，我不知道。",
+      "我是在北京学的汉语。",
+      "因为我昨天晚上没睡好。",
+      "星期三，怎么了？",
+      "两百块，不贵。"
+     ]
+    },
+    {
+     "d": 56,
+     "s": 60,
+     "o": [
+      "我今天上午去买了。",
+      "你可以问问那个服务员。",
+      "没关系，我们明天再去吧。",
+      "对，她是我的新同学。",
+      "不要了，谢谢，我吃过了。",
+      "太好了，我最喜欢踢足球。"
+     ]
+    }
+   ],
+   "soal": [
+    {
+     "n": 1,
+     "g": "Seorang laki-laki sedang membaca koran.",
+     "au": [
+      "他在看报纸。"
+     ],
+     "k": "T",
+     "tr": "Dia sedang membaca koran."
+    },
+    {
+     "n": 2,
+     "g": "Seorang perempuan sedang makan semangka.",
+     "au": [
+      "她在吃苹果。"
+     ],
+     "k": "X",
+     "tr": "Dia sedang makan apel."
+    },
+    {
+     "n": 3,
+     "g": "Beberapa anak sedang bermain sepak bola.",
+     "au": [
+      "孩子们在踢足球。"
+     ],
+     "k": "T",
+     "tr": "Anak-anak sedang bermain sepak bola."
+    },
+    {
+     "n": 4,
+     "g": "Seorang laki-laki sedang berenang di kolam.",
+     "au": [
+      "他在跑步。"
+     ],
+     "k": "X",
+     "tr": "Dia sedang berlari."
+    },
+    {
+     "n": 5,
+     "g": "Dua gelas kopi di atas meja.",
+     "au": [
+      "桌子上有两杯咖啡。"
+     ],
+     "k": "T",
+     "tr": "Di atas meja ada dua gelas kopi."
+    },
+    {
+     "n": 6,
+     "g": "Seorang perempuan menunggu di stasiun kereta.",
+     "au": [
+      "她在火车站等人。"
+     ],
+     "k": "T",
+     "tr": "Dia menunggu seseorang di stasiun kereta."
+    },
+    {
+     "n": 7,
+     "g": "Seorang laki-laki memakai baju merah.",
+     "au": [
+      "他穿着黑衣服。"
+     ],
+     "k": "X",
+     "tr": "Dia memakai baju hitam."
+    },
+    {
+     "n": 8,
+     "g": "Seekor anjing sedang tidur di atas kursi.",
+     "au": [
+      "猫在椅子上睡觉。"
+     ],
+     "k": "X",
+     "tr": "Kucing tidur di atas kursi."
+    },
+    {
+     "n": 9,
+     "g": "Seorang perempuan sedang menelepon.",
+     "au": [
+      "她在打电话。"
+     ],
+     "k": "T",
+     "tr": "Dia sedang menelepon."
+    },
+    {
+     "n": 10,
+     "g": "Seorang guru sedang mengajar di kelas.",
+     "au": [
+      "老师在教室里看电视。"
+     ],
+     "k": "X",
+     "tr": "Guru menonton televisi di ruang kelas."
+    },
+    {
+     "n": 11,
+     "au": [
+      "女：你在做什么？",
+      "男：我在打电话。"
+     ],
+     "k": "B",
+     "tr": "Wanita: Kamu sedang apa? Pria: Saya sedang menelepon."
+    },
+    {
+     "n": 12,
+     "au": [
+      "男：你去哪儿？",
+      "女：我去医院，我生病了。"
+     ],
+     "k": "D",
+     "tr": "Pria: Kamu mau ke mana? Wanita: Saya ke rumah sakit, saya sakit."
+    },
+    {
+     "n": 13,
+     "au": [
+      "男：你们吃什么？",
+      "女：面条，很好吃。"
+     ],
+     "k": "C",
+     "tr": "Pria: Kalian makan apa? Wanita: Mi, enak sekali."
+    },
+    {
+     "n": 14,
+     "au": [
+      "女：他喜欢打篮球吗？",
+      "男：喜欢，他每天都打。"
+     ],
+     "k": "E",
+     "tr": "Wanita: Apakah dia suka main basket? Pria: Suka, dia main setiap hari."
+    },
+    {
+     "n": 15,
+     "au": [
+      "男：你怎么去公司？",
+      "女：坐公共汽车。"
+     ],
+     "k": "F",
+     "tr": "Pria: Kamu ke kantor naik apa? Wanita: Naik bus umum."
+    },
+    {
+     "n": 16,
+     "au": [
+      "女：这件衣服多少钱？",
+      "男：一百块。"
+     ],
+     "k": "A",
+     "tr": "Wanita: Berapa harga baju ini? Pria: Seratus yuan."
+    },
+    {
+     "n": 17,
+     "au": [
+      "男：你怎么还不起床？",
+      "女：我很累，想再睡一下。"
+     ],
+     "k": "B",
+     "tr": "Pria: Kenapa kamu belum bangun? Wanita: Saya capek, ingin tidur sebentar lagi."
+    },
+    {
+     "n": 18,
+     "au": [
+      "男：你想喝什么？",
+      "女：我想喝牛奶。"
+     ],
+     "k": "C",
+     "tr": "Pria: Kamu mau minum apa? Wanita: Saya mau minum susu."
+    },
+    {
+     "n": 19,
+     "au": [
+      "女：你会游泳吗？",
+      "男：会，我们一起去吧。"
+     ],
+     "k": "D",
+     "tr": "Wanita: Kamu bisa berenang? Pria: Bisa, mari pergi bersama."
+    },
+    {
+     "n": 20,
+     "au": [
+      "男：请问，火车站在哪儿？",
+      "女：就在前面，不太远。"
+     ],
+     "k": "E",
+     "tr": "Pria: Permisi, di mana stasiun kereta? Wanita: Tepat di depan, tidak terlalu jauh."
+    },
+    {
+     "n": 21,
+     "au": [
+      "男：你今天怎么没去上班？",
+      "女：我生病了。",
+      "问：女的怎么了？"
+     ],
+     "o": [
+      "她很忙",
+      "她生病了",
+      "她在休息"
+     ],
+     "k": "B",
+     "tr": "Pria: Mengapa hari ini kamu tidak masuk kerja? Wanita: Saya sakit. Tanya: Wanita itu kenapa?"
+    },
+    {
+     "n": 22,
+     "au": [
+      "女：你的手机多少钱？",
+      "男：两千块。",
+      "问：手机多少钱？"
+     ],
+     "o": [
+      "两百块",
+      "一千块",
+      "两千块"
+     ],
+     "k": "C",
+     "tr": "Wanita: Berapa harga ponselmu? Pria: Dua ribu yuan. Tanya: Berapa harga ponselnya?"
+    },
+    {
+     "n": 23,
+     "au": [
+      "男：明天几点上课？",
+      "女：八点。",
+      "问：明天几点上课？"
+     ],
+     "o": [
+      "八点",
+      "九点",
+      "十点"
+     ],
+     "k": "A",
+     "tr": "Pria: Besok kelas mulai jam berapa? Wanita: Jam delapan. Tanya: Besok kelas mulai jam berapa?"
+    },
+    {
+     "n": 24,
+     "au": [
+      "女：你去过北京吗？",
+      "男：去过，我去年去的。",
+      "问：男的什么时候去北京的？"
+     ],
+     "o": [
+      "今年",
+      "昨天",
+      "去年"
+     ],
+     "k": "C",
+     "tr": "Wanita: Kamu pernah ke Beijing? Pria: Pernah, saya pergi tahun lalu. Tanya: Kapan pria itu ke Beijing?"
+    },
+    {
+     "n": 25,
+     "au": [
+      "男：你喜欢吃什么？",
+      "女：我喜欢吃鱼，不喜欢吃羊肉。",
+      "问：女的不喜欢吃什么？"
+     ],
+     "o": [
+      "鱼",
+      "羊肉",
+      "鸡蛋"
+     ],
+     "k": "B",
+     "tr": "Pria: Kamu suka makan apa? Wanita: Saya suka ikan, tidak suka daging kambing. Tanya: Apa yang tidak disukai wanita itu?"
+    },
+    {
+     "n": 26,
+     "au": [
+      "女：你在看什么？",
+      "男：我在看电影，很好看。",
+      "问：男的在做什么？"
+     ],
+     "o": [
+      "看电影",
+      "看书",
+      "看电视"
+     ],
+     "k": "A",
+     "tr": "Wanita: Kamu sedang melihat apa? Pria: Saya sedang menonton film, bagus sekali. Tanya: Pria itu sedang apa?"
+    },
+    {
+     "n": 27,
+     "au": [
+      "男：这个手表真漂亮，多少钱？",
+      "女：六百块。",
+      "问：手表怎么样？"
+     ],
+     "o": [
+      "很贵",
+      "很小",
+      "很漂亮"
+     ],
+     "k": "C",
+     "tr": "Pria: Jam tangan ini cantik sekali, berapa harganya? Wanita: Enam ratus yuan. Tanya: Bagaimana jam tangannya?"
+    },
+    {
+     "n": 28,
+     "au": [
+      "女：我们坐公共汽车去吧。",
+      "男：好，但是车站有点远。",
+      "问：他们怎么去？"
+     ],
+     "o": [
+      "走路去",
+      "坐公共汽车",
+      "坐火车"
+     ],
+     "k": "B",
+     "tr": "Wanita: Mari kita naik bus. Pria: Baik, tetapi halte agak jauh. Tanya: Mereka pergi dengan apa?"
+    },
+    {
+     "n": 29,
+     "au": [
+      "男：今天天气怎么样？",
+      "女：很冷，在下雪。",
+      "问：今天天气怎么样？"
+     ],
+     "o": [
+      "下雪",
+      "下雨",
+      "很热"
+     ],
+     "k": "A",
+     "tr": "Pria: Bagaimana cuaca hari ini? Wanita: Dingin, sedang turun salju. Tanya: Bagaimana cuaca hari ini?"
+    },
+    {
+     "n": 30,
+     "au": [
+      "女：星期六你做什么？",
+      "男：我想在家休息，不想出去。",
+      "问：男的星期六想做什么？"
+     ],
+     "o": [
+      "去玩",
+      "在家休息",
+      "去工作"
+     ],
+     "k": "B",
+     "tr": "Wanita: Hari Sabtu kamu mau apa? Pria: Saya ingin istirahat di rumah, tidak ingin keluar. Tanya: Apa yang ingin dilakukan pria itu hari Sabtu?"
+    },
+    {
+     "n": 31,
+     "au": [
+      "女：喂，你在哪儿？",
+      "男：我在公司，今天很忙。",
+      "女：几点下班？",
+      "男：六点。",
+      "问：男的几点下班？"
+     ],
+     "o": [
+      "五点",
+      "七点",
+      "六点"
+     ],
+     "k": "C",
+     "tr": "Wanita: Halo, kamu di mana? Pria: Saya di kantor, hari ini sibuk. Wanita: Jam berapa pulang kerja? Pria: Jam enam. Tanya: Jam berapa pria itu pulang kerja?"
+    },
+    {
+     "n": 32,
+     "au": [
+      "男：你好，我想买一件红色的衣服。",
+      "女：这件怎么样？",
+      "男：太大了，有小一点的吗？",
+      "女：有，请等一下。",
+      "问：男的觉得衣服怎么样？"
+     ],
+     "o": [
+      "太大",
+      "太小",
+      "太贵"
+     ],
+     "k": "A",
+     "tr": "Pria: Halo, saya ingin membeli baju merah. Wanita: Bagaimana yang ini? Pria: Terlalu besar, ada yang lebih kecil? Wanita: Ada, tunggu sebentar. Tanya: Menurut pria itu bagaimana bajunya?"
+    },
+    {
+     "n": 33,
+     "au": [
+      "女：你的生日是几月几号？",
+      "男：十月二十号。",
+      "女：真的吗？我的生日也是十月。",
+      "男：是吗？你几号？",
+      "女：三十号。",
+      "问：男的生日是几号？"
+     ],
+     "o": [
+      "十月三十号",
+      "十月二十号",
+      "十一月二十号"
+     ],
+     "k": "B",
+     "tr": "Wanita: Kapan ulang tahunmu? Pria: Tanggal 20 Oktober. Wanita: Benarkah? Ulang tahunku juga bulan Oktober. Pria: Oh ya? Tanggal berapa? Wanita: Tanggal 30. Tanya: Tanggal berapa ulang tahun pria itu?"
+    },
+    {
+     "n": 34,
+     "au": [
+      "男：你怎么不去跑步了？",
+      "女：我最近很忙，早上六点就去公司了。",
+      "男：那你什么时候休息？",
+      "女：星期天。",
+      "问：女的为什么不去跑步？"
+     ],
+     "o": [
+      "她生病了",
+      "她不喜欢",
+      "她很忙"
+     ],
+     "k": "C",
+     "tr": "Pria: Kenapa kamu tidak lari lagi? Wanita: Belakangan ini saya sibuk, jam enam pagi sudah berangkat ke kantor. Pria: Lalu kapan kamu istirahat? Wanita: Hari Minggu. Tanya: Mengapa wanita itu tidak berlari?"
+    },
+    {
+     "n": 35,
+     "au": [
+      "女：请问，这儿有火车站吗？",
+      "男：有，你先往前走，然后往左，就能看到。",
+      "女：远吗？",
+      "男：不远，走五分钟就到了。",
+      "问：火车站离这儿怎么样？"
+     ],
+     "o": [
+      "很近",
+      "很远",
+      "在右边"
+     ],
+     "k": "A",
+     "tr": "Wanita: Permisi, adakah stasiun kereta di sini? Pria: Ada, jalan lurus dulu, lalu belok kiri, nanti kelihatan. Wanita: Jauh? Pria: Tidak, jalan lima menit sudah sampai. Tanya: Bagaimana jarak stasiun dari sini?"
+    },
+    {
+     "n": 36,
+     "x": "火车来了。",
+     "k": "F",
+     "tr": "Kereta api datang."
+    },
+    {
+     "n": 37,
+     "x": "他在洗衣服。",
+     "k": "A",
+     "tr": "Dia sedang mencuci baju."
+    },
+    {
+     "n": 38,
+     "x": "我生病了，要吃药。",
+     "k": "C",
+     "tr": "Saya sakit, harus minum obat."
+    },
+    {
+     "n": 39,
+     "x": "孩子们在外面踢足球。",
+     "k": "B",
+     "tr": "Anak-anak bermain sepak bola di luar."
+    },
+    {
+     "n": 40,
+     "x": "她在看手机，笑得很高兴。",
+     "k": "D",
+     "tr": "Dia melihat ponsel dan tertawa gembira."
+    },
+    {
+     "n": 41,
+     "x": "外面下雨了，我们走回去吧。",
+     "k": "E",
+     "tr": "Di luar hujan, mari kita jalan pulang."
+    },
+    {
+     "n": 42,
+     "x": "我要买火车票。",
+     "k": "C",
+     "tr": "Saya mau membeli tiket kereta."
+    },
+    {
+     "n": 43,
+     "x": "他在写字，手里有铅笔。",
+     "k": "A",
+     "tr": "Dia menulis dengan pensil."
+    },
+    {
+     "n": 44,
+     "x": "她唱歌唱得真好。",
+     "k": "D",
+     "tr": "Dia bernyanyi dengan sangat bagus."
+    },
+    {
+     "n": 45,
+     "x": "孩子在吃鸡蛋。",
+     "k": "F",
+     "tr": "Anak itu sedang makan telur."
+    },
+    {
+     "n": 46,
+     "x": "现在是七点五十分，我们八点上课。\n★ 现在还没有上课。",
+     "k": "T",
+     "tr": "Sekarang pukul 07.50, kelas mulai pukul delapan. ★ Sekarang kelas belum mulai."
+    },
+    {
+     "n": 47,
+     "x": "我哥哥比我高，他今年二十岁。\n★ 我比哥哥高。",
+     "k": "X",
+     "tr": "Kakak laki-laki saya lebih tinggi dari saya, tahun ini dia berumur dua puluh. ★ Saya lebih tinggi dari kakak."
+    },
+    {
+     "n": 48,
+     "x": "今天很冷，所以我穿了很多衣服。\n★ 今天天气很热。",
+     "k": "X",
+     "tr": "Hari ini sangat dingin, jadi saya memakai banyak baju. ★ Cuaca hari ini sangat panas."
+    },
+    {
+     "n": 49,
+     "x": "我每天早上六点起床，然后去跑步。\n★ 我早上去跑步。",
+     "k": "T",
+     "tr": "Setiap pagi saya bangun jam enam, lalu pergi berlari. ★ Saya berlari di pagi hari."
+    },
+    {
+     "n": 50,
+     "x": "这个房间不大，但是很漂亮。\n★ 这个房间很漂亮。",
+     "k": "T",
+     "tr": "Kamar ini tidak besar, tetapi sangat bagus. ★ Kamar ini sangat bagus."
+    },
+    {
+     "n": 51,
+     "x": "你今天怎么这么累？",
+     "k": "D",
+     "tr": "Kenapa kamu capek sekali hari ini?"
+    },
+    {
+     "n": 52,
+     "x": "这件衣服多少钱？",
+     "k": "F",
+     "tr": "Berapa harga baju ini?"
+    },
+    {
+     "n": 53,
+     "x": "请问，火车站怎么走？",
+     "k": "B",
+     "tr": "Permisi, bagaimana cara ke stasiun kereta?"
+    },
+    {
+     "n": 54,
+     "x": "你是在哪儿学汉语的？",
+     "k": "C",
+     "tr": "Di mana kamu belajar bahasa Mandarin?"
+    },
+    {
+     "n": 55,
+     "x": "你哪天有时间？",
+     "k": "E",
+     "tr": "Hari apa kamu ada waktu?"
+    },
+    {
+     "n": 56,
+     "x": "来，一起吃吧，这里的鱼很好吃。",
+     "k": "E",
+     "tr": "Ayo makan bersama, ikan di sini enak."
+    },
+    {
+     "n": 57,
+     "x": "明天我们去踢足球，怎么样？",
+     "k": "F",
+     "tr": "Besok kita main sepak bola, bagaimana?"
+    },
+    {
+     "n": 58,
+     "x": "今天下雨了，我们不能去玩了。",
+     "k": "C",
+     "tr": "Hari ini hujan, kita tidak bisa pergi bermain."
+    },
+    {
+     "n": 59,
+     "x": "请问，宾馆在哪儿？",
+     "k": "B",
+     "tr": "Permisi, di mana hotelnya?"
+    },
+    {
+     "n": 60,
+     "x": "她是你们班的吗？",
+     "k": "D",
+     "tr": "Apakah dia teman sekelas kalian?"
+    }
+   ]
+  }
+ ]
+}
