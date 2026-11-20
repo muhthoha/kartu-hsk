@@ -234,6 +234,35 @@ button.lk-a{min-height:36px;padding:0 14px;border-radius:999px;border:1px solid 
 .uj button:focus-visible,.uj input:focus-visible,.uj a:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
 @media(max-width:520px){.uj-kotak,.uj-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:400px){.uj-q{grid-template-columns:minmax(0,1fr)}.uj-r,.uj-sm{grid-column:1}.uj-no{font-size:12.5px}}
+/* Latihan gaya HSK: memakai ulang kelas .uj-* dari lembar jawaban; di sini hanya tambahan untuk isi soal. */
+.uj-md button{flex:1 1 0}
+.lh-isi{min-width:0;display:flex;flex-direction:column;gap:8px}
+.lh-au{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px}
+.lh-play{gap:8px;padding:0 14px;font-size:14px}.lh-play svg{width:18px;height:18px;flex:none}
+.lh-g{margin:0;padding:8px 12px;border:1px dashed var(--line);border-radius:10px;font-size:13.5px;line-height:1.55}.lh-g b{font-weight:700;margin-right:8px;color:var(--mute)}
+.lh-x{margin:0;font-size:18px;line-height:1.7;overflow-wrap:anywhere}.lh-q{font-weight:600}
+.lh-ord{margin:0;padding-left:26px;list-style:upper-alpha;font-size:17px;line-height:1.7}
+.lh-ops{display:flex;flex-direction:column;gap:6px}
+.lh-o{justify-content:flex-start;width:100%;text-align:left;gap:10px;padding:8px 12px;font-weight:500;font-size:16px;line-height:1.5}.lh-o b{flex:none;min-width:20px;font-variant-numeric:tabular-nums}.lh-o span{min-width:0;overflow-wrap:anywhere}
+.uj-o span+svg,.uj-o svg+span{margin-left:6px}
+.lh-grup,.lh-bc{margin:14px 0 4px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--soft)}
+.lh-grup-h{font-size:12.5px;font-weight:600;color:var(--mute);margin:0 0 6px}
+.lh-grup ul{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:6px 12px}.lh-grup li{display:flex;gap:8px;font-size:15px;line-height:1.5}.lh-grup li b{flex:none;width:18px}.lh-grup li span{min-width:0;overflow-wrap:anywhere}
+.lh-zh{margin:0;font-size:17px;line-height:1.85;overflow-wrap:anywhere}
+.lh-tr,.lh-p,.lh-ket{margin:0;font-size:13.5px;line-height:1.6;color:var(--mute)}
+.lh-susun{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.lh-jawab{display:flex;flex-wrap:wrap;gap:6px;align-items:center;align-self:stretch;min-height:56px;padding:6px;border:1px dashed var(--line);border-radius:10px}
+.lh-bank{display:flex;flex-wrap:wrap;gap:6px}
+.lh-chip{min-height:44px;min-width:44px;padding:0 14px;border-radius:8px;border:1px solid var(--line);background:transparent;color:var(--ink);font-size:18px;cursor:pointer;letter-spacing:0;text-transform:none}
+.lh-chip.on{background:var(--btn);color:var(--btnink);border-color:var(--btn)}.lh-chip:hover{border-color:var(--ink)}.lh-chip:active{transform:translateY(1px)}
+.lh-tl{display:block}
+.lh-tx{width:100%;box-sizing:border-box;min-height:96px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit;font-size:17px;line-height:1.7;resize:vertical}
+.lh-um{display:flex;flex-direction:column;gap:6px;padding-top:2px}.lh-um .uj-sm{grid-column:auto}
+.lh-skrip{padding:8px 12px;border-radius:10px;background:var(--soft)}.lh-skrip p{margin:0 0 4px;font-size:15px;line-height:1.6}.lh-skrip p:last-child{margin:0}.lh-skrip b{display:inline-block;min-width:1.4em;color:var(--mute);font-weight:600}
+.lh-ex{margin:0;padding:8px 12px;border-radius:10px;background:var(--soft);font-size:16px;line-height:1.8;overflow-wrap:anywhere}
+.lh-play.on{background:var(--btn);color:var(--btnink);border-color:var(--btn)}
+.uj textarea:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+@media(max-width:400px){.lh-chip{font-size:17px;padding:0 12px}}
 @media(max-width:380px){.exam-grid{grid-template-columns:1fr}.exam-main{font-size:23px}}
 
 
@@ -1201,7 +1230,7 @@ const ikL=(n,c)=>'<svg class="lu'+(c?' '+c:'')+'" viewBox="0 0 24 24" fill="none
  var AUTH_URL="https://n8n.zenta.web.id/webhook/hsk-auth";
  var root=document.documentElement,LS=null,A=null,gone=false;
  try{LS=window.localStorage;LS.getItem("acct_auth")}catch(e){LS=null}
- var PROG=["hsk_m","hsk_m3","hsk_gp","hsk_gb","hsk_rr","hsk_rdone","hsk_wr","hsk_wa","hsk_wr3","hsk_wa3","hsk_error_bank_v1","hsk_exam_history","hsk_ujian_v1","hsk_daily_activity_v1","hsk_prep_v1","hsk_srs_v1"];
+ var PROG=["hsk_m","hsk_m3","hsk_gp","hsk_gb","hsk_rr","hsk_rdone","hsk_wr","hsk_wa","hsk_wr3","hsk_wa3","hsk_error_bank_v1","hsk_exam_history","hsk_ujian_v1","hsk_latihan_v1","hsk_daily_activity_v1","hsk_prep_v1","hsk_srs_v1"];
  function $g(id){return document.getElementById(id)}
  function jget(k){try{return JSON.parse(LS.getItem(k)||"null")}catch(e){return null}}
  function readAuth(){
@@ -3377,7 +3406,7 @@ const UJ_LV={
  5:{n:100,maks:300,lulus:180,s:[['听力',1,45,30],['阅读',46,90,45],['书写',91,100,40]],j:[[90,'abcd'],[100,'tulis']],b:[1,21,46,61,71,91,99]}
 };
 const UJ_ORD=['ABC','ACB','BAC','BCA','CAB','CBA'],UJ_KEY='hsk_ujian_v1',UJ_UI='hsk_ujian_ui';
-const UJ={data:null,p:null,lv:0,kode:null,sek:0,auto:false,tm:null,buka:{}};
+const UJ={data:null,p:null,lv:0,kode:null,sek:0,auto:false,tm:null,buka:{},mode:'asli'};
 const UJ_IK={ok:IKS+'<path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',no:IKS+'<path d="M6 6l12 12M18 6 6 18"/></svg>',jalan:IKS+'<circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor" stroke="none"/></svg>',belum:IKS+'<circle cx="12" cy="12" r="8"/></svg>',jam:IKS+'<circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg>'};
 function ujMuat(){if(!UJ.p)UJ.p=fetch('data/ujian.json?v=1').then(r=>{if(!r.ok)throw new Error('http '+r.status);return r.json()}).then(j=>{if(!j||j.v!==1||!j.paket||![1,2,3,4,5].every(n=>Array.isArray(j.paket[n])&&j.paket[n].length))throw new Error('format');UJ.data=j;return j}).catch(e=>{UJ.p=null;throw e});return UJ.p}
 function ujPaket(lv){return (UJ.data&&UJ.data.paket[lv])||[]}
@@ -3399,10 +3428,10 @@ function ujPeriksa(kode,dari,sampai){
  for(let n=dari;n<=sampai;n++){const a=r.a.charAt(n-1);if(a===' ')continue;isi++;if(ujAda(k,lv,n)){r.m=ujGanti(r.m,n,a===k.charAt(n-1)?'1':'0');oto++}else if(r.m.charAt(n-1)===' ')sendiri++}
  if(oto)ujSimpan(st,kode,r);return {oto,sendiri,isi};
 }
-function ujUiSimpan(){try{localStorage.setItem(UJ_UI,UJ.lv+'|'+(UJ.kode||''))}catch(e){}}
+function ujUiSimpan(){try{localStorage.setItem(UJ_UI,UJ.lv+'|'+(UJ.kode||'')+'|'+(UJ.mode==='lat'?'lat':'asli')+'|'+(LH.id||''))}catch(e){}}
 function ujUiAwal(){
  if(UJ.lv)return;let lv=0,kode='';
- try{const u=String(localStorage.getItem(UJ_UI)||'').split('|');if(/^[1-5]$/.test(u[0])){lv=+u[0];kode=u[1]||''}}catch(e){}
+ try{const u=String(localStorage.getItem(UJ_UI)||'').split('|');if(/^[1-5]$/.test(u[0])){lv=+u[0];kode=u[1]||'';UJ.mode=u[2]==='lat'?'lat':'asli';LH.id=u[3]||null}}catch(e){}
  if(!lv){try{const m=/^on\|[^|]*\|([1-5])\|/.exec(localStorage.getItem('hsk_exam_date')||'');if(m)lv=+m[1]}catch(e){}}
  UJ.lv=lv||1;UJ.kode=ujPaket(UJ.lv).some(p=>p[0]===kode)?kode:null;
 }
@@ -3479,9 +3508,11 @@ function ujSegar(n,fokus){
 }
 function ujKlik(e){
  const b=e.target.closest('button');if(!b)return;const d=b.dataset,kode=UJ.kode,hasil=document.getElementById('uj-hasil');
- if(b.id==='ex-back'){ujJamStop();S.mode='hm';render();return}
- if(d.ujlv){UJ.buka[UJ.lv]=UJ.kode;UJ.lv=+d.ujlv;UJ.kode=UJ.buka[UJ.lv]||null;UJ.sek=0;ujUiSimpan();ujGambar($('view'));const f=document.querySelector('[data-ujlv="'+UJ.lv+'"]');if(f)f.focus();return}
+ if(b.id==='ex-back'){ujJamStop();lhJamStop();lhStopSuara();S.mode='hm';render();return}
+ if(d.ujlv){ujJamStop();lhJamStop();lhStopSuara();UJ.buka[UJ.lv]=UJ.kode;LH.buka[UJ.lv]=LH.id;UJ.lv=+d.ujlv;UJ.kode=UJ.buka[UJ.lv]||null;LH.id=LH.buka[UJ.lv]||null;UJ.sek=0;LH.sek=0;ujUiSimpan();ujGambar($('view'));const f=document.querySelector('[data-ujlv="'+UJ.lv+'"]');if(f)f.focus();return}
  if(d.ujk){UJ.kode=d.ujk;UJ.sek=0;ujUiSimpan();ujGrid();ujPanel();const p=document.getElementById('uj-kertas');if(p)p.scrollIntoView({block:'start'});const f=document.querySelector('[data-ujs="0"]');if(f)f.focus({preventScroll:true});return}
+ if(d.ujmode){if(UJ.mode!==d.ujmode){ujJamStop();lhJamStop();lhStopSuara();UJ.mode=d.ujmode;ujUiSimpan();ujGambar($('view'))}const f=document.querySelector('[data-ujmode="'+UJ.mode+'"]');if(f)f.focus();return}
+ if(UJ.mode==='lat'){lhKlik(e);return}
  if(!kode)return;
  if(d.ujs){UJ.sek=+d.ujs;ujPanel();const f=document.querySelector('[data-ujs="'+UJ.sek+'"]');if(f)f.focus();return}
  if(d.ujn){const q=document.getElementById('uj-q-'+d.ujn);if(q){q.scrollIntoView({block:'center'});const f=q.querySelector('button,input');if(f)f.focus({preventScroll:true})}return}
@@ -3495,6 +3526,7 @@ function ujKlik(e){
  if(b.id==='uj-reset'){if(confirm('Kosongkan semua jawaban dan tanda di paket '+kode+'? Tindakan ini tidak bisa dibatalkan.')){const st=ujBaca();delete st[kode];ujTulis(st);ujJamStop();ujPanel();ujStat();ujGrid();const h=document.getElementById('uj-hasil');if(h)h.textContent='Paket '+kode+' sudah dikosongkan.'}return}
 }
 function ujKetik(e){
+ if(UJ.mode==='lat'){lhKetik(e);return}
  const t=e.target;if(t.id==='uj-auto'){UJ.auto=t.checked;ujGrid();return}
  if(!t.classList||!t.classList.contains('uj-han')||e.isComposing||!UJ.kode)return;
  const n=+t.dataset.n,c=(t.value.match(/[一-鿿]/g)||[]).pop()||'';if(t.value&&!c)return;t.value=c;
@@ -3502,16 +3534,21 @@ function ujKetik(e){
  const q=document.getElementById('uj-q-'+n);if(q){q.classList.remove('ok','no');const x=q.querySelector('.uj-r,.uj-sm');if(x)x.remove();if(c&&!ujAda(ujKunci(UJ.kode),UJ.lv,n)){const tmp=document.createElement('div');tmp.innerHTML=ujBaris(UJ.lv,n,ujRek(ujBaca(),UJ.kode,UJ_LV[UJ.lv].n),ujKunci(UJ.kode));const sm=tmp.querySelector('.uj-sm');if(sm)q.appendChild(sm)}}
 }
 function ujGambar(v,msg){
- ujUiAwal();const lv=UJ.lv;
- v.innerHTML='<div class="exam-shell uj"><div class="exam-card"><h2 class="exam-title"><span lang="zh">模拟考试</span> · Simulasi Ujian</h2><p class="exam-muted">Lembar jawaban untuk kertas ujian HSK asli. Kerjakan dari buku atau PDF kertas ujianmu, isi jawaban di sini, lalu periksa.</p>'+(msg?'<p class="uj-msg" role="status">'+hskEsc(msg)+'</p>':'')
+ ujUiAwal();const lv=UJ.lv,lat=UJ.mode==='lat';
+ v.innerHTML='<div class="exam-shell uj"><div class="exam-card"><h2 class="exam-title"><span lang="zh">模拟考试</span> · Simulasi Ujian</h2><p class="exam-muted">'+(lat?'Latihan soal orisinal buatan Zenta. Jumlah butir, bagian, dan jenis soalnya sama seperti kertas ujian HSK asli. Kerjakan di sini, periksa, lalu baca pembahasannya.':'Lembar jawaban untuk kertas ujian HSK asli. Kerjakan dari buku atau PDF kertas ujianmu, isi jawaban di sini, lalu periksa.')+'</p>'+(msg?'<p class="uj-msg" role="status">'+hskEsc(msg)+'</p>':'')
+  +'<div class="uj-seg uj-md" role="group" aria-label="Jenis simulasi">'+[['asli','Kertas ujian asli'],['lat','Latihan gaya HSK']].map(m=>'<button type="button" data-ujmode="'+m[0]+'" aria-pressed="'+(m[0]===UJ.mode)+'"'+(m[0]===UJ.mode?' class="on"':'')+'>'+m[1]+'</button>').join('')+'</div>'
   +'<div class="uj-seg uj-lv" role="group" aria-label="Level ujian">'+[1,2,3,4,5].map(n=>'<button type="button" data-ujlv="'+n+'" aria-pressed="'+(n===lv)+'"'+(n===lv?' class="on"':'')+'>HSK '+n+'</button>').join('')+'</div></div>'
-  +'<div class="exam-card" id="uj-stat"></div>'
-  +'<div class="exam-card"><div class="uj-hd"><h3>Rincian setiap paket</h3><label class="uj-cek"><input type="checkbox" id="uj-auto"'+(UJ.auto?' checked':'')+'> Hanya yang dikoreksi otomatis</label></div><div class="uj-grid" id="uj-grid"></div><p class="exam-muted" id="uj-grid-ket"></p></div>'
-  +'<div id="uj-panel"></div>'
-  +'<div class="exam-card"><h3>Kertas ujiannya dari mana?</h3><p class="exam-muted">Kode seperti H41001 adalah nomor kertas ujian HSK resmi. Zenta tidak memuat teks soal dan audionya. Pakai buku <span lang="zh">《HSK真题集》</span> atau contoh kertas ujian dari situs resmi <a href="https://www.chinesetest.cn/" target="_blank" rel="noopener">chinesetest.cn</a>, lalu catat dan periksa jawabanmu di sini. Progres simulasi tersimpan di perangkat ini.</p></div>'
+  +(lat?'<div class="exam-card" id="lh-stat"></div>'
+   +'<div class="exam-card"><div class="uj-hd"><h3>Paket latihan</h3></div><div class="uj-grid" id="lh-grid"></div><p class="exam-muted" id="lh-ket"></p></div>'
+   +'<div id="lh-panel"></div>'
+   +'<div class="exam-card"><h3>Soal ini dari mana?</h3><p class="exam-muted">Soal Latihan gaya HSK ditulis sendiri oleh Zenta mengikuti bentuk kertas ujian HSK. Isinya bukan salinan soal ujian resmi, jadi tingkat kesulitannya hanya perkiraan. Gambar diganti deskripsi tertulis, dan rekaman <span lang="zh">听力</span> diputar dengan suara Mandarin di perangkatmu. Progres latihan tersimpan di perangkat ini.</p></div>'
+   :'<div class="exam-card" id="uj-stat"></div>'
+   +'<div class="exam-card"><div class="uj-hd"><h3>Rincian setiap paket</h3><label class="uj-cek"><input type="checkbox" id="uj-auto"'+(UJ.auto?' checked':'')+'> Hanya yang dikoreksi otomatis</label></div><div class="uj-grid" id="uj-grid"></div><p class="exam-muted" id="uj-grid-ket"></p></div>'
+   +'<div id="uj-panel"></div>'
+   +'<div class="exam-card"><h3>Kertas ujiannya dari mana?</h3><p class="exam-muted">Kode seperti H41001 adalah nomor kertas ujian HSK resmi. Zenta tidak memuat teks soal dan audionya. Pakai buku <span lang="zh">《HSK真题集》</span> atau contoh kertas ujian dari situs resmi <a href="https://www.chinesetest.cn/" target="_blank" rel="noopener">chinesetest.cn</a>, lalu catat dan periksa jawabanmu di sini. Progres simulasi tersimpan di perangkat ini.</p></div>')
   +'<div class="exam-actions"><button type="button" id="ex-back">Kembali ke beranda</button></div></div>';
- const root=v.querySelector('.uj');root.addEventListener('click',ujKlik);root.addEventListener('input',ujKetik);root.addEventListener('change',ujKetik);
- ujStat();ujGrid();ujPanel();
+ const root=v.querySelector('.uj');root.addEventListener('click',ujKlik);root.addEventListener('input',ujKetik);root.addEventListener('change',ujKetik);root.addEventListener('compositionend',ujKetik);
+ if(lat)lhSiap();else{ujStat();ujGrid();ujPanel()}
 }
 function renderExam(v,msg=''){
  clearInterval(EX.interval);EX.finished=false;EX.active=false;
@@ -3523,9 +3560,238 @@ function renderExam(v,msg=''){
   w.innerHTML=kepala+'<p class="uj-msg" role="alert">Daftar paket ujian belum bisa dimuat. Periksa koneksi internet, lalu coba lagi.</p><div class="exam-actions"><button type="button" id="uj-ulang">Coba lagi</button><button type="button" id="ex-back">Kembali ke beranda</button></div></div></div>';
   w.querySelector('#uj-ulang').onclick=()=>renderExam($('view'));w.querySelector('#ex-back').onclick=()=>{S.mode='hm';render()}});
 }
+// ===== Latihan gaya HSK: soal orisinal Zenta dengan jumlah butir, bagian, dan jenis soal sama seperti kertas ujian HSK asli =====
+/* Berkas data/latihan-<level>.json = {v:1,lv,paket:[{id,judul,grup:[{d,s,o:[6 opsi]}],bc:[{d,s,t,tr}],soal:[butir]}]}.
+   Butir (urut sesuai nomor): au = skrip rekaman (awalan "男：", "女：", "问："), g = deskripsi gambar, x = teks cetak, q = pertanyaan, o = opsi,
+   k = kunci, s = tiga kalimat (urutkan), w = kepingan (susun kalimat) atau kata wajib (menulis bebas), h = pinyin petunjuk, ex = contoh jawaban,
+   tr = terjemahan, p = pembahasan. Jumlah butir, bagian 听力/阅读/书写, dan jenis tiap nomor diambil dari UJ_LV (sama dengan lembar jawaban kode asli)
+   dan dijaga oleh tools/latihan/periksa.py.
+   Progres: localStorage hsk_latihan_v1 = {ID:{a:{no:jawaban},m:{no:"1"|"0"},c:{no:1},t}}. a = jawaban (T/X, huruf, urutan ABC, indeks kepingan "2,0,1", satu hanzi, atau teks),
+   m = tanda benar/salah, c = sudah diperiksa. */
+const LH_KEY='hsk_latihan_v1',LH_ZH=/[一-鿿]/,LH_ZHG=/[一-鿿]/g;
+const LH={d:{},p:{},id:null,sek:0,buka:{},tm:null};
+const LH_IK={suara:IKS+'<path d="M4.5 9.5h3L12 6v12l-4.5-3.5h-3z"/><path d="M15.5 9.2a4 4 0 0 1 0 5.6M18 6.8a7.5 7.5 0 0 1 0 10.4"/></svg>'};
+function lhMuat(lv){
+ if(LH.d[lv])return Promise.resolve(LH.d[lv]);
+ if(!LH.p[lv])LH.p[lv]=fetch('data/latihan-'+lv+'.json?v=1').then(r=>{if(!r.ok)throw new Error('http '+r.status);return r.json()}).then(j=>{
+  const N=UJ_LV[lv].n;
+  if(!j||j.v!==1||j.lv!==lv||!Array.isArray(j.paket)||!j.paket.length||!j.paket.every(p=>p&&typeof p.id==='string'&&Array.isArray(p.soal)&&p.soal.length===N&&p.soal.every((it,i)=>it&&it.n===i+1)))throw new Error('format');
+  LH.d[lv]=j;return j}).catch(e=>{LH.p[lv]=null;throw e});
+ return LH.p[lv];
+}
+function lhPaket(lv){return (LH.d[lv]&&LH.d[lv].paket)||[]}
+function lhCari(id){return lhPaket(UJ.lv).find(p=>p.id===id)||null}
+function lhJenis(lv,n,it){const t=ujJenis(lv,n);return t==='tulis'?(Array.isArray(it.k)?'susun':'xie'):t}
+function lhGrupDari(pk,n){return (pk.grup||[]).find(g=>n>=g.d&&n<=g.s)||null}
+function lhBaca(){try{const x=JSON.parse(localStorage.getItem(LH_KEY)||'{}');return x&&typeof x==='object'&&!Array.isArray(x)?x:{}}catch(e){return {}}}
+function lhTulis(x){try{localStorage.setItem(LH_KEY,JSON.stringify(x))}catch(e){}}
+function lhRek(st,id){const r=st[id]&&typeof st[id]==='object'?st[id]:{},o=v=>v&&typeof v==='object'&&!Array.isArray(v)?v:{};return {a:o(r.a),m:o(r.m),c:o(r.c)}}
+function lhSimpan(st,id,r){if(!Object.keys(r.a).length&&!Object.keys(r.m).length&&!Object.keys(r.c).length)delete st[id];else st[id]={a:r.a,m:r.m,c:r.c,t:Date.now()};lhTulis(st)}
+function lhSet(id,n,v){const st=lhBaca(),r=lhRek(st,id);if(v===''||v==null)delete r.a[n];else r.a[n]=v;delete r.m[n];delete r.c[n];lhSimpan(st,id,r)}
+function lhMark(id,n,v){const st=lhBaca(),r=lhRek(st,id);if(v)r.m[n]=v;else delete r.m[n];lhSimpan(st,id,r)}
+function lhAda(r,n){return r.a[n]!==undefined&&r.a[n]!==''}
+function lhHit(r,dari,sampai){let d=0,b=0,s=0;for(let n=dari;n<=sampai;n++){if(lhAda(r,n))d++;const m=r.m[n];if(m==='1')b++;else if(m==='0')s++}return {d,b,s}}
+function lhNorm(s){return String(s||'').replace(/[\s，。？！、；：“”‘’（）()…·,.?!;:"']/g,'')}
+function lhBenar(it,t,a){
+ if(a===undefined||a==='')return null;
+ if(t==='susun'){const u=lhNorm(String(a).split(',').map(i=>(it.w||[])[+i]||'').join(''));return (it.k||[]).some(s=>lhNorm(s)===u)}
+ if(t==='xie')return null;
+ return a===it.k;
+}
+function lhPeriksa(id,dari,sampai){
+ const pk=lhCari(id),lv=UJ.lv,st=lhBaca(),r=lhRek(st,id);let isi=0,oto=0,sendiri=0,kosong=0;
+ for(let n=dari;n<=sampai;n++){
+  const it=pk.soal[n-1],t=lhJenis(lv,n,it);
+  if(!lhAda(r,n)){kosong++;continue}
+  isi++;const b=lhBenar(it,t,r.a[n]);r.c[n]=1;
+  if(b===null){if(r.m[n]===undefined)sendiri++}else{r.m[n]=b?'1':'0';oto++}
+ }
+ lhSimpan(st,id,r);return {isi,oto,sendiri,kosong};
+}
+function lhZ(s){s=String(s==null?'':s);return LH_ZH.test(s)?'<span lang="zh">'+hskEsc(s)+'</span>':hskEsc(s)}
+function lhKunciTeks(pk,n,it,t){
+ if(t==='tf')return it.k==='T'?'benar (√)':'salah (×)';
+ if(t==='abc'||t==='abcd')return it.k+' ('+((it.o||[])['ABCD'.indexOf(it.k)]||'')+')';
+ if(t==='af'){const g=lhGrupDari(pk,n);return it.k+(g?' ('+(g.o['ABCDEF'.indexOf(it.k)]||'')+')':'')}
+ if(t==='ord')return 'urutan '+it.k;
+ if(t==='susun')return (it.k||[])[0]||'';
+ return it.k||'';
+}
+/* rekaman: suara Mandarin perangkat (speechSynthesis); pria dibuat lebih rendah, wanita lebih tinggi */
+const LH_PERAN=/^(男|女|问)[：:]/;
+function lhParts(it){return it.au.map(s=>{const m=LH_PERAN.exec(s),t=m?s.slice(m[0].length):s;return [m&&m[1]==='问'?'问，'+t:t,m&&m[1]==='男'?.75:m&&m[1]==='女'?1.2:1]})}
+function lhStopSuara(){try{speechSynthesis.cancel()}catch(e){}document.querySelectorAll('.lh-play.on').forEach(b=>{b.classList.remove('on');b.setAttribute('aria-pressed','false')})}
+function lhPutar(it,btn){
+ const sedang=btn&&btn.classList.contains('on');lhStopSuara();if(sedang)return;
+ const parts=lhParts(it);let k=0,vc=null;try{vc=speechSynthesis.getVoices().find(x=>/^zh/i.test(x.lang))}catch(e){}
+ const fin=()=>{if(btn){btn.classList.remove('on');btn.setAttribute('aria-pressed','false')}};
+ const go=()=>{if(k>=parts.length){fin();return}const p=parts[k++],u=new SpeechSynthesisUtterance(p[0]);if(vc)u.voice=vc;u.lang=vc?vc.lang:'zh-CN';u.rate=.85;u.pitch=p[1];u.onend=go;u.onerror=fin;speechSynthesis.speak(u)};
+ try{if(btn){btn.classList.add('on');btn.setAttribute('aria-pressed','true')}go()}catch(e){fin()}
+}
+function lhSkrip(it){return '<div class="lh-skrip">'+it.au.map(s=>{const m=LH_PERAN.exec(s),t=m?s.slice(m[0].length):s;return '<p>'+(m?'<b lang="zh">'+m[1]+'</b> ':'')+'<span lang="zh">'+hskEsc(t)+'</span></p>'}).join('')+'</div>'}
+function lhKontrol(t,it,n,a,lv){
+ const pil=(c,lab,isi)=>'<button type="button" class="uj-o'+(a===c?' on':'')+'" data-lhv="'+c+'" data-n="'+n+'" aria-pressed="'+(a===c)+'" aria-label="Nomor '+n+': '+hskEsc(lab)+'">'+isi+'</button>';
+ if(t==='tf')return '<div class="uj-op">'+ujOpsi('tf').map(o=>pil(o[0],o[1],o[2]+'<span>'+o[1]+'</span>')).join('')+'</div>';
+ if(t==='abc'||t==='abcd')return '<div class="lh-ops">'+(it.o||[]).map((s,i)=>{const c='ABCD'[i];return '<button type="button" class="uj-o lh-o'+(a===c?' on':'')+'" data-lhv="'+c+'" data-n="'+n+'" aria-pressed="'+(a===c)+'" aria-label="Nomor '+n+', pilihan '+c+': '+hskEsc(s)+'"><b>'+c+'</b><span>'+lhZ(s)+'</span></button>'}).join('')+'</div>';
+ if(t==='af')return '<div class="uj-op">'+'ABCDEF'.split('').map(c=>pil(c,'Pilihan '+c,c)).join('')+'</div>';
+ if(t==='ord')return '<div class="uj-op">'+UJ_ORD.map(s=>pil(s,'Urutan '+s,s)).join('')+'</div>';
+ if(t==='han')return '<label class="uj-hl">Hanzi <input class="uj-han lh-han" data-n="'+n+'" type="text" maxlength="4" autocomplete="off" autocapitalize="off" spellcheck="false" lang="zh" value="'+(a?hskEsc(a):'')+'"></label>';
+ if(t==='susun'){
+  const w=it.w||[],pilih=a?String(a).split(',').filter(x=>x!==''):[],sisa=w.map((s,i)=>[s,String(i)]).filter(x=>!pilih.includes(x[1]));
+  return '<div class="lh-susun"><div class="lh-jawab" aria-label="Susunanmu">'+(pilih.length?pilih.map(i=>'<button type="button" class="lh-chip on" data-lhx="hapus" data-n="'+n+'" data-i="'+i+'" lang="zh" aria-label="Lepas '+hskEsc(w[+i])+'">'+hskEsc(w[+i])+'</button>').join(''):'<span class="exam-muted">Tekan kepingan di bawah sesuai urutan kalimat.</span>')+'</div>'
+   +(sisa.length?'<div class="lh-bank">'+sisa.map(x=>'<button type="button" class="lh-chip" data-lhx="tambah" data-n="'+n+'" data-i="'+x[1]+'" lang="zh">'+hskEsc(x[0])+'</button>').join('')+'</div>':'')
+   +(pilih.length?'<button type="button" class="uj-m lh-ulang" data-lhx="kosong" data-n="'+n+'">Ulangi susunan</button>':'')+'</div>';
+ }
+ if(t==='xie'){const hz=a?(String(a).match(LH_ZHG)||[]).length:0;return '<label class="lh-tl"><span class="uj-sr">Jawaban nomor '+n+'</span><textarea class="lh-tx" data-n="'+n+'" rows="'+(lv===5?6:3)+'" lang="zh" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Tulis jawabanmu dalam hanzi">'+hskEsc(a||'')+'</textarea></label><p class="exam-muted" id="lh-hit-'+n+'">'+hz+' hanzi</p>'}
+ return '';
+}
+function lhUmpan(pk,n,it,t,a,m){
+ const lv=UJ.lv;let h='<div class="lh-um">';
+ if(t==='xie'){
+  const w=it.w||[],tx=String(a||''),hz=(tx.match(LH_ZHG)||[]).length,hilang=w.filter(x=>!tx.includes(x)),ket=[];
+  if(w.length)ket.push(hilang.length?'Kata wajib yang belum kamu pakai: '+hilang.join('、')+'.':'Semua kata wajib sudah kamu pakai.');
+  if(lv===5)ket.push('Tulisanmu '+hz+' hanzi (soal meminta sekitar 80).');
+  h+='<p class="lh-ket">'+hskEsc(ket.join(' '))+' Ini hanya cek bentuk, bukan penilaian tata bahasa.</p><p class="lh-ket"><b>Contoh jawaban</b></p><p class="lh-ex" lang="zh">'+hskEsc(it.ex||'')+'</p>'
+   +'<span class="uj-sm" role="group" aria-label="Tandai nomor '+n+'">'+[['1','ok','Benar'],['0','no','Salah']].map(x=>'<button type="button" class="uj-m'+(m===x[0]?' on '+x[1]:'')+'" data-lhm="'+x[0]+'" data-n="'+n+'" aria-pressed="'+(m===x[0])+'">'+UJ_IK[x[1]]+'<span>'+x[2]+'</span></button>').join('')+'</span>';
+ }else h+=m==='1'?'<span class="uj-r ok">'+UJ_IK.ok+'<span>Benar</span></span>':'<span class="uj-r no">'+UJ_IK.no+'<span>Salah, kunci: '+lhZ(lhKunciTeks(pk,n,it,t))+'</span></span>';
+ if(it.au)h+=lhSkrip(it);
+ if(it.tr)h+='<p class="lh-tr">'+hskEsc(it.tr)+'</p>';
+ if(it.p)h+='<p class="lh-p">'+hskEsc(it.p)+'</p>';
+ return h+'</div>';
+}
+function lhBaris(pk,n,r){
+ const lv=UJ.lv,it=pk.soal[n-1],t=lhJenis(lv,n,it),a=r.a[n],cek=r.c[n]===1,m=r.m[n];let h='';
+ if(it.au){const tanpa=!zv();h+='<div class="lh-au"><button type="button" class="uj-o lh-play" data-lhp="'+n+'" aria-pressed="false" aria-label="Putar rekaman nomor '+n+'">'+LH_IK.suara+'<span>Putar rekaman</span></button></div>'+(tanpa&&!cek?lhSkrip(it):'')}
+ if(it.g)h+='<p class="lh-g"><b>Gambar</b>'+hskEsc(it.g)+'</p>';
+ if(t==='xie'&&it.w&&it.w.length)h+='<p class="lh-x" lang="zh"><span class="exam-muted" lang="id">'+(it.w.length>1?'Pakai kelima kata ini: ':'Pakai kata ini: ')+'</span>'+hskEsc(it.w.join('、'))+'</p>';
+ if(t==='xie')h+='<p class="exam-muted">'+(lv===5?'Tulis sekitar 80 hanzi.':'Tulis satu kalimat.')+'</p>';
+ if(it.x)h+='<p class="lh-x" lang="zh">'+hskEsc(it.x).replace(/\n/g,'<br>')+'</p>';
+ if(it.q)h+='<p class="lh-x lh-q" lang="zh">'+hskEsc(it.q)+'</p>';
+ if(t==='ord')h+='<ol class="lh-ord" type="A">'+(it.s||[]).map(s=>'<li lang="zh">'+hskEsc(s)+'</li>').join('')+'</ol>';
+ if(t==='han'&&it.h)h+='<p class="exam-muted">Pinyin: '+hskEsc(it.h)+'</p>';
+ h+=lhKontrol(t,it,n,a,lv);
+ if(cek)h+=lhUmpan(pk,n,it,t,a,m);
+ return '<div class="uj-q lh-row'+(m==='1'?' ok':m==='0'?' no':'')+'" id="lh-q-'+n+'"><span class="uj-no"><span class="uj-sr">Nomor </span>'+n+'</span><div class="lh-isi">'+h+'</div></div>';
+}
+function lhGrupBlok(g){return '<div class="lh-grup"><div class="lh-grup-h">Nomor '+g.d+'-'+g.s+': pilih huruf yang cocok. Satu pilihan tidak terpakai.</div><ul>'+g.o.map((s,i)=>'<li><b>'+'ABCDEF'[i]+'</b><span>'+lhZ(s)+'</span></li>').join('')+'</ul></div>'}
+function lhBcBlok(b,r){let cek=false;for(let n=b.d;n<=b.s;n++)if(r.c[n]===1)cek=true;return '<div class="lh-bc"><div class="lh-grup-h">Bacaan untuk nomor '+(b.d===b.s?b.d:b.d+'-'+b.s)+'</div><p class="lh-zh" lang="zh">'+hskEsc(b.t).replace(/\n/g,'<br>')+'</p>'+(cek?'<p class="lh-tr">'+hskEsc(b.tr)+'</p>':'')+'</div>'}
+function lhRows(pk,s,r){
+ const L=UJ_LV[UJ.lv];let rows='',bag=0;
+ for(let n=s[1];n<=s[2];n++){
+  const i=L.b.indexOf(n);
+  if(i>=0){bag++;const akhir=Math.min(s[2],(L.b[i+1]||L.n+1)-1);rows+='<div class="uj-bag"><span lang="zh">第'+'一二三四'.charAt(bag-1)+'部分</span> · nomor '+n+'-'+akhir+'</div>'}
+  (pk.grup||[]).forEach(g=>{if(g.d===n)rows+=lhGrupBlok(g)});
+  (pk.bc||[]).forEach(b=>{if(b.d===n)rows+=lhBcBlok(b,r)});
+  rows+=lhBaris(pk,n,r);
+ }
+ return rows;
+}
+function lhStat(){
+ const el=document.getElementById('lh-stat');if(!el)return;const lv=UJ.lv,L=UJ_LV[lv],pk=lhPaket(lv),st=lhBaca();let d=0,b=0,s=0,sel=0,jal=0;
+ pk.forEach(p=>{const h=lhHit(lhRek(st,p.id),1,L.n);d+=h.d;b+=h.b;s+=h.s;if(h.d===L.n&&h.b+h.s===L.n)sel++;else if(h.d||h.b||h.s)jal++});
+ const tot=pk.length*L.n,cek=b+s,pr=tot?Math.round(d/tot*100):0;
+ const kotak=[['Total soal dikerjakan',d,'dari '+tot,''],['Jawaban benar',b,'','ok'],['Jawaban salah',s,'','no'],['Akurasi diperiksa',cek?Math.round(b/cek*100)+'%':'Belum ada','',''],['Sudah diperiksa',cek,'',''],['Paket selesai',sel,'dari '+pk.length,'']];
+ el.innerHTML='<div class="uj-hd"><h3>Statistik Latihan HSK '+lv+' · '+pk.length+' paket</h3><span class="exam-muted">'+sel+' paket selesai · '+pr+'% progres</span></div><div class="uj-kotak">'+kotak.map(x=>'<div class="uj-k"><span>'+x[0]+'</span><b'+(x[3]?' class="'+x[3]+'"':'')+'>'+x[1]+'</b>'+(x[2]?'<small>'+x[2]+'</small>':'')+'</div>').join('')+'</div><div class="exam-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="'+pr+'" aria-label="Progres latihan HSK '+lv+'"><i style="width:'+pr+'%"></i></div><p class="exam-muted">'+jal+' paket sedang dikerjakan · '+(pk.length-sel-jal)+' paket belum dimulai</p>';
+}
+function lhGrid(){
+ const el=document.getElementById('lh-grid');if(!el)return;const lv=UJ.lv,L=UJ_LV[lv],st=lhBaca(),pk=lhPaket(lv);
+ el.innerHTML=pk.map(p=>{const h=lhHit(lhRek(st,p.id),1,L.n),sel=h.d===L.n&&h.b+h.s===L.n,jal=!sel&&(h.d||h.b||h.s),on=p.id===LH.id;
+  return '<button type="button" class="uj-t'+(sel?' sel':jal?' jal':'')+(on?' on':'')+'" data-lhk="'+hskEsc(p.id)+'" aria-pressed="'+on+'"><span class="uj-tk"><b>'+hskEsc(p.judul||p.id)+'</b>'+(sel?UJ_IK.ok:jal?UJ_IK.jalan:UJ_IK.belum)+'</span><span class="uj-sr">'+(sel?'Selesai.':jal?'Sedang dikerjakan.':'Belum dimulai.')+'</span><span class="uj-ts">'+L.n+' butir</span><span class="uj-ts">'+h.d+'/'+L.n+' dikerjakan</span><span class="uj-ts">'+h.b+' benar · '+h.s+' salah</span></button>'}).join('');
+ const k=document.getElementById('lh-ket');if(k)k.textContent=pk.length+' paket latihan HSK '+lv+'. Tekan paket untuk membukanya.';
+}
+function lhTanda(){
+ const el=document.getElementById('lh-tanda');if(!el||!LH.id)return;const s=UJ_LV[UJ.lv].s[LH.sek],r=lhRek(lhBaca(),LH.id);let h='';
+ for(let n=s[1];n<=s[2];n++){const a=lhAda(r,n),m=r.m[n];h+='<button type="button" class="uj-c'+(m==='1'?' ok':m==='0'?' no':a?' isi':'')+'" data-lhn="'+n+'" aria-label="Nomor '+n+', '+(m==='1'?'benar':m==='0'?'salah':a?'dijawab, belum diperiksa':'belum dikerjakan')+'">'+n+(m==='1'?UJ_IK.ok:m==='0'?UJ_IK.no:a?'<i class="uj-dot"></i>':'')+'</button>'}
+ el.innerHTML=h;const x=lhHit(r,s[1],s[2]),k=document.getElementById('lh-tanda-ket');if(k)k.textContent=x.d+' dari '+(s[2]-s[1]+1)+' dikerjakan';
+}
+function lhNilai(){
+ const el=document.getElementById('lh-nilai');if(!el||!LH.id)return;const lv=UJ.lv,L=UJ_LV[lv],r=lhRek(lhBaca(),LH.id);let lengkap=true,ada=false,total=0;
+ const li=L.s.map(s=>{const x=lhHit(r,s[1],s[2]),n=s[2]-s[1]+1,c=x.b+x.s;if(c)ada=true;if(c<n)lengkap=false;total+=Math.round(x.b/n*100);return '<li><span lang="zh">'+s[0]+'</span>: '+(c?x.b+' benar dan '+x.s+' salah dari '+c+' yang diperiksa ('+n+' nomor)':'belum ada yang diperiksa')+'</li>'}).join('');
+ el.innerHTML=ada?'<ul class="uj-nl">'+li+'</ul>'+(lengkap?'<p class="uj-msg">Perkiraan nilai: <b>'+total+' dari '+L.maks+'</b>. Ini hitungan kasar dari persentase benar tiap bagian, bukan nilai resmi.</p>':''):'';
+}
+function lhJamStop(){if(LH.tm){clearInterval(LH.tm.i);LH.tm=null}}
+function lhJamTeks(){
+ const b=document.getElementById('lh-jam');if(!b)return;const s=UJ_LV[UJ.lv].s[LH.sek],t=LH.tm,aktif=!!t&&t.id===LH.id&&t.sek===LH.sek;
+ const sisa=aktif?(t.jalan?Math.max(0,Math.ceil((t.end-Date.now())/1000)):t.sisa):s[3]*60,habis=aktif&&sisa<=0;
+ b.innerHTML=UJ_IK.jam+'<span>'+(habis?'Waktu habis, ulangi':aktif?(t.jalan?'Jeda ':'Lanjut ')+exFormatTime(sisa):'Mulai waktu '+exFormatTime(sisa))+'</span>';b.classList.toggle('habis',habis);
+}
+function lhJamKlik(){
+ const s=UJ_LV[UJ.lv].s[LH.sek];let t=LH.tm;
+ if(!t||t.id!==LH.id||t.sek!==LH.sek){lhJamStop();t=LH.tm={id:LH.id,sek:LH.sek,sisa:s[3]*60,jalan:false,end:0,i:null}}
+ if(t.jalan){t.sisa=Math.max(0,Math.ceil((t.end-Date.now())/1000));t.jalan=false;clearInterval(t.i)}
+ else{
+  if(t.sisa<=0)t.sisa=s[3]*60;t.end=Date.now()+t.sisa*1000;t.jalan=true;
+  t.i=setInterval(()=>{const x=LH.tm;if(!x||!document.getElementById('lh-jam')){lhJamStop();return}
+   if(x.jalan&&Date.now()>=x.end){x.jalan=false;x.sisa=0;clearInterval(x.i);const h=document.getElementById('lh-hasil');if(h)h.textContent='Waktu bagian ini habis. Kamu masih bisa mengisi dan memeriksa jawaban.'}
+   lhJamTeks()},1000);
+ }
+ lhJamTeks();
+}
+function lhPanel(){
+ const el=document.getElementById('lh-panel');if(!el)return;const id=LH.id,pk=id&&lhCari(id);
+ if(LH.tm&&(LH.tm.id!==id||LH.tm.sek!==LH.sek))lhJamStop();
+ if(!pk){el.innerHTML='<div class="exam-card"><p class="exam-muted">Pilih satu paket latihan di atas untuk mulai mengerjakan.</p></div>';return}
+ const lv=UJ.lv,L=UJ_LV[lv];if(!L.s[LH.sek])LH.sek=0;const s=L.s[LH.sek],r=lhRek(lhBaca(),id);
+ el.innerHTML='<div class="exam-card" id="lh-kertas"><div class="uj-hd"><h3>'+hskEsc(pk.judul||pk.id)+'</h3><span class="exam-muted">HSK '+lv+' · '+L.n+' butir</span></div>'
+  +'<p class="exam-muted">Soal orisinal Zenta. Jumlah butir, bagian, dan jenis soalnya sama seperti kertas ujian HSK '+lv+'. Pilih jawaban, lalu tekan Periksa untuk melihat kunci dan pembahasan.</p>'
+  +(zv()||!L.s[LH.sek]||!pk.soal.some(q=>q.au)?'':'<p class="exam-muted">Perangkat ini belum punya suara Mandarin, jadi teks rekaman ditampilkan di bawah tombol putar.</p>')
+  +'<div class="uj-seg" role="group" aria-label="Bagian ujian">'+L.s.map((x,i)=>'<button type="button" data-lhs="'+i+'" aria-pressed="'+(i===LH.sek)+'"'+(i===LH.sek?' class="on"':'')+'><span lang="zh">'+x[0]+'</span> · '+x[1]+'-'+x[2]+'</button>').join('')+'</div>'
+  +'<div class="uj-hd uj-hd2"><h4>Penanda nomor</h4><span class="exam-muted" id="lh-tanda-ket"></span></div><div class="uj-tanda" id="lh-tanda"></div>'
+  +'<p class="exam-muted">Centang hijau: benar. Silang merah: salah. Bertitik: sudah dijawab, belum diperiksa. Polos: belum dikerjakan.</p>'
+  +'<div class="uj-alat"><button type="button" class="uj-jam" id="lh-jam"></button><span class="exam-muted">Waktu resmi bagian ini sekitar '+s[3]+' menit.</span></div>'
+  +'<div id="lh-lembar">'+lhRows(pk,s,r)+'</div><p class="uj-msg" id="lh-hasil" role="status" aria-live="polite"></p>'
+  +'<div class="exam-actions"><button type="button" id="lh-periksa">Periksa bagian ini</button><button type="button" id="lh-reset">Kosongkan paket ini</button></div><div id="lh-nilai"></div></div>';
+ lhTanda();lhNilai();lhJamTeks();
+}
+function lhSegar1(n,fokus){
+ const id=LH.id,pk=lhCari(id),el=document.getElementById('lh-q-'+n);
+ if(el&&pk){el.outerHTML=lhBaris(pk,n,lhRek(lhBaca(),id),n);if(fokus){for(const sel of (Array.isArray(fokus)?fokus:[fokus])){const f=document.querySelector('#lh-q-'+n+' '+sel);if(f){f.focus();break}}}}
+ lhTanda();lhStat();lhGrid();lhNilai();
+}
+function lhSegar(){if(LH.id&&!lhCari(LH.id))LH.id=null;lhStat();lhGrid();lhPanel()}
+function lhSiap(){
+ const lv=UJ.lv;if(LH.d[lv]){lhSegar();return}
+ const st=document.getElementById('lh-stat');if(st)st.innerHTML='<p class="exam-muted" role="status">Memuat paket latihan HSK '+lv+'…</p>';
+ lhMuat(lv).then(()=>{if(S.mode==='exam'&&UJ.mode==='lat'&&UJ.lv===lv&&document.getElementById('lh-grid'))lhSegar()}).catch(()=>{
+  if(S.mode!=='exam'||UJ.mode!=='lat'||UJ.lv!==lv)return;const s=document.getElementById('lh-stat');
+  if(s)s.innerHTML='<p class="uj-msg" role="alert">Paket latihan HSK '+lv+' belum bisa dimuat. Periksa koneksi internet, lalu coba lagi.</p><div class="exam-actions"><button type="button" id="lh-ulang">Coba lagi</button></div>';
+ });
+}
+function lhKlik(e){
+ const b=e.target.closest('button');if(!b)return;const d=b.dataset,id=LH.id,hasil=document.getElementById('lh-hasil');
+ if(b.id==='lh-ulang'){LH.p[UJ.lv]=null;ujGambar($('view'));return}
+ if(d.lhk){LH.id=d.lhk;LH.sek=0;lhStopSuara();ujUiSimpan();lhGrid();lhPanel();const p=document.getElementById('lh-kertas');if(p)p.scrollIntoView({block:'start'});const f=document.querySelector('[data-lhs="0"]');if(f)f.focus({preventScroll:true});return}
+ if(!id)return;
+ if(d.lhs){LH.sek=+d.lhs;lhStopSuara();lhPanel();const f=document.querySelector('[data-lhs="'+LH.sek+'"]');if(f)f.focus();return}
+ if(d.lhn){const q=document.getElementById('lh-q-'+d.lhn);if(q){q.scrollIntoView({block:'center'});const f=q.querySelector('button,input,textarea');if(f)f.focus({preventScroll:true})}return}
+ if(d.lhp){const pk=lhCari(id);if(pk)lhPutar(pk.soal[+d.lhp-1],b);return}
+ if(d.lhm){const n=+d.n,r=lhRek(lhBaca(),id);lhMark(id,n,r.m[n]===d.lhm?'':d.lhm);lhSegar1(n,'[data-lhm="'+d.lhm+'"]');return}
+ if(d.lhx){const n=+d.n,r=lhRek(lhBaca(),id),cur=r.a[n]?String(r.a[n]).split(',').filter(x=>x!==''):[];
+  const nx=d.lhx==='tambah'?cur.concat(d.i):d.lhx==='hapus'?cur.filter(x=>x!==d.i):[];
+  lhSet(id,n,nx.join(','));if(hasil)hasil.textContent='';lhSegar1(n,d.lhx==='hapus'?['.lh-jawab .lh-chip','.lh-bank .lh-chip']:['.lh-bank .lh-chip','.lh-jawab .lh-chip']);return}
+ if(d.lhv&&d.n){const n=+d.n,r=lhRek(lhBaca(),id);lhSet(id,n,r.a[n]===d.lhv?'':d.lhv);if(hasil)hasil.textContent='';lhSegar1(n,'[data-lhv="'+d.lhv+'"]');return}
+ if(b.id==='lh-jam'){lhJamKlik();return}
+ if(b.id==='lh-periksa'){const s=UJ_LV[UJ.lv].s[LH.sek],x=lhPeriksa(id,s[1],s[2]);lhPanel();lhStat();lhGrid();const h=document.getElementById('lh-hasil');
+  if(h)h.textContent=!x.isi?'Belum ada jawaban di bagian ini.':x.isi+' jawaban diperiksa'+(x.kosong?', '+x.kosong+' nomor belum dijawab':'')+'.'+(x.sendiri?' '+x.sendiri+' nomor menulis perlu kamu nilai sendiri: bandingkan dengan contoh jawaban, lalu tekan Benar atau Salah.':'');
+  const f=document.getElementById('lh-periksa');if(f)f.focus({preventScroll:true});return}
+ if(b.id==='lh-reset'){const pk=lhCari(id);if(pk&&confirm('Kosongkan semua jawaban dan tanda di '+(pk.judul||pk.id)+'? Tindakan ini tidak bisa dibatalkan.')){const st=lhBaca();delete st[id];lhTulis(st);lhJamStop();lhStopSuara();lhPanel();lhStat();lhGrid();const h=document.getElementById('lh-hasil');if(h)h.textContent=(pk.judul||pk.id)+' sudah dikosongkan.'}return}
+}
+function lhKetik(e){
+ const t=e.target;if(!t.classList||!LH.id)return;
+ if(t.classList.contains('lh-han')){
+  if(e.isComposing)return;const n=+t.dataset.n,c=(t.value.match(LH_ZHG)||[]).pop()||'';if(t.value&&!c)return;t.value=c;
+  lhSet(LH.id,n,c);lhTanda();lhStat();lhGrid();lhNilai();
+  const q=document.getElementById('lh-q-'+n);if(q){q.classList.remove('ok','no');const um=q.querySelector('.lh-um');if(um)um.remove()}
+  return}
+ if(t.classList.contains('lh-tx')){
+  if(e.isComposing)return;const n=+t.dataset.n;lhSet(LH.id,n,t.value.trim()?t.value:'');lhTanda();lhStat();lhGrid();lhNilai();
+  const hit=document.getElementById('lh-hit-'+n);if(hit)hit.textContent=(t.value.match(LH_ZHG)||[]).length+' hanzi';
+  const q=document.getElementById('lh-q-'+n);if(q){q.classList.remove('ok','no');const um=q.querySelector('.lh-um');if(um)um.remove()}
+ }
+}
 // Pintasan simulasi ujian di beranda.
 const _renderHomeBeforeExam=renderHome;
-renderHome=function(v){_renderHomeBeforeExam(v);const panel=document.createElement('section');panel.className='exam-home hb-card hb-act';panel.innerHTML='<div><h3 class="exam-title">模拟考试 · Simulasi Ujian</h3><p>Lembar jawaban untuk kertas ujian HSK asli, HSK 1 sampai 5. Isi jawaban, periksa, lalu lihat statistik tiap paket.</p></div><button type="button" class="hb-btn" id="home-exam-start">Buka simulasi ujian</button>';hbSlot(v,'hb-uji').appendChild(panel);panel.querySelector('#home-exam-start').onclick=()=>{S.mode='exam';renderExam($('view'))}}
+renderHome=function(v){_renderHomeBeforeExam(v);const panel=document.createElement('section');panel.className='exam-home hb-card hb-act';panel.innerHTML='<div><h3 class="exam-title">模拟考试 · Simulasi Ujian</h3><p>Lembar jawaban untuk kertas ujian HSK asli dan Latihan gaya HSK berisi soal orisinal, HSK 1 sampai 5. Isi jawaban, periksa, lalu lihat statistik tiap paket.</p></div><button type="button" class="hb-btn" id="home-exam-start">Buka simulasi ujian</button>';hbSlot(v,'hb-uji').appendChild(panel);panel.querySelector('#home-exam-start').onclick=()=>{S.mode='exam';renderExam($('view'))}}
 
 
 

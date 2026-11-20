@@ -1,0 +1,1467 @@
+{
+ "v": 1,
+ "lv": 5,
+ "paket": [
+  {
+   "id": "L5-01",
+   "judul": "Latihan 1",
+   "bc": [
+    {
+     "d": 46,
+     "s": 50,
+     "t": "现在很多人习惯在手机上看书，（46）方便，而且不用带书。可是，有研究发现，在手机上看书（47）容易分心，因为手机上总有各种各样的消息。所以，如果你想（48）地读完一本书，最好还是读纸质书。纸质书（49）有一种特别的味道，翻书的感觉也让人觉得（50）。",
+     "tr": "Sekarang banyak orang terbiasa membaca buku di ponsel, (46) praktis dan tidak perlu membawa buku. Namun penelitian menemukan membaca di ponsel (47) mudah teralihkan karena selalu ada berbagai pesan. Jadi bila ingin membaca habis sebuah buku dengan (48), sebaiknya tetap baca buku cetak. Buku cetak (49) punya aroma khas, dan rasa membalik halaman juga membuat orang merasa (50)."
+    },
+    {
+     "d": 51,
+     "s": 55,
+     "t": "随着城市的发展，空气污染问题越来越（51）。为了保护环境，政府（52）了很多办法，比如鼓励大家坐公共汽车，少开私家车。（53）如此，我们每个人也应该从小事做起，比如节约用水、少用塑料袋。只要大家都（54）一点，环境一定会（55）。",
+     "tr": "Seiring perkembangan kota, pencemaran udara makin (51). Untuk melindungi lingkungan, pemerintah (52) banyak cara, misalnya mengajak orang naik bus dan mengurangi mobil pribadi. (53) itu, kita masing-masing juga harus mulai dari hal kecil, misalnya menghemat air dan mengurangi kantong plastik. Asal semua orang (54) sedikit, lingkungan pasti akan (55)."
+    },
+    {
+     "d": 56,
+     "s": 60,
+     "t": "朋友是我们生活中不可缺少的一部分。一个好朋友，不仅能在你（56）的时候陪着你，也能在你做错事的时候（57）地指出你的缺点。真正的友谊不是每天都在一起，而是即使很长时间不（58），见面时也像以前一样（59）。所以，我们要（60）每一份友谊。",
+     "tr": "Teman adalah bagian tak tergantikan dalam hidup. Teman baik tidak hanya menemanimu saat (56), tetapi juga (57) menunjukkan kekuranganmu saat kamu berbuat salah. Persahabatan sejati bukan setiap hari bersama, tetapi walau lama tidak (58), saat bertemu tetap (59) seperti dulu. Maka kita harus (60) setiap persahabatan."
+    },
+    {
+     "d": 61,
+     "s": 63,
+     "t": "小王大学毕业后，在一家小公司找到了第一份工作。刚开始，他什么都不懂，常常因为做错事被经理批评。他曾经想过放弃，可是想到父母对他的期望，他还是坚持了下来。一年以后，他不但熟悉了业务，还被同事们评为最努力的新人。现在他说，那段辛苦的日子让他学到了很多。",
+     "tr": "Setelah lulus kuliah, Xiao Wang mendapat pekerjaan pertamanya di perusahaan kecil. Awalnya dia tidak tahu apa-apa dan sering dimarahi manajer karena salah. Dia pernah berpikir menyerah, tetapi teringat harapan orang tua, dia bertahan. Setahun kemudian dia bukan hanya menguasai pekerjaan tetapi juga dipilih rekan sebagai pendatang baru paling rajin. Kini dia berkata masa-masa sulit itu mengajarinya banyak hal."
+    },
+    {
+     "d": 64,
+     "s": 66,
+     "t": "在这个小区的楼顶，有一块很大的菜园，里面种着西红柿、黄瓜和白菜。这些都是小区的居民自己种的。他们每个周末都会来这儿照顾这些菜，还把收获的菜分给邻居。起初，物业并不同意，担心会影响楼顶的安全。后来经过专家检查，发现没有问题，才同意了。现在，菜园已经成了大家交流感情的好地方。",
+     "tr": "Di atap kompleks perumahan ini ada kebun sayur yang luas, ditanami tomat, mentimun, dan sawi putih. Semuanya ditanam sendiri oleh penghuni. Setiap akhir pekan mereka datang merawat sayur-sayur itu dan membagikan hasil panen kepada tetangga. Mulanya pengelola tidak setuju karena khawatir mengganggu keamanan atap. Setelah pakar memeriksa dan tidak ada masalah, barulah disetujui. Kini kebun menjadi tempat bagus untuk mempererat hubungan."
+    },
+    {
+     "d": 67,
+     "s": 69,
+     "t": "去年我一个人去云南旅行，在一个小城市里，我的钱包丢了，身上只剩下一点零钱。我又着急又害怕，不知道该怎么办。这时，一位开小饭馆的大姐看出了我的困难，不但让我免费吃了一顿饭，还借给我路费。我回到家以后，马上把钱还给了她。这件事让我明白，世界上还是好人多。",
+     "tr": "Tahun lalu saya bepergian sendirian ke Yunnan. Di sebuah kota kecil dompet saya hilang dan hanya tersisa sedikit uang receh. Saya cemas dan takut, tidak tahu harus bagaimana. Saat itu seorang kakak pemilik warung kecil melihat kesulitan saya, bukan hanya memberi makan gratis tetapi juga meminjamkan ongkos. Sesampai di rumah saya segera mengembalikan uangnya. Kejadian ini membuat saya sadar bahwa di dunia ini orang baik masih banyak."
+    },
+    {
+     "d": 70,
+     "s": 72,
+     "t": "睡眠对人的健康非常重要，可是现代人的睡眠时间却越来越短。有些人为了工作或者玩手机，经常到半夜才睡觉。专家指出，睡眠不足不仅会让人感到很累，还会降低记忆力，使人容易生气。他们建议，睡前一小时最好不要看手机，并且每天在固定的时间睡觉和起床，这样才能睡得更好。",
+     "tr": "Tidur sangat penting bagi kesehatan, tetapi waktu tidur orang modern makin pendek. Sebagian orang karena bekerja atau bermain ponsel sering baru tidur tengah malam. Pakar menunjukkan kurang tidur bukan hanya membuat lelah, tetapi juga menurunkan daya ingat dan membuat orang mudah marah. Mereka menyarankan satu jam sebelum tidur sebaiknya tidak melihat ponsel dan tidur serta bangun pada waktu tetap, agar tidur lebih baik."
+    },
+    {
+     "d": 73,
+     "s": 75,
+     "t": "书法是中国传统艺术的代表之一。很多人认为练书法只是为了把字写好，其实它的作用远不止这些。练字的时候，人必须认真，不能想别的事情，所以它能帮助人们放松心情。而且，写字需要耐心，长期练习的人，脾气也会变得更好。因此，越来越多的年轻人开始对书法感兴趣。",
+     "tr": "Kaligrafi adalah salah satu wakil seni tradisional Tiongkok. Banyak orang mengira berlatih kaligrafi hanya untuk memperbagus tulisan, padahal fungsinya jauh lebih dari itu. Saat menulis orang harus serius dan tidak memikirkan hal lain, sehingga membantu orang merilekskan hati. Lagi pula menulis butuh kesabaran, orang yang berlatih lama wataknya juga makin baik. Karena itu makin banyak anak muda tertarik pada kaligrafi."
+    },
+    {
+     "d": 76,
+     "s": 78,
+     "t": "逛超市的时候，你有没有发现，牛奶和鸡蛋这些大家常买的东西，总是放在超市的最里面？这是商家故意这样安排的。顾客为了买这些东西，必须经过整个超市，路上看到别的商品，就可能决定多买一些。所以，不少人明明只想买两三样东西，最后却提着一大袋东西回家。",
+     "tr": "Saat berbelanja di supermarket, pernahkah kamu sadar susu dan telur yang sering dibeli semua orang selalu diletakkan di bagian paling dalam? Itu sengaja diatur pedagang. Demi membeli barang itu pelanggan harus melewati seluruh supermarket, melihat barang lain di jalan, lalu mungkin memutuskan membeli lebih banyak. Karena itu banyak orang yang sebenarnya hanya ingin membeli dua tiga barang tetapi akhirnya pulang membawa sekantong besar."
+    },
+    {
+     "d": 79,
+     "s": 81,
+     "t": "我家附近有一条小路，路边住着一只流浪狗。刚开始，大家都不敢靠近它。有一天，一位老奶奶每天带着一点吃的来看它，慢慢地，小狗不再害怕，还会跑过去迎接她。后来，邻居们也开始给它送水送饭，还给它做了一个小房子。现在，这只狗已经成了我们小区的居民。",
+     "tr": "Dekat rumah saya ada jalan kecil dan di tepinya tinggal seekor anjing liar. Awalnya semua orang tidak berani mendekat. Suatu hari seorang nenek setiap hari membawa sedikit makanan untuk menengoknya, perlahan anjing itu tidak takut lagi dan bahkan berlari menyambutnya. Kemudian tetangga juga mulai mengirim air dan makanan serta membuatkan rumah kecil. Kini anjing itu sudah menjadi penghuni kompleks kami."
+    },
+    {
+     "d": 82,
+     "s": 84,
+     "t": "在面试中，很多人只关心怎样回答问题，却忽略了别的方面。其实，面试的人在你进门的那一刻就开始观察你了：你的穿着是否整齐，说话是否有礼貌，是否准时到达。这些小事，往往会给对方留下很深的第一印象。而第一印象一旦形成，就很难改变。因此，面试前做好准备，保持良好的状态，比背答案更重要。",
+     "tr": "Dalam wawancara, banyak orang hanya peduli cara menjawab pertanyaan tetapi mengabaikan hal lain. Sebenarnya pewawancara sudah mulai mengamati sejak kamu melangkah masuk: apakah pakaianmu rapi, apakah bicaramu sopan, apakah datang tepat waktu. Hal-hal kecil ini sering meninggalkan kesan pertama yang dalam. Dan kesan pertama begitu terbentuk sulit diubah. Maka mempersiapkan diri sebelum wawancara dan menjaga kondisi lebih penting daripada menghafal jawaban."
+    },
+    {
+     "d": 85,
+     "s": 87,
+     "t": "中国人喜欢喝茶，不同的茶有不同的特点。绿茶比较清，适合夏天喝；红茶让身体暖和，适合冬天喝。喝茶也有很多讲究，比如，朋友来了，要先给客人倒茶，而且不能倒得太满，因为在中国人看来，茶倒满了是不礼貌的。",
+     "tr": "Orang Tiongkok suka minum teh, dan berbagai teh punya ciri berbeda. Teh hijau relatif ringan, cocok diminum di musim panas; teh merah menghangatkan tubuh, cocok untuk musim dingin. Minum teh juga banyak aturannya, misalnya ketika teman datang, tuangkan teh untuk tamu dulu dan jangan terlalu penuh, sebab menurut orang Tiongkok teh yang dituang penuh itu tidak sopan."
+    },
+    {
+     "d": 88,
+     "s": 90,
+     "t": "现在的小学生每天背的书包越来越重，有的甚至超过了孩子体重的五分之一。医生提醒，长时间背太重的书包，会影响孩子的身体发展，让孩子容易感到不舒服。为了减轻孩子的负担，有的学校开始让孩子把一部分书留在教室，回家只带需要的作业。家长也应该每天帮孩子检查书包，把不需要的东西拿出来。",
+     "tr": "Tas sekolah anak SD sekarang makin berat, bahkan ada yang melebihi seperlima berat badan anak. Dokter mengingatkan membawa tas yang terlalu berat dalam waktu lama memengaruhi perkembangan tubuh anak dan membuatnya mudah merasa tidak nyaman. Untuk meringankan beban anak, sebagian sekolah menyuruh anak meninggalkan sebagian buku di kelas dan hanya membawa PR yang diperlukan. Orang tua juga harus memeriksa tas anak tiap hari dan mengeluarkan barang yang tidak diperlukan."
+    }
+   ],
+   "soal": [
+    {
+     "n": 1,
+     "au": [
+      "男：这次的会议材料你准备好了吗？",
+      "女：差不多了，就差最后一部分的数据还没整理完。",
+      "问：女的是什么意思？"
+     ],
+     "o": [
+      "材料已经交了",
+      "材料快准备好了",
+      "不想准备材料",
+      "数据不重要"
+     ],
+     "k": "B",
+     "tr": "Pria: Bahan rapat kali ini sudah siap? Wanita: Hampir, tinggal data bagian terakhir yang belum selesai dirapikan. Tanya: Apa maksud wanita itu?"
+    },
+    {
+     "n": 2,
+     "au": [
+      "女：听说你们公司最近在招聘，你有兴趣试试吗？",
+      "男：我倒是想，就是怕自己的经验不够。",
+      "问：男的担心什么？"
+     ],
+     "o": [
+      "工资太低",
+      "公司太远",
+      "工作太累",
+      "经验不够"
+     ],
+     "k": "D",
+     "tr": "Wanita: Katanya perusahaanmu sedang merekrut, kamu tertarik mencoba? Pria: Saya sih mau, hanya takut pengalaman saya kurang. Tanya: Apa yang dikhawatirkan pria itu?"
+    },
+    {
+     "n": 3,
+     "au": [
+      "男：这家餐厅的菜不错，就是价格有点高。",
+      "女：偶尔来一次还可以，常来就受不了了。",
+      "问：女的觉得这家餐厅怎么样？"
+     ],
+     "o": [
+      "偶尔来可以",
+      "菜不好吃",
+      "价格便宜",
+      "服务很差"
+     ],
+     "k": "A",
+     "tr": "Pria: Masakan restoran ini enak, hanya harganya agak tinggi. Wanita: Sesekali datang masih boleh, sering-sering tidak sanggup. Tanya: Bagaimana pendapat wanita itu tentang restoran ini?"
+    },
+    {
+     "n": 4,
+     "au": [
+      "女：你怎么突然想学钢琴了？",
+      "男：看到朋友弹得那么好，我也被吸引了。",
+      "问：男的为什么想学钢琴？"
+     ],
+     "o": [
+      "工作需要",
+      "父母要求",
+      "被朋友吸引",
+      "为了考试"
+     ],
+     "k": "C",
+     "tr": "Wanita: Kenapa tiba-tiba ingin belajar piano? Pria: Melihat teman bermain sebagus itu, saya jadi tertarik. Tanya: Mengapa pria itu ingin belajar piano?"
+    },
+    {
+     "n": 5,
+     "au": [
+      "男：我的邮箱怎么登不上去了？",
+      "女：你是不是改过密码？可能是忘记新密码了。",
+      "问：女的认为男的可能怎么了？"
+     ],
+     "o": [
+      "邮箱被取消了",
+      "网速太慢",
+      "电脑坏了",
+      "忘记密码了"
+     ],
+     "k": "D",
+     "tr": "Pria: Kenapa surel saya tidak bisa dibuka? Wanita: Apakah kamu mengganti kata sandi? Mungkin kamu lupa kata sandi baru. Tanya: Menurut wanita itu, ada apa dengan pria itu?"
+    },
+    {
+     "n": 6,
+     "au": [
+      "女：这个周末的演出你去不去？",
+      "男：票太难买了，我试了好几次都没成功。",
+      "问：关于演出，可以知道什么？"
+     ],
+     "o": [
+      "不用买票",
+      "票很难买",
+      "时间改了",
+      "地点太远"
+     ],
+     "k": "B",
+     "tr": "Wanita: Pertunjukan akhir pekan ini kamu pergi atau tidak? Pria: Tiketnya sangat sulit dibeli, saya coba beberapa kali tidak berhasil. Tanya: Apa yang diketahui tentang pertunjukan itu?"
+    },
+    {
+     "n": 7,
+     "au": [
+      "男：你看起来心情不错。",
+      "女：我的申请通过了，下个月就可以去留学了。",
+      "问：女的为什么高兴？"
+     ],
+     "o": [
+      "申请通过了",
+      "找到工作了",
+      "成绩提高了",
+      "买了新房子"
+     ],
+     "k": "A",
+     "tr": "Pria: Kamu kelihatan senang. Wanita: Permohonan saya disetujui, bulan depan sudah bisa kuliah ke luar negeri. Tanya: Mengapa wanita itu senang?"
+    },
+    {
+     "n": 8,
+     "au": [
+      "女：你认为这个计划可行吗？",
+      "男：理论上没问题，但是实际做起来可能会遇到不少困难。",
+      "问：男的对计划是什么看法？"
+     ],
+     "o": [
+      "完全反对",
+      "非常满意",
+      "有些担心",
+      "不知道"
+     ],
+     "k": "C",
+     "tr": "Wanita: Menurutmu rencana ini bisa dijalankan? Pria: Secara teori tidak masalah, tetapi saat dijalankan mungkin menemui banyak kesulitan. Tanya: Bagaimana pandangan pria itu terhadap rencana?"
+    },
+    {
+     "n": 9,
+     "au": [
+      "男：你的孩子最近学习怎么样？",
+      "女：成绩一直不错，就是不太爱和同学交流。",
+      "问：女的担心孩子什么？"
+     ],
+     "o": [
+      "成绩下降",
+      "不爱交流",
+      "身体不好",
+      "没有朋友"
+     ],
+     "k": "B",
+     "tr": "Pria: Bagaimana belajar anakmu belakangan ini? Wanita: Nilainya selalu bagus, hanya kurang suka berinteraksi dengan teman sekelas. Tanya: Apa yang dikhawatirkan wanita itu pada anaknya?"
+    },
+    {
+     "n": 10,
+     "au": [
+      "女：房租又涨了，我们是不是该考虑搬家了？",
+      "男：再等等吧，现在搬家成本也不低。",
+      "问：男的是什么态度？"
+     ],
+     "o": [
+      "想马上搬",
+      "想买房子",
+      "不想租房",
+      "想再等等"
+     ],
+     "k": "D",
+     "tr": "Wanita: Uang sewa naik lagi, apakah kita perlu mempertimbangkan pindah? Pria: Tunggu dulu, biaya pindah sekarang juga tidak murah. Tanya: Bagaimana sikap pria itu?"
+    },
+    {
+     "n": 11,
+     "au": [
+      "男：这篇文章是谁翻译的？读起来很自然。",
+      "女：是李老师翻译的，他在国外生活了十年。",
+      "问：这篇文章为什么读起来自然？"
+     ],
+     "o": [
+      "作者很有名",
+      "内容很简单",
+      "翻译者在国外生活过",
+      "经过多次修改"
+     ],
+     "k": "C",
+     "tr": "Pria: Siapa yang menerjemahkan artikel ini? Terbaca sangat alami. Wanita: Guru Li yang menerjemahkan, dia sepuluh tahun hidup di luar negeri. Tanya: Mengapa artikel ini terbaca alami?"
+    },
+    {
+     "n": 12,
+     "au": [
+      "女：你为什么不坐飞机去？",
+      "男：飞机票太贵了，而且火车也只要六个小时。",
+      "问：男的为什么选择火车？"
+     ],
+     "o": [
+      "便宜而且不慢",
+      "不怕晚点",
+      "喜欢看风景",
+      "行李太多"
+     ],
+     "k": "A",
+     "tr": "Wanita: Mengapa kamu tidak naik pesawat? Pria: Tiket pesawat terlalu mahal, lagi pula kereta hanya enam jam. Tanya: Mengapa pria itu memilih kereta?"
+    },
+    {
+     "n": 13,
+     "au": [
+      "男：这条裤子有点短，有大一号的吗？",
+      "女：有，不过颜色只剩黑色了。",
+      "问：女的是什么意思？"
+     ],
+     "o": [
+      "裤子卖完了",
+      "价格很贵",
+      "不能换",
+      "大号只有黑色"
+     ],
+     "k": "D",
+     "tr": "Pria: Celana ini agak pendek, ada ukuran satu nomor lebih besar? Wanita: Ada, tetapi warnanya tinggal hitam. Tanya: Apa maksud wanita itu?"
+    },
+    {
+     "n": 14,
+     "au": [
+      "女：我今天打算早点下班，陪孩子去看电影。",
+      "男：好啊，那剩下的工作我来处理吧。",
+      "问：男的主动要做什么？"
+     ],
+     "o": [
+      "看电影",
+      "处理剩下的工作",
+      "接孩子",
+      "早点下班"
+     ],
+     "k": "B",
+     "tr": "Wanita: Hari ini saya ingin pulang lebih awal, menemani anak menonton film. Pria: Baik, sisa pekerjaan biar saya yang urus. Tanya: Apa yang dengan sukarela dilakukan pria itu?"
+    },
+    {
+     "n": 15,
+     "au": [
+      "男：你这次出差去几天？",
+      "女：原定三天，不过客户要求延长，可能得一个星期。",
+      "问：女的出差可能多长时间？"
+     ],
+     "o": [
+      "三天",
+      "两个星期",
+      "一个星期",
+      "一个月"
+     ],
+     "k": "C",
+     "tr": "Pria: Dinas kali ini berapa hari? Wanita: Semula tiga hari, tetapi klien meminta diperpanjang, mungkin seminggu. Tanya: Kira-kira berapa lama dinas wanita itu?"
+    },
+    {
+     "n": 16,
+     "au": [
+      "女：你对这个城市的印象怎么样？",
+      "男：空气不太好，不过人们都很热情。",
+      "问：男的觉得这个城市的人怎么样？"
+     ],
+     "o": [
+      "很热情",
+      "很冷淡",
+      "很忙",
+      "很懒"
+     ],
+     "k": "A",
+     "tr": "Wanita: Bagaimana kesanmu pada kota ini? Pria: Udaranya kurang baik, tetapi orangnya ramah. Tanya: Bagaimana pria itu menilai orang di kota ini?"
+    },
+    {
+     "n": 17,
+     "au": [
+      "男：这次考试你有把握吗？",
+      "女：难度比我想象的大，我只能说尽力了。",
+      "问：女的觉得考试怎么样？"
+     ],
+     "o": [
+      "很简单",
+      "比想象的难",
+      "时间不够",
+      "题目太多"
+     ],
+     "k": "B",
+     "tr": "Pria: Apakah kamu yakin dengan ujian kali ini? Wanita: Tingkat kesulitannya lebih besar dari bayangan saya, saya hanya bisa bilang sudah berusaha. Tanya: Bagaimana wanita itu menilai ujiannya?"
+    },
+    {
+     "n": 18,
+     "au": [
+      "女：你的手机怎么老是没电？",
+      "男：可能是电池老了，我得去换一块。",
+      "问：男的打算怎么办？"
+     ],
+     "o": [
+      "买新手机",
+      "少用手机",
+      "请朋友帮忙",
+      "换电池"
+     ],
+     "k": "D",
+     "tr": "Wanita: Kenapa ponselmu selalu kehabisan baterai? Pria: Mungkin baterainya sudah tua, saya harus menggantinya. Tanya: Apa rencana pria itu?"
+    },
+    {
+     "n": 19,
+     "au": [
+      "男：听说你们学校要举办运动会，你报名了吗？",
+      "女：报了跑步和跳远，不过我没什么信心。",
+      "问：女的参加什么项目？"
+     ],
+     "o": [
+      "跑步和跳远",
+      "篮球",
+      "游泳",
+      "乒乓球"
+     ],
+     "k": "A",
+     "tr": "Pria: Katanya sekolahmu akan mengadakan pekan olahraga, kamu sudah mendaftar? Wanita: Sudah, lari dan lompat jauh, tetapi saya kurang percaya diri. Tanya: Cabang apa yang diikuti wanita itu?"
+    },
+    {
+     "n": 20,
+     "au": [
+      "女：下个月的聚会定在哪儿？",
+      "男：大家意见不一致，我再问问大家的意见。",
+      "问：男的接下来要做什么？"
+     ],
+     "o": [
+      "订饭馆",
+      "通知大家",
+      "再问问大家",
+      "取消聚会"
+     ],
+     "k": "C",
+     "tr": "Wanita: Pertemuan bulan depan ditetapkan di mana? Pria: Pendapat semua orang belum sama, saya tanya lagi pendapat semuanya. Tanya: Apa yang akan dilakukan pria itu selanjutnya?"
+    },
+    {
+     "n": 21,
+     "au": [
+      "男：小李，你的论文进展得怎么样了？",
+      "女：我已经写完了第一部分，不过老师说结构还要调整。",
+      "男：别着急，慢慢改，下个月才交。",
+      "女：嗯，我打算先把资料再整理一遍。",
+      "问：女的接下来打算做什么？"
+     ],
+     "o": [
+      "找新老师",
+      "提前交论文",
+      "开始写第二部分",
+      "整理资料"
+     ],
+     "k": "D",
+     "tr": "Pria: Xiao Li, bagaimana kemajuan makalahmu? Wanita: Bagian pertama sudah selesai, tetapi kata guru strukturnya masih perlu disesuaikan. Pria: Jangan buru-buru, perbaiki pelan-pelan, bulan depan baru dikumpulkan. Wanita: Ya, saya berencana merapikan bahan sekali lagi dulu. Tanya: Apa rencana wanita itu selanjutnya?"
+    },
+    {
+     "n": 22,
+     "au": [
+      "女：这套房子的位置不错，离地铁站也近。",
+      "男：是啊，但是价格比我们的预算高了不少。",
+      "女：要不要和房东商量一下？",
+      "男：可以试试，如果能便宜一点，我们就租。",
+      "问：他们对这套房子的态度是什么？"
+     ],
+     "o": [
+      "价格合适就租",
+      "已经决定租",
+      "不满意位置",
+      "想买下来"
+     ],
+     "k": "A",
+     "tr": "Wanita: Lokasi rumah ini bagus, dekat stasiun MRT. Pria: Ya, tetapi harganya jauh di atas anggaran kita. Wanita: Bagaimana kalau berunding dengan pemilik? Pria: Boleh dicoba, kalau bisa lebih murah kita sewa. Tanya: Bagaimana sikap mereka terhadap rumah ini?"
+    },
+    {
+     "n": 23,
+     "au": [
+      "男：这次旅行的计划，你安排好了吗？",
+      "女：大致安排好了，不过住的地方还没确定。",
+      "男：我有个朋友开宾馆，可以帮我们打折。",
+      "女：太好了，那就交给你联系吧。",
+      "问：女的让男的做什么？"
+     ],
+     "o": [
+      "买机票",
+      "安排路线",
+      "联系宾馆",
+      "付钱"
+     ],
+     "k": "C",
+     "tr": "Pria: Rencana perjalanan kali ini sudah kamu atur? Wanita: Garis besarnya sudah, tetapi tempat menginap belum pasti. Pria: Temanku punya hotel, bisa membantu kita mendapat diskon. Wanita: Bagus sekali, kalau begitu serahkan padamu untuk menghubungi. Tanya: Apa yang diminta wanita itu dari pria itu?"
+    },
+    {
+     "n": 24,
+     "au": [
+      "女：你的汉语说得这么好，是怎么学的？",
+      "男：我每天看一点中文新闻，遇到不懂的词就查词典。",
+      "女：听起来很辛苦。",
+      "男：刚开始是，习惯了就觉得很有意思。",
+      "问：男的是怎么学汉语的？"
+     ],
+     "o": [
+      "参加培训班",
+      "每天看新闻",
+      "和朋友聊天",
+      "去中国生活"
+     ],
+     "k": "B",
+     "tr": "Wanita: Bahasa Mandarinmu bagus sekali, bagaimana belajarnya? Pria: Setiap hari saya baca sedikit berita Mandarin, kalau ada kata tidak paham saya cari di kamus. Wanita: Kedengarannya melelahkan. Pria: Awalnya iya, setelah terbiasa terasa menarik. Tanya: Bagaimana pria itu belajar bahasa Mandarin?"
+    },
+    {
+     "n": 25,
+     "au": [
+      "男：听说我们公司下个月要搬到别的城市，你知道吗？",
+      "女：知道，经理已经通知我们了。",
+      "男：那你打算跟着公司搬过去吗？",
+      "女：我还没想好，毕竟我的家人都在这儿。",
+      "问：女的为什么还没想好？"
+     ],
+     "o": [
+      "工资太低",
+      "不喜欢新城市",
+      "工作不顺利",
+      "家人在这儿"
+     ],
+     "k": "D",
+     "tr": "Pria: Katanya bulan depan perusahaan kita pindah ke kota lain, kamu tahu? Wanita: Tahu, manajer sudah memberi tahu kami. Pria: Lalu kamu mau ikut pindah? Wanita: Belum terpikir, bagaimanapun keluarga saya semua di sini. Tanya: Mengapa wanita itu belum memutuskan?"
+    },
+    {
+     "n": 26,
+     "au": [
+      "女：这个电影你看过吗？",
+      "男：看过，故事很感人，我看的时候都哭了。",
+      "女：真的吗？我还以为这是一部喜剧片。",
+      "男：开头是挺好笑的，后来越来越让人难过。",
+      "问：这部电影后来怎么样了？"
+     ],
+     "o": [
+      "越来越有趣",
+      "越来越紧张",
+      "越来越让人难过",
+      "越来越无聊"
+     ],
+     "k": "C",
+     "tr": "Wanita: Kamu pernah menonton film ini? Pria: Pernah, ceritanya mengharukan, saya sampai menangis. Wanita: Benarkah? Saya kira ini film komedi. Pria: Awalnya memang lucu, lalu makin menyedihkan. Tanya: Bagaimana film itu selanjutnya?"
+    },
+    {
+     "n": 27,
+     "au": [
+      "男：你的自行车怎么又坏了？",
+      "女：上个月刚修过，可是没过几天又不行了。",
+      "男：可能是质量问题，要不你直接换一辆吧。",
+      "女：我也这么想，明天我去商店问问。",
+      "问：女的明天要做什么？"
+     ],
+     "o": [
+      "去商店问问",
+      "修自行车",
+      "买新车",
+      "借自行车"
+     ],
+     "k": "A",
+     "tr": "Pria: Kenapa sepedamu rusak lagi? Wanita: Bulan lalu baru diperbaiki, tidak berapa hari rusak lagi. Pria: Mungkin masalah kualitas, sebaiknya langsung ganti saja. Wanita: Saya juga berpikir begitu, besok saya tanya ke toko. Tanya: Apa yang akan dilakukan wanita itu besok?"
+    },
+    {
+     "n": 28,
+     "au": [
+      "女：听说你要搬到上海去工作了？",
+      "男：对，那边的机会更多，对我的发展也更有利。",
+      "女：可是上海的生活成本太高了。",
+      "男：我知道，不过我觉得年轻人应该多去试一试。",
+      "问：男的为什么去上海？"
+     ],
+     "o": [
+      "工资更高",
+      "发展机会多",
+      "离家近",
+      "朋友在那儿"
+     ],
+     "k": "B",
+     "tr": "Wanita: Katanya kamu akan pindah kerja ke Shanghai? Pria: Ya, di sana peluang lebih banyak dan lebih menguntungkan perkembangan saya. Wanita: Tetapi biaya hidup di Shanghai terlalu tinggi. Pria: Saya tahu, tetapi menurut saya anak muda harus lebih banyak mencoba. Tanya: Mengapa pria itu pergi ke Shanghai?"
+    },
+    {
+     "n": 29,
+     "au": [
+      "男：这么晚了，你怎么还不休息？",
+      "女：明天要交一份报告，我还差一点没写完。",
+      "男：别太晚睡，身体最重要。",
+      "女：你说得对，我再写十分钟就睡。",
+      "问：女的现在在做什么？"
+     ],
+     "o": [
+      "睡觉",
+      "看电视",
+      "打电话",
+      "写报告"
+     ],
+     "k": "D",
+     "tr": "Pria: Sudah larut begini, kenapa belum istirahat? Wanita: Besok harus mengumpulkan laporan, masih ada sedikit yang belum selesai. Pria: Jangan tidur terlalu malam, kesehatan paling penting. Wanita: Kamu benar, saya menulis sepuluh menit lagi lalu tidur. Tanya: Apa yang sedang dilakukan wanita itu?"
+    },
+    {
+     "n": 30,
+     "au": [
+      "女：我想申请这所大学，你觉得怎么样？",
+      "男：这所大学的专业很强，而且国际学生很多。",
+      "女：不过学费好像不便宜。",
+      "男：可以申请奖学金，成绩好的话，有机会拿到。",
+      "问：男的建议女的怎么解决学费问题？"
+     ],
+     "o": [
+      "申请奖学金",
+      "打工",
+      "向朋友借钱",
+      "选别的大学"
+     ],
+     "k": "A",
+     "tr": "Wanita: Saya ingin mendaftar ke universitas ini, bagaimana menurutmu? Pria: Jurusannya kuat dan mahasiswa internasionalnya banyak. Wanita: Tetapi biaya kuliahnya sepertinya tidak murah. Pria: Bisa mengajukan beasiswa, kalau nilainya bagus ada peluang. Tanya: Apa saran pria itu untuk mengatasi biaya kuliah?"
+    },
+    {
+     "n": 31,
+     "au": [
+      "很多人以为只有在安静的环境里才能好好学习，其实这并不一定。有研究表明，适当的背景音乐可以让人放松，从而提高学习的效果。当然，音乐的声音不能太大。",
+      "问：关于背景音乐，这段话是什么意思？"
+     ],
+     "o": [
+      "会影响学习",
+      "适当的可以帮助学习",
+      "越大声越好",
+      "只能晚上听"
+     ],
+     "k": "B",
+     "tr": "Banyak orang mengira belajar baik hanya di tempat tenang, padahal belum tentu. Penelitian menunjukkan musik latar yang tepat membuat orang rileks sehingga hasil belajar meningkat. Tentu volume musik tidak boleh terlalu keras. Tanya: Apa maksud paragraf ini tentang musik latar?"
+    },
+    {
+     "n": 32,
+     "au": [
+      "小时候我最怕去医院，一看到穿白衣服的医生就哭。长大以后，我才明白医生是在帮助我们。现在我自己也成了一名医生。",
+      "问：说话人现在做什么工作？"
+     ],
+     "o": [
+      "老师",
+      "护士",
+      "医生",
+      "作家"
+     ],
+     "k": "C",
+     "tr": "Waktu kecil saya paling takut ke rumah sakit, melihat dokter berbaju putih langsung menangis. Setelah dewasa baru saya mengerti dokter sedang menolong kita. Sekarang saya sendiri menjadi dokter. Tanya: Apa pekerjaan pembicara sekarang?"
+    },
+    {
+     "n": 33,
+     "au": [
+      "现代人的生活越来越忙，很多人没有时间好好吃饭，常常随便吃点东西就去工作。时间长了，身体就会出问题。因此专家提醒大家，再忙也要按时吃饭。",
+      "问：专家提醒大家什么？"
+     ],
+     "o": [
+      "少吃一点",
+      "不要工作",
+      "多喝水",
+      "按时吃饭"
+     ],
+     "k": "D",
+     "tr": "Hidup orang modern makin sibuk, banyak yang tidak sempat makan dengan baik dan asal makan lalu bekerja. Lama-lama tubuh bermasalah. Karena itu pakar mengingatkan, sesibuk apa pun harus makan tepat waktu. Tanya: Apa yang diingatkan pakar?"
+    },
+    {
+     "n": 34,
+     "au": [
+      "这座城市以前是个小村子，因为交通不方便，发展得很慢。后来政府修了铁路和机场，人们的收入也一天天提高，现在它已经成了一个有名的旅游城市。",
+      "问：这座城市发生变化的原因是什么？"
+     ],
+     "o": [
+      "交通变方便了",
+      "人口增加了",
+      "天气变好了",
+      "学校增加了"
+     ],
+     "k": "A",
+     "tr": "Kota ini dulu hanya desa kecil dan berkembang lambat karena transportasi sulit. Kemudian pemerintah membangun rel kereta dan bandara, pendapatan orang naik hari demi hari, kini menjadi kota wisata terkenal. Tanya: Apa penyebab perubahan kota ini?"
+    },
+    {
+     "n": 35,
+     "au": [
+      "有的人买东西前总是先看价格，哪个便宜买哪个。其实这样不一定合算。便宜的东西质量可能不好，用不了多久就得重新买，反而花得更多。",
+      "问：说话人认为买东西时应该怎么办？"
+     ],
+     "o": [
+      "只买便宜的",
+      "多比较价格",
+      "也要注意质量",
+      "少买东西"
+     ],
+     "k": "C",
+     "tr": "Sebagian orang sebelum membeli selalu melihat harga dulu dan membeli yang termurah. Padahal belum tentu untung. Barang murah mungkin kualitasnya buruk, tidak lama harus beli lagi, malah lebih boros. Tanya: Menurut pembicara apa yang harus dilakukan saat berbelanja?"
+    },
+    {
+     "n": 36,
+     "au": [
+      "我的爷爷一辈子没离开过家乡，但是他知道很多国外的事情。原来他每天都听广播，还爱看报纸。他常说，知识不一定要靠旅行来获得。",
+      "问：爷爷是怎么了解国外的事的？"
+     ],
+     "o": [
+      "去国外旅行",
+      "听广播看报纸",
+      "看电视",
+      "上网"
+     ],
+     "k": "B",
+     "tr": "Kakek saya seumur hidup tidak pernah meninggalkan kampung halaman, tetapi tahu banyak hal luar negeri. Ternyata setiap hari dia mendengarkan radio dan suka membaca koran. Dia sering berkata pengetahuan tidak harus didapat lewat bepergian. Tanya: Bagaimana kakek mengetahui hal luar negeri?"
+    },
+    {
+     "n": 37,
+     "au": [
+      "研究发现，人在笑的时候，心情会变好，压力也会减轻。所以，遇到不高兴的事情时，不妨对着镜子笑一笑，也许你会发现事情没有那么糟糕。",
+      "问：这段话建议遇到不高兴的事情时怎么做？"
+     ],
+     "o": [
+      "找朋友聊天",
+      "出去走走",
+      "多睡觉",
+      "对着镜子笑一笑"
+     ],
+     "k": "D",
+     "tr": "Penelitian menemukan saat tertawa suasana hati membaik dan tekanan berkurang. Maka ketika menghadapi hal tidak menyenangkan, tidak ada salahnya tersenyum di depan cermin, mungkin kamu akan sadar keadaannya tidak seburuk itu. Tanya: Apa saran paragraf ini saat menghadapi hal tidak menyenangkan?"
+    },
+    {
+     "n": 38,
+     "au": [
+      "我刚到这个城市的时候，对什么都不熟悉，连坐地铁都会走错方向。幸亏邻居们很热心，常常给我指路，还带我去市场买菜。现在我已经把这里当成了自己的家。",
+      "问：邻居们是怎么帮助他的？"
+     ],
+     "o": [
+      "指路并带他买菜",
+      "借钱给他",
+      "帮他找工作",
+      "教他汉语"
+     ],
+     "k": "A",
+     "tr": "Ketika baru tiba di kota ini, saya tidak akrab dengan apa pun, naik MRT pun salah arah. Untung tetangga ramah, sering menunjukkan jalan dan mengajak saya belanja ke pasar. Sekarang saya sudah menganggap tempat ini rumah sendiri. Tanya: Bagaimana tetangga membantunya?"
+    },
+    {
+     "n": 39,
+     "au": [
+      "随着网络的发展，人们的购物方式发生了很大的变化。以前人们得去商店挑选商品，现在只要点一点手机，东西就会送到家门口。不过，也有人觉得这样少了逛街的乐趣。",
+      "问：有人为什么不喜欢网上购物？"
+     ],
+     "o": [
+      "太贵",
+      "质量不好",
+      "少了逛街的乐趣",
+      "送货太慢"
+     ],
+     "k": "C",
+     "tr": "Seiring perkembangan internet, cara berbelanja berubah besar. Dulu orang harus ke toko memilih barang, sekarang cukup menyentuh ponsel dan barang diantar ke depan pintu. Namun ada yang merasa ini mengurangi keseruan jalan-jalan belanja. Tanya: Mengapa sebagian orang tidak suka belanja online?"
+    },
+    {
+     "n": 40,
+     "au": [
+      "明天上午九点要召开一个重要的会议，请各部门经理准时参加。会议地点从原来的三楼会议室改到了五楼，请大家注意。",
+      "问：会议地点有什么变化？"
+     ],
+     "o": [
+      "时间改了",
+      "改到了五楼",
+      "取消了",
+      "改到了下午"
+     ],
+     "k": "B",
+     "tr": "Besok pukul sembilan pagi akan diadakan rapat penting, mohon para manajer departemen hadir tepat waktu. Lokasi rapat dipindah dari ruang rapat lantai tiga ke lantai lima, mohon diperhatikan. Tanya: Apa perubahan lokasi rapat?"
+    },
+    {
+     "n": 41,
+     "au": [
+      "我的同桌是一个很爱笑的女孩，不管遇到什么困难，她总是笑着面对。有一次我考试没考好，心情很不好，她对我说，失败了没关系，重要的是从中学到了什么。这句话让我明白了很多。",
+      "问：同桌的话让作者明白了什么？"
+     ],
+     "o": [
+      "要从失败中学习",
+      "要少玩",
+      "要多笑",
+      "要早睡"
+     ],
+     "k": "A",
+     "tr": "Teman sebangku saya gadis yang suka tertawa, apa pun kesulitannya selalu dihadapi dengan senyum. Suatu kali saya gagal ujian dan sedih, dia berkata gagal tidak apa-apa, yang penting belajar sesuatu darinya. Kalimat itu membuat saya paham banyak hal. Tanya: Apa yang disadari penulis dari ucapan temannya?"
+    },
+    {
+     "n": 42,
+     "au": [
+      "听说那家书店最近要关门了。很多老顾客都觉得很可惜，因为那里不但书多，而且环境安静，店员还会热情地推荐好书。",
+      "问：老顾客为什么觉得可惜？"
+     ],
+     "o": [
+      "书很便宜",
+      "店员很年轻",
+      "位置很好",
+      "环境安静书又多"
+     ],
+     "k": "D",
+     "tr": "Katanya toko buku itu akan tutup. Banyak pelanggan lama menyayangkan karena di sana bukunya banyak, suasananya tenang, dan penjaganya ramah merekomendasikan buku bagus. Tanya: Mengapa pelanggan lama menyayangkan?"
+    },
+    {
+     "n": 43,
+     "au": [
+      "我们在做决定的时候，常常会受到别人意见的影响。可是别人的意见只能作参考，最终还是要靠自己的判断。因为只有你最了解自己的情况。",
+      "问：这段话主要想说明什么？"
+     ],
+     "o": [
+      "要多听别人的意见",
+      "最终要靠自己判断",
+      "不要做决定",
+      "别人更了解你"
+     ],
+     "k": "B",
+     "tr": "Saat mengambil keputusan, kita sering dipengaruhi pendapat orang lain. Tetapi pendapat orang hanya sebagai rujukan, pada akhirnya harus mengandalkan penilaian sendiri, karena hanya kamu yang paling memahami keadaanmu. Tanya: Apa yang ingin dijelaskan paragraf ini?"
+    },
+    {
+     "n": 44,
+     "au": [
+      "这个周末，市里举办了一场免费的音乐会，吸引了很多市民。虽然天气有点冷，但是大家的热情很高，一直到晚上十点才结束。",
+      "问：关于这场音乐会，可以知道什么？"
+     ],
+     "o": [
+      "门票很贵",
+      "在室内举行",
+      "免费，人很多",
+      "十点开始"
+     ],
+     "k": "C",
+     "tr": "Akhir pekan ini kota mengadakan konser gratis yang menarik banyak warga. Meski cuaca agak dingin, antusiasme tinggi dan baru berakhir pukul sepuluh malam. Tanya: Apa yang diketahui tentang konser ini?"
+    },
+    {
+     "n": 45,
+     "au": [
+      "我从小就喜欢养花，家里的阳台上摆满了各种各样的花。每天下班回家，看看这些花，一天的疲劳就消失了。",
+      "问：养花给他带来了什么？"
+     ],
+     "o": [
+      "收入",
+      "朋友",
+      "知识",
+      "轻松的心情"
+     ],
+     "k": "D",
+     "tr": "Sejak kecil saya suka memelihara bunga, balkon rumah penuh berbagai bunga. Setiap pulang kerja, melihat bunga-bunga itu, lelah seharian hilang. Tanya: Apa yang diberikan memelihara bunga kepadanya?"
+    },
+    {
+     "n": 46,
+     "o": [
+      "不但",
+      "既然",
+      "否则",
+      "尽管"
+     ],
+     "k": "A"
+    },
+    {
+     "n": 47,
+     "o": [
+      "曾经",
+      "刚刚",
+      "往往",
+      "难道"
+     ],
+     "k": "C"
+    },
+    {
+     "n": 48,
+     "o": [
+      "仔细",
+      "专心",
+      "热情",
+      "勇敢"
+     ],
+     "k": "B"
+    },
+    {
+     "n": 49,
+     "o": [
+      "却",
+      "竟然",
+      "并",
+      "还"
+     ],
+     "k": "D"
+    },
+    {
+     "n": 50,
+     "o": [
+      "舒服",
+      "麻烦",
+      "可怜",
+      "危险"
+     ],
+     "k": "A"
+    },
+    {
+     "n": 51,
+     "o": [
+      "复杂",
+      "严格",
+      "严重",
+      "重要"
+     ],
+     "k": "C"
+    },
+    {
+     "n": 52,
+     "o": [
+      "采取",
+      "举行",
+      "保持",
+      "具备"
+     ],
+     "k": "A"
+    },
+    {
+     "n": 53,
+     "o": [
+      "即使",
+      "不仅",
+      "既然",
+      "假如"
+     ],
+     "k": "B"
+    },
+    {
+     "n": 54,
+     "o": [
+      "抱怨",
+      "打扰",
+      "反对",
+      "节约"
+     ],
+     "k": "D"
+    },
+    {
+     "n": 55,
+     "o": [
+      "改善",
+      "保证",
+      "满足",
+      "批准"
+     ],
+     "k": "A"
+    },
+    {
+     "n": 56,
+     "o": [
+      "得意",
+      "难过",
+      "兴奋",
+      "满意"
+     ],
+     "k": "B"
+    },
+    {
+     "n": 57,
+     "o": [
+      "随便",
+      "偶尔",
+      "直接",
+      "仍然"
+     ],
+     "k": "C"
+    },
+    {
+     "n": 58,
+     "o": [
+      "同意",
+      "打扰",
+      "讨论",
+      "联系"
+     ],
+     "k": "D"
+    },
+    {
+     "n": 59,
+     "o": [
+      "亲切",
+      "紧张",
+      "轻松",
+      "麻烦"
+     ],
+     "k": "A"
+    },
+    {
+     "n": 60,
+     "o": [
+      "举办",
+      "重视",
+      "控制",
+      "减少"
+     ],
+     "k": "B"
+    },
+    {
+     "n": 61,
+     "q": "小王刚开始工作时怎么样？",
+     "o": [
+      "很受欢迎",
+      "业务很熟",
+      "常被经理批评",
+      "工资很高"
+     ],
+     "k": "C",
+     "tr": "Bagaimana Xiao Wang di awal bekerja?"
+    },
+    {
+     "n": 62,
+     "q": "小王为什么没有放弃？",
+     "o": [
+      "想到父母的期望",
+      "工资提高了",
+      "经理鼓励他",
+      "同事帮助他"
+     ],
+     "k": "A",
+     "tr": "Mengapa Xiao Wang tidak menyerah?"
+    },
+    {
+     "n": 63,
+     "q": "小王怎么看那段日子？",
+     "o": [
+      "很后悔",
+      "很无聊",
+      "浪费了时间",
+      "学到了很多"
+     ],
+     "k": "D",
+     "tr": "Bagaimana Xiao Wang memandang masa itu?"
+    },
+    {
+     "n": 64,
+     "q": "菜园在哪儿？",
+     "o": [
+      "公园里",
+      "小区楼顶",
+      "学校里",
+      "郊区"
+     ],
+     "k": "B",
+     "tr": "Di mana kebun itu?"
+    },
+    {
+     "n": 65,
+     "q": "物业起初为什么不同意？",
+     "o": [
+      "菜园太大",
+      "影响邻居",
+      "浪费水",
+      "担心楼顶安全"
+     ],
+     "k": "D",
+     "tr": "Mengapa pengelola semula tidak setuju?"
+    },
+    {
+     "n": 66,
+     "q": "菜园现在有什么作用？",
+     "o": [
+      "增进居民的交流",
+      "卖菜赚钱",
+      "让孩子学习",
+      "保护环境"
+     ],
+     "k": "A",
+     "tr": "Apa fungsi kebun itu sekarang?"
+    },
+    {
+     "n": 67,
+     "q": "作者遇到了什么困难？",
+     "o": [
+      "生病了",
+      "迷路了",
+      "钱包丢了",
+      "手机坏了"
+     ],
+     "k": "C",
+     "tr": "Kesulitan apa yang dialami penulis?"
+    },
+    {
+     "n": 68,
+     "q": "饭馆的大姐做了什么？",
+     "o": [
+      "带他去医院",
+      "让他免费吃饭并借给他路费",
+      "帮他找钱包",
+      "给他一份工作"
+     ],
+     "k": "B",
+     "tr": "Apa yang dilakukan pemilik warung?"
+    },
+    {
+     "n": 69,
+     "q": "这件事让作者明白了什么？",
+     "o": [
+      "好人很多",
+      "不要一个人旅行",
+      "要多带钱",
+      "要相信警察"
+     ],
+     "k": "A",
+     "tr": "Apa yang disadari penulis dari kejadian ini?"
+    },
+    {
+     "n": 70,
+     "q": "现代人睡眠时间怎么样？",
+     "o": [
+      "越来越长",
+      "一直不变",
+      "比以前更规律",
+      "越来越短"
+     ],
+     "k": "D",
+     "tr": "Bagaimana waktu tidur orang modern?"
+    },
+    {
+     "n": 71,
+     "q": "睡眠不足会带来什么影响？",
+     "o": [
+      "变得更聪明",
+      "吃得更多",
+      "记忆力下降",
+      "身体变高"
+     ],
+     "k": "C",
+     "tr": "Apa dampak kurang tidur?"
+    },
+    {
+     "n": 72,
+     "q": "专家的建议是什么？",
+     "o": [
+      "少吃晚饭",
+      "睡前少看手机",
+      "白天多睡觉",
+      "多喝牛奶"
+     ],
+     "k": "B",
+     "tr": "Apa saran pakar?"
+    },
+    {
+     "n": 73,
+     "q": "练书法对人有什么好处？",
+     "o": [
+      "放松心情",
+      "提高收入",
+      "学会画画",
+      "身体变好"
+     ],
+     "k": "A",
+     "tr": "Apa manfaat berlatih kaligrafi?"
+    },
+    {
+     "n": 74,
+     "q": "长期练习书法的人有什么变化？",
+     "o": [
+      "记忆力变好",
+      "说话变快",
+      "个子变高",
+      "脾气变好"
+     ],
+     "k": "D",
+     "tr": "Apa perubahan pada orang yang lama berlatih kaligrafi?"
+    },
+    {
+     "n": 75,
+     "q": "这段话主要谈的是什么？",
+     "o": [
+      "书法的历史",
+      "如何学书法",
+      "书法的作用",
+      "书法比赛"
+     ],
+     "k": "C",
+     "tr": "Apa yang terutama dibahas paragraf ini?"
+    },
+    {
+     "n": 76,
+     "q": "牛奶和鸡蛋为什么放在最里面？",
+     "o": [
+      "容易坏",
+      "让顾客多经过其他商品",
+      "地方大",
+      "方便搬运"
+     ],
+     "k": "B",
+     "tr": "Mengapa susu dan telur diletakkan paling dalam?"
+    },
+    {
+     "n": 77,
+     "q": "顾客最后常常怎么样？",
+     "o": [
+      "买了计划以外的东西",
+      "什么也没买",
+      "买得更便宜",
+      "带来了朋友"
+     ],
+     "k": "A",
+     "tr": "Bagaimana pelanggan biasanya pada akhirnya?"
+    },
+    {
+     "n": 78,
+     "q": "作者写这段话的目的是什么？",
+     "o": [
+      "介绍新超市",
+      "批评顾客",
+      "推荐商品",
+      "说明商家的做法"
+     ],
+     "k": "D",
+     "tr": "Apa tujuan penulis menulis paragraf ini?"
+    },
+    {
+     "n": 79,
+     "q": "老奶奶是怎么对待小狗的？",
+     "o": [
+      "带它回家",
+      "给它洗澡",
+      "每天给它送吃的",
+      "带它看病"
+     ],
+     "k": "C",
+     "tr": "Bagaimana nenek memperlakukan anjing itu?"
+    },
+    {
+     "n": 80,
+     "q": "小狗后来有什么变化？",
+     "o": [
+      "不再害怕",
+      "离开了",
+      "生病了",
+      "变胖了"
+     ],
+     "k": "A",
+     "tr": "Apa perubahan anjing itu kemudian?"
+    },
+    {
+     "n": 81,
+     "q": "现在的小狗怎么样？",
+     "o": [
+      "被送走了",
+      "成了小区的一员",
+      "住在老奶奶家",
+      "在小路上走丢了"
+     ],
+     "k": "B",
+     "tr": "Bagaimana anjing itu sekarang?"
+    },
+    {
+     "n": 82,
+     "q": "面试的人什么时候开始观察应聘者？",
+     "o": [
+      "回答问题时",
+      "填表时",
+      "面试结束时",
+      "进门的时候"
+     ],
+     "k": "D",
+     "tr": "Kapan pewawancara mulai mengamati pelamar?"
+    },
+    {
+     "n": 83,
+     "q": "第一印象有什么特点？",
+     "o": [
+      "容易改变",
+      "很难改变",
+      "不重要",
+      "很短"
+     ],
+     "k": "B",
+     "tr": "Apa ciri kesan pertama?"
+    },
+    {
+     "n": 84,
+     "q": "作者认为面试前最应该做什么？",
+     "o": [
+      "背答案",
+      "买新衣服",
+      "做好准备，保持好状态",
+      "早点睡觉"
+     ],
+     "k": "C",
+     "tr": "Menurut penulis apa yang paling harus dilakukan sebelum wawancara?"
+    },
+    {
+     "n": 85,
+     "q": "红茶适合什么季节喝？",
+     "o": [
+      "冬天",
+      "夏天",
+      "春天",
+      "秋天"
+     ],
+     "k": "A",
+     "tr": "Teh merah cocok diminum di musim apa?"
+    },
+    {
+     "n": 86,
+     "q": "给客人倒茶应该注意什么？",
+     "o": [
+      "要倒热的",
+      "要倒很多",
+      "不能倒得太满",
+      "要先自己喝"
+     ],
+     "k": "C",
+     "tr": "Apa yang harus diperhatikan saat menuang teh untuk tamu?"
+    },
+    {
+     "n": 87,
+     "q": "这段话主要介绍了什么？",
+     "o": [
+      "茶的价格",
+      "茶的历史",
+      "茶的种类",
+      "喝茶的特点和讲究"
+     ],
+     "k": "D",
+     "tr": "Apa yang terutama dijelaskan paragraf ini?"
+    },
+    {
+     "n": 88,
+     "q": "书包太重会怎么样？",
+     "o": [
+      "孩子学习变差",
+      "影响孩子的身体发展",
+      "孩子不爱上学",
+      "孩子长不高"
+     ],
+     "k": "B",
+     "tr": "Apa akibat tas yang terlalu berat?"
+    },
+    {
+     "n": 89,
+     "q": "有的学校怎么减轻孩子的负担？",
+     "o": [
+      "让孩子把书留在教室",
+      "少布置作业",
+      "缩短上课时间",
+      "提供新书包"
+     ],
+     "k": "A",
+     "tr": "Bagaimana sebagian sekolah meringankan beban anak?"
+    },
+    {
+     "n": 90,
+     "q": "家长应该做什么？",
+     "o": [
+      "买更大的书包",
+      "少给孩子书",
+      "每天帮孩子检查书包",
+      "接送孩子"
+     ],
+     "k": "C",
+     "tr": "Apa yang sebaiknya dilakukan orang tua?"
+    },
+    {
+     "n": 91,
+     "w": [
+      "大家的",
+      "受到",
+      "一直",
+      "欢迎",
+      "他的作品"
+     ],
+     "k": [
+      "他的作品一直受到大家的欢迎。"
+     ],
+     "tr": "Karya-karyanya selalu mendapat sambutan semua orang.",
+     "p": "受到 + pihak yang memberi + 的 + 欢迎."
+    },
+    {
+     "n": 92,
+     "w": [
+      "他们",
+      "困难很多",
+      "还是",
+      "尽管",
+      "坚持完成了任务"
+     ],
+     "k": [
+      "尽管困难很多，他们还是坚持完成了任务。",
+      "他们尽管困难很多，还是坚持完成了任务。"
+     ],
+     "tr": "Meski banyak kesulitan, mereka tetap bertahan menyelesaikan tugas.",
+     "p": "Pola 尽管 ... 还是 ...; subjek boleh di depan atau sesudah 尽管."
+    },
+    {
+     "n": 93,
+     "w": [
+      "质量",
+      "这家公司",
+      "非常",
+      "的产品",
+      "可靠"
+     ],
+     "k": [
+      "这家公司的产品质量非常可靠。"
+     ],
+     "tr": "Kualitas produk perusahaan ini sangat dapat diandalkan.",
+     "p": "Subjek: 这家公司的产品质量; predikat: 非常可靠."
+    },
+    {
+     "n": 94,
+     "w": [
+      "把",
+      "那份材料",
+      "经理",
+      "交给了",
+      "他"
+     ],
+     "k": [
+      "他把那份材料交给了经理。"
+     ],
+     "tr": "Dia menyerahkan dokumen itu kepada manajer.",
+     "p": "Pola 把: subjek + 把 + objek + kata kerja + penerima."
+    },
+    {
+     "n": 95,
+     "w": [
+      "对",
+      "这个",
+      "他",
+      "问题",
+      "重视",
+      "很"
+     ],
+     "k": [
+      "他对这个问题很重视。"
+     ],
+     "tr": "Dia sangat memperhatikan masalah ini.",
+     "p": "对 + objek + 很 + 重视."
+    },
+    {
+     "n": 96,
+     "w": [
+      "飞机",
+      "由于",
+      "推迟了",
+      "天气原因",
+      "起飞"
+     ],
+     "k": [
+      "由于天气原因，飞机推迟了起飞。",
+      "飞机由于天气原因推迟了起飞。"
+     ],
+     "tr": "Karena cuaca, pesawat menunda lepas landas.",
+     "p": "由于 + sebab, lalu akibat."
+    },
+    {
+     "n": 97,
+     "w": [
+      "我",
+      "很多道理",
+      "让",
+      "明白了",
+      "这次经历"
+     ],
+     "k": [
+      "这次经历让我明白了很多道理。"
+     ],
+     "tr": "Pengalaman kali ini membuat saya memahami banyak hal.",
+     "p": "这次经历 + 让 + 我 + 明白了 + ..."
+    },
+    {
+     "n": 98,
+     "w": [
+      "我",
+      "流利得多",
+      "他的汉语",
+      "比"
+     ],
+     "k": [
+      "他的汉语比我流利得多。"
+     ],
+     "tr": "Bahasa Mandarinnya jauh lebih lancar daripada saya.",
+     "p": "Pola 比: A + 比 + B + sifat + 得多."
+    },
+    {
+     "n": 99,
+     "w": [
+      "保护",
+      "环境",
+      "重视",
+      "影响",
+      "习惯"
+     ],
+     "ex": "现在，越来越多的人开始重视环境保护。如果环境不好，就会影响我们的健康和生活。为了保护环境，我们应该从小事做起，养成节约用水、少用塑料袋的好习惯。另外，政府也应该想出更好的办法，鼓励大家坐公共汽车出行。只要每个人都努力，我们的城市一定会越来越美丽。",
+     "tr": "Contoh karangan: Sekarang makin banyak orang mulai memperhatikan perlindungan lingkungan. Jika lingkungan buruk, kesehatan dan hidup kita terpengaruh. Untuk melindungi lingkungan, kita harus mulai dari hal kecil dan membiasakan diri menghemat air serta mengurangi kantong plastik. Pemerintah juga perlu mencari cara lebih baik untuk mendorong orang naik bus. Asal setiap orang berusaha, kota kita pasti makin indah."
+    },
+    {
+     "n": 100,
+     "g": "Seorang anak laki-laki sedang menggandeng seorang nenek menyeberang jalan. Mobil-mobil berhenti dan beberapa orang di sekitarnya tersenyum melihat mereka.",
+     "ex": "一天下午，我在街上看见一个小男孩正拉着一位老奶奶过马路。路上的车很多，他一边小心地走，一边提醒老奶奶注意安全。过了马路以后，老奶奶笑着对他说谢谢，周围的人也都被这个小男孩感动了。我觉得，帮助别人是一件很快乐的事，我们每个人都应该这样做。",
+     "tr": "Contoh karangan: Suatu sore saya melihat seorang anak laki-laki menggandeng seorang nenek menyeberang jalan. Kendaraan banyak, dia berjalan hati-hati sambil mengingatkan nenek agar waspada. Setelah menyeberang, nenek tersenyum dan berterima kasih, orang di sekitar pun terharu. Menurut saya, menolong orang adalah hal yang menyenangkan, kita semua harus begitu."
+    }
+   ]
+  }
+ ]
+}
