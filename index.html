@@ -330,7 +330,7 @@ html.boot-fail #boot .bt-el span{animation:none;opacity:.55}
 @keyframes bt-slide{0%{transform:translateX(-100%)}100%{transform:translateX(250%)}}
 @media (prefers-reduced-motion:reduce){#boot{transition:none}#boot .bt-el span{animation:none;opacity:1}#boot .bt-bar i{animation:none;width:100%;opacity:.55}}
 </style>
-<link rel="stylesheet" href="aset/tur.css?v=1"><script src="aset/tur.js?v=1" defer></script></head><body><div id="boot" role="status" aria-live="polite" aria-busy="true">
+<link rel="stylesheet" href="aset/tur.css?v=1"><script src="aset/tur.js?v=2" defer></script></head><body><div id="boot" role="status" aria-live="polite" aria-busy="true">
  <div class="bt-in">
   <div class="bt-logo" aria-hidden="true"><span class="zl">Zenta<i lang="zh">汉</i></span></div>
   <div class="bt-sub">Belajar Mandarin Harian</div>
@@ -1690,12 +1690,14 @@ const ikL=(n,c)=>'<svg class="lu'+(c?' '+c:'')+'" viewBox="0 0 24 24" fill="none
 </script>
 <div class="wrap"><button id="sbtn" type="button" aria-label="Cari"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></button>
 <div class="ap-t" role="heading" aria-level="1"><span class="zl">Zenta<i lang="zh">汉</i></span></div><div class="sub">Belajar Mandarin Harian</div>
+<div id="mt-seg" role="group" aria-label="Bagian materi"><button type="button" id="n-vc"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M8 10h8M8 14h5"/></svg><b lang="zh">词汇</b> <small>Kosakata</small></button><button type="button" id="n-gr"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h11a3 3 0 013 3v13H8a3 3 0 01-3-3z"/><path d="M9 9h6M9 13h4"/></svg><b lang="zh">语法</b> <small>Tata bahasa</small></button><button type="button" id="n-rd"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6c3-1.5 6-1.5 9 0 3-1.5 6-1.5 9 0v13c-3-1.5-6-1.5-9 0-3-1.5-6-1.5-9 0z"/><path d="M12 6v13"/></svg><b lang="zh">阅读</b> <small>Membaca</small></button><button type="button" id="n-hz"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M12 4v16M4 12h16" stroke-dasharray="2 2.4"/></svg><b lang="zh">汉字</b> <small>Aksara</small></button></div>
 <div class="stats" id="stats"></div>
 <div class="row" id="md"></div>
 <div class="row" id="lv"></div>
 <div class="crumb" id="bc"></div>
 <select id="ch"></select>
 <div class="seg" id="vt"><button id="t-study" class="on">Belajar</button><button id="t-write">Tulis</button><button id="t-sum">Ringkasan</button></div>
+<div id="pr-head"><h2 class="hmt">Progres</h2><p>Analitik penguasaan materi, rencana belajar, dan bookmark tata bahasa.</p></div>
 <div id="view"><div id="fb" class="pos" style="margin:28px 0;line-height:1.6;font-size:15px"><noscript>JavaScript nonaktif. Aktifkan JavaScript di browser untuk memakai Zenta 汉.<br></noscript>Memuat kartu…</div></div>
 <script id="boot-ui">
 /* Mengatur layar pemuatan (#boot). Selesai saat kartu pertama menggantikan #fb di dalam #view.
@@ -1737,7 +1739,108 @@ const ikL=(n,c)=>'<svg class="lu'+(c?' '+c:'')+'" viewBox="0 0 24 24" fill="none
  T(function(){say("Pemuatan lebih lama dari biasanya","Periksa koneksi internet. Bila layar ini tidak berubah, muat ulang halaman.");if(rl)rl.hidden=false},25000);
 })();
 </script>
-<nav id="nav"><button id="n-hm"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-7 8 7"/><path d="M6 10v9h12v-9"/></svg>主页</button><button id="n-vc"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M8 10h8M8 14h5"/></svg>词汇</button><button id="n-gr"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h11a3 3 0 013 3v13H8a3 3 0 01-3-3z"/><path d="M9 9h6M9 13h4"/></svg>语法</button><button id="n-rd"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6c3-1.5 6-1.5 9 0 3-1.5 6-1.5 9 0v13c-3-1.5-6-1.5-9 0-3-1.5-6-1.5-9 0z"/><path d="M12 6v13"/></svg>阅读</button><button id="n-lt"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1-4L16 5l3 3L8 19z"/><path d="M14 7l3 3"/></svg>练习</button><button id="n-hz"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M12 4v16M4 12h16" stroke-dasharray="2 2.4"/></svg>汉字</button></nav>
+<style id="menu-4-tab">
+/* Menu 4 tab: 主页 Beranda, 教材 Materi, 练习 Latihan, 进度 Progres.
+   Pilihan bagian Materi (#mt-seg): 词汇 Kosakata, 语法 Tata bahasa, 阅读 Membaca, 汉字 Aksara.
+   Tiap menu memakai ikon + hanzi + label Indonesia. Tab aktif ditandai aria-current (diatur skrip "menu-4-tab-js"), bukan kelas .on:
+   tombol 主页 tetap ber-.on saat tab Progres aktif, karena Progres memakai layar Beranda. */
+#nav,#mt-seg{text-align:center}
+#nav button,#mt-seg button{display:grid;justify-content:center;align-content:center;align-items:center;margin:0;border:0;border-radius:14px;background:none;box-shadow:none;color:var(--mute);font:inherit;letter-spacing:0;text-transform:none;text-align:center}
+#nav button svg,#mt-seg button svg{box-sizing:border-box;flex:none;width:20px;height:20px;padding:0;border-radius:0;background:none}
+#nav button b,#mt-seg button b{font:700 15px/1.15 "Noto Sans SC","Noto Serif SC",system-ui,sans-serif;letter-spacing:0}
+#nav button small,#mt-seg button small{margin:0;font:600 11px/1.2 Inter,system-ui,sans-serif;letter-spacing:0;text-transform:none}
+#nav button svg,#mt-seg button svg{grid-area:i}#nav button b,#mt-seg button b{grid-area:z}#nav button small,#mt-seg button small{grid-area:t}
+/* tab bawah (HP) */
+#nav{align-items:stretch;gap:2px;padding:6px 8px calc(6px + env(safe-area-inset-bottom,0px))}
+#nav button{--tc:var(--ink);--tt:var(--soft);flex:1 1 0;min-width:0;min-height:54px;padding:6px 2px;grid-template-columns:auto auto;grid-template-areas:"i z" "t t";column-gap:5px;row-gap:2px}
+#nav #n-mt{--tc:var(--acc);--tt:var(--acct)}
+#nav #n-lt{--tc:var(--e4d);--tt:var(--e4t)}
+#nav #n-pr{--tc:var(--e5d);--tt:var(--e5t)}
+#nav button.on{background:none;box-shadow:none;color:var(--mute);font-weight:inherit}
+#nav button.on svg{background:none}
+#nav button[aria-current="page"]{background:var(--tt);color:var(--tc)}
+#nav button:focus-visible,#mt-seg button:focus-visible{outline:2px solid var(--tc,var(--ink));outline-offset:-2px}
+/* pilihan bagian Materi: tampil hanya saat salah satu bagiannya aktif */
+#mt-seg{display:none;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;margin:14px 0 4px;padding:4px;border:1px solid var(--line);border-radius:18px;background:var(--card)}
+body:has(#n-vc.on,#n-gr.on,#n-rd.on,#n-hz.on) #mt-seg{display:grid}
+#mt-seg button{min-height:64px;padding:8px 2px;grid-template-columns:auto;grid-template-areas:"i" "z" "t";justify-items:center;row-gap:2px}
+#mt-seg button.on{background:var(--acct);color:var(--acc);box-shadow:none}
+@media (min-width:640px) and (max-width:1023px){
+#nav{justify-content:center}
+#nav button{flex:0 1 160px}
+}
+/* bilah samping (laptop) */
+@media (min-width:1024px){
+#nav{gap:4px;padding:28px 14px}
+#nav button,#mt-seg button{grid-template-columns:auto minmax(0,1fr);grid-template-areas:"i z" "i t";justify-content:stretch;justify-items:start;column-gap:12px;row-gap:0;text-align:left}
+#nav button{flex:none;width:100%;min-height:52px;padding:8px 12px}
+#mt-seg button{min-height:56px;padding:8px 12px}
+#nav button svg,#mt-seg button svg{width:22px;height:22px;align-self:center}
+#nav button b,#mt-seg button b{font-size:16px}
+#nav button small,#mt-seg button small{font-size:13px}
+}
+/* tab Progres: layar Beranda yang hanya menampilkan Analitik, Rencana belajar, dan Bookmark. Beranda sendiri tidak lagi memuat ketiganya. */
+#pr-head{display:none;margin:6px 0 14px;text-align:left}
+#pr-head h2{margin:0}
+#pr-head p{margin:6px 0 0;font-size:14px;line-height:1.5;color:var(--mute)}
+body.hm.pr-on:has(#view .hb) #pr-head{display:block}
+body.hm.pr-on #view .hb>:not(#hb-rencana):not(#hb-progres):not([aria-labelledby="hb-bm-h"]){display:none}
+body.hm.pr-on #view .hb>#hb-progres{order:1}
+body.hm.pr-on #view .hb>#hb-rencana{order:2}
+body.hm.pr-on #view .hb>[aria-labelledby="hb-bm-h"]{order:3}
+body.hm:not(.pr-on) #view .hb>#hb-rencana,body.hm:not(.pr-on) #view .hb>#hb-progres,body.hm:not(.pr-on) #view .hb>[aria-labelledby="hb-bm-h"]{display:none}
+@media (min-width:1024px){
+body.hm.pr-on #view .hb>#hb-rencana{grid-column:1/-1}
+body.hm:not(.pr-on) #view .hb>#hb-uji{grid-column:1/-1;grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+</style>
+<nav id="nav" aria-label="Menu utama"><button type="button" id="n-hm"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7 8 7"/><path d="M6 10v9h12v-9"/></svg><b lang="zh">主页</b> <small>Beranda</small></button><button type="button" id="n-mt"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4l8 4-8 4-8-4z"/><path d="M4 12l8 4 8-4"/><path d="M4 16l8 4 8-4"/></svg><b lang="zh">教材</b> <small>Materi</small></button><button type="button" id="n-lt"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1-4L16 5l3 3L8 19z"/><path d="M14 7l3 3"/></svg><b lang="zh">练习</b> <small>Latihan</small></button><button type="button" id="n-pr"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 20v-6"/><path d="M12 20V6"/><path d="M18 20v-10"/></svg><b lang="zh">进度</b> <small>Progres</small></button></nav>
+<script id="menu-4-tab-js">
+/* Menu 4 tab: logika kecil di atas tombol menu.
+   - 教材 Materi membuka bagian materi yang terakhir dipakai (awal: 词汇). Pilihan bagiannya ada di #mt-seg dan memakai id lama
+     n-vc, n-gr, n-rd, n-hz, jadi skrip aplikasi tetap memasang klik dan penanda "on" ke tombol yang sama seperti dulu.
+   - 进度 Progres memakai layar Beranda; CSS menampilkan hanya Analitik, Rencana belajar, dan Bookmark (kelas "pr-on" di body).
+   - Tab aktif ditandai aria-current. Tidak ada permintaan jaringan dan tidak menyentuh data belajar. */
+(function(){
+ "use strict";
+ var MT=["n-vc","n-gr","n-rd","n-hz"],TABS=["n-hm","n-mt","n-lt","n-pr"],last="n-vc",prog=false;
+ function $(id){return document.getElementById(id)}
+ function on(id){var e=$(id);return !!(e&&e.classList.contains("on"))}
+ function setA(e,a,v){if(e&&e.getAttribute(a)!==v)e.setAttribute(a,v)}
+ function sync(){
+  var m="",i,b,hm=on("n-hm"),cur;
+  for(i=0;i<MT.length;i++)if(on(MT[i])){m=MT[i];break}
+  if(m)last=m;
+  if(prog&&(m||on("n-lt")))prog=false;
+  cur=prog?"n-pr":m?"n-mt":hm?"n-hm":on("n-lt")?"n-lt":"";
+  for(i=0;i<TABS.length;i++){
+   b=$(TABS[i]);if(!b)continue;
+   if(TABS[i]===cur)setA(b,"aria-current","page");else if(b.hasAttribute("aria-current"))b.removeAttribute("aria-current");
+  }
+  for(i=0;i<MT.length;i++)setA($(MT[i]),"aria-pressed",MT[i]===m?"true":"false");
+  document.body.classList.toggle("pr-on",prog&&hm);
+ }
+ function lepas(){prog=false;sync()}
+ var i,h;
+ for(i=0;i<MT.length;i++)if($(MT[i]))$(MT[i]).addEventListener("click",function(){prog=false});
+ if($("n-hm"))$("n-hm").addEventListener("click",lepas);
+ if($("n-lt"))$("n-lt").addEventListener("click",lepas);
+ if($("n-mt"))$("n-mt").addEventListener("click",function(){prog=false;var t=$(last);if(t)t.click();sync()});
+ if($("n-pr"))$("n-pr").addEventListener("click",function(){
+  h=$("n-hm");
+  if(h&&!on("n-hm"))h.click();   /* pindah ke Beranda dulu; klik ini mengosongkan prog, jadi prog diset sesudahnya */
+  prog=true;sync();
+  try{window.scrollTo(0,0)}catch(e){}
+ });
+ /* "Kembali ke beranda" di halaman Progres & cadangan memang menuju Beranda, bukan tab Progres */
+ document.addEventListener("click",function(e){var t=e.target&&e.target.closest?e.target.closest("#pg-back"):null;if(t){prog=false;sync()}},true);
+ if(window.MutationObserver){
+  var mo=new MutationObserver(sync),ids=["n-hm","n-lt"].concat(MT);
+  for(i=0;i<ids.length;i++)if($(ids[i]))mo.observe($(ids[i]),{attributes:true,attributeFilter:["class"]});
+ }
+ sync();
+})();
+</script>
 <div id="srch"><div class="sh"><input id="sq" type="search" placeholder="Cari hanzi, pinyin, atau arti…" autocomplete="off"><button id="sx2" aria-label="Tutup"><svg class="lu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></div><div class="sf" id="sf"></div><div id="sr"></div></div>
 <div id="sheet"></div>
 <div class="foot">© 2026 <b>韩冬岳</b>. Hak cipta dilindungi.<br>Data goresan: Hanzi Writer &amp; Make Me a Hanzi (lisensi sumber terbuka masing-masing). Ikon: Lucide (lisensi ISC).</div>

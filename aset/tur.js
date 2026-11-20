@@ -39,7 +39,7 @@
   {id:"kosakata",t:["#view .hb-voc"],z:"木",e:"1",jz:"词汇",jt:"Kosakata",
    teks:"Tiga daftar kata: HSK 2.0, HSK 3.0, dan Teknis. Ketuk kartu untuk melihat pinyin dan arti, lalu pilih Masih belajar atau Sudah tahu. Tab Tulis melatih menulis hanzi, tab Ringkasan memuat seluruh daftar beserta statusnya."},
   {id:"gr",t:["#view .tl[data-m=\"gr\"]"],z:"水",e:"2",jz:"语法",jt:"Tata bahasa",
-   teks:"Pelajaran tata bahasa dengan contoh kalimat. Tandai poin yang sudah kamu pahami, atau beri bookmark supaya mudah dibuka lagi dari beranda."},
+   teks:"Pelajaran tata bahasa dengan contoh kalimat. Tandai poin yang sudah kamu pahami, atau beri bookmark supaya mudah dibuka lagi dari tab 进度 Progres."},
   {id:"rd",t:["#view .tl[data-m=\"rd\"]"],z:"土",e:"3",jz:"阅读",jt:"Membaca",
    teks:"Cerita pendek per level. Tandai Sudah dibaca setelah selesai, dan jumlahnya tampil di kartu ini."},
   {id:"lt",t:["#view .tl[data-m=\"lt\"]"],z:"火",e:"4",jz:"练习",jt:"Latihan",
