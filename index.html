@@ -104,6 +104,9 @@ button:disabled{opacity:.35;cursor:default}
 .abr{display:flex;gap:8px;justify-content:center;margin-top:6px;flex-wrap:wrap}.abr .sm{margin:0}
 #md{overflow-x:auto}#md button{padding:11px 7px;font-size:12px}
 .ltb{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin:12px 0 8px}.ltb .pl{padding:7px 12px;font-size:12px;text-transform:none;letter-spacing:0;border-radius:999px}.ltb .pos{margin-left:auto}
+/* Workbook: target sentuh minimal 44px (pil level, bagian, jenis soal, tombol aksi, kata susun) */
+.ltb.h5r{margin:8px 0 0}
+.ltb.h5r .pl,#h5b button,#h5b .ck{min-height:44px}
 .lq{text-align:left;font-size:14px;margin:10px 0 6px}.lq b{color:var(--acc)}
 .ans{min-height:64px;border:1px dashed var(--line);border-radius:10px;padding:10px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-family:'Noto Serif SC',serif;font-size:22px;text-align:left}
 .pool{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;justify-content:center}
@@ -1991,7 +1994,7 @@ function head(){const hm=S.mode=="hm",vc=S.mode=="hsk"||S.mode=="tek";
  const cn=K()&&CH[K()]&&S.ch?CH[K()][S.ch-1]:(K()?"Semua bagian":"");$("bc").innerHTML=`<b>${S.mode=="tek"?"Kosakata Teknis":"Kosakata HSK"}</b> › ${S.mode=="tek"?((TEKN[S.tk]||"").replace("&","&amp;")):(S.lv?lvT(S.lv):"Semua level")}${cn?" › "+cn:""}${S.mode=="hsk"?` <span class="vchip" title="Daftar kosakata yang dipakai situs ini">${HSKV.std}</span>`:""}`;
  $("md").innerHTML=[["hsk","HSK 2.0"],["h3","HSK 3.0"],["tek","Teknis"]].map(([v,t])=>`<button class="${S.mode==v?"on":""}" data-v="${v}">${t}</button>`).join("");
  $("md").querySelectorAll("button").forEach(b=>b.onclick=()=>{S.mode=S.vm=b.dataset.v;S.lv=0;S.ch=0;S.i=0;S.flip=false;render()});
- $("lv").innerHTML=(S.mode=="hz"?[["bu","部首 · Radikal"],["bi","笔画 · Goresan"],["sn","笔顺 · Urutan"]]:S.mode=="lt"?[["su","Susun kalimat"],["is","Isian kata"],["po","Pola kalimat"],["ar","Arti kata"],["de","Dengar & pilih"],["ur","Urutan"],["tu","Buat kalimat"],["hk","HSKK"],["pi","Pinyin & nada"],["pa","Pasangkan"],["h5","Soal HSK 5"]]:S.mode=="rd"?[["r1","Level 1"],["r2","Level 2"],["r3","Level 3"],["r4","Level 4"],["r7","HSK 5"],["r5","Bandara"]]:S.mode=="gr"?[["H2","HSK 2"],["H3","HSK 3"],["上","HSK 4 · 上"],["下","HSK 4 · 下"],["H5上","HSK 5 · 上"],["H5下","HSK 5 · 下"],["T","Tips"]]:S.mode=="tek"?TEKL.map(l=>[l,TEKN[l]]):[[0,"Semua"],[1,"HSK 1"],[2,"HSK 2"],[3,"HSK 3"],[4,"HSK 4"],[7,"HSK 5"]]).map(([v,t])=>`<button class="${K()==v?"on":""}" data-v="${v}">${t}</button>`).join("");
+ $("lv").innerHTML=(S.mode=="hz"?[["bu","部首 · Radikal"],["bi","笔画 · Goresan"],["sn","笔顺 · Urutan"]]:S.mode=="lt"?[["su","Susun kalimat"],["is","Isian kata"],["po","Pola kalimat"],["ar","Arti kata"],["de","Dengar & pilih"],["ur","Urutan"],["tu","Buat kalimat"],["hk","HSKK"],["pi","Pinyin & nada"],["pa","Pasangkan"],["h5","Workbook"]]:S.mode=="rd"?[["r1","Level 1"],["r2","Level 2"],["r3","Level 3"],["r4","Level 4"],["r7","HSK 5"],["r5","Bandara"]]:S.mode=="gr"?[["H2","HSK 2"],["H3","HSK 3"],["上","HSK 4 · 上"],["下","HSK 4 · 下"],["H5上","HSK 5 · 上"],["H5下","HSK 5 · 下"],["T","Tips"]]:S.mode=="tek"?TEKL.map(l=>[l,TEKN[l]]):[[0,"Semua"],[1,"HSK 1"],[2,"HSK 2"],[3,"HSK 3"],[4,"HSK 4"],[7,"HSK 5"]]).map(([v,t])=>`<button class="${K()==v?"on":""}" data-v="${v}">${t}</button>`).join("");
  $("lv").querySelectorAll("button").forEach(b=>b.onclick=()=>{const n=+b.dataset.v;if(S.mode=="tek")S.tk=n;else if(S.mode=="gr")S.gs=b.dataset.v;else if(S.mode=="rd")S.rl=b.dataset.v;else if(S.mode=="lt")S.lk=b.dataset.v;else if(S.mode=="hz"){S.zk=b.dataset.v;S.zd=0}else S.lv=n;S.ch=0;S.i=0;S.flip=false;render()});
  {const o=$("lv"),on=o.querySelector("button.on");if(on){const a=on.getBoundingClientRect(),z=o.getBoundingClientRect();if(a.right>z.right-8||a.left<z.left+8)o.scrollLeft+=a.left-z.left-(o.clientWidth-a.width)/2}}/* jalur level satu baris: bawa chip aktif ke tengah supaya HSK 5 tidak hilang di layar sempit setelah dipilih */
   $("ch").innerHTML=`<option value="0">${K()?(S.mode=="rd"?"Semua cerita":S.mode=="gr"?"Semua pelajaran":S.mode=="tek"?"Semua Bagian":S.lv==7?"Semua Pelajaran":"Semua Set"):"Pilih level untuk filter bab"}</option>`+(K()?CH[K()]:[]).map((t,i)=>`<option value="${i+1}" ${S.ch==i+1?"selected":""}>${t}</option>`).join("");
@@ -2080,7 +2083,7 @@ function renderHome(v){
  /* 词汇: tiga daftar kosakata dalam satu kartu, sama seperti satu menu 词汇 di navigasi. [mode, nama, dikenali, total, terakhir] */
  const V=[["hsk","HSK 2.0",kn(hs),hs.length,LM.hsk],["h3","HSK 3.0",Object.values(M3).filter(x=>x==1).length,H3.ok?H3.tot:H3N,LM.h3],["tek","Teknis",kn(tk),tk.length,LM.tek]];
  /* empat bagian lain. [mode, unsur, hanzi, nama, keterangan, selesai, total (0 = tanpa batang progres), terakhir] */
- const T=[["gr","水","语法","Tata bahasa",`${nf(gd)} / ${nf(gt)} poin dipahami`,gd,gt,LM.gr],["rd","土","阅读","Membaca",`${rn} / ${RD.length} cerita dibaca`,rn,RD.length,LM.rd],["lt","火","练习","Latihan","11 jenis latihan, termasuk soal HSK 5 dan HSKK",0,0,LM.lt],["hz","金","汉字","Aksara","214 radikal, 38 goresan, 7 aturan urutan",0,0,LM.hz]];
+ const T=[["gr","水","语法","Tata bahasa",`${nf(gd)} / ${nf(gt)} poin dipahami`,gd,gt,LM.gr],["rd","土","阅读","Membaca",`${rn} / ${RD.length} cerita dibaca`,rn,RD.length,LM.rd],["lt","火","练习","Latihan","11 jenis latihan, termasuk Workbook HSK 1-5 dan HSKK",0,0,LM.lt],["hz","金","汉字","Aksara","214 radikal, 38 goresan, 7 aturan urutan",0,0,LM.hz]];
  const last=LM._&&LM[LM._]?LM[LM._]:"";
  const bms=Object.keys(GB).filter(k=>GB[k]).map(k=>{const[s0,l,i]=k.split("|"),s=gres(s0,l),G=GR.d[s]||[],x=G.find(y=>String(y.l)==l);if(!x)return null;const t=i=="c"?(x.c?"比一比 · "+x.c.a+(x.c.b?" vs "+x.c.b:""):""):(x.p[+i]||{}).t;return t?{k,s,l,i,t}:null}).filter(Boolean);
  v.innerHTML=`<div class="hb">
@@ -2225,7 +2228,7 @@ const urOK=t=>!UDEP.test(txtT(t[0]))&&t.slice(1).some(x=>UCUE.test(txtT(x)));
 const sayB=(z,l)=>`<button class="wd sm" data-say="${String(z).replace(/"/g,"&quot;")}">${IKA}${l||""}</button>`;
 
 function renderLt(v){
- const k=S.lk,names={su:"Susun kalimat",is:"Isian kata",ur:"Urutan kalimat",tu:"Buat kalimat",hk:"HSKK",po:"Pola kalimat",ar:"Arti kata",de:"Dengar & pilih",pi:"Pinyin & nada",pa:"Pasangkan",h5:"Soal HSK 5"};
+ const k=S.lk,names={su:"Susun kalimat",is:"Isian kata",ur:"Urutan kalimat",tu:"Buat kalimat",hk:"HSKK",po:"Pola kalimat",ar:"Arti kata",de:"Dengar & pilih",pi:"Pinyin & nada",pa:"Pasangkan",h5:"Workbook"};
  $("bc").innerHTML=`<b>练习</b> › ${names[k]}`;
  ({su:lSu,is:lIs,po:lPo,ar:lAr,de:lDe,ur:lUr,tu:lTu,hk:lHk,pi:lPi,pa:lPa,h5:lH5})[k](v);
 }
@@ -2419,9 +2422,10 @@ ${L.fb?`<div class="fb">${L.fb}</div>`:""}${L.sh?`<div class="gx"><div class="gz
    1) Daftar HSK 3.0 di Arti kata, Isian kata, Buat kalimat, Pinyin & nada, Pasangkan. Kartu HSK 3.0 ada di D3 (blok "HSK 3.0"):
       akun gratis hanya memuat pratinjau 50 kata per level, akun penuh memuat 3.600 kata. Latihan memakai apa yang sudah dimuat.
    2) Jenis baru: Pinyin & nada (pi), Pasangkan (pa).
-   3) Soal HSK 5 (h5): tipe soal mengikuti ujian HSK 5 dan 练习册 HSK标准教程 5 (听力, 阅读, 书写).
-      Dibangkitkan dari kosakata HSK 5 dan cerita level 7 (选词填空, 选句填空, 完成句子 dari cerita, 写短文),
-      ditambah soal buatan sendiri di data/soal-hsk5.json (dialog 听力, 阅读理解, 完成句子). Jenis baru ini hanya untuk akun penuh (ltOk). */
+   3) Workbook HSK 1-5 (h5, dulu "Soal HSK 5"): tipe soal mengikuti ujian HSK dan 练习册 HSK标准教程 (听力, 阅读, 书写).
+      HSK 5 dibangkitkan dari kosakata HSK 5 dan cerita level 7 (选词填空, 选句填空, 完成句子 dari cerita, 写短文),
+      ditambah soal buatan sendiri di data/soal-hsk5.json (dialog 听力, 阅读理解, 完成句子). HSK 1-4: data/soal-hsk1..4.json (lihat blok Workbook).
+      Jenis baru ini hanya untuk akun penuh (ltOk). */
 const LV2=[[1,"HSK 1"],[2,"HSK 2"],[3,"HSK 3"],[4,"HSK 4"],[7,"HSK 5"],[5,"Teknis"]];
 const ltAll=L=>L.v3?D3.filter(Boolean):D;
 const ltUniq=(a,skip)=>{const z=new Set(skip);return a.filter(x=>{if(z.has(x[0]))return false;z.add(x[0]);return true})};   /* satu hanzi hanya sekali (daftar HSK 3.0 punya hanzi kembar dengan bacaan berbeda) */
@@ -2504,59 +2508,83 @@ ${fin?`<div class="rs ${q.mis?"no":"ok"}">${q.mis?ikL("tutup","lm")+"Selesai, sa
    if(j===q.sel){q.done.push(j);q.sel=null;q.bad=null;if(q.done.length==5){L.n++;if(!q.mis)L.ok++}}else{q.mis++;q.bad=[q.sel,j]}lPa(v)});
   if($("n"))$("n").onclick=()=>{nw();lPa(v)}}
 }
-/* ---- Soal HSK 5 (tipe soal workbook): 听力, 阅读, 书写 ---- */
-const H5={d:null,p:null,err:false};
-function h5Muat(){
- if(H5.d)return Promise.resolve(H5.d);
- if(!H5.p)H5.p=fetch("data/soal-hsk5.json?v=1").then(r=>{if(!r.ok)throw new Error("http "+r.status);return r.json()}).then(j=>{
-  if(!j||j.v!==1||!["ting","du","dl","jz"].every(k=>Array.isArray(j[k])&&j[k].length))throw new Error("format");H5.d=j;H5.err=false;return j}).catch(e=>{H5.p=null;H5.err=true;throw e});
- return H5.p}
+/* ---- Workbook HSK 1-5 (tipe soal buku latihan): 听力, 阅读, 书写 ----
+   Kunci latihan tetap "h5" (state tersimpan dan gerbang pelanggan memakai kunci ini).
+   HSK 5: data/soal-hsk5.json dan cerita level 7 (kode cerita HSK 5 = 7, lihat WBS).
+   HSK 1-4: data/soal-hsk1..4.json, soal buatan sendiri tanpa gambar. Bagian mengikuti ujian resmi:
+   HSK 1-2 听力 dan 阅读, HSK 3-4 ditambah 书写. Isi tiap jenis dijelaskan di claude/workbook-hsk1-4.md (Project Web zenta). */
+const WB={d:{},p:{},err:{}},WBN=[1,2,3,4,5],WBS={1:1,2:2,3:3,4:4,5:7};
+const WBT={ting:"Dialog pendek",pan:"Benar atau salah 判断",xc:"Isi kata 选词填空",pj:"Cocokkan kalimat 句子配对",px:"Urutkan kalimat 排序",xz:"Isi kata 选词填空",xj:"Isi kalimat 选句填空",du:"Pahami bacaan 阅读理解",jz:"Susun kalimat 完成句子",xh:"Tulis hanzi 写汉字",zj:"Buat kalimat 造句",xw:"Tulis dengan 5 kata 写短文"};
+const WBG0=[["ting","听力","Mendengar"],["baca","阅读","Membaca"],["tulis","书写","Menulis"]];
+const WBP={1:[["ting","pan"],["xc","pj","du"]],2:[["ting","pan"],["xc","pj","du"]],3:[["ting","pan"],["xc","pj","du"],["jz","xh"]],4:[["ting","pan"],["xc","px","du"],["jz","zj"]],5:[["ting"],["xz","xj","du"],["jz","xw"]]};
+const WBG=n=>WBP[n].map((a,i)=>[WBG0[i][0],WBG0[i][1],WBG0[i][2],a.map(k=>[k,WBT[k]])]);
+/* daftar kunci data yang wajib ada di berkas tiap level (xz, xj, xw dibangkitkan dari cerita, bukan dari berkas) */
+const wbNeed=n=>n==5?["ting","du","dl","jz"]:[...new Set(WBP[n].flat().filter(k=>!["xz","xj","xw"].includes(k)))];
+const wbLv=()=>{const n=(LS.h5||{}).lv;return WBN.includes(n)?n:1};
+/* level awal: pilihan terakhir, atau level dari profil persiapan ujian, atau HSK 1 */
+function wbLvAwal(){
+ try{const s=+localStorage.getItem("hsk_wb_lv");if(WBN.includes(s))return s;const m=/^on\|[^|]*\|([1-5])\|/.exec(localStorage.getItem("hsk_exam_date")||"");if(m)return +m[1]}catch(e){}
+ return 1}
+function wbMuat(n){
+ if(WB.d[n])return Promise.resolve(WB.d[n]);
+ if(!WB.p[n])WB.p[n]=fetch("data/soal-hsk"+n+".json?v=1").then(r=>{if(!r.ok)throw new Error("http "+r.status);return r.json()}).then(j=>{
+  if(!j||j.v!==1||!wbNeed(n).every(k=>Array.isArray(j[k])&&j[k].length))throw new Error("format");WB.d[n]=j;WB.err[n]=false;return j}).catch(e=>{WB.p[n]=null;WB.err[n]=true;throw e});
+ return WB.p[n]}
 function h5Data(hb){
- if(H5.d)return H5.d;
- hb.innerHTML=`<p class="pos" style="margin:30px 0">${H5.err?'Soal belum bisa dimuat. Periksa koneksi, lalu <button class="lk-a" id="h5u">coba lagi</button>.':"Memuat soal…"}</p>`;
- const u=document.getElementById("h5u");if(u)u.onclick=()=>{H5.err=false;render()};
- if(!H5.err)h5Muat().then(()=>{if(S.mode=="lt"&&S.lk=="h5")render()},()=>{if(S.mode=="lt"&&S.lk=="h5")render()});
+ const n=wbLv();
+ if(WB.d[n])return WB.d[n];
+ const gagal=!!WB.err[n],lagi=()=>{if(S.mode=="lt"&&S.lk=="h5"&&wbLv()==n)render()};
+ hb.innerHTML=`<p class="pos" style="margin:30px 0" role="status">${gagal?"Soal HSK "+n+' belum bisa dimuat. Periksa koneksi, lalu <button class="lk-a" id="h5u">coba lagi</button>.':"Memuat soal HSK "+n+"…"}</p>`;
+ const u=document.getElementById("h5u");if(u)u.onclick=()=>{WB.err[n]=false;render()};
+ if(!gagal)wbMuat(n).then(lagi,lagi);
  return null}
-/* bacaan butuh cerita level 7 dari server (paket rd); true bila belum siap dan catatan sudah ditampilkan */
-function h5Cerita(hb){const mb=ilBelum(["rd"]);if(!mb)return false;ilFull();hb.innerHTML=ilCatatan(mb,"cerita HSK 5");ilBind();return true}
+/* bacaan butuh cerita dari server (paket rd); true bila belum siap dan catatan sudah ditampilkan */
+function h5Cerita(hb){const mb=ilBelum(["rd"]);if(!mb)return false;ilFull();hb.innerHTML=ilCatatan(mb,"cerita HSK "+wbLv());ilBind();return true}
 const h5Ops=(o,p,k)=>`<div class="ops">${o.map((x,j)=>`<button class="op ${p===null?"":x.ok?"ok":j==p?"no":""}" data-j="${k===undefined?"":k+"|"}${j}"><b class="ol">${"ABCD"[j]}</b><span class="hz2" style="font-size:18px">${x.t}</span></button>`).join("")}</div>`;
-const h5Mix=(t,a)=>sh(a.map((s,j)=>({t:s,ok:j==t})));
+const h5Mix=(t,a,fix)=>{const r=a.map((s,j)=>({t:s,ok:j==t}));return fix?r:sh(r)};   /* fix: urutan opsi tetap (benar/salah, urutan ABC) */
 function h5Stop(){try{speechSynthesis.cancel()}catch(e){}}
 function h5Baca(parts,btn){
  h5Stop();let k=0;const vc=(()=>{try{return speechSynthesis.getVoices().find(x=>/^zh/i.test(x.lang))}catch(e){return null}})();
  const fin=()=>{if(btn)btn.classList.remove("on")},go=()=>{if(k>=parts.length){fin();return}const p=parts[k++],u=new SpeechSynthesisUtterance(p[0]);if(vc)u.voice=vc;u.lang=vc?vc.lang:"zh-CN";u.rate=.85;u.pitch=p[1]||1;u.onend=go;u.onerror=fin;speechSynthesis.speak(u)};
  try{if(btn)btn.classList.add("on");go()}catch(e){fin()}}
-const H5T=[["ting","听力","Mendengar",[["ting","Dialog pendek"]]],
- ["baca","阅读","Membaca",[["xz","Isi kata 选词填空"],["xj","Isi kalimat 选句填空"],["du","Pahami bacaan 阅读理解"]]],
- ["tulis","书写","Menulis",[["jz","Susun kalimat 完成句子"],["xw","Tulis dengan 5 kata 写短文"]]]];
+/* Workbook: baris level HSK 1-5, lalu bagian ujian (听力, 阅读, 书写) dan jenis soalnya. Status tiap level (skor, soal aktif) terpisah. */
 function lH5(v){
- const L=LS.h5=LS.h5||{t:"ting"};
- let grp=H5T.find(g=>g[3].some(x=>x[0]==L.t));if(!grp){grp=H5T[0];L.t="ting"}
- v.innerHTML=`<p class="pos" style="text-align:left;margin:4px 0 0">Tipe soal mengikuti ujian HSK 5 dan 练习册 (workbook) HSK标准教程 5: <span lang="zh">听力、阅读、书写</span>. Soalnya dibuat sendiri untuk Zenta 汉, bukan salinan buku.</p>
-<div class="ltb">${H5T.map(g=>`<button class="pl ${g==grp?"on":""}" data-g="${g[0]}"><span lang="zh">${g[1]}</span> ${g[2]}</button>`).join("")}</div>
-<div class="ltb">${grp[3].map(x=>`<button class="pl ${L.t==x[0]?"on":""}" data-t="${x[0]}">${x[1]}</button>`).join("")}</div><div id="h5b"></div>`;
- v.querySelectorAll("[data-g]").forEach(b=>b.onclick=()=>{L.t=H5T.find(x=>x[0]==b.dataset.g)[3][0][0];h5Stop();lH5(v)});
+ const R=LS.h5=LS.h5||{};
+ if(!WBN.includes(R.lv))R.lv=wbLvAwal();
+ const n=R.lv,G=WBG(n),L=(R.by=R.by||{})[n]=(R.by||{})[n]||{t:G[0][3][0][0]};
+ let grp=G.find(g=>g[3].some(x=>x[0]==L.t));if(!grp){grp=G[0];L.t=grp[3][0][0]}
+ v.innerHTML=`<p class="pos" style="text-align:left;margin:4px 0 0">Tipe soal mengikuti ujian HSK ${n} dan 练习册 (workbook) HSK标准教程 ${n}: <span lang="zh">${G.map(g=>g[1]).join("、")}</span>. Soalnya dibuat sendiri untuk Zenta 汉, bukan salinan buku.</p>
+<div class="ltb h5r" role="group" aria-label="Level Workbook">${WBN.map(x=>`<button class="pl ${x==n?"on":""}" data-n="${x}" aria-pressed="${x==n}">HSK ${x}</button>`).join("")}</div>
+<div class="ltb h5r" role="group" aria-label="Bagian ujian">${G.map(g=>`<button class="pl ${g==grp?"on":""}" data-g="${g[0]}" aria-pressed="${g==grp}"><span lang="zh">${g[1]}</span> ${g[2]}</button>`).join("")}</div>
+<div class="ltb h5r" role="group" aria-label="Jenis soal">${grp[3].map(x=>`<button class="pl ${L.t==x[0]?"on":""}" data-t="${x[0]}" aria-pressed="${L.t==x[0]}">${x[1]}</button>`).join("")}</div><div id="h5b"></div>`;
+ v.querySelectorAll("[data-n]").forEach(b=>b.onclick=()=>{R.lv=+b.dataset.n;try{localStorage.setItem("hsk_wb_lv",R.lv)}catch(e){}h5Stop();lH5(v)});
+ v.querySelectorAll("[data-g]").forEach(b=>b.onclick=()=>{L.t=G.find(x=>x[0]==b.dataset.g)[3][0][0];h5Stop();lH5(v)});
  v.querySelectorAll("[data-t]").forEach(b=>b.onclick=()=>{L.t=b.dataset.t;h5Stop();lH5(v)});
- ({ting:h5Ting,xz:h5Xz,xj:h5Xj,du:h5Du,jz:h5Jz,xw:h5Xw})[L.t]($("h5b"),L,v);
+ const t=L.t;
+ ({ting:h5Ting,pan:h5Ting,xz:h5Xz,xj:h5Xj,du:h5Du,xc:h5Du,pj:h5Du,px:h5Du,jz:h5Jz,xh:h5Xh,zj:h5Zj,xw:h5Xw})[t]($("h5b"),L,v,t);
 }
 /* 听力: dialog pendek diputar dengan suara Mandarin perangkat; teks tampil bila perangkat tidak punya suara */
-function h5Ting(hb,L,v){
+function h5Ting(hb,L,v,key){
  const D5=h5Data(hb);if(!D5)return;
- const S5=L.ting=L.ting||{ok:0,n:0,q:null,last:-1};
- const nw=()=>{const i=pick(D5.ting.map((x,i)=>i).filter(i=>i!==S5.last));S5.last=i;const x=D5.ting[i];S5.q={i,o:h5Mix(x.a,x.o),p:null,show:!zv()}};
- if(!S5.q||!D5.ting[S5.q.i])nw();
- const q=S5.q,x=D5.ting[q.i],done=q.p!==null,ok=done&&q.o[q.p].ok;
- hb.innerHTML=`<div class="ltb"><span class="lq" style="margin:0"><span lang="zh">听力</span> Dengarkan dialog, lalu pilih jawaban</span><span class="pos">Skor ${S5.ok}/${S5.n}</span></div>
-<div class="row"><button class="pl" id="pp" style="padding:12px 22px">${IKA}Putar dialog</button>${done?"":`<button class="pl" id="st">${q.show?"Sembunyikan teks":"Tampilkan teks"}</button>`}</div>
-${zv()?"":'<p class="pos" style="text-align:left">Perangkat ini belum punya suara Mandarin, jadi teks dialog ditampilkan. Pakai perangkat atau peramban lain bila ingin melatih pendengaran.</p>'}
-${q.show||done?`<div class="gx">${x.d.map((z,j)=>`<div class="gz" style="font-size:18px"><span class="tg">${x.s[j]}</span> ${z}</div>`).join("")}</div>`:""}
-<p class="lq"><b>${x.q}</b></p>${h5Ops(q.o,q.p)}
-${done?`<div class="rs ${ok?"ok":"no"}">${ok?ikL("cek","lm")+"Benar":ikL("tutup","lm")+"Jawaban benar: "+x.o[x.a]}</div><div class="why"><b>Terjemahan dan penjelasan</b><p>${x.tr}</p><p>${x.ex}</p></div>`:""}
-<div class="row"><button id="n">Dialog berikutnya</button></div>`;
- $("pp").onclick=e=>{const b=e.currentTarget;if(b.classList.contains("on")){h5Stop();b.classList.remove("on");return}h5Baca(x.d.map((z,j)=>[z,x.s[j]=="男"?.8:1.25]).concat([[x.q,1]]),b)};
- if($("st"))$("st").onclick=()=>{q.show=!q.show;h5Ting(hb,L,v)};
- hb.querySelectorAll(".op").forEach(b=>b.onclick=()=>{if(done)return;q.p=+b.dataset.j;S5.n++;if(q.o[q.p].ok)S5.ok++;h5Stop();h5Ting(hb,L,v)});
- $("n").onclick=()=>{h5Stop();nw();h5Ting(hb,L,v)};
+ key=key||"ting";const pan=key=="pan",A=D5[key],nm=pan?"teks":"dialog";
+ const S5=L[key]=L[key]||{ok:0,n:0,q:null,last:-1};
+ /* pan (判断): pernyataan tercetak dilihat dulu, lalu dengar teksnya; opsi selalu 对 lalu 错 */
+ const mix=x=>pan?h5Mix(x.a,["对 Benar","错 Salah"],true):h5Mix(x.a,x.o);
+ const nw=()=>{const i=pick(A.map((x,i)=>i).filter(i=>i!==S5.last||A.length==1));S5.last=i;S5.q={i,o:mix(A[i]),p:null,show:!zv()}};
+ if(!S5.q||!A[S5.q.i])nw();
+ const q=S5.q,x=A[q.i],done=q.p!==null,ok=done&&q.o[q.p].ok,sp=j=>x.s?`<span class="tg">${x.s[j]}</span> `:"";
+ hb.innerHTML=`<div class="ltb"><span class="lq" style="margin:0"><span lang="zh">听力</span> ${pan?"Dengarkan teks, lalu tentukan apakah pernyataan ini benar atau salah":"Dengarkan dialog, lalu pilih jawaban"}</span><span class="pos">Skor ${S5.ok}/${S5.n}</span></div>
+${pan?`<div class="bl">${x.q}</div>`:""}
+<div class="row"><button class="pl" id="pp" style="padding:12px 22px">${IKA}Putar ${nm}</button>${done?"":`<button class="pl" id="st">${q.show?"Sembunyikan teks":"Tampilkan teks"}</button>`}</div>
+${zv()?"":`<p class="pos" style="text-align:left">Perangkat ini belum punya suara Mandarin, jadi ${pan?"teksnya":"teks "+nm} ditampilkan. Pakai perangkat atau peramban lain bila ingin melatih pendengaran.</p>`}
+${q.show||done?`<div class="gx">${x.d.map((z,j)=>`<div class="gz" style="font-size:18px">${sp(j)}${z}</div>`).join("")}</div>`:""}
+${pan?"":`<p class="lq"><b>${x.q}</b></p>`}${h5Ops(q.o,q.p)}
+${done?`<div class="rs ${ok?"ok":"no"}">${ok?ikL("cek","lm")+"Benar":ikL("tutup","lm")+"Jawaban benar: "+q.o.find(z=>z.ok).t}</div><div class="why"><b>Terjemahan dan penjelasan</b><p>${x.tr}</p><p>${x.ex}</p></div>`:""}
+<div class="row"><button id="n">${pan?"Teks berikutnya":"Dialog berikutnya"}</button></div>`;
+ $("pp").onclick=e=>{const b=e.currentTarget;if(b.classList.contains("on")){h5Stop();b.classList.remove("on");return}h5Baca(x.d.map((z,j)=>[z,x.s?(x.s[j]=="男"?.8:1.25):1]).concat(pan?[]:[[x.q,1]]),b)};
+ if($("st"))$("st").onclick=()=>{q.show=!q.show;h5Ting(hb,L,v,key)};
+ hb.querySelectorAll(".op").forEach(b=>b.onclick=()=>{if(done)return;q.p=+b.dataset.j;S5.n++;if(q.o[q.p].ok)S5.ok++;h5Stop();h5Ting(hb,L,v,key)});
+ $("n").onclick=()=>{h5Stop();nw();h5Ting(hb,L,v,key)};
 }
 /* 阅读 第一部分 选词填空: dua atau tiga kata HSK 5 dikosongkan dari kutipan cerita level 7 */
 function h5Xz(hb,L,v){
@@ -2613,40 +2641,46 @@ ${done?`<div class="rs ${ok?"ok":"no"}">${ok?ikL("cek","lm")+"Benar":ikL("tutup"
  $("n").onclick=()=>{nw();h5Xj(hb,L,v)};
 }
 /* 阅读理解: bacaan pendek (satu soal, "sesuai isi") dan bacaan panjang (tiga soal) */
-function h5Du(hb,L,v){
+/* key: du (bacaan pendek dan panjang), xc (选词填空), pj (句子配对), px (排序). Semuanya berbentuk teks + daftar pertanyaan q. */
+const WBU={du:["阅读理解","Bacaan berikutnya"],xc:["选词填空","Soal berikutnya"],pj:["句子配对","Soal berikutnya"],px:["排序","Soal berikutnya"]};
+function h5Du(hb,L,v,key){
  const D5=h5Data(hb);if(!D5)return;
- const S5=L.du=L.du||{m:"p",ok:0,n:0,q:null,last:-1};
- const lst=()=>S5.m=="p"?D5.du:D5.dl;
- const nw=()=>{const i=pick(lst().map((x,i)=>i).filter(i=>i!==S5.last||lst().length==1));S5.last=i;S5.q={m:S5.m,i,ps:lst()[i].q.map(x=>({o:h5Mix(x.a,x.o),p:null}))}};
+ key=key||"du";
+ const S5=L[key]=L[key]||{m:"p",ok:0,n:0,q:null,last:-1},dua=key=="du"&&Array.isArray(D5.dl)&&D5.dl.length>0;
+ if(!dua)S5.m="p";
+ const lst=()=>key=="du"?(S5.m=="p"?D5.du:D5.dl):D5[key];
+ const nw=()=>{const i=pick(lst().map((x,i)=>i).filter(i=>i!==S5.last||lst().length==1));S5.last=i;S5.q={m:S5.m,i,ps:lst()[i].q.map(x=>({o:h5Mix(x.a,x.o,x.fix),p:null}))}};
  if(!S5.q||S5.q.m!=S5.m||!lst()[S5.q.i])nw();
  const q=S5.q,x=lst()[q.i],done=q.ps.every(p=>p.p!==null);
- hb.innerHTML=`<div class="ltb"><button class="pl ${S5.m=="p"?"on":""}" data-m="p">Bacaan pendek</button><button class="pl ${S5.m=="l"?"on":""}" data-m="l">Bacaan panjang</button><span class="pos">Skor ${S5.ok}/${S5.n}</span></div>
-<p class="lq"><span lang="zh">阅读理解</span> ${S5.m=="p"?"Baca teks, lalu pilih pernyataan yang sesuai dengan isinya":"Baca teks, lalu jawab tiga pertanyaan"}</p>
-<div class="bl">${x.t}</div>
+ const arah={du:S5.m=="p"?(wbLv()==5?"Baca teks, lalu pilih pernyataan yang sesuai dengan isinya":"Baca teks, lalu jawab pertanyaan"):"Baca teks, lalu jawab tiga pertanyaan",
+  xc:"Baca teks, lalu pilih kata yang tepat untuk tiap nomor",pj:"Pilih kalimat yang cocok dengan kalimat di bawah",px:"Susun kalimat A, B, C menjadi urutan yang runtut"}[key];
+ hb.innerHTML=`<div class="ltb">${dua?`<button class="pl ${S5.m=="p"?"on":""}" data-m="p" aria-pressed="${S5.m=="p"}">Bacaan pendek</button><button class="pl ${S5.m=="l"?"on":""}" data-m="l" aria-pressed="${S5.m=="l"}">Bacaan panjang</button>`:""}<span class="pos">Skor ${S5.ok}/${S5.n}</span></div>
+<p class="lq"><span lang="zh">${WBU[key][0]}</span> ${arah}</p>
+<div class="bl">${String(x.t).replace(/\n/g,"<br>")}</div>
 ${x.q.map((qq,k)=>`<p class="lq" style="margin-bottom:0"><b>${S5.m=="l"?(k+1)+". ":""}${qq.q}</b></p>${h5Ops(q.ps[k].o,q.ps[k].p,k)}${q.ps[k].p!==null?`<div class="rs ${q.ps[k].o[q.ps[k].p].ok?"ok":"no"}">${q.ps[k].o[q.ps[k].p].ok?ikL("cek","lm")+"Benar":ikL("tutup","lm")+"Jawaban benar: "+qq.o[qq.a]}</div><div class="gx"><div class="gi">${qq.ex}</div></div>`:""}`).join("")}
 ${done?`<div class="why"><b>Terjemahan teks</b><p>${x.tr}</p></div>`:""}
-<div class="row"><button id="n">Bacaan berikutnya</button></div>`;
- hb.querySelectorAll("[data-m]").forEach(b=>b.onclick=()=>{S5.m=b.dataset.m;S5.q=null;h5Du(hb,L,v)});
- hb.querySelectorAll(".op").forEach(b=>b.onclick=()=>{const[k,j]=b.dataset.j.split("|").map(Number),p=q.ps[k];if(p.p!==null)return;p.p=j;S5.n++;if(p.o[j].ok)S5.ok++;h5Du(hb,L,v)});
- $("n").onclick=()=>{nw();h5Du(hb,L,v)};
+<div class="row"><button id="n">${WBU[key][1]}</button></div>`;
+ hb.querySelectorAll("[data-m]").forEach(b=>b.onclick=()=>{S5.m=b.dataset.m;S5.q=null;h5Du(hb,L,v,key)});
+ hb.querySelectorAll(".op").forEach(b=>b.onclick=()=>{const[k,j]=b.dataset.j.split("|").map(Number),p=q.ps[k];if(p.p!==null)return;p.p=j;S5.n++;if(p.o[j].ok)S5.ok++;h5Du(hb,L,v,key)});
+ $("n").onclick=()=>{nw();h5Du(hb,L,v,key)};
 }
 /* 完成句子: susun kepingan kata menjadi kalimat (soal buatan, atau kalimat dari cerita HSK 5) */
 function h5Jz(hb,L,v){
- const S5=L.jz=L.jz||{src:"buat",ok:0,n:0,it:null};
+ const S5=L.jz=L.jz||{src:"buat",ok:0,n:0,it:null},n5=wbLv(),zs=WBS[n5];
  if(S5.src=="buat"&&!h5Data(hb))return;
  if(S5.src=="st"&&h5Cerita(hb))return;
  const nw=()=>{let it;
-  if(S5.src=="buat"){const x=pick(H5.d.jz);it={W:x.w,z:x.z,a:x.a.map(noP),g:x.g,tr:x.tr,e:/[。？！]$/.test(x.z)?x.z.slice(-1):""}}
-  else{const A=[];RD.forEach(s=>{if(s.l!=7)return;s.p.forEach(P=>splitS(P).forEach(tk=>{const n=wd(tk).length,z=txtT(tk);if(n>=5&&n<=16&&!/[“”]/.test(z)&&chunk(tk).length>=4)A.push({tk,z,g:"Dari cerita: "+s.t})}))});
+  if(S5.src=="buat"){const x=pick(WB.d[n5].jz);it={W:x.w,z:x.z,a:(x.a||[]).map(noP),g:x.g,tr:x.tr,e:/[。？！]$/.test(x.z)?x.z.slice(-1):""}}
+  else{const A=[];RD.forEach(s=>{if(s.l!=zs)return;s.p.forEach(P=>splitS(P).forEach(tk=>{const n=wd(tk).length,z=txtT(tk);if(n>=5&&n<=16&&!/[“”]/.test(z)&&chunk(tk).length>=4)A.push({tk,z,g:"Dari cerita: "+s.t})}))});
    if(!A.length){S5.it=null;return}
    const x=pick(A),W=chunk(x.tk),end=x.tk[x.tk.length-1];it={W,z:x.z,a:suAlts({t:x.tk,a:[]},W),g:x.g,tr:"",e:end[1]===0?end[0]:""}}
   const id=it.W.map((w,i)=>i);let p=sh(id);for(let g=0;g<6&&p.join()==id.join();g++)p=sh(id);
   S5.it=it;S5.pool=p;S5.sel=[];S5.res=null;S5.fin=0};
  if(!S5.it||S5.srcN!==S5.src){S5.srcN=S5.src;nw()}
  const it=S5.it;
- if(!it){hb.innerHTML=`<div class="ltb"><button class="pl" data-s="buat">Soal buatan</button><button class="pl on" data-s="st">Kalimat dari cerita HSK 5</button></div><p class="pos" style="margin:30px 0">Belum ada kalimat cerita HSK 5 yang bisa dipakai.</p>`;hb.querySelectorAll("[data-s]").forEach(b=>b.onclick=()=>{S5.src=b.dataset.s;S5.it=null;h5Jz(hb,L,v)});return}
+ if(!it){hb.innerHTML=`<div class="ltb"><button class="pl" data-s="buat">Soal buatan</button><button class="pl on" data-s="st">Kalimat dari cerita HSK ${n5}</button></div><p class="pos" style="margin:30px 0">Belum ada kalimat cerita HSK ${n5} yang bisa dipakai.</p>`;hb.querySelectorAll("[data-s]").forEach(b=>b.onclick=()=>{S5.src=b.dataset.s;S5.it=null;h5Jz(hb,L,v)});return}
  const chip=(i,c)=>`<button class="ck ${c}" data-i="${i}">${it.W[i]}</button>`;
- hb.innerHTML=`<div class="ltb"><button class="pl ${S5.src=="buat"?"on":""}" data-s="buat">Soal buatan</button><button class="pl ${S5.src=="st"?"on":""}" data-s="st">Kalimat dari cerita HSK 5</button><span class="pos">Skor ${S5.ok}/${S5.n}</span></div>
+ hb.innerHTML=`<div class="ltb"><button class="pl ${S5.src=="buat"?"on":""}" data-s="buat">Soal buatan</button><button class="pl ${S5.src=="st"?"on":""}" data-s="st">Kalimat dari cerita HSK ${n5}</button><span class="pos">Skor ${S5.ok}/${S5.n}</span></div>
 <p class="lq"><span lang="zh">完成句子</span> Susun kata menjadi kalimat yang benar · <b>${it.g}</b></p>${it.tr?`<p class="pos" style="text-align:left;margin:-4px 0 8px">Arti: ${it.tr}</p>`:""}
 <div class="ans">${S5.sel.length?S5.sel.map(i=>chip(i,"in")).join("")+it.e:'<span class="pos">Ketuk kata di bawah untuk menyusun…</span>'}</div>
 <div class="pool">${S5.pool.filter(i=>!S5.sel.includes(i)).map(i=>chip(i,"")).join("")}</div>
@@ -2682,6 +2716,49 @@ ${S5.fb?`<div class="fb">${S5.fb}</div>`:""}${S5.ex?ws.map(c=>`<div class="gx"><
   S5.fb=ck.map(x=>`<div class="${x[0]?"y":"n"}">${ikL(x[0]?"cek":"tutup","lm")}${x[1]}</div>`).join("")+'<div class="pos" style="text-align:left;margin-top:6px">Pemeriksaan otomatis hanya mengecek bentuk, bukan tata bahasa. Minta guru memeriksa isi dan kalimatnya.</div>';
   S5.n++;if(ck.every(x=>x[0]))S5.ok++;h5Xw(hb,L,v)};
  $("s").onclick=()=>{S5.tx=$("ta").value;S5.ex=!S5.ex;h5Xw(hb,L,v)};$("n").onclick=()=>{nw();h5Xw(hb,L,v)};
+}
+/* 书写 HSK 3 (写汉字): satu hanzi dikosongkan, pinyinnya diberikan, ketik hanzi itu */
+function h5Xh(hb,L,v){
+ const D5=h5Data(hb);if(!D5)return;
+ const A=D5.xh,S5=L.xh=L.xh||{ok:0,n:0,i:-1,res:null,tx:"",note:""};
+ const nw=()=>{S5.i=pick(A.map((x,i)=>i).filter(i=>i!==S5.i||A.length==1));S5.res=null;S5.tx="";S5.note=""};
+ if(S5.i<0||!A[S5.i])nw();
+ const x=A[S5.i],done=S5.res!==null;
+ const kal=x.z.replace("＿",done?`<span class="bk ${S5.res}">${x.a}</span>`:'<span class="bk">（　）</span>');
+ hb.innerHTML=`<div class="ltb"><span class="lq" style="margin:0"><span lang="zh">写汉字</span> Ketik hanzi yang hilang sesuai pinyin</span><span class="pos">Skor ${S5.ok}/${S5.n}</span></div>
+<div class="bl">${kal}</div>
+<p class="pos" style="text-align:left;margin:-4px 0 0">Pinyin hanzi yang hilang: <b>${x.p}</b></p>
+<label class="lq" for="xh-i" style="display:block">Hanzi yang hilang</label>
+<textarea id="xh-i" rows="1" maxlength="4" autocomplete="off" style="min-height:0" placeholder="Ketik satu hanzi" ${done?"readonly":""}>${S5.tx}</textarea>
+<div class="row">${done?"":'<button id="c">Periksa</button>'}<button id="n">Soal lain</button></div>
+${S5.note?`<div class="fb"><div class="n">${S5.note}</div></div>`:""}
+${done?`<div class="rs ${S5.res}">${S5.res=="ok"?ikL("cek","lm")+"Benar":ikL("tutup","lm")+"Jawaban benar: "+x.a}</div><div class="gx"><div class="gz">${x.z.replace("＿",x.a)} ${aub(x.z.replace("＿",x.a))||sayB(x.z.replace("＿",x.a))}</div><div class="gi">${x.tr}</div></div><div class="why"><b>Penjelasan</b><p>${x.ex}</p></div>`:""}`;
+ const c=$("c");
+ if(c){c.onclick=()=>{const t=noP($("xh-i").value);S5.tx=t;if(!t){S5.note="Ketik satu hanzi dulu.";h5Xh(hb,L,v);return}
+  S5.note="";S5.n++;S5.res=t==x.a?"ok":"no";if(S5.res=="ok")S5.ok++;h5Xh(hb,L,v)};
+  $("xh-i").onkeydown=e=>{if(e.key=="Enter"&&!e.isComposing){e.preventDefault();c.click()}}}
+ $("n").onclick=()=>{nw();h5Xh(hb,L,v)};
+}
+/* 书写 HSK 4 (造句): tulis satu kalimat dengan kata yang diberikan; pemeriksaan otomatis hanya mengecek bentuk */
+function h5Zj(hb,L,v){
+ const D5=h5Data(hb);if(!D5)return;
+ const A=D5.zj,S5=L.zj=L.zj||{ok:0,n:0,i:-1,tx:"",fb:null,ex:false};
+ const nw=()=>{S5.i=pick(A.map((x,i)=>i).filter(i=>i!==S5.i||A.length==1));S5.tx="";S5.fb=null;S5.ex=false};
+ if(S5.i<0||!A[S5.i])nw();
+ const x=A[S5.i];
+ hb.innerHTML=`<div class="ltb"><span class="lq" style="margin:0"><span lang="zh">造句</span> Tulis satu kalimat dengan kata ini</span><span class="pos">Skor ${S5.ok}/${S5.n}</span></div>
+<div class="gx" style="margin:0"><div class="gz" style="font-size:24px">${x.w}</div><div class="gpy">${x.p}</div><div class="gi">${x.g}</div></div>
+<label class="lq" for="zj-i" style="display:block">Kalimatmu</label>
+<textarea id="zj-i" placeholder="Tulis satu kalimat bahasa Mandarin di sini…">${S5.tx}</textarea>
+<div class="row"><button id="c">Periksa</button><button id="s">${S5.ex?"Sembunyikan contoh":"Lihat contoh kalimat"}</button><button id="n">Kata lain</button></div>
+${S5.fb?`<div class="fb" role="status">${S5.fb}</div>`:""}${S5.ex?`<div class="gx"><div class="gz">${x.m}${aub(x.m)||sayB(x.m)}</div><div class="gi">${x.tr}</div><div class="tg">Contoh kalimat dengan ${x.w}</div></div>`:""}`;
+ $("zj-i").oninput=e=>{S5.tx=e.target.value};
+ $("c").onclick=()=>{const z=$("zj-i").value.trim();S5.tx=z;
+  if(!z){S5.fb='<div class="n">Tulis kalimatmu dulu.</div>';h5Zj(hb,L,v);return}
+  const n=hanN(z),ck=[[z.includes(x.w),"Memakai kata "+x.w],[n>=6&&n<=40,"Panjang 6 sampai 40 karakter (sekarang "+n+")"],[(z.match(/[。？！]/g)||[]).length==1&&/[。？！]$/.test(z),"Satu kalimat, diakhiri tanda baca (。？！)"],[!/[A-Za-z]/.test(z),"Tidak ada huruf Latin"]];
+  S5.fb=ck.map(y=>`<div class="${y[0]?"y":"n"}">${ikL(y[0]?"cek":"tutup","lm")}${y[0]?"Sesuai":"Belum sesuai"}: ${y[1]}</div>`).join("")+'<div class="pos" style="text-align:left;margin-top:6px">Pemeriksaan otomatis hanya mengecek bentuk, bukan tata bahasa. Bandingkan dengan contoh, atau minta guru memeriksa.</div>';
+  S5.n++;if(ck.every(y=>y[0]))S5.ok++;h5Zj(hb,L,v)};
+ $("s").onclick=()=>{S5.tx=$("zj-i").value;S5.ex=!S5.ex;h5Zj(hb,L,v)};$("n").onclick=()=>{nw();h5Zj(hb,L,v)};
 }
 function lHk(v){
  const L=LS.hk=LS.hk||{t:"ul",qi:0};
@@ -2817,7 +2894,7 @@ function render(){
  if(S.mode=="hm"){renderHome(v);return}
  if(H3M){renderH3(v);return}
  if(S.mode=="hz"){noteLast("hz","汉字 · "+HZN[S.zk]);renderHz(v);return}
- if(S.mode=="lt"){noteLast("lt","练习 · "+({su:"Susun kalimat",is:"Isian kata",ur:"Urutan kalimat",tu:"Buat kalimat",hk:"HSKK",po:"Pola kalimat",ar:"Arti kata",de:"Dengar & pilih",pi:"Pinyin & nada",pa:"Pasangkan",h5:"Soal HSK 5"})[S.lk]);renderLt(v);return}
+ if(S.mode=="lt"){noteLast("lt","练习 · "+({su:"Susun kalimat",is:"Isian kata",ur:"Urutan kalimat",tu:"Buat kalimat",hk:"HSKK",po:"Pola kalimat",ar:"Arti kata",de:"Dengar & pilih",pi:"Pinyin & nada",pa:"Pasangkan",h5:"Workbook"})[S.lk]);renderLt(v);return}
  if(S.mode=="rd"){const st=RD.filter(s=>s.l==+S.rl.slice(1))[S.ch-1];noteLast("rd","阅读 · "+(S.rl=="r5"?"Bandara":S.rl=="r7"?"HSK 5":"Level "+S.rl.slice(1))+(st?" · "+st.t:""));renderRd(v);return}
  if(S.mode=="gr"){renderGr(v);return}
  {const kk=S.mode=="tek"?TEKN[S.tk]:(S.lv?lvT(S.lv):"Semua level"),sc=K()&&CH[K()]&&S.ch?CH[K()][S.ch-1]:"semua bagian";noteLast(S.mode,(S.mode=="tek"?"Kosakata Teknis":"Kosakata HSK 2.0")+" · "+kk+" · "+sc+(S.tab=="study"?" · kartu "+(Math.min(S.i,Math.max(L.length-1,0))+1)+"/"+L.length:S.tab=="write"?" · tulis":" · ringkasan"))}
@@ -4067,7 +4144,7 @@ renderRd=function(v){
  var n=0;v.querySelectorAll(".sc").forEach(function(e){if(+e.dataset.n>RD_GRATIS){n++;e.classList.add("lk");var d=e.querySelector(".sd");if(d)d.innerHTML=IKK0}});
  if(n)v.insertAdjacentHTML("beforeend",ajakHTML(IKK+lvn+" berisi <b>"+all.length+"</b> cerita. Yang terbuka sekarang <b>"+Math.min(RD_GRATIS,all.length)+"</b> cerita pertama.","阅读 (cerita)"))};
 /* 练习: akun gratis hanya jenis latihan di LT_GRATIS */
-var LT_NAMA={su:"Susun kalimat",is:"Isian kata",po:"Pola kalimat",ar:"Arti kata",de:"Dengar & pilih",ur:"Urutan kalimat",tu:"Buat kalimat",hk:"HSKK",pi:"Pinyin & nada",pa:"Pasangkan",h5:"Soal HSK 5"};
+var LT_NAMA={su:"Susun kalimat",is:"Isian kata",po:"Pola kalimat",ar:"Arti kata",de:"Dengar & pilih",ur:"Urutan kalimat",tu:"Buat kalimat",hk:"HSKK",pi:"Pinyin & nada",pa:"Pasangkan",h5:"Workbook"};
 var _renderLtDasar=renderLt,_goModeDasar=goMode;
 renderLt=function(v){
  if(ltOk(S.lk)){
@@ -4075,7 +4152,7 @@ renderLt=function(v){
   if(mb){ilFull();$("bc").innerHTML="<b>练习</b> › "+(LT_NAMA[S.lk]||"");v.innerHTML=ilCatatan(mb,"latihan");ilBind();return}
   _renderLtDasar(v);return}
  $("bc").innerHTML="<b>练习</b> › "+(LT_NAMA[S.lk]||"");
- v.innerHTML=kunciHTML((LT_NAMA[S.lk]||"Latihan ini")+" khusus pelanggan","Akun gratis bisa memakai latihan "+LT_GRATIS.map(function(k){return "<b>"+LT_NAMA[k].replace("&","&amp;")+"</b>"}).join(" dan ")+". Dengan berlangganan, kesebelas jenis latihan terbuka: susun kalimat, isian kata, pola kalimat, urutan, buat kalimat, pinyin &amp; nada, pasangkan, soal HSK 5, dan HSKK.","练习 (latihan)")+'<div class="row">'+LT_GRATIS.map(function(k){return '<button data-lt="'+k+'">Buka '+LT_NAMA[k].replace("&","&amp;")+'</button>'}).join("")+'</div>';
+ v.innerHTML=kunciHTML((LT_NAMA[S.lk]||"Latihan ini")+" khusus pelanggan","Akun gratis bisa memakai latihan "+LT_GRATIS.map(function(k){return "<b>"+LT_NAMA[k].replace("&","&amp;")+"</b>"}).join(" dan ")+". Dengan berlangganan, kesebelas jenis latihan terbuka: susun kalimat, isian kata, pola kalimat, urutan, buat kalimat, pinyin &amp; nada, pasangkan, Workbook HSK 1-5, dan HSKK.","练习 (latihan)")+'<div class="row">'+LT_GRATIS.map(function(k){return '<button data-lt="'+k+'">Buka '+LT_NAMA[k].replace("&","&amp;")+'</button>'}).join("")+'</div>';
  v.querySelectorAll("[data-lt]").forEach(function(b){b.onclick=function(){S.lk=b.dataset.lt;S.ch=0;render()}})};
 goMode=function(m,rs){if(m==="lt"&&!ltOk(S.lk))S.lk=LT_GRATIS[0];_goModeDasar(m,rs)};   /* masuk 练习 dari beranda/menu: mulai di jenis yang terbuka */
 /* Simulasi ujian & latihan ulang dari bank kesalahan: khusus pelanggan */
