@@ -1,0 +1,73 @@
+/* Panduan pengguna baru (tur sorot) untuk Zenta 汉. Dipakai bersama aset/tur.js, dimuat dari index.html.
+
+   Design Read: tur pengenalan fitur untuk pelajar Mandarin berbahasa Indonesia, dalam bahasa visual 五行 yang sudah dipilih pemilik
+   (token warna situs, cap unsur, Poppins untuk judul). Dial ENERGY 1 / RHYTHM 1 / MOTION 1.
+   Alasan keputusan (satu baris tiap butir):
+   - Sorotan di tampilan asli: pengguna melihat fitur yang sama dengan yang nanti ia pakai, bukan tangkapan layar.
+   - Gelap-redup lewat box-shadow pada kotak sorot: satu elemen, tanpa empat potongan yang harus disusun ulang saat ukuran berubah.
+   - Cap unsur 木水土火金 di kepala kartu: motif identitas situs, dan menyamakan warna langkah dengan warna kartu materinya.
+   - Bayangan hanya pada kartu penjelasan: ia satu-satunya benda yang melayang di atas lapisan redup.
+   - Tanpa animasi: belajar butuh perhatian yang tenang; sorotan berpindah langsung, jadi prefers-reduced-motion otomatis terpenuhi.
+   - Hanya warna tema (var(--...)): terang dan gelap mengikuti pilihan akun tanpa aturan terpisah. */
+
+.tur[hidden]{display:none}
+.tur{--tg:var(--ink);--tur-dim:rgba(10,10,12,.66);position:fixed;top:0;right:0;bottom:0;left:0;z-index:100010;font-family:Inter,system-ui,sans-serif;color:var(--ink);text-align:left}
+.tur[data-e="1"]{--tg:var(--e1)}
+.tur[data-e="2"]{--tg:var(--e2)}
+.tur[data-e="3"]{--tg:var(--e3)}
+.tur[data-e="4"]{--tg:var(--e4)}
+.tur[data-e="5"]{--tg:var(--e5)}
+
+/* penangkap sentuhan: aplikasi di belakang tidak bisa diketuk atau digulir selama tur */
+.tur-back{position:fixed;top:0;right:0;bottom:0;left:0;cursor:default;touch-action:none;overscroll-behavior:contain}
+.tur-c .tur-back{background:var(--tur-dim)}
+
+/* kotak sorot: bagian dalamnya tidak redup, sisanya redup */
+.tur-spot{position:fixed;pointer-events:none;border-radius:16px;box-shadow:0 0 0 2px var(--tg),0 0 0 100vmax var(--tur-dim)}
+.tur-c .tur-spot{display:none}
+
+/* kartu penjelasan */
+.tur-pop{position:fixed;box-sizing:border-box;max-height:calc(100vh - 24px);overflow:auto;overscroll-behavior:contain;padding:20px 18px 14px;background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:0 14px 36px rgba(0,0,0,.32);outline:none}
+.tur-bar{position:absolute;top:0;left:18px;right:18px;height:3px;border-radius:0 0 3px 3px;background:var(--line);overflow:hidden}
+.tur-bar i{display:block;height:100%;background:var(--tg)}
+.tur-hd{display:flex;align-items:center;gap:12px}
+.tur-seal{flex:none;display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:11px;background:var(--tg);color:var(--fi);font:700 20px/1 'Noto Serif SC','Songti SC',serif}
+.tur[data-e="0"] .tur-seal{background:var(--soft);color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
+.tur-seal[hidden]{display:none}
+.tur-hd>div{min-width:0}
+.tur-n{display:block;font-size:12px;line-height:1.3;color:var(--mute)}
+.tur-n:empty{display:none}
+.tur h2{margin:2px 0 0;font:600 17px/1.25 Poppins,Inter,system-ui,sans-serif;color:var(--ink)}
+.tur h2 b{font-family:'Noto Serif SC','Songti SC',serif;font-weight:700}
+.tur p{margin:12px 0 0;font-size:14.5px;line-height:1.55;color:var(--ink)}
+.tur-ft{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;margin-top:16px}
+.tur-nav{display:flex;gap:8px;margin-left:auto}
+
+/* tombol: tanpa warisan gaya tombol global (huruf kapital, jarak huruf) */
+.tur button{box-sizing:border-box;min-height:44px;margin:0;padding:0 16px;border:1px solid var(--line);border-radius:12px;background:transparent;color:var(--ink);font:600 14px/1.2 Inter,system-ui,sans-serif;letter-spacing:0;text-transform:none;white-space:nowrap;cursor:pointer}
+.tur button[hidden]{display:none}
+.tur button:hover{background:var(--soft)}
+.tur button:active{transform:translateY(1px)}
+.tur button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.tur .tur-pri{background:var(--btn);border-color:var(--btn);color:var(--btnink)}
+.tur .tur-pri:hover{background:var(--btn);opacity:.88}
+.tur .tur-skip{border-color:transparent;padding:0 10px;color:var(--mute)}
+.tur .tur-skip:hover{color:var(--ink)}
+
+/* layar sempit (320 px): tiga tombol di kaki kartu harus tetap satu baris di dalam kartu; flex-wrap di atas jadi pengaman bila huruf cadangan lebih lebar */
+@media(max-width:359px){
+ .tur-pop{padding:20px 14px 12px}
+ .tur-bar{left:14px;right:14px}
+ .tur button{padding:0 12px}
+ .tur .tur-skip{padding:0 8px}
+ .tur-nav{gap:6px}
+}
+
+/* teks untuk pembaca layar: nomor langkah, judul, dan isi diumumkan saat langkah berganti */
+.tur-live{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* catatan singkat setelah panduan dilewati: memberi tahu di mana panduan bisa dibuka lagi */
+.tur-toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));z-index:100010;box-sizing:border-box;width:max-content;max-width:min(360px,calc(100vw - 24px));padding:12px 16px;transform:translateX(-50%);border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);font:14px/1.45 Inter,system-ui,sans-serif;text-align:left;box-shadow:0 10px 28px rgba(0,0,0,.28);visibility:hidden;opacity:0}
+.tur-toast.on{visibility:visible;opacity:1}
+
+@media print{.tur,.tur-toast{display:none!important}}
