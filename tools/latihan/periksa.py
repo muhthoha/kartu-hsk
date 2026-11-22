@@ -2,7 +2,7 @@
 """Pemeriksa paket Latihan gaya HSK (data/latihan-1.json ... latihan-5.json).
 
 Tujuan: jumlah butir, pembagian 听力/阅读/书写, dan jenis soal tiap nomor harus sama dengan kertas ujian HSK asli.
-Sumber kebenaran struktur adalah konstanta UJ_LV di index.html (dipakai juga oleh lembar jawaban kode asli),
+Sumber kebenaran struktur adalah konstanta UJ_LV di index.html,
 jadi pemeriksa ini membacanya langsung dan membandingkannya dengan tabel BAGIAN di bawah.
 
 Pemakaian:  python3 tools/latihan/periksa.py            (semua level yang ada)
@@ -46,7 +46,7 @@ BAGIAN = {
     5: [(1, 20, "abcd", "L"), (21, 45, "abcd", "L"), (46, 60, "abcd", "bc"), (61, 70, "abcd", "q bc"), (71, 90, "abcd", "q bc"),
         (91, 98, "tulis", "w"), (99, 99, "xie", "w"), (100, 100, "xie", "g")],
 }
-# Jenis di UJ_LV (lembar jawaban asli) yang cocok dengan jenis di sini.
+# Jenis di UJ_LV yang cocok dengan jenis di sini.
 COCOK = {"tf": "tf", "abc": "abc", "abcd": "abcd", "af": "af", "ord": "ord", "han": "han", "tulis": "tulis", "xie": "tulis"}
 HURUF = {"abc": "ABC", "abcd": "ABCD", "af": "ABCDEF"}
 
