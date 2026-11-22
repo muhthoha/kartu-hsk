@@ -111,6 +111,13 @@ button:disabled{opacity:.35;cursor:default}
 .ans{min-height:64px;border:1px dashed var(--line);border-radius:10px;padding:10px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-family:'Noto Serif SC',serif;font-size:22px;text-align:left}
 .pool{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;justify-content:center}
 .ck{font-family:'Noto Serif SC',serif;font-size:21px;padding:8px 12px;border-radius:8px;background:var(--card);text-transform:none;letter-spacing:0}.ck.in{border-color:var(--acc)}
+/* Geser kata: kepingan di baris jawaban bisa ditarik ke posisi lain, jadi salah urut cukup memindahkan satu kata. Bayangan hanya untuk kepingan yang sedang terangkat, garis aksen menandai tempat jatuhnya. */
+.ans,.lh-jawab{position:relative}
+.ans .ck.in,.lh-jawab .lh-chip.on{touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.ck.drag,.lh-chip.drag{position:relative;z-index:5;cursor:grabbing;transition:none;box-shadow:0 6px 16px rgba(0,0,0,.3)}
+.ins-bar{position:absolute;width:3px;border-radius:2px;background:var(--acc);pointer-events:none;z-index:6}
+.ans-hint,.lh-pindah{min-height:20px;margin:6px 2px 0;text-align:left;font-size:13px;line-height:20px;color:var(--mute)}
+.lh-pindah{margin:0}
 .rs{margin:12px 0 6px;padding:10px;border-radius:8px;text-align:left;font-weight:600}.rs.ok{background:rgba(127,194,155,.15);color:var(--ok)}.rs.no{background:color-mix(in srgb,var(--acc) 14%,transparent);color:var(--acc)}
 .ops{display:flex;flex-direction:column;gap:8px;margin:10px 0;width:100%}.op{text-align:left;text-transform:none;letter-spacing:0;padding:12px;font-size:15px;display:flex;gap:10px;align-items:baseline;width:100%}
 .op .hz2{font-family:'Noto Serif SC',serif;font-size:22px;min-width:0;overflow-wrap:anywhere}.op.ok{border-color:var(--ok);background:rgba(127,194,155,.12)}.op.no{border-color:var(--acc);background:color-mix(in srgb,var(--acc) 10%,transparent)}.op small{color:var(--mute);margin-left:auto;text-align:right}
@@ -2259,6 +2266,54 @@ function renderLt(v){
  $("bc").innerHTML=`<b>练习</b> › ${names[k]}`;
  ({su:lSu,is:lIs,po:lPo,ar:lAr,de:lDe,ur:lUr,tu:lTu,hk:lHk,pi:lPi,pa:lPa,h5:lH5})[k](v);
 }
+/* Geser kata: kepingan di baris jawaban bisa ditarik ke posisi lain (mouse dan sentuhan), jadi salah urut cukup memindahkan satu kata.
+   Ketuk tetap melepas kata. Keyboard: fokus ke kepingan, lalu panah kiri atau kanan.
+   root = wadah yang tidak diganti saat render ulang; chip dan box = selektor kepingan dan baris jawabannya;
+   onMove(dari,ke,kepingan) memindahkan datanya lalu merender ulang. */
+function urutKata(root,chip,box,onMove){
+ let lv=document.getElementById("urut-live");
+ if(!lv){lv=document.createElement("div");lv.id="urut-live";lv.className="uj-sr";lv.setAttribute("role","status");document.body.appendChild(lv)}
+ const pindah=(b,dari,ke,n)=>{const id=b.dataset.i,no=b.dataset.n,w=b.textContent;onMove(dari,ke,b);lv.textContent=w+" dipindah ke posisi "+(ke+1)+" dari "+n;
+  const k=root.querySelector(chip+'[data-i="'+id+'"]'+(no?'[data-n="'+no+'"]':""));if(k)k.focus({preventScroll:true})};
+ const pd=e=>{
+  if(e._urut||!e.isPrimary||(e.pointerType=="mouse"&&e.button!==0))return;
+  const b=e.target.closest&&e.target.closest(chip);if(!b||!root.contains(b))return;
+  const bx=b.closest(box),els=[...bx.querySelectorAll(chip)];if(els.length<2)return;
+  e._urut=1;
+  const from=els.indexOf(b),others=els.filter(x=>x!==b),x0=e.clientX,y0=e.clientY;
+  let on=false,to=from,bar=null;
+  try{b.setPointerCapture(e.pointerId)}catch(_){}
+  const mv=ev=>{
+   if(ev.pointerId!==e.pointerId)return;
+   const dx=ev.clientX-x0,dy=ev.clientY-y0;
+   if(!on){if(Math.hypot(dx,dy)<6)return;on=true;b.classList.add("drag");bar=document.createElement("span");bar.className="ins-bar";bx.appendChild(bar)}
+   b.style.transform="translate("+dx+"px,"+dy+"px) scale(1.04)";
+   /* tempat jatuh = kepingan lain yang paling dekat dengan jari, sebelum atau sesudahnya menurut sisi kiri/kanan */
+   const R=others.map(o=>o.getBoundingClientRect());let k=0,m=1e9;
+   R.forEach((r,j)=>{const d=Math.hypot(ev.clientX-(r.left+r.right)/2,(ev.clientY-(r.top+r.bottom)/2)*2);if(d<m){m=d;k=j}});
+   const r=R[k],po=ev.clientX>(r.left+r.right)/2,B=bx.getBoundingClientRect();
+   to=k+(po?1:0);
+   bar.style.cssText="left:"+((po?r.right+1.5:r.left-4.5)-B.left-bx.clientLeft)+"px;top:"+(r.top-B.top-bx.clientTop)+"px;height:"+r.height+"px"+(to===from?";display:none":"");
+   ev.preventDefault()};
+  const stop=()=>{b.removeEventListener("pointermove",mv);b.removeEventListener("pointerup",up);b.removeEventListener("pointercancel",stop);b.classList.remove("drag");b.style.transform="";if(bar)bar.remove()};
+  const up=ev=>{
+   if(ev.pointerId!==e.pointerId)return;
+   const was=on,t=to;stop();if(!was)return;
+   /* setelah menarik, klik yang menyusul jangan sampai melepas kata */
+   const kill=c=>{c.stopPropagation();c.preventDefault()};
+   window.addEventListener("click",kill,true);setTimeout(()=>window.removeEventListener("click",kill,true),80);
+   if(t!==from)pindah(b,from,t,els.length)};
+  b.addEventListener("pointermove",mv);b.addEventListener("pointerup",up);b.addEventListener("pointercancel",stop)};
+ const kd=e=>{
+  if(e._urut||e.altKey||e.ctrlKey||e.metaKey||e.shiftKey||(e.key!=="ArrowLeft"&&e.key!=="ArrowRight"))return;
+  const b=e.target.closest&&e.target.closest(chip);if(!b||!root.contains(b))return;
+  const els=[...b.closest(box).querySelectorAll(chip)],from=els.indexOf(b),to=from+(e.key==="ArrowLeft"?-1:1);
+  e._urut=1;e.preventDefault();
+  if(to>=0&&to<els.length)pindah(b,from,to,els.length)};
+ const K=root._ur=root._ur||{};
+ if(K[chip]){root.removeEventListener("pointerdown",K[chip][0]);root.removeEventListener("keydown",K[chip][1])}
+ K[chip]=[pd,kd];root.addEventListener("pointerdown",pd);root.addEventListener("keydown",kd);
+}
 function lSu(v){
  const L=LS.su=LS.su||{src:"hand",ok:0,n:0};
  const nw=()=>{const a=L.src=="hand"?LT.su:storyS(5,13);L.it=pick(a);L.W=chunk(L.it.t);const id=L.W.map((w,i)=>i);L.pool=sh(id);for(let g=0;g<6&&L.pool.join()==id.join();g++)L.pool=sh(id);L.sel=[];L.res=null;L.fin=0};
@@ -2268,10 +2323,12 @@ function lSu(v){
  v.innerHTML=`<div class="ltb"><button class="pl ${L.src=="hand"?"on":""}" data-s="hand">Soal tata bahasa</button><button class="pl ${L.src=="st"?"on":""}" data-s="st">Kalimat dari cerita</button><span class="pos">Skor ${L.ok}/${L.n}</span></div>
 <p class="lq">Susun kata menjadi kalimat yang benar${L.it.g?` · <b>${L.it.g}</b>`:""}</p>${L.src=="hand"&&L.it.tr?`<p class="pos" style="text-align:left;margin:-4px 0 8px">Arti: ${L.it.tr}</p>`:""}
 <div class="ans">${L.sel.length?L.sel.map(i=>chip(i,"in")).join("")+e:'<span class="pos">Ketuk kata di bawah untuk menyusun…</span>'}</div>
+<p class="ans-hint">${L.sel.length>1?"Tarik kata untuk memindahkan, ketuk untuk melepas. Dengan keyboard: panah kiri atau kanan.":""}</p>
 <div class="pool">${L.pool.filter(i=>!L.sel.includes(i)).map(i=>chip(i,"")).join("")}</div>
 <div class="row"><button id="c">Periksa</button><button id="r">Ulang</button><button id="h">Petunjuk</button><button id="n">Soal lain</button></div><div>${L.res||""}</div>`;
  v.querySelectorAll(".ltb .pl").forEach(b=>b.onclick=()=>{L.src=b.dataset.s;nw();lSu(v)});
  v.querySelectorAll(".ck").forEach(b=>b.onclick=()=>{const i=+b.dataset.i;if(b.classList.contains("in"))L.sel=L.sel.filter(x=>x!=i);else L.sel.push(i);L.res=null;lSu(v)});
+ urutKata(v,".ans .ck.in",".ans",(a,b)=>{const x=L.sel.splice(a,1)[0];L.sel.splice(b,0,x);L.res=null;lSu(v)});
  $("r").onclick=()=>{L.sel=[];L.res=null;lSu(v)};$("n").onclick=()=>{nw();lSu(v)};
  $("h").onclick=()=>{let q=0;while(q<L.sel.length&&L.W[L.sel[q]]==L.W[q])q++;L.sel=L.sel.slice(0,q);const i=L.pool.find(x=>!L.sel.includes(x)&&L.W[x]==L.W[q]);if(i!==undefined)L.sel.push(i);L.res=null;lSu(v)};
  $("c").onclick=()=>{if(L.sel.length<L.W.length){L.res='<div class="rs no">Belum semua kata dipakai.</div>';lSu(v);return}
@@ -2710,10 +2767,12 @@ function h5Jz(hb,L,v){
  hb.innerHTML=`<div class="ltb"><button class="pl ${S5.src=="buat"?"on":""}" data-s="buat">Soal buatan</button><button class="pl ${S5.src=="st"?"on":""}" data-s="st">Kalimat dari cerita HSK ${n5}</button><span class="pos">Skor ${S5.ok}/${S5.n}</span></div>
 <p class="lq"><span lang="zh">完成句子</span> Susun kata menjadi kalimat yang benar · <b>${it.g}</b></p>${it.tr?`<p class="pos" style="text-align:left;margin:-4px 0 8px">Arti: ${it.tr}</p>`:""}
 <div class="ans">${S5.sel.length?S5.sel.map(i=>chip(i,"in")).join("")+it.e:'<span class="pos">Ketuk kata di bawah untuk menyusun…</span>'}</div>
+<p class="ans-hint">${S5.sel.length>1?"Tarik kata untuk memindahkan, ketuk untuk melepas. Dengan keyboard: panah kiri atau kanan.":""}</p>
 <div class="pool">${S5.pool.filter(i=>!S5.sel.includes(i)).map(i=>chip(i,"")).join("")}</div>
 <div class="row"><button id="c">Periksa</button><button id="r">Ulang</button><button id="h">Petunjuk</button><button id="n">Soal lain</button></div><div>${S5.res||""}</div>`;
  hb.querySelectorAll("[data-s]").forEach(b=>b.onclick=()=>{S5.src=b.dataset.s;S5.it=null;h5Jz(hb,L,v)});
  hb.querySelectorAll(".ck").forEach(b=>b.onclick=()=>{const i=+b.dataset.i;if(b.classList.contains("in"))S5.sel=S5.sel.filter(x=>x!=i);else S5.sel.push(i);S5.res=null;h5Jz(hb,L,v)});
+ urutKata(hb,".ans .ck.in",".ans",(a,b)=>{const x=S5.sel.splice(a,1)[0];S5.sel.splice(b,0,x);S5.res=null;h5Jz(hb,L,v)});
  $("r").onclick=()=>{S5.sel=[];S5.res=null;h5Jz(hb,L,v)};$("n").onclick=()=>{nw();h5Jz(hb,L,v)};
  $("h").onclick=()=>{let q=0;while(q<S5.sel.length&&it.W[S5.sel[q]]==it.W[q])q++;S5.sel=S5.sel.slice(0,q);const i=S5.pool.find(x=>!S5.sel.includes(x)&&it.W[x]==it.W[q]);if(i!==undefined)S5.sel.push(i);S5.res=null;h5Jz(hb,L,v)};
  $("c").onclick=()=>{if(S5.sel.length<it.W.length){S5.res='<div class="rs no">Belum semua kata dipakai.</div>';h5Jz(hb,L,v);return}
@@ -3429,6 +3488,12 @@ function ujGambar(v,msg){
   +'<div class="exam-card"><h3>Soal ini dari mana?</h3><p class="exam-muted">Soal di sini ditulis sendiri oleh Zenta mengikuti bentuk kertas ujian HSK. Isinya bukan salinan soal ujian resmi, jadi tingkat kesulitannya hanya perkiraan. Gambar diganti deskripsi tertulis, dan rekaman <span lang="zh">听力</span> diputar dengan suara Mandarin di perangkatmu. Progres latihan tersimpan di perangkat ini.</p></div>'
   +'<div class="exam-actions"><button type="button" id="ex-back">Kembali ke beranda</button></div></div>';
  const root=v.querySelector('.uj');root.addEventListener('click',ujKlik);root.addEventListener('input',lhKetik);root.addEventListener('change',lhKetik);root.addEventListener('compositionend',lhKetik);
+ urutKata(root,'.lh-jawab .lh-chip.on','.lh-jawab',(dari,ke,b)=>{
+  const id=LH.id,n=+b.dataset.n;if(!id)return;
+  const r=lhRek(lhBaca(),id),a=r.a[n]?String(r.a[n]).split(',').filter(x=>x!==''):[];if(dari>=a.length)return;
+  const x=a.splice(dari,1)[0];a.splice(ke,0,x);lhSet(id,n,a.join(','));
+  const h=document.getElementById('lh-hasil');if(h)h.textContent='';
+  lhSegar1(n,'.lh-jawab .lh-chip[data-i="'+x+'"]')});
  lhSiap();
 }
 function renderExam(v,msg=''){
@@ -3514,6 +3579,7 @@ function lhKontrol(t,it,n,a,lv){
  if(t==='susun'){
   const w=it.w||[],pilih=a?String(a).split(',').filter(x=>x!==''):[],sisa=w.map((s,i)=>[s,String(i)]).filter(x=>!pilih.includes(x[1]));
   return '<div class="lh-susun"><div class="lh-jawab" aria-label="Susunanmu">'+(pilih.length?pilih.map(i=>'<button type="button" class="lh-chip on" data-lhx="hapus" data-n="'+n+'" data-i="'+i+'" lang="zh" aria-label="Lepas '+hskEsc(w[+i])+'">'+hskEsc(w[+i])+'</button>').join(''):'<span class="exam-muted">Tekan kepingan di bawah sesuai urutan kalimat.</span>')+'</div>'
+   +'<p class="exam-muted lh-pindah">'+(pilih.length>1?'Tarik kepingan untuk memindahkan, ketuk untuk melepas. Dengan keyboard: panah kiri atau kanan.':'')+'</p>'
    +(sisa.length?'<div class="lh-bank">'+sisa.map(x=>'<button type="button" class="lh-chip" data-lhx="tambah" data-n="'+n+'" data-i="'+x[1]+'" lang="zh">'+hskEsc(x[0])+'</button>').join('')+'</div>':'')
    +(pilih.length?'<button type="button" class="uj-m lh-ulang" data-lhx="kosong" data-n="'+n+'">Ulangi susunan</button>':'')+'</div>';
  }
