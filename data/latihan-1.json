@@ -420,7 +420,7 @@
 {"n":20,"au":["男：你在家做什么？","女：我在家看书。","问：她在家做什么？"],"o":["看书","看电视","睡觉"],"k":"A","tr":"Pria: Apa yang kamu lakukan di rumah? Wanita: Saya membaca buku di rumah. Tanya: Apa yang dia lakukan di rumah?"},
 {"n":21,"g":"Seekor kucing di bawah kursi.","x":"猫在椅子下面。","k":"T","tr":"Kucing ada di bawah kursi."},
 {"n":22,"g":"Sebuah buku di atas meja.","x":"书在椅子上。","k":"X","tr":"Buku ada di atas kursi.","p":"Gambar menunjukkan buku di atas meja, tulisan menyebut 椅子上 (di atas kursi)."},
-{"n":23,"g":"Seorang anak menonton televisi.","x":"他在看电视。","k":"T","tr":"Dia sedang menonton televisi."},
+{"n":23,"g":"Seorang anak menonton televisi.","x":"他现在在看电视。","k":"T","tr":"Sekarang dia sedang menonton televisi."},
 {"n":24,"g":"Seorang anak tidur di kamar.","x":"他在学校。","k":"X","tr":"Dia ada di sekolah.","p":"Gambar menunjukkan anak tidur di kamar, tulisan menyebut 学校 (sekolah)."},
 {"n":25,"g":"Sebuah komputer di atas meja.","x":"电脑在桌子上。","k":"T","tr":"Komputer ada di atas meja."},
 {"n":26,"x":"我家有一个大桌子。","k":"A","tr":"Di rumah saya ada sebuah meja besar."},
