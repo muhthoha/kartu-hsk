@@ -2352,26 +2352,37 @@ ${q.p!==null?`<div class="rs ${q.o[q.p]===q.c?"ok":"no"}">${q.o[q.p]===q.c?ikL("
  if(q){v.querySelectorAll(".op").forEach(b=>b.onclick=()=>{if(q.p!==null)return;q.p=+b.dataset.j;L.n++;const ok=q.o[q.p]===q.c;if(ok){L.ok++;WR=WR.filter(x=>x!=q.i)}else if(!WR.includes(q.i))WR.push(q.i);svw();lIs(v)});$("n").onclick=()=>{nw();lIs(v)}}
 }
 const GWG=[["把","被","比","对","给","跟","向","往","从","离","连"],["就","才","都","还","再","又","已经","正在"],["着","过","了","的","得","地"],["因为","所以","虽然","但是","如果","只要","只有","而且","不但","即使","无论","甚至","于是","然后"],["更","最","太","很","非常","特别","有点儿","一点儿"]];
+/* Pola kalimat HSK 5: kata kunci => pengecoh. Kata HSK 5 kebanyakan kata tunggal (居然, 趁, 反而), jadi pengecohnya ditulis per kata,
+   bukan dari kelompok GWG. Tiap pengecoh sudah dicocokkan dengan kalimat contoh 词语例释 HSK 5 dan dipilih yang artinya jelas berbeda
+   (bukan sinonim) dari kata kuncinya; arti kalimat tampil di soal. Kata baru: tambahkan di sini bersama 4 pengecoh. 词语辨析 (比一比) tidak dipakai di HSK 5
+   karena pasangannya memang hampir sama. */
+const H5D={"如何":["何必","何况","何时","为何"],"靠":["朝","趁","临","至于"],"居然":["至今","迟早","难怪","何必"],"以来":["以前","之间","以外","之内"],"临":["趁","自从","朝","凭"],"立刻":["至今","曾经","逐渐","迟早"],"般":["得","着","过","地"],"闻":["听","看","尝","摸"],"趁":["靠","朝","凭","临"],"凭":["趁","朝","替","临"],"支":["本","张","条","件"],"各自":["一起","互相","经常","反复"],"勿":["不","没","非","无"],"时刻":["偶尔","曾经","逐渐","至今"],"至今":["曾经","逐渐","迟早","立刻"],"反而":["何必","何况","可见","总之"],"从而":["但是","可是","否则","何况"],"于":["从","对","向","把"],"为":["是","当","在","到"],"替":["朝","凭","趁","临"],"说不定":["一定","何必","难怪","反而"],"似的":["着","过","了","吧"],"纷纷":["曾经","至今","迟早","再三"],"瞎":["再","老","多","先"],"分别":["一起","互相","经常","重新"],"便":["却","还","又","也"],"要不":["因为","如果","所以","虽然"],"作为":["因为","虽然","关于","由于"],"曾经":["至今","逐渐","迟早","立刻"],"毕竟":["难怪","何必","一旦","万一"],"逐渐":["立刻","迟早","至今","曾经"],"或许":["何必","总之","反而","一旦"],"以及":["但是","因为","所以","虽然"],"何况":["而且","所以","因为","但是"],"何必":["必须","一定","难怪","万一"],"多亏":["除非","与其","假设","万一"],"所谓":["关于","作为","自从","趁"],"迟早":["曾经","至今","立刻","照常"],"再三":["逐渐","迟早","至今","照常"],"非":["别","没","无","未"],"宁可":["与其","除非","万一","一旦"],"极其":["至今","迟早","照常","再三"],"其余":["其中","各自","彼此","自己"],"可见":["但是","虽然","否则","与其"],"尽快":["曾经","至今","迟早","逐渐"],"一旦":["除非","与其","总之","自从"],"难免":["曾经","至今","逐渐","再三"],"自从":["趁","凭","临","朝"],"幸亏":["除非","假设","与其","总之"],"朝":["靠","趁","凭","临"],"简直":["至今","迟早","逐渐","反而"],"至于":["由于","趁","凭","自从"],"总算":["曾经","至今","迟早","照常"],"从此":["曾经","立刻","逐渐","迟早"],"假设":["虽然","除非","与其","总之"],"不如":["比","像","跟","和"],"干脆":["何必","难怪","万一","毕竟"],"万一":["何况","反而","难怪","总之"],"的确":["曾经","迟早","再三","逐渐"],"轻易":["曾经","逐渐","立刻","再三"],"尽量":["曾经","至今","逐渐","再三"],"逐步":["立刻","曾经","至今","再三"],"照常":["曾经","至今","迟早","再三"],"难怪":["何必","万一","毕竟","总之"],"与其":["宁可","除非","假设","一旦"],"总之":["但是","所以","因为","虽然"],"赶快":["曾经","至今","逐渐","迟早"],"根本":["何必","难怪","总算","一旦"],"除非":["因为","虽然","与其","总之"],"反正":["毕竟","难怪","何必","万一"]};
+const H5K=Object.keys(H5D).sort((a,b)=>b.length-a.length);
 let POI=null;
 function poItems(){
  if(POI)return POI;const o=[],seen=new Set(),keys=[].concat(...GWG).sort((a,b)=>b.length-a.length);
  Object.keys(GR.d).forEach(set=>GR.d[set].forEach(x=>{
-  x.p.forEach(p=>{const t=p.t.replace(/[“”]/g,""),k=keys.find(k=>t.includes(k)&&p.z.split(k).length==2&&!inCpd(p.z,k));if(k&&!/／/.test(p.z)&&!seen.has(p.z)){seen.add(p.z);o.push({z:p.z,y:p.y,i:p.i,k,t:p.t,m:p.m,set,w:GN[set]+" · L"+x.l})}});
-  if(x.c){const ks=[x.c.a,x.c.b].filter(Boolean).flatMap(s=>s.split(/\s*\/\s*/)).filter(s=>keys.includes(s));x.c.d.forEach(d=>{const k=ks.find(k=>d.z.split(k).length==2&&!inCpd(d.z,k));if(k&&!/／/.test(d.z)&&!seen.has(d.z)){seen.add(d.z);o.push({z:d.z,y:d.y,i:d.i,k,t:"比一比 · "+x.c.a+(x.c.b?" vs "+x.c.b:""),m:d.n,set,w:GN[set]+" · L"+x.l})}})}}));
+  const h5=/^H5/.test(set),ks=h5?H5K:keys;
+  x.p.forEach(p=>{const t=p.t.replace(/[“”]/g,""),k=ks.find(k=>t.includes(k)&&p.z.split(k).length==2&&!inCpd(p.z,k));if(k&&!/／/.test(p.z)&&!seen.has(p.z)){seen.add(p.z);const it={z:p.z,y:p.y,i:p.i,k,t:p.t,m:p.m,set,w:GN[set]+" · L"+x.l};if(h5){it.d=H5D[k];it.h5=1}o.push(it)}});
+  if(x.c&&!h5){const ks=[x.c.a,x.c.b].filter(Boolean).flatMap(s=>s.split(/\s*\/\s*/)).filter(s=>keys.includes(s));x.c.d.forEach(d=>{const k=ks.find(k=>d.z.split(k).length==2&&!inCpd(d.z,k));if(k&&!/／/.test(d.z)&&!seen.has(d.z)){seen.add(d.z);o.push({z:d.z,y:d.y,i:d.i,k,t:"比一比 · "+x.c.a+(x.c.b?" vs "+x.c.b:""),m:d.n,set,w:GN[set]+" · L"+x.l})}})}}));
  (LT.po||[]).forEach(x=>{if(!seen.has(x.z)){seen.add(x.z);o.push(x)}});return POI=o}
 function mcq(v,L,q,opts,chosen,html,onPick,next){
  // generic multiple-choice block: opts=[{t,ok,sub}]
  return `<div class="ops">${opts.map((x,j)=>`<button class="op ${chosen===null?"":x.ok?"ok":j==chosen?"no":""}" data-j="${j}"><span class="hz2">${x.t}</span>${chosen!==null&&x.sub?`<small>${x.sub}</small>`:""}</button>`).join("")}</div>`}
 function lPo(v){
  const L=LS.po=LS.po||{f:"all",ok:0,n:0};
- const nw=()=>{let a=poItems().filter(x=>L.f=="all"||(L.f=="4"?(x.set=="上"||x.set=="下"):x.set=="H"+L.f));if(!a.length)a=poItems();const it=pick(a);const g=GWG.find(g=>g.includes(it.k))||[].concat(...GWG);let d=sh((it.d||g).filter(x=>x!=it.k&&(it.d||pexOk(it.k,x))));if(d.length<3)d=d.concat(sh([].concat(...GWG).filter(x=>x!=it.k&&!d.includes(x)&&pexOk(it.k,x))));L.q={it,o:sh([{t:it.k,ok:true},...d.slice(0,3).map(t=>({t,ok:false}))]),p:null}};
- if(!L.q)nw();const q=L.q,it=q.it;
- v.innerHTML=`<div class="ltb">${[["all","Semua"],["2","HSK 2"],["3","HSK 3"],["4","HSK 4"]].map(([k,t])=>`<button class="pl ${L.f==k?"on":""}" data-f="${k}">${t}</button>`).join("")}<span class="pos">Skor ${L.ok}/${L.n}</span></div>
+ const nw=()=>{let a=poItems().filter(x=>L.f=="all"||(L.f=="5"?/^H5/.test(x.set):L.f=="4"?(x.set=="上"||x.set=="下"):x.set=="H"+L.f));if(!a.length){if(L.f!="5")a=poItems().filter(x=>!x.h5);if(!a.length){L.q=null;return}}const it=pick(a);const g=GWG.find(g=>g.includes(it.k))||[].concat(...GWG);let d=sh((it.d||g).filter(x=>x!=it.k&&(it.d||pexOk(it.k,x))));if(d.length<3)d=d.concat(sh([].concat(...GWG).filter(x=>x!=it.k&&!d.includes(x)&&pexOk(it.k,x))));L.q={it,o:sh([{t:it.k,ok:true},...d.slice(0,3).map(t=>({t,ok:false}))]),p:null}};
+ if(!L.q)nw();const q=L.q;
+ const bar=`<div class="ltb">${[["all","Semua"],["2","HSK 2"],["3","HSK 3"],["4","HSK 4"],["5","HSK 5"]].map(([k,t])=>`<button class="pl ${L.f==k?"on":""}" data-f="${k}">${t}</button>`).join("")}<span class="pos">Skor ${L.ok}/${L.n}</span></div>`;
+ const kePilih=()=>v.querySelectorAll(".ltb [data-f]").forEach(b=>b.onclick=()=>{L.f=b.dataset.f;nw();lPo(v)});
+ if(!q){v.innerHTML=bar+`<p class="pos" style="margin:30px 0">Belum ada soal pola kalimat untuk level ini.</p>`;kePilih();return}
+ const it=q.it;
+ v.innerHTML=bar+`
 <p class="lq">Pilih kata tata bahasa yang tepat untuk bagian kosong</p><div class="bl">${it.z.replace(it.k,'<span style="color:var(--acc)">＿＿</span>')}</div>${it.i?`<p class="pos" style="text-align:left;margin:-4px 0 8px">Arti: ${it.i}</p>`:""}
 ${mcq(v,L,q,q.o,q.p,"")}
 ${q.p!==null?`<div class="rs ${q.o[q.p].ok?"ok":"no"}">${q.o[q.p].ok?ikL("cek","lm")+"Benar":ikL("tutup","lm")+"Jawaban benar: "+it.k}</div><div class="gx"><div class="gz">${it.z.replace(it.k,"<b style='color:var(--acc)'>"+it.k+"</b>")} ${aub(it.z)}</div><div class="gpy">${it.y}</div><div class="gi">${it.i}</div><div class="tg">${it.w} · ${it.t}</div></div><p class="pos" style="text-align:left;margin-top:8px">${it.m}</p>${q.o[q.p].ok?"":whyPo(q)}`:""}
 <div class="row"><button id="n">Soal berikutnya</button></div>`;
- v.querySelectorAll(".ltb [data-f]").forEach(b=>b.onclick=()=>{L.f=b.dataset.f;nw();lPo(v)});
+ kePilih();
  v.querySelectorAll(".op").forEach(b=>b.onclick=()=>{if(q.p!==null)return;q.p=+b.dataset.j;L.n++;if(q.o[q.p].ok)L.ok++;lPo(v)});$("n").onclick=()=>{nw();lPo(v)};
 }
 function lAr(v){
@@ -2393,20 +2404,22 @@ ${q.p!==null?`<div class="rs ${q.o[q.p].ok?"ok":"no"}">${q.o[q.p].ok?ikL("cek","
 }
 function lDe(v){
  const L=LS.de=LS.de||{src:2,ok:0,n:0,auto:false};if(L.src=="tk"&&!penuh()){L.src=2;L.q=null}
- const pool=()=>D.filter(c=>L.src=="tk"?((c[3]==5||c[3]==6)&&c[6]=="sen"&&AU[c[0]]):(c[3]==L.src&&c[5]&&AU[c[5]]&&hanN(c[5])>=6&&hanN(c[5])<=16));
+ const pool=()=>D.filter(c=>L.src=="tk"?((c[3]==5||c[3]==6)&&c[6]=="sen"&&AU[c[0]]):(c[3]==L.src&&c[5]&&(L.src==7||AU[c[5]])&&hanN(c[5])>=6&&hanN(c[5])<=16));
  const key=c=>L.src=="tk"?c[0]:c[5];
+ /* HSK 5 (kode 7) belum punya rekaman kalimat: diputar dengan suara Mandarin perangkat. Tanpa suara itu soal tidak bisa didengar, jadi tampil catatan. */
+ const sepi=()=>L.src==7&&!zv();
  const nw=()=>{const a=pool();if(!a.length){L.q=null;return}const c=pick(a);const n=hanN(key(c));let d=sh(a.filter(x=>x!==c&&Math.abs(hanN(key(x))-n)<=3&&key(x)!=key(c))).slice(0,3);if(d.length<3)d=d.concat(a.filter(x=>x!==c&&key(x)!=key(c)&&!d.includes(x)).sort((x,y)=>Math.abs(hanN(key(x))-n)-Math.abs(hanN(key(y))-n)).slice(0,3-d.length));L.q={c,o:sh([{x:c,ok:true},...d.map(x=>({x,ok:false}))]),p:null};L.auto=true};
- if(!L.q||(L.src=="tk"?L.q.c[3]<5:L.q.c[3]!=L.src))nw();
- if(!L.q){const pk=L.src=="tk"?ilBelum(["tkl","aud"]):null;v.innerHTML=`<div class="ltb">${[[1,"HSK 1"],[2,"HSK 2"],[3,"HSK 3"],[4,"HSK 4"],["tk","Kalimat Bandara"]].map(([n,t])=>`<button class="pl ${L.src==n?"on":""}" data-s="${n}">${t}</button>`).join("")}</div>`+(pk?ilCatatan(pk,"kalimat Bandara"):`<p class="pos" style="margin:30px 0">Tidak ada soal.</p>`);v.querySelectorAll(".ltb [data-s]").forEach(b=>b.onclick=()=>{L.src=b.dataset.s=="tk"?"tk":+b.dataset.s;L.q=null;lDe(v)});ilBind();return}
+ if(!L.q||(L.src=="tk"?(L.q.c[3]!=5&&L.q.c[3]!=6):L.q.c[3]!=L.src))nw();
+ if(!L.q||sepi()){const pk=L.src=="tk"?ilBelum(["tkl","aud"]):null;v.innerHTML=`<div class="ltb">${[[1,"HSK 1"],[2,"HSK 2"],[3,"HSK 3"],[4,"HSK 4"],[7,"HSK 5"],["tk","Kalimat Bandara"]].map(([n,t])=>`<button class="pl ${L.src==n?"on":""}" data-s="${n}">${t}</button>`).join("")}</div>`+(sepi()?`<p class="pos" style="margin:30px 0;text-align:left">Latihan dengar HSK 5 memakai suara Mandarin dari perangkatmu, karena rekaman HSK 5 belum ada. Perangkat ini belum punya suara Mandarin. Pasang suara Mandarin di pengaturan bahasa perangkat, atau pilih level lain.</p>`:pk?ilCatatan(pk,"kalimat Bandara"):`<p class="pos" style="margin:30px 0">Tidak ada soal.</p>`);v.querySelectorAll(".ltb [data-s]").forEach(b=>b.onclick=()=>{L.src=b.dataset.s=="tk"?"tk":+b.dataset.s;L.q=null;lDe(v)});ilBind();return}
  const q=L.q,c=q.c;
- v.innerHTML=`<div class="ltb">${[[1,"HSK 1"],[2,"HSK 2"],[3,"HSK 3"],[4,"HSK 4"],["tk",penuh()?"Kalimat Bandara":IKK+"Kalimat Bandara"]].map(([n,t])=>`<button class="pl ${L.src==n?"on":""}" data-s="${n}">${t}</button>`).join("")}<span class="pos">Skor ${L.ok}/${L.n}</span></div>
+ v.innerHTML=`<div class="ltb">${[[1,"HSK 1"],[2,"HSK 2"],[3,"HSK 3"],[4,"HSK 4"],[7,"HSK 5"],["tk",penuh()?"Kalimat Bandara":IKK+"Kalimat Bandara"]].map(([n,t])=>`<button class="pl ${L.src==n?"on":""}" data-s="${n}">${t}</button>`).join("")}<span class="pos">Skor ${L.ok}/${L.n}</span></div>
 <p class="lq">Dengarkan, lalu pilih kalimat yang kamu dengar</p>
-<div class="row"><button class="pl" id="pp" style="padding:12px 22px">${IKA}Putar audio</button></div>
+<div class="row"><button class="pl" id="pp" style="padding:12px 22px">${IKA}Putar audio</button></div>${L.src==7&&!AU[key(c)]?`<p class="pos" style="margin:-2px 0 10px">Suara dari perangkatmu. Rekaman HSK 5 belum tersedia.</p>`:""}
 ${mcq(v,L,q,q.o.map(o=>({t:key(o.x),ok:o.ok,sub:L.src=="tk"?o.x[2]:o.x[0]+" "+o.x[1]+": "+o.x[2]})),q.p,"")}
 ${q.p!==null?`<div class="rs ${q.o[q.p].ok?"ok":"no"}">${q.o[q.p].ok?ikL("cek","lm")+"Benar":ikL("tutup","lm")+"Yang benar: "+key(c)}</div>${q.o[q.p].ok?"":whyDe(q,key)}`:""}
 <div class="row"><button id="n">Soal berikutnya</button></div>`;
  v.querySelectorAll(".ltb [data-s]").forEach(b=>b.onclick=()=>{if(b.dataset.s=="tk"&&!penuh()){ajakLangganan("latihan dengar Kalimat Bandara",b);return}L.src=b.dataset.s=="tk"?"tk":+b.dataset.s;nw();lDe(v)});
- const play=()=>{if(!playAud(key(c),$("pp")))$("pp").textContent="Audio tidak tersedia"};
+ const play=()=>{if(playAud(key(c),$("pp")))return;if(L.src==7&&zv()){say(key(c));return}$("pp").textContent="Audio tidak tersedia"};
  $("pp").onclick=play;if(L.auto){L.auto=false;play()}
  v.querySelectorAll(".op").forEach(b=>b.onclick=()=>{if(q.p!==null)return;q.p=+b.dataset.j;L.n++;if(q.o[q.p].ok)L.ok++;lDe(v)});$("n").onclick=()=>{nw();lDe(v)};
 }
@@ -2430,9 +2443,12 @@ function whyIs(q){
  s+=px&&pc&&px!=pc?`<p>Bagian kosong membutuhkan <b>${pc}</b>, sedangkan ${x[0]} adalah ${px}.</p>`:`<p>Keduanya ${pc||"kata"}, tetapi artinya berbeda. Kalimat ini membutuhkan <b>${c[0]}</b> (${c[2]}).</p>`;
  return s+`<p>Cara mengecek: masukkan kata ke kalimat lalu baca artinya. Dengan <b>${c[0]}</b>: ${c[5]}</p></div>`}
 const GKF={"把":"menangani objek yang sudah pasti (把字句)","被":"pasif: subjek menerima tindakan","比":"membandingkan dua hal","对":"terhadap / bagi (sikap atau pengaruh)","给":"kepada (penerima) atau untuk","跟":"dengan / bersama; 跟……一样","向":"ke arah / kepada (sasaran)","往":"menuju arah (往左走)","从":"dari (titik awal), sering 从……到……","离":"berjarak dari","连":"bahkan (连……都……)","就":"langsung / segera; kesimpulan; 一……就……","才":"baru (lebih lambat dari dugaan); 只有……才……","都":"semua; atau “sudah” (都……了)","还":"masih / lumayan / juga","再":"lagi (belum terjadi)","又":"lagi (sudah terjadi); 又……又……","已经":"sudah (selesai)","正在":"sedang berlangsung","着":"keadaan yang berlangsung (门开着)","过":"pernah (pengalaman)","了":"tindakan selesai atau perubahan","的":"penghubung penjelas dengan nomina","得":"penghubung verba dengan pelengkap tingkat","地":"penghubung keterangan dengan verba","因为":"sebab","所以":"akibat","虽然":"meskipun","但是":"tetapi","如果":"jika","只要":"asal (syarat cukup)","只有":"hanya jika (syarat satu-satunya)","而且":"dan juga","不但":"tidak hanya","即使":"sekalipun","无论":"bagaimanapun","甚至":"bahkan","于是":"lalu / maka","然后":"kemudian","更":"lebih","最":"paling","太":"terlalu","很":"sangat","非常":"sangat sekali","特别":"istimewa / sangat","有点儿":"agak (biasanya negatif)","一点儿":"sedikit (setelah adjektiva)"};
+/* Penjelasan pengecoh di Pola HSK 5: GKF dulu, lalu kata yang belum ada di kamus situs, lalu arti dari kamus (vmap) */
+const GK5={"何时":"kapan","为何":"mengapa","临":"menjelang","之间":"di antara","以外":"di luar","之内":"di dalam","替":"untuk / menggantikan (orang lain)","没":"tidak (sudah) atau belum","未":"belum (bahasa tulis)"};
+const glH5=w=>GKF[w]||GK5[w]||(vmap[w]?"berarti “"+vmap[w][2].split(";")[0].trim()+"” ("+vmap[w][1]+")":"fungsinya berbeda");
 function whyPo(q){
  const it=q.it,x=q.o[q.p].t;
- return `<div class="why"><b>Kenapa salah</b><p>Kamu memilih <b>${x}</b>: ${GKF[x]||"fungsinya berbeda"}.</p><p>Kalimat ini membutuhkan <b>${it.k}</b>: ${GKF[it.k]||it.m}.</p><p>Pola: ${it.t}${it.m?"<br>"+it.m:""}</p><p>Cara mengecek: ganti bagian kosong dengan pilihanmu dan tanyakan apakah maknanya masih sesuai dengan maksud kalimat.</p></div>`}
+ return `<div class="why"><b>Kenapa salah</b><p>Kamu memilih <b>${x}</b>: ${it.h5?glH5(x):(GKF[x]||"fungsinya berbeda")}.</p><p>Kalimat ini membutuhkan <b>${it.k}</b>: ${GKF[it.k]||it.m}.</p><p>Pola: ${it.t}${it.m?"<br>"+it.m:""}</p><p>Cara mengecek: ganti bagian kosong dengan pilihanmu dan tanyakan apakah maknanya masih sesuai dengan maksud kalimat.</p></div>`}
 function whyAr(q,L){
  const x=q.o[q.p].x,c=q.c;
  return `<div class="why"><b>Kenapa salah</b><p>${L.dir=="zi"?`Arti yang kamu pilih adalah arti dari <b>${x[0]}</b> (${x[1]}), bukan dari <b>${c[0]}</b>.`:`Kamu memilih <b>${x[0]}</b> (${x[1]}) yang berarti “${x[2]}”, bukan “${c[2]}”.`}</p><p><b>${c[0]}</b> (${c[1]}) = ${c[2]}${posT(c)?" · "+posT(c):""}.</p>${c[5]?`<p>Ingat lewat kalimat: ${c[5]}</p>`:""}</div>`}
