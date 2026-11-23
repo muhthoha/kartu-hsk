@@ -12,6 +12,9 @@ Hasil pemeriksaan tiap kalimat ditulis ke <keluar>/../kalimat-hasil-<bagian>.jso
 Kalimat yang belum lolos pemeriksaan (s/t salah satunya False) dapat dicoba lagi dengan variasi suara tambahan; berkas lama
 hanya diganti bila hasil baru lolos dua-duanya:
   python3 buat_audio_kalimat.py --daftar kalimat.json --model <...> --asr <...> --keluar ../../audio/kalimat --ulangi [--seed-tambahan 8]
+Pinyin otomatis bisa keliru pada huruf berbunyi ganda (只 zhī/zhǐ, 长 cháng/zhǎng, 得 de/dé, 为 wèi/wéi, 种 zhǒng/zhòng, ...).
+Koreksi dari manusia disimpan di koreksi_pinyin_kalimat.json ({kalimat: pinyin lengkap}); MP3-nya dibuat ulang dan menimpa yang lama:
+  python3 buat_audio_kalimat.py --koreksi koreksi_pinyin_kalimat.json --model <...> --asr <...> --keluar ../../audio/kalimat
 Setelah semua bagian selesai:  python3 buat_audio_kalimat.py --keluar ../../audio/kalimat --indeks
 """
 import argparse
@@ -52,7 +55,7 @@ def hasil_terakhir(keluar):
     """Hasil pemeriksaan tiap kalimat dari semua kalimat-hasil-*.jsonl (baris terakhir menang)."""
     induk = os.path.dirname(os.path.abspath(keluar))
     rs = {}
-    for nama in sorted(os.listdir(induk)):
+    for nama in sorted(os.listdir(induk), key=lambda n: ("koreksi" in n, n)):  # hasil koreksi menimpa hasil lain
         if nama.startswith("kalimat-hasil-") and nama.endswith(".jsonl"):
             for l in open(os.path.join(induk, nama), encoding="utf-8"):
                 try:
@@ -90,6 +93,28 @@ def ulangi(a):
     print("diganti:", pulih, "| tetap belum lolos:", len(gagal) - pulih)
 
 
+def koreksi(a):
+    """Buat ulang MP3 untuk kalimat yang pinyinnya sudah dikoreksi manusia; berkas lama ditimpa. Hasil pemeriksaan ke
+    <keluar>/../kalimat-hasil-koreksi.jsonl (dibaca paling akhir). Yang belum lolos pemeriksa keluar dari indeks sampai ada yang mendengarkan."""
+    kor = json.load(open(a.koreksi, encoding="utf-8"))
+    bk.SENT = [("X", k) for k in range(0, 3 + a.seed_tambahan)]
+    P = Pembuat(a.model, a.asr)
+    os.makedirs(a.keluar, exist_ok=True)
+    resf = os.path.join(os.path.dirname(os.path.abspath(a.keluar)), "kalimat-hasil-koreksi.jsonl")
+    lolos = 0
+    with open(resf, "a", encoding="utf-8") as fo:
+        for h, p in kor.items():
+            t0 = time.time()
+            y, info = P.satu(h, p)
+            zs.to_mp3(y, os.path.join(a.keluar, kunci(h) + ".mp3"))
+            ok = bool(info.get("s") and info.get("t"))
+            lolos += ok
+            fo.write(json.dumps(dict(h=h, p=p, ok=True, dur=round(len(y) / zs.SR, 2), info=info, koreksi=True,
+                                     sec=round(time.time() - t0, 2)), ensure_ascii=False) + "\n")
+            fo.flush()
+    print("dibuat ulang:", len(kor), "| lolos pemeriksa:", lolos, "| belum lolos:", len(kor) - lolos)
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--daftar")
@@ -101,13 +126,19 @@ def main():
     ap.add_argument("--batas", type=int, default=None)
     ap.add_argument("--ulangi", action="store_true", help="coba lagi kalimat yang belum lolos dengan seed tambahan")
     ap.add_argument("--seed-tambahan", type=int, default=8)
+    ap.add_argument("--koreksi", help="JSON {kalimat: pinyin yang sudah dikoreksi}: buat ulang MP3 kalimat itu saja")
     ap.add_argument("--indeks", action="store_true", help="hanya tulis <keluar>/index.json dari berkas yang ada, lalu selesai")
     a = ap.parse_args()
     if a.indeks:
         tulis_indeks(a.keluar)
         return
+    if a.koreksi:
+        if not (a.model and a.asr):
+            ap.error("--model dan --asr wajib")
+        koreksi(a)
+        return
     if not (a.daftar and a.model and a.asr):
-        ap.error("--daftar, --model, dan --asr wajib (kecuali --indeks)")
+        ap.error("--daftar, --model, dan --asr wajib (kecuali --indeks atau --koreksi)")
     if a.ulangi:
         ulangi(a)
         return
