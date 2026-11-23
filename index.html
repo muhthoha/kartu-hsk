@@ -3054,7 +3054,7 @@ function h3Load(){
   if(H3.a3)fetch("audio3/index.json?v=1").then(r=>r.ok?r.json():null).then(x=>{if(x&&Array.isArray(x.w)&&Array.isArray(x.s)){H3.aw=new Set(x.w);H3.as=new Set(x.s)}}).catch(()=>{}).then(()=>{if(S.mode==="h3")render()});
   /* MP3 kalimat contoh (MeloTTS): daftar kode di audio/kalimat/index.json. Bila tidak ada, tombol kalimat memakai suara peramban.
      Naikkan angka ?v= bila isi indeks bertambah. */
-  fetch("audio/kalimat/index.json?v=1").then(r=>r.ok?r.json():null).then(x=>{if(Array.isArray(x))H3.ks=new Set(x.filter(k=>typeof k==="string"))}).catch(()=>{}).then(()=>{if(H3.ks&&S.mode==="h3")render()});
+  fetch("audio/kalimat/index.json?v=3").then(r=>r.ok?r.json():null).then(x=>{if(Array.isArray(x))H3.ks=new Set(x.filter(k=>typeof k==="string"))}).catch(()=>{}).then(()=>{if(H3.ks&&S.mode==="h3")render()});
   h3Full();
  }).catch(e=>{H3.p=null;throw e});
  return H3.p}
@@ -3104,8 +3104,8 @@ function h3Abr(c,ix){
 function h3Sen(c,ix){
  if(!c[5])return"";const id=ix+1;
  if(H3.as&&H3.as.has(id))return ` <button class="pl sm" data-a3="s${id}">${IKA0}</button>`;
- if(AU[c[5]])return ` <button class="pl sm" data-aud="${enc(c[5])}">${IKA0}</button>`;
  if(H3.ks&&H3.ks.has(kaH("s|"+c[5])))return ` <button class="pl sm" data-ks="${hskEsc(c[5])}">${IKA0}</button>`;
+ if(AU[c[5]])return ` <button class="pl sm" data-aud="${enc(c[5])}">${IKA0}</button>`;
  return ` <button class="wd sm" data-say="${hskEsc(c[5])}">${IKA0}</button>`}
 let A3=null;
 function a3Stop(){try{if(A3){A3.onended=A3.onerror=null;A3.pause()}}catch(e){}A3=null;document.querySelectorAll("[data-a3].on,[data-kw].on,[data-ks].on").forEach(b=>b.classList.remove("on"))}
