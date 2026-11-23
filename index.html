@@ -3054,7 +3054,7 @@ function h3Load(){
   if(H3.a3)fetch("audio3/index.json?v=1").then(r=>r.ok?r.json():null).then(x=>{if(x&&Array.isArray(x.w)&&Array.isArray(x.s)){H3.aw=new Set(x.w);H3.as=new Set(x.s)}}).catch(()=>{}).then(()=>{if(S.mode==="h3")render()});
   /* MP3 kalimat contoh (MeloTTS): daftar kode di audio/kalimat/index.json. Bila tidak ada, tombol kalimat memakai suara peramban.
      Naikkan angka ?v= bila isi indeks bertambah. */
-  fetch("audio/kalimat/index.json?v=1").then(r=>r.ok?r.json():null).then(x=>{if(Array.isArray(x))H3.ks=new Set(x.filter(k=>typeof k==="string"))}).catch(()=>{}).then(()=>{if(H3.ks&&S.mode==="h3")render()});
+  fetch("audio/kalimat/index.json?v=2").then(r=>r.ok?r.json():null).then(x=>{if(Array.isArray(x))H3.ks=new Set(x.filter(k=>typeof k==="string"))}).catch(()=>{}).then(()=>{if(H3.ks&&S.mode==="h3")render()});
   h3Full();
  }).catch(e=>{H3.p=null;throw e});
  return H3.p}

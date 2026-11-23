@@ -259,6 +259,11 @@ def sandhi(units):
 def buat_kalimat(A, hanzi_kata, pinyin_kata, kalimat_asli):
     """-> (pinyin kalimat, [penanda])."""
     flags = []
+    # kartu kadang mencantumkan dua bacaan ("le / liǎo"): pakai yang pertama, tandai untuk ditinjau
+    if "/" in pinyin_kata:
+        pertama = pinyin_kata.split("/")[0].strip()
+        flags.append(f"kartu punya 2 bacaan, dipakai yang pertama ({pertama})")
+        pinyin_kata = pertama
     # label dialog "A：" / "B：" tidak dibaca (tidak ada pinyinnya); hanzi tetap utuh di tempat lain
     kalimat = re.sub(r"(?<![A-Za-z])[A-Z]：", "", kalimat_asli)
     if kalimat != kalimat_asli:
