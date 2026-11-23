@@ -36,4 +36,20 @@ Proses dapat dilanjutkan; kata yang MP3-nya sudah ada dilewati. Kecepatan sekita
 
 ## Di situs
 Tombol "Dengar" pada kartu kata memutar `audio/kata/<kode>.mp3`; bila berkas tidak ada atau gagal dimuat, memakai suara bawaan peramban (`kwPlay` di `index.html`).
-Audio kalimat contoh HSK 3.0 dan teknis belum dibuat.
+Tombol kalimat contoh HSK 3.0 (`h3Sen`) memutar `audio/kalimat/<kode>.mp3` bila kodenya ada di `audio/kalimat/index.json`; bila tidak, memakai suara peramban. Audio kalimat lama (`AU`, audio HSK 2.0) tetap didahulukan bila kalimatnya sama.
+
+## Audio kalimat contoh (HSK 3.0)
+Status: baru 250 kalimat pratinjau (Set 1 tiap level, `data/hsk3.json`). Sisanya menunggu `hsk3-penuh.json`; kalimat kosakata teknis belum.
+Kode berkas = `kah("s|" + hanzi kalimat)`, jadi situs tidak perlu pinyin kalimat dan tidak ada daftar kalimat di berkas publik.
+```
+# 1. pinyin kalimat: kata utama dari pinyin kartu, sisanya otomatis; CSV tinjauan berisi yang ditandai ragu
+python3 tools/audio_kata/pinyin_kalimat.py --data /jalur/hsk3-penuh.json --model <folder>/vits-melo-tts-zh_en \
+    --keluar kalimat.json --tinjau tinjau.csv
+# (opsional) isi kolom "p2" di kalimat.json untuk kalimat yang pinyinnya dikoreksi; p2 dipakai bila ada
+# 2. audio (boleh paralel dengan --bagian 0/1 --dari 2)
+python3 tools/audio_kata/buat_audio_kalimat.py --daftar kalimat.json --model <folder>/vits-melo-tts-zh_en \
+    --asr <folder>/sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2024-07-17 --keluar audio/kalimat
+# 3. indeks, lalu naikkan angka ?v= pada fetch("audio/kalimat/index.json?v=1") di index.html (h3Load)
+python3 tools/audio_kata/buat_audio_kalimat.py --keluar audio/kalimat --indeks
+```
+Hasil uji 250 kalimat: 249 lolos pemeriksa, ±1,7 detik per kalimat, ±11 KB per MP3 (3.600 kalimat kira-kira 40 MB). Pemeriksa hanya memastikan suara cocok dengan pinyin yang diberikan; ia tidak membuktikan bacaan itu benar menurut konteks, dan nada kalimat tidak diperiksa dari suara. Daftar nada netral di `pinyin_kalimat.py` (`NETRAL_2`) disusun tangan dan tidak lengkap. Belum ditinjau guru atau penutur asli.

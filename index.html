@@ -3052,6 +3052,9 @@ function h3Load(){
   H3.pv=j.D;D3=[];h3Put(j.D);H3.a3=!!j.a3;H3.ok=true;
   /* MP3 HSK 3.0 (opsional): hanya dicari bila hsk3.json bertanda a3; daftar id yang ada di audio3/index.json */
   if(H3.a3)fetch("audio3/index.json?v=1").then(r=>r.ok?r.json():null).then(x=>{if(x&&Array.isArray(x.w)&&Array.isArray(x.s)){H3.aw=new Set(x.w);H3.as=new Set(x.s)}}).catch(()=>{}).then(()=>{if(S.mode==="h3")render()});
+  /* MP3 kalimat contoh (MeloTTS): daftar kode di audio/kalimat/index.json. Bila tidak ada, tombol kalimat memakai suara peramban.
+     Naikkan angka ?v= bila isi indeks bertambah. */
+  fetch("audio/kalimat/index.json?v=1").then(r=>r.ok?r.json():null).then(x=>{if(Array.isArray(x))H3.ks=new Set(x.filter(k=>typeof k==="string"))}).catch(()=>{}).then(()=>{if(H3.ks&&S.mode==="h3")render()});
   h3Full();
  }).catch(e=>{H3.p=null;throw e});
  return H3.p}
@@ -3102,9 +3105,10 @@ function h3Sen(c,ix){
  if(!c[5])return"";const id=ix+1;
  if(H3.as&&H3.as.has(id))return ` <button class="pl sm" data-a3="s${id}">${IKA0}</button>`;
  if(AU[c[5]])return ` <button class="pl sm" data-aud="${enc(c[5])}">${IKA0}</button>`;
+ if(H3.ks&&H3.ks.has(kaH("s|"+c[5])))return ` <button class="pl sm" data-ks="${hskEsc(c[5])}">${IKA0}</button>`;
  return ` <button class="wd sm" data-say="${hskEsc(c[5])}">${IKA0}</button>`}
 let A3=null;
-function a3Stop(){try{if(A3){A3.onended=A3.onerror=null;A3.pause()}}catch(e){}A3=null;document.querySelectorAll("[data-a3].on,[data-kw].on").forEach(b=>b.classList.remove("on"))}
+function a3Stop(){try{if(A3){A3.onended=A3.onerror=null;A3.pause()}}catch(e){}A3=null;document.querySelectorAll("[data-a3].on,[data-kw].on,[data-ks].on").forEach(b=>b.classList.remove("on"))}
 function a3Play(id,btn){
  a3Stop();stopAud();try{speechSynthesis.cancel()}catch(e){}
  const bad=()=>{if(A3===a)A3=null;btn.classList.remove("on");btn.textContent="Audio tidak tersedia"};let a=null;
@@ -3122,6 +3126,15 @@ function kwPlay(key,btn){
  let ng=0;const fin=()=>{if(A3===a)A3=null;btn.classList.remove("on")},bad=()=>{if(ng)return;ng=1;fin();say(z)};
  try{a=new Audio("audio/kata/"+kaH(key)+".mp3");A3=a;a.onended=fin;a.onerror=bad;const p=a.play();if(p&&p.catch)p.catch(bad)}catch(e){bad()}}
 document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest("[data-kw]");if(!b)return;e.stopPropagation();e.preventDefault();if(b.classList.contains("on")){a3Stop();return}kwPlay(b.dataset.kw,b)},true);
+/* Audio kalimat contoh (audio/kalimat/<kode>.mp3, MeloTTS). Kode = kaH("s|"+hanzi kalimat); daftar kode yang ada ada di
+   audio/kalimat/index.json (H3.ks), jadi hanzi kalimat tidak tercantum di berkas publik. Bila berkas gagal dimuat,
+   dipakai suara bawaan peramban satu kali. */
+function ksPlay(z,btn){
+ a3Stop();stopAud();try{speechSynthesis.cancel()}catch(e){}
+ btn.classList.add("on");let a=null;
+ let ng=0;const fin=()=>{if(A3===a)A3=null;btn.classList.remove("on")},bad=()=>{if(ng)return;ng=1;fin();say(z)};
+ try{a=new Audio("audio/kalimat/"+kaH("s|"+z)+".mp3");A3=a;a.onended=fin;a.onerror=bad;const p=a.play();if(p&&p.catch)p.catch(bad)}catch(e){bad()}}
+document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest("[data-ks]");if(!b)return;e.stopPropagation();e.preventDefault();if(b.classList.contains("on")){a3Stop();return}ksPlay(b.dataset.ks,b)},true);
 function headH3(){
  h3Fix();const ok=H3.ok,a=ok?H3.by[S.hl]||[]:[],kl=ok?h3Cnt(a):[0,0],n=ok?a.length:0,sisa=ok?h3Sisa():0;
  $("stats").innerHTML=ok?`<div class="pbar"><i style="width:${n?Math.round(kl[0]/n*100):0}%"></i></div><b>${kl[0]}</b> dari <b>${n}</b> kartu ${sisa?"cuplikan ":""}Level ${S.hl} dikenali · ${kl[1]} masih belajar${sisa?` · ${IKK}${sisa} kata lagi`:""}`:`<div class="pbar"><i style="width:0%"></i></div>Memuat kosakata HSK 3.0…`;
