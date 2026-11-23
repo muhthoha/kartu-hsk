@@ -12,6 +12,9 @@
    - Langkah menunjuk elemen asli lewat selector. Elemen yang tidak ada atau tidak tampil (mis. panel target harian) dilewati,
      dan nomor langkah dihitung dari yang ada. Letak sorotan dihitung ulang tiap frame bila kotaknya berubah (gulir, ukuran layar, render ulang).
    - Langkah "Menu akun" membuka menu akun sungguhan lalu menutupnya lagi saat pindah langkah.
+   - Langkah ber-tab:"pr" (Analitik, Rencana belajar, Bookmark) membuka tab 进度 Progres dengan menekan tombol menu sungguhan; langkah lain
+     (dan penutupan panduan) mengembalikan ke Beranda. Tab 教材 Materi dan 练习 Latihan sengaja tidak dibuka: membukanya mengubah
+     "Terakhir dibuka" dan tombol Lanjutkan belajar milik pengguna, jadi keduanya dijelaskan lewat langkah Menu utama dan kartu di Beranda.
    - Tidak ada pencatatan, tidak ada permintaan jaringan. Tidak menyentuh data belajar. */
 (function(){
  "use strict";
@@ -28,12 +31,18 @@
  /* Langkah. t: selector elemen yang disorot (beberapa selector = satu kotak yang mencakup semuanya).
     z: huruf di cap kepala kartu; e: unsur warna (1 木, 2 水, 3 土, 4 火, 5 金; 0 netral).
     jz + jt: judul berbahasa Mandarin + Indonesia (seperti judul kartu materi di beranda); jt saja untuk judul biasa.
-    opsi: "pusat" = bila elemennya tidak ada, tampil di tengah layar (bukan dilewati). pusat: true = selalu di tengah. */
+    opsi: "pusat" = bila elemennya tidak ada, tampil di tengah layar (bukan dilewati). pusat: true = selalu di tengah.
+    tab: "pr" = sasaran ada di tab Progres (panduan berpindah ke sana). teks boleh berupa fungsi bila isinya bergantung pada keadaan layar. */
  var ST=[
   {id:"mulai",pusat:true,z:"",e:"0",jt:"Panduan singkat Zenta 汉",
    teks:"Panduan ini menunjukkan fungsi tiap bagian, satu per satu. Kamu bisa melewatinya sekarang dan membukanya lagi kapan saja dari menu akun."},
-  {id:"cari",t:["#hs"],z:"搜",e:"0",jt:"Cari",
-   teks:"Ketik hanzi, pinyin, atau arti dalam bahasa Indonesia. Kosakata, tata bahasa, dan cerita yang cocok akan muncul."},
+  {id:"menu",t:["#nav"],z:"导",e:"0",jt:"Menu utama",
+   teks:"Empat tab. 主页 Beranda: target harian dan jalan pintas ke tiap bagian. 教材 Materi: kosakata, tata bahasa, bacaan, dan aksara, dengan pilihan bagian di atas halaman. 练习 Latihan: soal berbagai jenis. 进度 Progres: analitik, rencana belajar, dan bookmark."},
+  {id:"cari",t:["#hs","#rsm"],z:"搜",e:"0",jt:"Cari",
+   teks:function(){
+    return "Ketik hanzi, pinyin, atau arti dalam bahasa Indonesia. Kosakata, tata bahasa, dan cerita yang cocok akan muncul."+
+     (tampak($("rsm"))?" Tombol Lanjutkan belajar di bawahnya membuka lagi bagian yang terakhir kamu buka.":"");
+   }},
   {id:"hari",t:["#view .daily-panel"],z:"今",e:"0",jt:"Target harian",
    teks:"Atur berapa kartu yang ingin kamu pelajari tiap hari, lalu lihat runtun belajarmu. Kartu yang jadwalnya jatuh tempo muncul di Pengulangan kosakata, tepat di bawahnya. Ulangi dulu sebelum menambah kartu baru."},
   {id:"kosakata",t:["#view .hb-voc"],z:"木",e:"1",jz:"词汇",jt:"Kosakata",
@@ -43,15 +52,23 @@
   {id:"rd",t:["#view .tl[data-m=\"rd\"]"],z:"土",e:"3",jz:"阅读",jt:"Membaca",
    teks:"Cerita pendek per level. Tandai Sudah dibaca setelah selesai, dan jumlahnya tampil di kartu ini."},
   {id:"lt",t:["#view .tl[data-m=\"lt\"]"],z:"火",e:"4",jz:"练习",jt:"Latihan",
-   teks:"Latihan soal dalam beberapa jenis, termasuk soal HSK 5 dan HSKK. Pilih jenisnya setelah membuka bagian ini."},
+   teks:"Latihan soal dalam banyak jenis, termasuk Workbook HSK 1 sampai 5 dan HSKK. Setelah bagian ini dibuka, pilih jenisnya lewat deretan tombol di bagian atas."},
   {id:"hz",t:["#view .tl[data-m=\"hz\"]"],z:"金",e:"5",jz:"汉字",jt:"Aksara",
    teks:"Radikal, jenis goresan, dan aturan urutan goresan. Bagian ini terbuka untuk semua akun."},
   {id:"gembok",t:["#view .aksesinfo"],opsi:"pusat",z:"锁",e:"0",jt:"Gembok dan cuplikan",
-   teks:"Di akun gratis, sebagian materi berupa cuplikan dan ditandai gembok. Isi lengkapnya khusus Zenta 汉+. Seluruh kosakata HSK 2.0 dan bagian 汉字 tetap terbuka."},
+   teks:"Di akun gratis, bagian berlabel Cuplikan hanya terbuka sebagian, dan Simulasi ujian khusus pelanggan. Isi lengkapnya ada di Zenta 汉+. Seluruh kosakata HSK 2.0 dan bagian 汉字 tetap terbuka."},
   {id:"uji",t:["#view #hb-uji"],z:"考",e:"0",jt:"Simulasi ujian",
-   teks:"Simulasi ujian berisi lembar jawaban untuk kertas HSK asli, HSK 1 sampai 5. Kosakata yang salah atau belum dijawab disimpan di Bank Kesalahan supaya bisa diulang."},
+   teks:"Paket soal orisinal untuk HSK 1 sampai 5, dengan jumlah butir dan bagian seperti kertas ujian asli. Kerjakan, periksa, lalu lihat statistik tiap paket. Kosakata yang salah atau belum dijawab disimpan di Bank Kesalahan supaya bisa diulang."},
+  {id:"analitik",tab:"pr",t:["#analytics-panel > h3","#analytics-panel .an-sub","#analytics-panel .an-kpis"],z:"进",e:"0",jt:"Analitik penguasaan materi",
+   teks:"Ringkasan penguasaanmu: kartu yang sudah tahu, masih perlu dipelajari, belum dinilai, dan jatuh tempo untuk pengulangan. Di bawahnya ada rincian per level HSK, kosakata teknis, serta tata bahasa dan bacaan."},
+  {id:"rencana",tab:"pr",t:["#adaptive-study-plan .hb-card-h","#adaptive-study-plan .adaptive-steps"],z:"计",e:"0",jz:"学习计划",jt:"Rencana belajar",
+   teks:"Urutan sesi belajar yang disusun dari datamu: ulangi kartu jatuh tempo, perbaiki kosakata yang sering salah, lalu lanjut ke kosakata baru. Kerjakan dari yang teratas. Estimasi waktunya hanya perkiraan."},
+  {id:"bm",tab:"pr",t:["#hb-bm-h","[aria-labelledby=\"hb-bm-h\"] .bm"],z:"签",e:"0",jt:"Bookmark tata bahasa",
+   teks:"Poin tata bahasa yang kamu beri bookmark ada di sini. Ketuk salah satunya untuk membukanya lagi."},
+  {id:"saran",t:["#msk-btn"],z:"议",e:"0",jt:"Saran dan masukan",
+   teks:"Menemukan kata yang salah, bagian yang membingungkan, atau punya usul fitur? Ketuk ikon ini untuk mengirim pesan ke pengelola Zenta 汉. Pilih jenisnya: Saran, Masalah, Usul fitur, atau Lainnya."},
   {id:"akun",t:["#acct","#acct-menu"],z:"我",e:"0",jt:"Menu akun",
-   teks:"Tombol berhuruf di bagian atas membuka menu akun: progres & cadangan, persiapan ujian dengan hitung mundur (opsional), warna nada pinyin, dan pilihan tampilan terang atau gelap. Panduan ini bisa dibuka lagi dari menu yang sama.",
+   teks:"Tombol berhuruf di bagian atas membuka menu akun: progres & cadangan, persiapan ujian dengan hitung mundur (opsional), warna nada pinyin, pilihan tampilan terang atau gelap, dan tombol Keluar. Panduan ini bisa dibuka lagi dari menu yang sama.",
    pra:function(){var m=$("acct-menu"),b=$("acct");if(b&&m&&m.hidden)b.click()},
    pasca:function(){try{if(window.hskMenu)window.hskMenu.close()}catch(e){}}}
  ];
@@ -64,7 +81,22 @@
   for(i=0;i<s.t.length;i++){x=document.querySelector(s.t[i]);if(tampak(x))out.push(x)}
   return out.length?out:null;
  }
- function ada(i){var s=ST[i];return !!(s.pusat||s.opsi==="pusat"||sasaran(s))}
+ /* Ada isi walau sedang disembunyikan (mis. panel Progres selagi di Beranda, atau sebaliknya): dipakai untuk menghitung langkah di tab lain. */
+ function nyata(x){return !!(x&&x.isConnected&&(x.children.length||x.textContent.trim()))}
+ function diProgres(){return document.body.classList.contains("pr-on")}
+ function ada(i){
+  var s=ST[i];
+  if(s.pusat||s.opsi==="pusat")return true;
+  if((s.tab==="pr")!==diProgres())return nyata(document.querySelector(s.t[0]));   /* sasaran ada di tab yang sedang tidak tampil */
+  return !!sasaran(s);
+ }
+ /* Pindah ke tab yang dibutuhkan langkah: "pr" = 进度 Progres, selain itu Beranda. Memakai tombol menu sungguhan. */
+ function pindah(tab){
+  var n=$(tab==="pr"?"n-pr":"n-hm");
+  if(n&&(tab==="pr")!==diProgres())n.click();
+ }
+ function tk(s){return typeof s.teks==="function"?s.teks():s.teks}
+ function fijo(a){var i;try{for(i=0;i<a.length;i++)if(window.getComputedStyle(a[i]).position==="fixed")return true}catch(e){}return false}
  function kotak(a){
   var l=1e9,t=1e9,r=-1e9,b=-1e9,i,x;
   for(i=0;i<a.length;i++){x=a[i].getBoundingClientRect();l=Math.min(l,x.left);t=Math.min(t,x.top);r=Math.max(r,x.right);b=Math.max(b,x.bottom)}
@@ -108,6 +140,7 @@
 
  /* ---------- tata letak ---------- */
  function geser(a){   /* gulirkan halaman supaya sasaran dan kartu sama-sama muat */
+  if(fijo(a))return;   /* menu utama menempel di layar: menggulir halaman tidak menggeser letaknya */
   var b=kotak(a),vh=window.innerHeight,avail=vh-E.pop.offsetHeight-32,want=b.h<=avail?Math.max(16,(avail-b.h)/2+8):16,dy=b.t-want;
   if(Math.abs(dy)>1)window.scrollBy(0,dy);
  }
@@ -157,11 +190,12 @@
   E.h.textContent="";
   if(s.jz){var b=document.createElement("b");b.setAttribute("lang","zh");b.textContent=s.jz;E.h.appendChild(b);E.h.appendChild(document.createTextNode(" "+s.jt))}
   else E.h.textContent=s.jt;
-  E.p.textContent=s.teks;
+  var tx=tk(s);
+  E.p.textContent=tx;
   E.prev.hidden=cur===0;
   E.skip.hidden=akhir;
   E.next.textContent=s.id==="mulai"?"Mulai panduan":akhir?"Selesai":"Berikutnya";
-  E.live.textContent=(s.id==="mulai"?"":"Langkah "+no.n+" dari "+no.t+". ")+(s.jz?s.jz+" ":"")+s.jt+". "+s.teks;
+  E.live.textContent=(s.id==="mulai"?"":"Langkah "+no.n+" dari "+no.t+". ")+(s.jz?s.jz+" ":"")+s.jt+". "+tx;
  }
 
  /* ---------- alur ---------- */
@@ -172,6 +206,7 @@
   if(cur!==i&&on&&ST[cur].pasca){try{ST[cur].pasca()}catch(e){}}
   cur=i;
   var s=ST[i];
+  pindah(s.tab||"hm");
   if(s.pra){try{s.pra()}catch(e){}}
   isi(s);
   var a=sasaran(s);
@@ -191,6 +226,7 @@
   if(!on)return;
   on=false;window.cancelAnimationFrame(raf);
   try{if(ST[cur]&&ST[cur].pasca)ST[cur].pasca()}catch(e){}
+  pindah("hm");
   E.r.hidden=true;
   document.removeEventListener("keydown",tombolKeyboard,true);
   if(simpan)tandai();
@@ -229,6 +265,7 @@
   buat();
   if(E.toast.classList.contains("on"))E.toast.classList.remove("on");
   try{if(window.hskMenu)window.hskMenu.close()}catch(e){}
+  pindah("hm");
   on=true;cur=0;prevFocus=document.activeElement;
   E.r.hidden=false;
   document.addEventListener("keydown",tombolKeyboard,true);
