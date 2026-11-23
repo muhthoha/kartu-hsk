@@ -2,10 +2,10 @@
 
    Kapan tampil
    - Otomatis, sekali per akun per perangkat, saat beranda (主页) pertama tampil setelah masuk. Akun baru dan akun lama sama: selama
-     belum ada penanda untuk akun itu di perangkat ini, panduan tampil. Penanda: localStorage "zenta_tur_v1_<hash email>" = "1",
+     belum ada penanda untuk akun itu di perangkat ini, panduan tampil. Penanda: localStorage "zenta_tur_v2_<hash email>" = "1",
      ditulis saat panduan diselesaikan atau dilewati (bukan saat dimulai, jadi yang menutup tab di tengah jalan akan melihatnya lagi).
    - Manual: baris "Panduan penggunaan" di menu akun (#am-list), atau window.hskTur.mulai().
-   - Ingin menampilkan ulang ke semua akun (mis. setelah fitur besar bertambah)? Naikkan VER di bawah ("v1" jadi "v2").
+   - Ingin menampilkan ulang ke semua akun (mis. setelah fitur besar bertambah)? Naikkan VER di bawah ("v2" jadi "v3"). v2 (23 Nov 2026): layout menu 4 tab, langkah Progres dan Saran; semua akun melihatnya lagi sekali.
    - Kunci zenta_* tidak ikut dibersihkan saat ganti akun, dan tidak ikut sinkron ke server: penanda bersifat per perangkat.
 
    Cara kerja
@@ -18,7 +18,7 @@
    - Tidak ada pencatatan, tidak ada permintaan jaringan. Tidak menyentuh data belajar. */
 (function(){
  "use strict";
- var VER="v1",KEY="zenta_tur_"+VER+"_";
+ var VER="v2",KEY="zenta_tur_"+VER+"_";
  var root=document.documentElement,LS=null,on=false,cur=0,raf=0,lastKey="",lastView="",fixN=0,prevFocus=null,toastT=0,E=null;
  try{LS=window.localStorage;LS.getItem("acct_auth")}catch(e){LS=null}
 
