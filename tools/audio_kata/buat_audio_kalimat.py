@@ -36,9 +36,10 @@ def tulis_indeks(keluar):
     Jalankan sekali setelah semua --bagian selesai, lalu naikkan angka ?v= di index.html (h3Load) agar peramban memuat ulang."""
     ks = sorted(f[:-4] for f in os.listdir(keluar) if f.endswith(".mp3"))
     # kalimat yang belum lolos pemeriksa (menurut kalimat-hasil-*.jsonl di folder induk) tidak didaftarkan:
-    # tombolnya jatuh ke suara peramban sampai ada yang mendengarkan dan memutuskan
+    # tombolnya jatuh ke suara peramban sampai ada yang mendengarkan dan memutuskan. Yang sudah didengar dan disetujui manusia:
+    # tambahkan baris {"h": kalimat, "ok": true, "info": {...}, "disetujui": true} ke kalimat-hasil-*.jsonl (baris terakhir menang)
     tak_lolos = {kunci(h) for h, r in hasil_terakhir(keluar).items()
-                 if r.get("ok") and not (r["info"].get("s") and r["info"].get("t"))}
+                 if r.get("ok") and not (r["info"].get("s") and r["info"].get("t")) and not r.get("disetujui")}
     if tak_lolos & set(ks):
         print("dikecualikan dari indeks (belum lolos):", len(tak_lolos & set(ks)))
         ks = [k for k in ks if k not in tak_lolos]
