@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src https://n8n.zenta.web.id; base-uri 'none'; form-action 'none'">
+<script>/* anti-clickjacking: halaman ini tidak boleh dimuat di dalam bingkai situs lain (GitHub Pages tidak bisa mengirim header X-Frame-Options) */try{if(window.top!==window.self){document.documentElement.style.visibility="hidden";window.top.location=window.self.location.href}}catch(e){document.documentElement.style.visibility="hidden"}</script>
+<meta name="referrer" content="no-referrer"><meta name="robots" content="noindex">
+<title>Trial 7 hari · Zenta 汉</title>
+<script>try{var _t=localStorage.getItem("ui_tema");if(_t==="terang")document.documentElement.setAttribute("data-theme","light");else if(_t==="gelap")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
+<style>
+:root{color-scheme:dark;--bg:#121214;--card:#1C1C20;--ink:#F0F0F3;--mute:#A0A1AB;--line:#2E2F36;--ok:#4CC58A;--btn:#F2704F;--btnink:#121214;--e1t:#183326;--e1d:#7ED9A6;--e2t:#172745;--e2d:#8FB5FF;--e3t:#382C14;--e3d:#E8BC62;--e1:#4CC58A;--e2:#6A9BFF;--e3:#D9A441;--e4:#F2704F;--e5:#8DA0B5;--e4t:#3A1D17;--e4d:#FF9B83;--e5t:#232B35;--e5d:#B4C2D3;--err:#FF9B83}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]){color-scheme:light;--bg:#F4F4F5;--card:#FFFFFF;--ink:#1A1A1F;--mute:#5F6068;--line:#DEDFE3;--ok:#1E6B43;--btn:#B83A22;--btnink:#FFFFFF;--e1t:#DDEFE3;--e1d:#1E6B43;--e2t:#DEE8FB;--e2d:#1F4FB0;--e3t:#F6E9CC;--e3d:#7F5508;--e1:#2F8A5B;--e2:#2F6BDA;--e3:#B07A12;--e4:#D2452B;--e5:#596B80;--e4t:#FADFD8;--e4d:#A52F18;--e5t:#E3E8EE;--e5d:#3B4A5C;--err:#A52F18}}
+:root[data-theme="light"]{color-scheme:light;--bg:#F4F4F5;--card:#FFFFFF;--ink:#1A1A1F;--mute:#5F6068;--line:#DEDFE3;--ok:#1E6B43;--btn:#B83A22;--btnink:#FFFFFF;--e1t:#DDEFE3;--e1d:#1E6B43;--e2t:#DEE8FB;--e2d:#1F4FB0;--e3t:#F6E9CC;--e3d:#7F5508;--e1:#2F8A5B;--e2:#2F6BDA;--e3:#B07A12;--e4:#D2452B;--e5:#596B80;--e4t:#FADFD8;--e4d:#A52F18;--e5t:#E3E8EE;--e5d:#3B4A5C;--err:#A52F18}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:flex;padding:20px 16px;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif}
+.box{width:100%;max-width:380px;margin:auto;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:28px 22px 24px;text-align:center}
+h1{color:var(--ink);font-size:46px;line-height:1.1;margin:0}
+.zl{display:inline-grid;grid-template-columns:auto auto;justify-content:start;align-items:center;column-gap:.14em;row-gap:.2em;font-family:'Fraunces',Georgia,'Times New Roman',serif;font-weight:700;letter-spacing:-.02em;line-height:1;white-space:nowrap}.zl i{font-style:normal;font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei','Noto Sans CJK SC',sans-serif;font-weight:700;letter-spacing:0}.zl::after{content:"";grid-column:1/-1;height:max(.11em,3px);background:linear-gradient(var(--e1),var(--e1)) 0% 0/calc((100% - .36em)/5) 100% no-repeat,linear-gradient(var(--e2),var(--e2)) 25% 0/calc((100% - .36em)/5) 100% no-repeat,linear-gradient(var(--e3),var(--e3)) 50% 0/calc((100% - .36em)/5) 100% no-repeat,linear-gradient(var(--e4),var(--e4)) 75% 0/calc((100% - .36em)/5) 100% no-repeat,linear-gradient(var(--e5),var(--e5)) 100% 0/calc((100% - .36em)/5) 100% no-repeat}
+.el{display:flex;gap:7px;justify-content:center;margin:12px 0 4px}.el span{width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;font:700 16px 'Noto Serif SC',serif}
+.el span:nth-child(1){background:var(--e1t);color:var(--e1d)}.el span:nth-child(2){background:var(--e2t);color:var(--e2d)}.el span:nth-child(3){background:var(--e3t);color:var(--e3d)}.el span:nth-child(4){background:var(--e4t);color:var(--e4d)}.el span:nth-child(5){background:var(--e5t);color:var(--e5d)}
+.sub{letter-spacing:.04em;font-size:13px;color:var(--mute);margin-top:8px}
+p{line-height:1.55;margin:18px 0 0;font-size:15px;overflow-wrap:anywhere}
+.mt{font-size:14px;color:var(--mute);margin-top:10px}
+#st{min-height:1.4em}#st.ok{color:var(--ok)}#st.err{color:var(--err)}
+dl{margin:18px 0 0;text-align:left}
+dl div{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:10px 0;border-top:1px solid var(--line)}
+dl div:last-child{border-bottom:1px solid var(--line)}
+dt{font-size:13px;color:var(--mute);flex:none}
+dd{margin:0;font-size:14px;font-weight:600;text-align:right;overflow-wrap:anywhere}
+.btn{display:block;width:100%;margin-top:20px;padding:14px 20px;border-radius:14px;border:0;background:var(--btn);color:var(--btnink);font:600 15px Inter,system-ui,sans-serif;text-decoration:none;cursor:pointer}
+.btn2{display:inline-block;margin-top:14px;padding:8px 12px;border:0;background:none;color:var(--mute);font:500 14px Inter,system-ui,sans-serif;text-decoration:underline;cursor:pointer}
+.btn:focus-visible,.btn2:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.btn[disabled],.btn2[disabled]{opacity:.6;cursor:default}
+[hidden]{display:none !important}
+</style></head><body>
+<div class="box"><h1><span class="zl">Zenta<i lang="zh">汉</i></span></h1><div class="el" aria-hidden="true"><span>木</span><span>水</span><span>土</span><span>火</span><span>金</span></div><div class="sub">Trial Zenta 汉+</div>
+<p id="t">Memeriksa tautan…</p>
+<dl id="info" hidden><div><dt>Akun</dt><dd id="i-akun"></dd></div><div><dt id="l-sampai">Trial aktif sampai</dt><dd id="i-sampai"></dd></div><div id="r-tautan"><dt>Tautan berlaku sampai</dt><dd id="i-tautan"></dd></div></dl>
+<p class="mt" id="ket" hidden></p>
+<p id="st" role="status" aria-live="polite"></p>
+<button class="btn" id="go" type="button" hidden>Aktifkan trial 7 hari</button>
+<button class="btn2" id="ulang" type="button" hidden>Coba lagi</button>
+<a class="btn2" id="ke" href="./" hidden>Ke Zenta 汉</a>
+</div>
+<script>
+(function(){
+ var URL_C="https://n8n.zenta.web.id/webhook/hsk-coba";
+ var $=function(i){return document.getElementById(i)},t=$("t"),info=$("info"),ket=$("ket"),st=$("st"),go=$("go"),ulang=$("ulang"),ke=$("ke");
+ function say(c,s){st.className=c||"";st.textContent=s||""}
+ var u="",e="",tk="";
+ try{
+  var p=new URLSearchParams(location.hash.replace(/^#/,""));
+  u=String(p.get("u")||"").trim();e=String(p.get("e")||"").trim();tk=String(p.get("t")||"").trim().toLowerCase();
+  history.replaceState(null,"",location.pathname);
+ }catch(x){}
+ if(!/^[1-9][0-9]{0,8}$/.test(u)||!/^[1-9][0-9]{11,14}$/.test(e)||!/^[0-9a-f]{32}$/.test(tk)){
+  t.textContent="Tautan trial tidak lengkap. Buka tombol “Aktifkan trial 7 hari” langsung dari email pengumuman.";
+  ke.hidden=false;return;
+ }
+ /* judul tiap status yang dijawab server; status di luar daftar memakai judul umum */
+ var JUDUL={sudah_dipakai:"Tautan ini sudah dipakai.",sudah_langganan:"Akunmu sudah berlangganan.",trial_berjalan:"Trialmu sudah berjalan.",pemilik:"Ini akun pemilik.",kedaluwarsa:"Tautan ini sudah kedaluwarsa.",akun_tidak_ada:"Trial tidak bisa diaktifkan.",akun_tidak_aktif:"Trial tidak bisa diaktifkan.",tidak_berlaku:"Tautan tidak berlaku.",rusak:"Tautan tidak berlaku."};
+ var GALAT={kedaluwarsa:1,akun_tidak_ada:1,akun_tidak_aktif:1,tidak_berlaku:1,rusak:1};
+ function isi(id,v){$(id).textContent=v||""}
+ function selesai(){go.hidden=true;ulang.hidden=true;ke.hidden=false}
+ var busy=false,aksiTerakhir="lihat";
+ function panggil(aksi){
+  if(busy)return;busy=true;aksiTerakhir=aksi;go.disabled=ulang.disabled=true;say("","");ulang.hidden=true;
+  if(aksi==="klaim")go.textContent="Memproses…";
+  var ctl=typeof AbortController!=="undefined"?new AbortController():null,to=setTimeout(function(){if(ctl)ctl.abort()},20000);
+  fetch(URL_C,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({aksi:aksi,u:u,e:e,t:tk}),mode:"cors",signal:ctl?ctl.signal:undefined})
+   .then(function(r){return r.json().then(function(j){return{s:r.status,j:j}},function(){return{s:r.status,j:null}})})
+   .then(function(x){tampil(aksi,x.s,x.j||{})})
+   .catch(function(){gagal("Tidak bisa terhubung ke server. Periksa koneksi lalu coba lagi.")})
+   .then(function(){clearTimeout(to);busy=false;go.disabled=ulang.disabled=false});
+ }
+ function gagal(pesan){
+  if(aksiTerakhir==="klaim"){go.textContent=go.getAttribute("data-teks")||"Aktifkan trial 7 hari";go.hidden=false}
+  else go.hidden=true;
+  ulang.hidden=false;ke.hidden=false;say("err",pesan);
+ }
+ function tampil(aksi,s,j){
+  if(s===200&&j.ok===true&&j.status==="siap"){
+   var lanjut=j.perpanjang===true;
+   t.textContent=lanjut?"Perpanjang trial Zenta 汉+ menjadi 7 hari dari sekarang?":"Aktifkan trial Zenta 汉+ selama 7 hari?";
+   isi("i-akun",j.email);isi("l-sampai","Trial aktif sampai");isi("i-sampai",j.sampai);isi("i-tautan",j.tautan_sampai);
+   info.hidden=false;$("r-tautan").hidden=!j.tautan_sampai;
+   ket.textContent="Hitungan 7 hari mulai saat kamu menekan tombol di bawah. Setelah trial habis, akunmu kembali ke paket gratis dan progres belajarmu tetap tersimpan.";ket.hidden=false;
+   go.textContent=lanjut?"Perpanjang trial 7 hari":"Aktifkan trial 7 hari";go.setAttribute("data-teks",go.textContent);go.hidden=false;ke.hidden=false;
+   return;
+  }
+  if(s===200&&j.ok===true&&j.status==="aktif"){
+   t.textContent=j.perpanjang===true?"Trialmu diperpanjang.":"Trial 7 hari aktif.";
+   isi("i-akun",j.email);isi("l-sampai","Trial aktif sampai");isi("i-sampai",j.sampai);$("r-tautan").hidden=true;info.hidden=false;
+   ket.textContent="Buka Zenta 汉 dengan akun di atas. Kalau bagian yang terkunci belum terbuka, muat ulang halamannya.";ket.hidden=false;
+   say("ok",j.pesan||"Trial aktif.");go.hidden=true;ulang.hidden=true;ke.hidden=false;ke.textContent="Mulai belajar";
+   return;
+  }
+  if((s===200||s===400)&&typeof j.status==="string"&&JUDUL[j.status]){
+   t.textContent=JUDUL[j.status];info.hidden=true;ket.hidden=true;
+   if(j.email){isi("i-akun",j.email);}
+   say(GALAT[j.status]?"err":"",j.pesan||"");selesai();return;
+  }
+  gagal("Gagal ("+s+"). Coba lagi sebentar lagi.");
+ }
+ go.addEventListener("click",function(){panggil("klaim")});
+ ulang.addEventListener("click",function(){panggil(aksiTerakhir)});
+ panggil("lihat");
+})();
+</script></body></html>
