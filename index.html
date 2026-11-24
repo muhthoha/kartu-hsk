@@ -78,7 +78,7 @@ select{padding:10px 12px;font-size:14px}.card{min-height:300px;margin:12px 0}
 .gx{border-left:3px solid var(--acc);padding:6px 10px;margin:8px 0;background:rgba(128,128,128,.07);border-radius:0 6px 6px 0}
 .gz{font-family:'Noto Serif SC',serif;font-size:18px;line-height:1.5}.gpy{font-size:12px;color:var(--acc);margin-top:2px}.gi{font-size:13px;margin-top:3px}.tg{font-size:11px;color:var(--mute);margin-top:3px}
 .gn{font-size:11px;color:var(--mute);margin:18px 0;line-height:1.5;text-align:left}
-.wl{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}.wl span{display:flex;flex-direction:column;align-items:center;min-width:64px;padding:5px 8px;border:1px solid var(--line);border-radius:8px;background:rgba(128,128,128,.07)}.wl b{font-family:'Noto Serif SC',serif;font-size:17px;font-weight:600;line-height:1.3}.wl small{font-size:11px;color:var(--acc);white-space:nowrap}.wl i{font-size:10.5px;font-style:normal;color:var(--mute);text-align:center;max-width:130px;line-height:1.25;margin-top:1px}.wlc{font-size:11px;font-weight:600;color:var(--mute);margin:12px 0 -4px;letter-spacing:.02em}
+.wl{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}.wl span{display:flex;flex-direction:column;align-items:center;min-width:64px;padding:5px 8px;border:1px solid var(--line);border-radius:8px;background:rgba(128,128,128,.07)}.wl .wlb{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:64px;min-height:44px;margin:0;padding:5px 8px;border:1px solid color-mix(in srgb,var(--acc) 40%,var(--line));border-radius:8px;background:rgba(128,128,128,.07);color:var(--ink);font:inherit;letter-spacing:0;text-transform:none;text-align:center;cursor:pointer}.wl .wlb:active{border-color:var(--acc);background:color-mix(in srgb,var(--acc) 14%,transparent)}.wl .wlb:focus-visible{outline:2px solid var(--acc);outline-offset:2px}@media(hover:hover){.wl .wlb:hover{border-color:var(--acc)}}.gkb{min-height:44px;font-family:inherit;letter-spacing:0;text-transform:none;font-size:14px}.gkb:active{border-color:var(--acc)}.gkb:focus-visible{outline:2px solid var(--acc);outline-offset:2px}.wlh{font-size:11px;color:var(--mute);margin:10px 0 -2px;line-height:1.4}.wl b{font-family:'Noto Serif SC',serif;font-size:17px;font-weight:600;line-height:1.3}.wl small{font-size:11px;color:var(--acc);white-space:nowrap}.wl i{font-size:10.5px;font-style:normal;color:var(--mute);text-align:center;max-width:130px;line-height:1.25;margin-top:1px}.wlc{font-size:11px;font-weight:600;color:var(--mute);margin:12px 0 -4px;letter-spacing:.02em}
 #md button{flex:1 1 auto}
 .rc{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}.rc button{padding:7px 12px;font-size:12px;letter-spacing:.02em;text-transform:none;border-radius:999px;color:var(--mute)}.rc button.on{border-color:var(--acc);color:var(--acc);background:color-mix(in srgb,var(--acc) 14%,transparent)}
 .st{text-align:left;margin:14px 0 28px}.st h3{font-family:'Noto Serif SC',serif;font-size:22px;margin:6px 0;color:var(--ink)}
@@ -2156,7 +2156,8 @@ ${lx?`<button class="rsm" id="gres"><span><small>Lanjutkan di sini</small><b>L${
  const x=G[S.ch-1],op=(S.go||[]).slice();S.go=null;if(S.gt!==null&&S.gt!==undefined)op.push(String(S.gt));const tg=S.gt;S.gt=null;
  GL={s:S.gs,l:x.l,i:GL&&GL.s==S.gs&&GL.l==x.l?GL.i:0};gsave();noteLast("gr","语法 · "+GN[S.gs]+" · L"+x.l+" · "+x.n);
  $("bc").innerHTML=`<b>语法</b> › ${GN[S.gs]} › L${x.l}`;
- const WC=w=>`<span><b>${w[0]}</b><small>${w[1]}</small>${w[2]?`<i>${w[2]}</i>`:""}</span>`,WS={laoshi:"Dari slide laoshi",sumber:"Dari referensi (kamus & situs belajar)",susun:"Contoh tambahan (disusun Claude, belum dikoreksi laoshi)"},WL=ws=>ws.some(w=>w[3])?["laoshi","sumber","susun"].map(s=>{const g=ws.filter(w=>w[3]==s);return g.length?`<div class="wlc">${WS[s]}</div><div class="wl">${g.map(WC).join("")}</div>`:""}).join(""):`<div class="wl">${ws.map(WC).join("")}</div>`;
+ /* Chip kata (field w): kata tunggal adalah tombol, ketuk membuka kartu kosakatanya (gvBuka). Frasa dan kalimat tetap chip biasa tanpa aksi (lihat gvKata). */
+ const WC=(w,k)=>{const h=`<b>${w[0]}</b><small>${w[1]||""}</small>${w[2]?`<i>${w[2]}</i>`:""}`;return k?`<button type="button" class="wlb" data-wz="${enc(w[0])}" data-wp="${enc(w[1]||"")}">${h}</button>`:`<span>${h}</span>`},WS={laoshi:"Dari slide laoshi",sumber:"Dari referensi (kamus & situs belajar)",susun:"Contoh tambahan (disusun Claude, belum dikoreksi laoshi)"},WL=ws=>{const A=ws.map(w=>({w,k:gvKata(w[0],w[1]||"")})),n=A.filter(a=>a.k).length,H=n?`<div class="wlh">${n==A.length?"Ketuk kata untuk membuka kartu kosakatanya.":"Kata yang bingkainya berwarna bisa diketuk untuk membuka kartu kosakatanya."}</div>`:"",L=g=>`<div class="wl">${g.map(a=>WC(a.w,a.k)).join("")}</div>`;return H+(A.some(a=>a.w[3])?["laoshi","sumber","susun"].map(q=>{const g=A.filter(a=>a.w[3]==q);return g.length?`<div class="wlc">${WS[q]}</div>${L(g)}`:""}).join(""):L(A))};
  const E=(z,y,i,s)=>`<div class="gx"><div class="gz">${z}${AU[z]?` <button class="pl sm" data-aud="${enc(z)}">${IKA0}</button>`:""}</div><div class="gpy">${y}</div><div class="gi">${i}</div><div class="tg">${s=="b"?"contoh dari buku":s=="l"?"contoh dari laoshi":s=="r"?"contoh dari referensi":"contoh tambahan"}</div></div>`;
  const blk=(i,cls,title,sub,body)=>{const k=gkey(x.l,i),u=GP[k],b=GB[k];return `<details class="gp ${cls}${u?" dn":""}" data-i="${i}"${op.includes(String(i))?" open":""}><summary><b>${u?ikL("cek","lm"):""}${b?IKB:""}${PYT(title)}</b><span>${sub}</span></summary><div class="bd">${body}<div class="row" style="justify-content:flex-start;margin-top:10px"><button class="pl sm gk ${u?"on":""}" data-k="u" data-i="${i}">${u?ikL("cek","lm")+"Sudah paham":"Tandai paham"}</button><button class="pl sm gk ${b?"on":""}" data-k="b" data-i="${i}">${IKB}${b?"Tersimpan":"Bookmark"}</button></div></div></details>`};
  v.innerHTML=`<div class="rt"><button id="gb">← Daftar pelajaran</button><span class="pos">${S.ch} / ${G.length}</span></div><h3 class="rh">${x.n}</h3><div class="pos" style="text-align:left;margin-bottom:6px">Pelajaran ${x.l} · ${gdone(x)}/${gitems(x)} poin dipahami</div>`
@@ -2167,8 +2168,34 @@ ${lx?`<button class="rsm" id="gres"><span><small>Lanjutkan di sini</small><b>L${
  $("gpv").onclick=()=>{S.ch--;render();scrollTo(0,0)};$("gnx").onclick=()=>{S.ch++;render();scrollTo(0,0)};
  v.querySelectorAll("details.gp").forEach(d=>d.addEventListener("toggle",()=>{if(d.open){GL={s:S.gs,l:x.l,i:d.dataset.i};gsave();const t=d.dataset.i=="c"?"比一比":(x.p[+d.dataset.i]||{}).t;noteLast("gr","语法 · "+GN[S.gs]+" · L"+x.l+" · "+t)}}));
  v.querySelectorAll(".gk").forEach(b=>b.onclick=e=>{e.stopPropagation();const k=gkey(x.l,b.dataset.i),M=b.dataset.k=="u"?GP:GB;if(M[k])delete M[k];else M[k]=1;GL={s:S.gs,l:x.l,i:b.dataset.i};gsave();S.go=[...v.querySelectorAll("details.gp[open]")].map(d=>d.dataset.i);const y=scrollY;render();scrollTo(0,y)});
+ v.querySelectorAll(".wlb").forEach(b=>b.onclick=()=>{const d=b.closest("details.gp");if(d){GL={s:S.gs,l:x.l,i:d.dataset.i};gsave()}gvBuka(decodeURIComponent(b.dataset.wz),decodeURIComponent(b.dataset.wp),b,GN[S.gs]+" · L"+x.l)});
  if(tg!==null&&tg!==undefined){const d=v.querySelector(`details.gp[data-i="${tg}"]`);if(d)setTimeout(()=>d.scrollIntoView({block:"center"}),50)}
 }
+/* Ketuk chip kata di 语法 (semua daftar kata, field w di semua set pelajaran).
+   Kata yang ada di menu Kosakata: buka kartunya dengan jawaban terbuka (goVocab). Kartu dipilih dari jalur HSK dulu,
+   lalu yang pinyinnya sama dengan chip. Kata yang tidak ada di menu Kosakata (termasuk kartu level 9 "di luar daftar HSK 2 buku",
+   kartu Teknis yang masih terkunci, dan istilah yang memang belum ada): lembar kecil openWord berisi pinyin, arti bila ada,
+   pesan "belum ada di daftar kosakata", dan tombol dengar kata. */
+/* Chip 语法 sering memakai bentuk pendek atau bentuk 儿 dari kata yang di Kosakata ditulis lain: 聊天儿 → 聊天, 没 → 没有,
+   satuan 杯 → 杯子. Pasangan di bawah sudah ditinjau satu per satu (kata yang sama dengan imbuhan 子/头/巴, arti bendanya sama);
+   bentuk akhiran 儿 diurus aturan umum di gvCari. Pasangan yang artinya lain (扇 → 扇子 kipas, 样 → 样子 rupa) sengaja tidak dimasukkan. */
+const GVA={"没":"没有","杯":"杯子","瓶":"瓶子","盘":"盘子","盒":"盒子","勺":"勺子","尺":"尺子","句":"句子","拳":"拳头","尾":"尾巴"};
+function gvCari(hz,py,sub){
+ const A=D.filter(c=>c[0]===hz&&c[3]!=9&&(!TEKL.includes(c[3])||tekOk(c)));
+ if(!A.length){const a=!sub&&(GVA[hz]||(hz.length>1&&hz.endsWith("儿")?hz.slice(0,-1):""));return a?gvCari(a,"",1):null}
+ const H=A.filter(isH),P=H.length?H:A,k=nz(py).replace(/\s+/g,"");
+ return P.find(c=>nz(c[1]).replace(/\s+/g,"")===k)||P[0]}
+/* Kata tunggal = chip yang jadi tombol: ada kartunya di menu Kosakata, atau kata pendek tanpa angka/penunjuk/tanda baca
+   yang memang belum ada (misal 聊天儿, 没, satuan 杯 瓶). Frasa seperti 一件衣服, 看一下 dan kalimat contoh bukan kata tunggal. */
+function gvKata(hz,py){
+ if(gvCari(hz,py))return true;
+ return hz.length<=3&&!/[一二两三四五六七八九十几半第这那每，。？！、；：,.?!\s]/.test(hz)}
+function gvBuka(hz,py,el,ket){
+ const c=gvCari(hz,py);
+ if(c){S.review=false;S.gb={c,ket};goVocab(c,true);const g=$("gkb");if(g)g.scrollIntoView({block:"start"});return}
+ openWord([hz,py.split(/\s+/).filter(Boolean)],"");
+ const sx=$("sx");if(sx){const f=sx.onclick;sx.onclick=()=>{f();try{el.focus()}catch(e){}};try{sx.focus()}catch(e){}}}
+document.addEventListener("keydown",e=>{if(e.key!=="Escape")return;const sh=$("sheet");if(sh&&sh.style.display==="block"){const x=$("sx");if(x)x.click()}});
 const TC={1:"#ef6b6b",2:"#e9a23b",3:"#4fb87a",4:"#5b9cf0",5:"#9a8f80"};
 let RS={py:false,tc:true,tr:false,sz:22},RC=[];try{Object.assign(RS,JSON.parse(localStorage.getItem("hsk_r")||"{}"))}catch(e){}
 const vmap={};D.forEach(c=>{if(!vmap[c[0]]||(vmap[c[0]][3]==9&&c[3]!=9))vmap[c[0]]=c});
@@ -2995,6 +3022,7 @@ function hzOrder(v){
  });
 }
 function render(){
+ if(S.gb&&(S.tab!="study"||(S.mode!="hsk"&&S.mode!="tek")))S.gb=null;
  if(S.mode==="exam"){clearInterval(LTI);stopAud();$("sheet").style.display="none";renderExam($("view"));return}
  if(S.mode==="pg"){clearInterval(LTI);stopAud();$("sheet").style.display="none";if(typeof renderProgres==="function")renderProgres($("view"));return}
  const H3M=S.mode=="h3";H3M?headH3():head();const L=H3M?[]:S.review?srsReviewList():list(),v=$("view");if(S.mode!="hm"){S.lastm=S.mode;S.mem[S.mode]={ch:S.ch,i:S.i,tab:S.tab}}try{localStorage.setItem("hsk_s",JSON.stringify({mode:S.lastm,tk:S.tk,rl:S.rl,lk:S.lk,zk:S.zk,gs:S.gs,hl:S.hl,lv:S.lv,ch:S.ch,tab:S.tab,i:S.i}));localStorage.setItem("hsk_mem",JSON.stringify(S.mem))}catch(e){}
@@ -3012,13 +3040,16 @@ function render(){
   $("rs").onclick=()=>{if(confirm("Hapus semua progres?")){S.m={};save();render()}};return}
  if(!L.length){v.innerHTML="<p>Tidak ada kartu.</p>";return}
  if(S.i>=L.length)S.i=0;const c=L[S.i];
- v.innerHTML=`${S.review?`<div class="srs-panel"><h3>Pengulangan terjadwal</h3><p>Kartu yang jatuh tempo diprioritaskan. Nilai berdasarkan seberapa mudah Anda mengingatnya.</p><span class="srs-badge">Jadwal adaptif</span></div>`:""}<div class="card" id="cd"><span class="tag">${c[3]==7?"HSK 5":c[3]==8?"HSK 6":c[3]>=5?"Teknis":"HSK "+c[3]} ·${CH[c[3]][c[4]-1]}</span><div class="hz" style="font-size:${hzs(c[0].length)}px">${c[0]}</div>${posC(c)}${abr(c)}
+ /* Tombol kembali hanya selama kartu yang dibuka dari chip 语法 masih tampil; pindah kartu atau menu menghapusnya. */
+ if(S.gb&&(S.gb.c!==c||S.review))S.gb=null;
+ v.innerHTML=`${S.gb?`<div class="rt"><button type="button" class="gkb" id="gkb">← Kembali ke 语法</button><span class="pos">${S.gb.ket}</span></div>`:""}${S.review?`<div class="srs-panel"><h3>Pengulangan terjadwal</h3><p>Kartu yang jatuh tempo diprioritaskan. Nilai berdasarkan seberapa mudah Anda mengingatnya.</p><span class="srs-badge">Jadwal adaptif</span></div>`:""}<div class="card" id="cd"><span class="tag">${c[3]==7?"HSK 5":c[3]==8?"HSK 6":c[3]>=5?"Teknis":"HSK "+c[3]} ·${CH[c[3]][c[4]-1]}</span><div class="hz" style="font-size:${hzs(c[0].length)}px">${c[0]}</div>${posC(c)}${abr(c)}
  ${S.flip?`<div class="py">${pyHTML(c[1])}</div><div class="ar">${c[2]}</div>${c[5]?`<div class="ex">${c[5]}${AU[c[5]]?` <button class="pl sm" data-aud="${enc(c[5])}">${IKA0}</button>`:""}</div>`:""}`:`<div class="hint">Ketuk untuk membuka</div>`}</div>
  <div class="pos">${S.i+1} / ${L.length}</div>
  <div class="row acts"><button class="no" id="b0">Masih belajar</button><button class="yes" id="b1">Sudah tahu</button></div>
  <div class="row"><button id="pv">← Sebelumnya</button><button id="nx">Berikutnya →</button></div>`;
  $("cd").onclick=()=>{S.flip=!S.flip;render()};
- const go=d=>{S.i=(S.i+d+L.length)%L.length;S.flip=false;render()};
+ if($("gkb"))$("gkb").onclick=()=>{S.gb=null;goMode("gr",true)};
+ const go=d=>{S.gb=null;S.i=(S.i+d+L.length)%L.length;S.flip=false;render()};
  $("b0").onclick=()=>{S.m["k"+D.indexOf(c)]=0;save();srsGrade(c,false);if(S.review){S.i=Math.min(S.i,Math.max(0,srsReviewList().length-1));S.flip=false;render()}else go(1)};$("b1").onclick=()=>{S.m["k"+D.indexOf(c)]=1;save();srsGrade(c,true);if(S.review){S.i=Math.min(S.i,Math.max(0,srsReviewList().length-1));S.flip=false;render()}else go(1)};
  $("pv").onclick=()=>go(-1);$("nx").onclick=()=>go(1);
  let x0=null;$("cd").ontouchstart=e=>{x0=e.touches[0].clientX};$("cd").ontouchend=e=>{if(x0===null)return;const dx=e.changedTouches[0].clientX-x0;x0=null;if(Math.abs(dx)>60){e.preventDefault();go(dx<0?1:-1)}};
@@ -3208,7 +3239,7 @@ function renderH3(v){
 $("t-study").onclick=()=>{S.review=false;S.tab="study";render();scrollTo(0,0)};$("t-write").onclick=()=>{S.review=false;S.tab="write";S.i=0;render();scrollTo(0,0)};$("t-sum").onclick=()=>{S.review=false;S.tab="sum";render();scrollTo(0,0)};
 const nz=s=>(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
 let SX=null,SFLT="all";
-function goVocab(c){const t=TEKL.includes(c[3]);S.mode=t?"tek":"hsk";S.vm=S.mode;if(t)S.tk=c[3];else S.lv=c[3];S.ch=c[4];S.tab="study";S.flip=false;const L=list();S.i=Math.max(0,L.indexOf(c));render();scrollTo(0,0)}
+function goVocab(c,buka){if(!buka)S.gb=null;const t=TEKL.includes(c[3]);S.mode=t?"tek":"hsk";S.vm=S.mode;if(t)S.tk=c[3];else S.lv=c[3];S.ch=c[4];S.tab="study";S.flip=!!buka;const L=list();S.i=Math.max(0,L.indexOf(c));render();scrollTo(0,0)}
 function goRd(s){S.mode="rd";S.rl="r"+s.l;S.ch=RD.filter(x=>x.l==s.l).indexOf(s)+1;render();scrollTo(0,0)}
 function goLt(k,qi){S.mode="lt";S.lk=k;if(k=="hk"){LS.hk=LS.hk||{};LS.hk.t=qi===undefined?"ul":"qa";if(qi!==undefined){LS.hk.qi=qi;LS.hk.ans=false}}render();scrollTo(0,0)}
 function buildSx(){
