@@ -1,0 +1,157 @@
+{
+"g":{
+"1":[["哪","哪儿","那","这","谁"],["几","多少","什么","怎么","怎么样"]],
+"2":[["问","门","玩","晚上","卖"],["送","给","让","告诉","帮助"]],
+"3":[["借","还","换","拿","搬"],["安静","干净","清楚","简单","重要"]],
+"4":[["参观","举行","表演","活动","邀请"],["原因","原来","原谅","因此","理解"]],
+"5":[["逐渐","迟早","始终","至今","从此"],["居然","难怪","简直","总算","何必"]],
+"6":[["起初","随即","日益","向来","偏偏"],["以便","以免","尚且","固然","倘若"]]
+},
+"is":{
+"2":[
+{"k":"离","d":["从","往","到"],"z":"我家离学校很近。","m":"离 menyatakan jarak antara dua tempat: A 离 B 近/远. 从 menunjukkan titik awal, 往 menunjukkan arah, dan 到 berarti sampai."},
+{"k":"比","d":["离","从","到"],"z":"今天比昨天冷。","m":"比 dipakai untuk membandingkan dua hal: A 比 B + sifat. 离, 从, dan 到 tidak bisa menghubungkan dua hal yang dibandingkan."},
+{"k":"虽然","d":["因为","所以","已经"],"z":"虽然天气很冷，但是我们去跑步。","m":"虽然 membuka bagian pertama yang berlawanan dengan bagian kedua (但是). 因为 dan 所以 menyatakan sebab akibat, bukan pertentangan."},
+{"k":"正在","d":["已经","一起","还"],"z":"妈妈正在做饭，你等一下。","m":"正在 + kata kerja menyatakan tindakan yang sedang berlangsung. 已经 biasanya diakhiri 了, 一起 butuh pelaku bersama, dan 还 berarti masih atau juga."},
+{"k":"过","d":["了","在","得"],"z":"我没吃过羊肉，不知道好不好吃。","m":"过 sesudah kata kerja menyatakan pengalaman: 没吃过 = belum pernah makan. 没 tidak dipakai bersama 了, dan 在 serta 得 tidak punya fungsi itu."},
+{"k":"得","d":["的","着","过"],"z":"我弟弟每天跑步，跑得很快。","m":"得 menyambung kata kerja dengan keterangan hasil atau tingkat: 跑得很快. 的 menyambung kata benda, sedangkan 着 dan 过 menempel pada kata kerja untuk makna lain."}
+],
+"3":[
+{"k":"还是","d":["或者","而且","然后"],"z":"你喝咖啡还是喝茶？","m":"还是 dipakai dalam pertanyaan pilihan (A atau B?). 或者 dipakai dalam kalimat pernyataan. 而且 dan 然后 tidak menyatakan pilihan."},
+{"k":"或者","d":["还是","而且","但是"],"z":"你可以坐地铁，或者坐公共汽车去。","m":"或者 dipakai dalam kalimat pernyataan untuk menyebut pilihan. Dalam pertanyaan pilihan dipakai 还是. 而且 dan 但是 tidak menyatakan pilihan."},
+{"k":"把","d":["被","让","给"],"z":"你走的时候，请把门关上。","m":"把 memajukan objek ke depan kata kerja: 把 + objek + kata kerja + hasil. 被 menandai pelaku pada kalimat pasif, sedangkan 让 dan 给 tidak membentuk pola ini."},
+{"k":"被","d":["把","跟","比"],"z":"我的自行车被弟弟骑走了。","m":"被 memperkenalkan pelaku pada kalimat pasif: benda + 被 + pelaku + kata kerja. Subjek di sini adalah benda yang dikenai tindakan, jadi 把, 跟, dan 比 tidak cocok."},
+{"k":"终于","d":["突然","刚才","以前"],"z":"等了两个小时，公共汽车终于来了。","m":"终于 berarti akhirnya, setelah menunggu atau berusaha lama. 突然 berarti tiba-tiba, 刚才 berarti tadi, dan 以前 berarti dulu, jadi tidak cocok dengan 等了两个小时."},
+{"k":"一直","d":["一定","一样","一般"],"z":"从早上到现在，他一直在看书，没休息。","m":"一直 berarti terus menerus tanpa berhenti. 一定 berarti pasti, 一样 berarti sama, dan 一般 berarti biasanya. Hanya 一直 cocok dengan 从早上到现在."}
+],
+"4":[
+{"k":"尽管","d":["既然","否则","于是"],"z":"尽管昨天下了大雨，比赛还是按时开始了。","m":"尽管 berarti walaupun, dipakai untuk fakta yang sudah terjadi dan hasilnya berlawanan. 既然 meminta kelanjutan 就, 否则 berarti kalau tidak, dan 于是 berarti maka."},
+{"k":"否则","d":["于是","既然","尽管"],"z":"你要早点儿出发，否则会迟到的。","m":"否则 berarti kalau tidak, memperingatkan akibat bila syarat tidak dipenuhi. 于是, 既然, dan 尽管 tidak menyatakan akibat buruk seperti itu."},
+{"k":"竟然","d":["仍然","当然","然后"],"z":"我们才认识一个星期，他竟然向我借钱。","m":"竟然 menyatakan kejadian yang tidak disangka. 仍然 berarti tetap, 当然 berarti tentu saja, dan 然后 berarti setelah itu."},
+{"k":"甚至","d":["于是","否则","既然"],"z":"他太忙了，甚至连吃饭的时间都没有。","m":"甚至 menegaskan contoh yang paling ekstrem (bahkan). 于是 berarti maka, 否则 berarti kalau tidak, dan 既然 berarti karena sudah."},
+{"k":"温度","d":["速度","态度","气候"],"z":"今天的温度很高，三十五度。","m":"温度 berarti suhu, cocok dengan 三十五度. 速度 berarti kecepatan, 态度 berarti sikap, dan 气候 berarti iklim."},
+{"k":"原来","d":["原因","原谅","因此"],"z":"我找了半天，原来钥匙在你手里。","m":"原来 berarti ternyata, ketika baru tahu kenyataannya. 原因 berarti sebab, 原谅 berarti memaafkan, dan 因此 berarti oleh karena itu."}
+],
+"5":[
+{"k":"难怪","d":["何必","居然","简直"],"z":"他在北京生活了十年，难怪汉语说得这么好。","m":"难怪 berarti pantas saja: alasan yang baru diketahui menjelaskan hal yang tadi mengherankan. 何必 berarti buat apa, 居然 berarti tak disangka, dan 简直 berarti benar-benar."},
+{"k":"何必","d":["何况","居然","难怪"],"z":"这点儿小事，你何必生气呢？","m":"何必 berarti buat apa, menyarankan agar tidak melakukan hal yang tidak perlu, dan sering diakhiri 呢. 何况 berarti apalagi, 居然 berarti tak disangka, dan 难怪 berarti pantas saja."},
+{"k":"居然","d":["难怪","迟早","至今"],"z":"今天是他的生日，他居然忘了。","m":"居然 menyatakan hal yang tidak disangka. 难怪 berarti pantas saja, 迟早 berarti cepat atau lambat, dan 至今 berarti hingga kini."},
+{"k":"总算","d":["至今","迟早","始终"],"z":"我找了三个小时，总算找到了。","m":"总算 berarti akhirnya, setelah upaya yang panjang. 至今 berarti hingga kini, 迟早 berarti cepat atau lambat, dan 始终 berarti senantiasa; tidak ada yang cocok dengan hasil yang akhirnya tercapai."},
+{"k":"逐渐","d":["立刻","曾经","随手"],"z":"天气逐渐变暖了，春天快到了。","m":"逐渐 berarti berangsur-angsur, untuk perubahan yang bertahap. 立刻 berarti seketika, 曾经 berarti pernah, dan 随手 berarti sambil lalu."},
+{"k":"始终","d":["迟早","难怪","立刻"],"z":"这些年来，他始终没有放弃自己的理想。","m":"始终 berarti senantiasa dari awal sampai akhir. 迟早 berarti cepat atau lambat, 难怪 berarti pantas saja, dan 立刻 berarti seketika."}
+],
+"6":[
+{"k":"以免","d":["以便","尚且","固然"],"z":"出门前带上雨伞，以免被雨淋湿。","m":"以免 berarti agar tidak, untuk mencegah hasil buruk. 以便 berarti agar dapat, untuk tujuan yang diinginkan. 尚且 dan 固然 tidak menyatakan tujuan."},
+{"k":"以便","d":["以免","尚且","倘若"],"z":"请把你的电话号码留下，以便我们随时联系你。","m":"以便 berarti agar dapat, untuk tujuan yang diinginkan. 以免 berarti agar tidak (mencegah hal buruk), 尚且 berarti bahkan, dan 倘若 berarti seandainya."},
+{"k":"倘若","d":["固然","尚且","日益"],"z":"倘若明天不下雨，我们就去爬山。","m":"倘若 berarti seandainya, membuka syarat yang diikuti 就. 固然 butuh 但是 sesudahnya, 尚且 butuh 何况, dan 日益 berarti semakin hari semakin."},
+{"k":"尚且","d":["固然","偏偏","日益"],"z":"大人尚且做不到，何况孩子呢？","m":"尚且 berarti bahkan, diikuti 何况 untuk perbandingan: yang lebih mampu saja tidak bisa, apalagi yang kurang mampu. 固然 berarti memang, 偏偏 berarti justru, dan 日益 berarti semakin hari semakin."},
+{"k":"偏偏","d":["向来","日益","起初"],"z":"我刚要出门，偏偏下起了大雨。","m":"偏偏 berarti justru, untuk kejadian yang berlawanan dengan harapan. 向来 berarti selalu, 日益 berarti semakin hari semakin, dan 起初 berarti pada mulanya."},
+{"k":"日益","d":["起初","固然","尚且"],"z":"随着城市的发展，交通问题日益严重。","m":"日益 berarti semakin hari semakin, untuk perubahan yang terus bertambah. 起初 berarti pada mulanya, 固然 berarti memang, dan 尚且 berarti bahkan."},
+{"k":"向来","d":["日益","随即","倘若"],"z":"他向来不喜欢吃辣的。","m":"向来 berarti selalu dari dulu sampai sekarang, untuk kebiasaan lama. 日益 berarti semakin hari semakin, 随即 berarti segera setelah itu, dan 倘若 berarti seandainya."}
+]
+},
+"pi":{
+"1":[
+["睡觉",["shuì jué","shuǐ jiào","shuì jiāo"],"Dalam 睡觉 (tidur), 觉 dibaca jiào. Bacaan jué dipakai pada 觉得 (merasa). 睡 bernada 4: shuì."],
+["东西",["dōngxī","dōngxì","dòngxi"],"东西 dibaca dōngxi dengan suku kata kedua netral untuk arti barang. Bacaan dōngxī (nada 1) berarti timur dan barat."],
+["不客气",["bù kèqi","bú kèqì","bù kēqi"],"不 berubah menjadi bú (nada 2) di depan suku kata bernada 4. 客气 dibaca kèqi dengan 气 netral."],
+["一点儿",["yīdiǎnr","yídiǎnr","yìdiánr"],"一 di depan nada 3 dibaca yì (nada 4). Di depan nada 4 dibaca yí, dan sendirian atau di akhir angka dibaca yī."],
+["哪儿",["nàr","nár","nār"],"哪儿 (di mana) bernada 3: nǎr. 那儿 (di sana) bernada 4: nàr. Nada membedakan kata tanya dari kata tunjuk."],
+["买",["mài","mái","māi"],"买 (membeli) bernada 3: mǎi. 卖 (menjual) bernada 4: mài. Hanya nada yang membedakan keduanya."]
+],
+"2":[
+["一起",["yīqǐ","yíqǐ","yìqí"],"一 di depan nada 3 dibaca yì (nada 4). 起 bernada 3: qǐ."],
+["还",["huán","hǎi","hāi"],"Dengan arti masih atau juga, 还 dibaca hái. Dengan arti mengembalikan (还书) dibaca huán."],
+["觉得",["jiàode","juěde","juédé"],"觉 dalam 觉得 (merasa) dibaca jué, bukan jiào seperti pada 睡觉. 得 netral: de."],
+["晴",["qǐng","qìng","qīng"],"晴 (cerah) bernada 2: qíng. 请 (silakan) bernada 3: qǐng, dan 清 bernada 1: qīng."],
+["卖",["mǎi","mái","māi"],"卖 (menjual) bernada 4: mài. 买 (membeli) bernada 3: mǎi."],
+["往",["wáng","wàng","wāng"],"往 (menuju) bernada 3: wǎng. 王 bernada 2: wáng, dan 忘 bernada 4: wàng."]
+],
+"3":[
+["一样",["yīyàng","yìyàng","yíyáng"],"一 di depan nada 4 dibaca yí (nada 2). 样 bernada 4: yàng."],
+["不但",["bùdàn","búdān","búdán"],"不 di depan nada 4 berubah menjadi bú. 但 bernada 4: dàn."],
+["还",["hái","huàn","huǎn"],"Dengan arti mengembalikan, 还 dibaca huán (还书). Dengan arti masih atau juga dibaca hái. 换 (menukar) dibaca huàn."],
+["地方",["dìfāng","dìfǎng","dífang"],"地方 (tempat) dibaca dìfang dengan 方 netral. Bacaan dìfāng berarti daerah, lawan dari pusat."],
+["重要",["chóngyào","zhǒngyào","zhòngyāo"],"重 dalam 重要 (penting) dibaca zhòng. Bacaan chóng dipakai untuk arti mengulang, misalnya 重新."],
+["行李箱",["hánglǐxiāng","xìnglǐxiāng","xínglíxiāng"],"行 dalam 行李 dibaca xíng. Bacaan háng dipakai pada 银行. 李 bernada 3: lǐ."]
+],
+"4":[
+["重新",["zhòngxīn","chóngxìn","chōngxīn"],"重 dalam 重新 (lagi) dibaca chóng. Bacaan zhòng dipakai untuk arti berat atau penting."],
+["差不多",["chābuduō","chàbùduō","chàbuduó"],"差 dalam 差不多 (hampir sama) dibaca chà. 不 netral dan 多 bernada 1: duō."],
+["调查",["tiáochá","diāochá","diàochà"],"调 dalam 调查 (menyelidiki) dibaca diào. Bacaan tiáo dipakai pada 调整 (menyesuaikan). 查 bernada 2: chá."],
+["感觉",["gǎnjiào","gānjué","gǎnjuè"],"觉 dalam 感觉 (merasakan) dibaca jué, bukan jiào. 感 bernada 3: gǎn."],
+["得",["dé","de","dēi"],"得 untuk arti harus dibaca děi. Untuk arti memperoleh dibaca dé, dan untuk partikel dibaca de."],
+["行",["háng","xìng","xǐng"],"行 untuk arti boleh atau oke dibaca xíng. Bacaan háng dipakai pada 银行 dan 行业."]
+],
+"5":[
+["处理",["chùlǐ","chūlǐ","chǔlí"],"处 dalam 处理 (menangani) dibaca chǔ (nada 3). Bacaan chù dipakai pada 到处 (di mana-mana)."],
+["角色",["jiǎosè","juésě","juèsè"],"角 dalam 角色 (peran) dibaca jué. Bacaan jiǎo dipakai untuk sudut atau tanduk."],
+["曾经",["zēngjīng","cénjīng","céngjǐng"],"曾 dalam 曾经 (pernah) dibaca céng. Huruf yang sama dibaca zēng pada marga Zēng."],
+["创造",["chuāngzào","chuángzào","chuàngzǎo"],"创 dibaca chuàng (nada 4). Bunyi yang mirip: 窗 chuāng dan 床 chuáng. 造 bernada 4: zào."],
+["差距",["chàjù","chājú","chājǔ"],"差 dalam 差距 (selisih) dibaca chā. Bacaan chà dipakai untuk arti kurang atau buruk."],
+["不见得",["bùjiàndé","bújiāndé","bújiàndě"],"不 di depan nada 4 berubah menjadi bú. 得 dalam 不见得 (belum tentu) dibaca dé."]
+]
+},
+"tu":{
+"2":[
+{"w":"虽然……但是……","py":"suīrán … dànshì …","m":"walaupun ... tetapi ...","sc":"Tulis satu kalimat tentang cuaca atau kesehatan yang memakai kedua bagian pola ini.","need":["虽然","但是"],"ex":"虽然今天很冷，但是我还是去跑步了。"},
+{"w":"比 + 得多","py":"bǐ … de duō","m":"jauh lebih ... daripada ...","sc":"Bandingkan dua orang atau dua benda, lalu tutup dengan 得多.","need":["比","得多"],"ex":"我的哥哥比我高得多。"},
+{"w":"因为……所以……","py":"yīnwèi … suǒyǐ …","m":"karena ... maka ...","sc":"Jelaskan mengapa kamu tidak jadi pergi ke suatu tempat.","need":["因为","所以"],"ex":"因为下大雨，所以我没有去学校。"},
+{"w":"从……到……","py":"cóng … dào …","m":"dari ... sampai ...","sc":"Ceritakan jam kerja atau lama perjalanan antara dua tempat.","need":["从","到"],"ex":"我家从学校到公司要二十分钟。"}
+],
+"3":[
+{"w":"不但……而且……","py":"búdàn … érqiě …","m":"tidak hanya ... tetapi juga ...","sc":"Puji seseorang atau sesuatu dari dua sisi.","need":["不但","而且"],"ex":"他不但会说汉语，而且写得很好。"},
+{"w":"把……了","py":"bǎ … le","m":"pola 把: objek di depan kata kerja","sc":"Ceritakan benda yang sudah kamu pindahkan, bersihkan, atau selesaikan. Objek harus muncul sesudah 把.","need":["把","了"],"ex":"他把书放在桌子上了。"},
+{"w":"除了……都……","py":"chúle … dōu …","m":"kecuali ... semuanya ...","sc":"Sebut satu orang yang berbeda dari kelompoknya, lalu jelaskan apa yang dilakukan yang lain.","need":["除了","都"],"ex":"除了我，大家都去过北京。"},
+{"w":"越来越……了","py":"yuè lái yuè … le","m":"semakin lama semakin ...","sc":"Gambarkan perubahan pada cuaca, kota, atau kemampuan bahasamu.","need":["越来越","了"],"ex":"我的汉语越来越好了。"}
+],
+"4":[
+{"w":"不管……都……","py":"bùguǎn … dōu …","m":"apa pun ..., tetap ...","sc":"Nyatakan bahwa kamu tidak peduli kondisi apa pun.","need":["不管","都"],"ex":"不管天气怎么样，我都会去锻炼。"},
+{"w":"即使……也……","py":"jíshǐ … yě …","m":"sekalipun ..., tetap ...","sc":"Beri contoh andaian yang tetap tidak mengubah keputusanmu.","need":["即使","也"],"ex":"即使明天下雨，我也要去爬山。"},
+{"w":"既然……就……","py":"jìrán … jiù …","m":"karena sudah ..., maka ...","sc":"Beri saran berdasarkan fakta yang sudah diketahui.","need":["既然","就"],"ex":"既然你累了，就早点儿休息吧。"},
+{"w":"对于……来说","py":"duìyú … láishuō","m":"dari sudut pandang ..., ...","sc":"Nyatakan pendapat dari sudut pandang suatu kelompok orang.","need":["对于","来说"],"ex":"对于学生来说，学习汉语很重要。"}
+],
+"5":[
+{"w":"何必……呢","py":"hébì … ne","m":"buat apa ...?","sc":"Nasihati teman agar tidak melakukan sesuatu yang tidak perlu.","need":["何必","呢"],"ex":"天气这么好，你何必待在家里呢？"},
+{"w":"原来……难怪……","py":"yuánlái … nánguài …","m":"ternyata ..., pantas saja ...","sc":"Ceritakan alasan di balik sesuatu yang awalnya mengherankan.","need":["原来","难怪"],"ex":"原来他在中国住过五年，难怪汉语说得这么好。"},
+{"w":"没想到……居然……","py":"méi xiǎngdào … jūrán …","m":"tak disangka ... ternyata ...","sc":"Ceritakan kejadian yang tidak kamu duga.","need":["没想到","居然"],"ex":"没想到，他居然一个人走了二十公里。"},
+{"w":"一旦……就……","py":"yídàn … jiù …","m":"begitu ..., langsung ...","sc":"Jelaskan akibat langsung bila suatu hal terjadi.","need":["一旦","就"],"ex":"一旦下了决心，他就不会轻易放弃。"}
+],
+"6":[
+{"w":"以便","py":"yǐbiàn","m":"agar dapat","sc":"Jelaskan tindakan yang kamu lakukan supaya hal lain menjadi mudah.","need":["以便"],"ex":"请留下你的联系方式，以便我们及时通知你。"},
+{"w":"尚且……何况……","py":"shàngqiě … hékuàng …","m":"bahkan ... apalagi ...","sc":"Bandingkan dua hal: yang lebih mudah saja sulit, apalagi yang lebih sulit.","need":["尚且","何况"],"ex":"大人尚且觉得困难，何况是孩子呢？"},
+{"w":"固然……但是……","py":"gùrán … dànshì …","m":"memang ..., tetapi ...","sc":"Akui satu sisi baik atau buruk, lalu beri sisi sebaliknya.","need":["固然","但是"],"ex":"这份工作固然很辛苦，但是收入不错。"},
+{"w":"倘若……就……","py":"tǎngruò … jiù …","m":"seandainya ..., maka ...","sc":"Beri tawaran bantuan dengan syarat andaian.","need":["倘若","就"],"ex":"倘若你有困难，就随时告诉我。"}
+]
+},
+"de":{
+"1":[
+{"s":"我八月去北京。","d":["我六月去北京。","我八号去北京。","我九月去北京。"]},
+{"s":"学校在医院后面。","d":["学校在医院前面。","医院在学校后面。","学校在商店后面。"]},
+{"s":"我们坐飞机去北京。","d":["我们坐飞机回北京。","我们坐飞机去学校。","我们坐出租车去北京。"]},
+{"s":"今天天气很好。","d":["明天天气很好。","今天天气很热。","今天天气很冷。"]},
+{"s":"我和同学一起去学校。","d":["我和同学一起回学校。","我和老师一起去学校。","我和同学一起去医院。"]}
+],
+"2":[
+{"s":"火车站离这儿很近。","d":["火车站离这儿很远。","机场离这儿很近。","火车站离那儿很近。"]},
+{"s":"我早上六点起床。","d":["我早上八点起床。","我晚上六点起床。","我早上六点上班。"]},
+{"s":"我每天早上喝牛奶。","d":["我每天早上喝咖啡。","我每天晚上喝牛奶。","我每天早上买牛奶。"]},
+{"s":"这本书一百块。","d":["这本书一千块。","这本书两百块。","这个手机一百块。"]},
+{"s":"我有两个哥哥。","d":["我有两个弟弟。","我有两个姐姐。","我有三个哥哥。"]}
+],
+"3":[
+{"s":"牛奶在冰箱里。","d":["牛奶在冰箱上。","面包在冰箱里。","牛奶在包里。"]},
+{"s":"我的房间很干净。","d":["我的房间很安静。","我的房间很简单。","我的房子很干净。"]},
+{"s":"北方的冬天很冷。","d":["北方的春天很冷。","南方的冬天很冷。","北方的冬天很热。"]},
+{"s":"请把书放在桌子上。","d":["请把书放在桌子里。","请把书放在椅子上。","请把书拿到桌子上。"]},
+{"s":"他刚才还在这儿。","d":["他刚才还在那儿。","他现在还在这儿。","他刚才不在这儿。"]}
+],
+"4":[
+{"s":"我们下午去参观博物馆。","d":["我们下午去参观图书馆。","我们上午去参观博物馆。","我们下午去参观公园。"]},
+{"s":"请按时完成作业。","d":["请按时完成工作。","请及时完成作业。","请按时检查作业。"]},
+{"s":"他是一个诚实的孩子。","d":["他是一个聪明的孩子。","他是一个诚实的学生。","他是一个骄傲的孩子。"]},
+{"s":"我们明天早上七点出发。","d":["我们明天早上七点出差。","我们明天晚上七点出发。","我们明天早上十点出发。"]},
+{"s":"请问，厕所在哪儿？","d":["请问，厨房在哪儿？","请问，餐厅在哪儿？","请问，银行在哪儿？"]}
+]
+}
+}
