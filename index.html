@@ -107,6 +107,8 @@ button:disabled{opacity:.35;cursor:default}
 /* Workbook: target sentuh minimal 44px (pil level, bagian, jenis soal, tombol aksi, kata susun) */
 .ltb.h5r{margin:8px 0 0}
 .ltb.h5r .pl,#h5b button,#h5b .ck{min-height:44px}
+/* chip Sulit: baris yang memuatnya ikut setinggi 44px supaya semua chip di baris itu seragam dan mudah ditekan */
+.ltb:has(>[data-sl]) .pl,.ltb:has(>#sl) .pl{min-height:44px}
 .lq{text-align:left;font-size:14px;margin:10px 0 6px}.lq b{color:var(--acc)}
 .ans{min-height:64px;border:1px dashed var(--line);border-radius:10px;padding:10px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-family:'Noto Serif SC',serif;font-size:22px;text-align:left}
 .pool{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;justify-content:center}
@@ -2366,11 +2368,11 @@ function lSu(v){
 function lIs(v){
  const L=LS.is=LS.is||{lv:4,ok:0,n:0,wr:false};if(!ltSiap(v,L))return;const WK=L.v3?"hsk_wr3":"hsk_wr";let WR=[];try{WR=JSON.parse(localStorage.getItem(WK)||"[]")}catch(e){}
  const svw=()=>{try{localStorage.setItem(WK,JSON.stringify(WR))}catch(e){}};
- const pool=()=>{let a=ltRows(L,c=>c[0]&&c[5]&&c[5].split(c[0]).length==2&&c[0].length<=4&&!/[／/]/.test(c[0])&&!IS_SKIP.has(c[0]));if(L.wr)a=a.filter(([c,i])=>WR.includes(i));return a};
- const nw=()=>{const a=pool();if(!a.length){L.q=null;return}const[c,i]=pick(a);const P=posS(c),okX=x=>x[3]==c[3]&&x[0]!=c[0]&&!c[5].includes(x[0])&&!/[／/]/.test(x[0])&&!glSame(x[2],c[2]),dif=x=>{const Q=posS(x);return P.size>0&&Q.size>0&&![...Q].some(p=>P.has(p))};const DA=ltAll(L);let same=DA.filter(x=>okX(x)&&dif(x)&&x[0].length==c[0].length);if(same.length<3)same=DA.filter(x=>okX(x)&&dif(x));if(same.length<3)same=DA.filter(okX);L.q={c,i,o:sh([c,...ltUniq(sh(same),[c[0]]).slice(0,3)]),p:null,v3:!!L.v3}};
+ const pool=()=>{let a=ltRows(L,c=>c[0]&&c[5]&&c[5].split(c[0]).length==2&&c[0].length<=4&&!/[／/]/.test(c[0])&&!IS_SKIP.has(c[0])&&(!L.sl||c[0].length>=2));if(L.wr)a=a.filter(([c,i])=>WR.includes(i));return a};
+ const nw=()=>{const a=pool();if(!a.length){L.q=null;return}const[c,i]=pick(a);const P=posS(c),okX=x=>x[3]==c[3]&&x[0]!=c[0]&&!c[5].includes(x[0])&&!/[／/]/.test(x[0])&&!glSame(x[2],c[2]),dif=x=>{const Q=posS(x);return P.size>0&&Q.size>0&&![...Q].some(p=>P.has(p))};const DA=ltAll(L);let same=L.sl?DA.filter(x=>okX(x)&&dif(x)):DA.filter(x=>okX(x)&&dif(x)&&x[0].length==c[0].length);if(same.length<3)same=DA.filter(x=>okX(x)&&dif(x));if(same.length<3)same=DA.filter(okX);L.q={c,i,o:sh([c,...ltUniq(L.sl?ltUrut(c,same):sh(same),[c[0]]).slice(0,3)]),p:null,v3:!!L.v3}};
  if(!L.q||L.q.c[3]!=ltLv(L)||!!L.q.v3!=!!L.v3)nw();
  const q=L.q;
- v.innerHTML=ltPilih(L,LV3)+`<div class="ltb"><button class="pl ${L.wr?"on":""}" id="wr">Kata yang salah (${WR.length})</button><span class="pos">Skor ${L.ok}/${L.n}</span></div>
+ v.innerHTML=ltPilih(L,LV3,"is")+`<div class="ltb"><button class="pl ${L.wr?"on":""}" id="wr">Kata yang salah (${WR.length})</button><span class="pos">Skor ${L.ok}/${L.n}</span></div>
 ${q?`<p class="lq">Pilih kata yang tepat untuk mengisi bagian kosong</p><div class="bl">${q.c[5].replace(q.c[0],'<span style="color:var(--acc)">＿＿＿</span>')}</div>
 <div class="ops">${q.o.map((x,j)=>`<button class="op ${q.p===null?"":x===q.c?"ok":j==q.p?"no":""}" data-j="${j}"><span class="hz2">${x[0]}</span>${q.p!==null?`<small>${x[1]} · ${x[2]}${posT(x)?" · "+posT(x):""}</small>`:""}</button>`).join("")}</div>
 ${q.p!==null?`<div class="rs ${q.o[q.p]===q.c?"ok":"no"}">${q.o[q.p]===q.c?ikL("cek","lm")+"Benar":ikL("tutup","lm")+"Jawaban benar: "+q.c[0]}</div><div class="gx"><div class="gz">${q.c[5].replace(q.c[0],"<b style='color:var(--acc)'>"+q.c[0]+"</b>")} ${aub(q.c[5])}</div><div class="gi"><b>${q.c[0]}</b> ${q.c[1]}: ${q.c[2]}${posT(q.c)?" · "+posT(q.c):""}</div></div>${q.o[q.p]!==q.c?whyIs(q):""}`:""}
@@ -2416,11 +2418,11 @@ ${q.p!==null?`<div class="rs ${q.o[q.p].ok?"ok":"no"}">${q.o[q.p].ok?ikL("cek","
 function lAr(v){
  const L=LS.ar=LS.ar||{lv:2,dir:"zi",ok:0,n:0,wr:false};if(!ltSiap(v,L))return;const WK=L.v3?"hsk_wa3":"hsk_wa";let WA=[];try{WA=JSON.parse(localStorage.getItem(WK)||"[]")}catch(e){}
  const sv=()=>{try{localStorage.setItem(WK,JSON.stringify(WA))}catch(e){}};
- const pool=()=>{let a=ltRows(L,c=>c[0]&&c[6]!="sen"&&c[0].length<=6&&!/[／/]/.test(c[0]));if(L.wr)a=a.filter(([c,i])=>WA.includes(i));return a};
- const nw=()=>{const a=pool();if(!a.length){L.q=null;return}const[c,i]=pick(a);const lvl=ltUniq(ltAll(L).filter(x=>x!==c&&ltSameLv(L,x)&&x[0]&&x[6]!="sen"&&x[0].length<=6&&!/[／/]/.test(x[0])&&x[2]!=c[2]&&x[0]!=c[0]&&!glSame(x[2],c[2])),[c[0]]);let same=lvl.filter(x=>x[6]==c[6]);let d=sh(same).slice(0,3);if(d.length<3)d=d.concat(sh(lvl.filter(x=>!d.includes(x))).slice(0,3-d.length));L.q={c,i,o:sh([{x:c,ok:true},...d.map(x=>({x,ok:false}))]),p:null,v3:!!L.v3}};
+ const pool=()=>{let a=ltRows(L,c=>c[0]&&c[6]!="sen"&&c[0].length<=6&&!/[／/]/.test(c[0])&&(!L.sl||c[0].length>=2));if(L.wr)a=a.filter(([c,i])=>WA.includes(i));return a};
+ const nw=()=>{const a=pool();if(!a.length){L.q=null;return}const[c,i]=pick(a);const lvl=ltUniq(ltAll(L).filter(x=>x!==c&&ltSameLv(L,x)&&x[0]&&x[6]!="sen"&&x[0].length<=6&&!/[／/]/.test(x[0])&&x[2]!=c[2]&&x[0]!=c[0]&&!glSame(x[2],c[2])),[c[0]]);let d;if(L.sl)d=ltUrut(c,lvl).slice(0,3);else{let same=lvl.filter(x=>x[6]==c[6]);d=sh(same).slice(0,3);if(d.length<3)d=d.concat(sh(lvl.filter(x=>!d.includes(x))).slice(0,3-d.length))}L.q={c,i,o:sh([{x:c,ok:true},...d.map(x=>({x,ok:false}))]),p:null,v3:!!L.v3}};
  if(!L.q||!!L.q.v3!=!!L.v3||!ltSameLv(L,L.q.c))nw();
  const q=L.q,c=q&&q.c,sh2=s=>s.length>46?s.slice(0,46)+"…":s;
- v.innerHTML=ltPilih(L,LV2K)+`<div class="ltb"><button class="pl ${L.dir=="zi"?"on":""}" data-d="zi">Hanzi → Arti</button><button class="pl ${L.dir=="iz"?"on":""}" data-d="iz">Arti → Hanzi</button><button class="pl ${L.wr?"on":""}" id="wr">Kata yang salah (${WA.length})</button><span class="pos">Skor ${L.ok}/${L.n}</span></div>
+ v.innerHTML=ltPilih(L,LV2K,"ar")+`<div class="ltb"><button class="pl ${L.dir=="zi"?"on":""}" data-d="zi">Hanzi → Arti</button><button class="pl ${L.dir=="iz"?"on":""}" data-d="iz">Arti → Hanzi</button><button class="pl ${L.wr?"on":""}" id="wr">Kata yang salah (${WA.length})</button><span class="pos">Skor ${L.ok}/${L.n}</span></div>
 ${q?`<p class="lq">${L.dir=="zi"?"Apa arti kata ini?":"Pilih hanzi yang sesuai dengan arti ini"}</p>
 <div class="bl" style="text-align:center;font-size:${L.dir=="zi"?36:20}px">${L.dir=="zi"?c[0]:sh2(c[2])}</div>${posC(c)}
 ${mcq(v,L,q,q.o.map(o=>({t:L.dir=="zi"?sh2(o.x[2]):o.x[0],ok:o.ok,sub:L.dir=="zi"?"":o.x[1]+" · "+sh2(o.x[2])})),q.p,"")}
@@ -2439,11 +2441,11 @@ function lDe(v){
  const pend=()=>L.src==7&&!H3.kd;
  const sepi=()=>L.src==7&&H3.kd&&!H3.ks&&!zv();
  if(pend())ksMuat().then(()=>{if(S.mode==="lt"&&S.lk==="de"&&v.isConnected&&LS.de===L&&L.src==7){L.q=null;lDe(v)}});
- const nw=()=>{const a=pool();if(!a.length){L.q=null;return}const c=pick(a);const n=hanN(key(c));let d=sh(a.filter(x=>x!==c&&Math.abs(hanN(key(x))-n)<=3&&key(x)!=key(c))).slice(0,3);if(d.length<3)d=d.concat(a.filter(x=>x!==c&&key(x)!=key(c)&&!d.includes(x)).sort((x,y)=>Math.abs(hanN(key(x))-n)-Math.abs(hanN(key(y))-n)).slice(0,3-d.length));L.q={c,o:sh([{x:c,ok:true},...d.map(x=>({x,ok:false}))]),p:null};L.auto=true};
+ const nw=()=>{const a=pool();if(!a.length){L.q=null;return}const c=pick(a);const n=hanN(key(c));let d=L.sl?a.filter(x=>x!==c&&Math.abs(hanN(key(x))-n)<=4&&key(x)!=key(c)).map(x=>[x,ltBagi(key(c),key(x))+Math.random()]).sort((p,q)=>q[1]-p[1]).slice(0,3).map(p=>p[0]):sh(a.filter(x=>x!==c&&Math.abs(hanN(key(x))-n)<=3&&key(x)!=key(c))).slice(0,3);if(d.length<3)d=d.concat(a.filter(x=>x!==c&&key(x)!=key(c)&&!d.includes(x)).sort((x,y)=>Math.abs(hanN(key(x))-n)-Math.abs(hanN(key(y))-n)).slice(0,3-d.length));L.q={c,o:sh([{x:c,ok:true},...d.map(x=>({x,ok:false}))]),p:null};L.auto=true};
  if(!pend()&&(!L.q||(L.src=="tk"?(L.q.c[3]!=5&&L.q.c[3]!=6):L.q.c[3]!=L.src)))nw();
  if(!L.q||sepi()||pend()){const pk=L.src=="tk"?ilBelum(["tkl","aud"]):null;v.innerHTML=`<div class="ltb">${[[1,"HSK 1"],[2,"HSK 2"],[3,"HSK 3"],[4,"HSK 4"],[7,"HSK 5"],["tk","Kalimat Bandara"]].map(([n,t])=>`<button class="pl ${L.src==n?"on":""}" data-s="${n}">${t}</button>`).join("")}</div>`+(pend()?`<p class="pos" style="margin:30px 0">Memuat rekaman…</p>`:sepi()?`<p class="pos" style="margin:30px 0;text-align:left">Rekaman HSK 5 belum bisa dimuat, jadi latihan ini memakai suara Mandarin dari perangkatmu. Perangkat ini belum punya suara Mandarin. Pasang suara Mandarin di pengaturan bahasa perangkat, periksa koneksi lalu muat ulang halaman, atau pilih level lain.</p>`:pk?ilCatatan(pk,"kalimat Bandara"):`<p class="pos" style="margin:30px 0">Tidak ada soal.</p>`);v.querySelectorAll(".ltb [data-s]").forEach(b=>b.onclick=()=>{L.src=b.dataset.s=="tk"?"tk":+b.dataset.s;L.q=null;lDe(v)});ilBind();return}
  const q=L.q,c=q.c;
- v.innerHTML=`<div class="ltb">${[[1,"HSK 1"],[2,"HSK 2"],[3,"HSK 3"],[4,"HSK 4"],[7,"HSK 5"],["tk",penuh()?"Kalimat Bandara":IKK+"Kalimat Bandara"]].map(([n,t])=>`<button class="pl ${L.src==n?"on":""}" data-s="${n}">${t}</button>`).join("")}<span class="pos">Skor ${L.ok}/${L.n}</span></div>
+ v.innerHTML=`<div class="ltb">${[[1,"HSK 1"],[2,"HSK 2"],[3,"HSK 3"],[4,"HSK 4"],[7,"HSK 5"],["tk",penuh()?"Kalimat Bandara":IKK+"Kalimat Bandara"]].map(([n,t])=>`<button class="pl ${L.src==n?"on":""}" data-s="${n}">${t}</button>`).join("")}<button class="pl ${L.sl?"on":""}" id="sl" aria-pressed="${!!L.sl}">Sulit</button><span class="pos">Skor ${L.ok}/${L.n}</span></div>${ltSulitCat(L,"de")}
 <p class="lq">Dengarkan, lalu pilih kalimat yang kamu dengar</p>
 <div class="row"><button class="pl" id="pp" style="padding:12px 22px">${IKA}Putar audio</button></div>${L.src==7&&!AU[key(c)]&&!(H3.ks&&H3.ks.has(kaH("s|"+key(c))))?`<p class="pos" style="margin:-2px 0 10px">Suara dari perangkatmu. Rekaman kalimat ini belum tersedia.</p>`:""}
 ${mcq(v,L,q,q.o.map(o=>({t:key(o.x),ok:o.ok,sub:L.src=="tk"?o.x[2]:o.x[0]+" "+o.x[1]+": "+o.x[2]})),q.p,"")}
@@ -2451,7 +2453,7 @@ ${q.p!==null?`<div class="rs ${q.o[q.p].ok?"ok":"no"}">${q.o[q.p].ok?ikL("cek","
 <div class="row"><button id="n">Soal berikutnya</button></div>`;
  v.querySelectorAll(".ltb [data-s]").forEach(b=>b.onclick=()=>{if(b.dataset.s=="tk"&&!penuh()){ajakLangganan("latihan dengar Kalimat Bandara",b);return}L.src=b.dataset.s=="tk"?"tk":+b.dataset.s;nw();lDe(v)});
  const play=()=>{if(L.src==7&&H3.ks&&H3.ks.has(kaH("s|"+key(c)))){ksPlay(key(c),$("pp"));return}if(playAud(key(c),$("pp")))return;if(L.src==7&&zv()){say(key(c));return}$("pp").textContent="Audio tidak tersedia"};
- $("pp").onclick=play;if(L.auto){L.auto=false;play()}
+ $("sl").onclick=()=>{L.sl=!L.sl;nw();lDe(v)};$("pp").onclick=play;if(L.auto){L.auto=false;play()}
  v.querySelectorAll(".op").forEach(b=>b.onclick=()=>{if(q.p!==null)return;q.p=+b.dataset.j;L.n++;if(q.o[q.p].ok)L.ok++;lDe(v)});$("n").onclick=()=>{nw();lDe(v)};
 }
 const POSW=w=>{const c=vmap[w];return c?posT(c):(RP[w]?RP[w].split(",").map(x=>POSL[x]||"").filter(Boolean).join(" · "):"")};
@@ -2534,18 +2536,18 @@ ${L.o.map((x,j)=>`<button class="sn ${L.pk.includes(x)?"in":""}" data-x="${x}"><
 }
 function lTu(v){
  const L=LS.tu=LS.tu||{lv:4};if(!ltSiap(v,L))return;
- const nw=()=>{const a=ltRows(L,c=>c[0]&&c[5]&&c[0].length<=4&&!/[／/]/.test(c[0]));L.c=a.length?pick(a)[0]:null;L.sh=false;L.fb=null;L.tx=""};
+ const nw=()=>{const a=ltRows(L,c=>c[0]&&c[5]&&c[0].length<=4&&!/[／/]/.test(c[0])&&(!L.sl||c[0].length>=2));L.c=a.length?pick(a)[0]:null;L.c2=null;if(L.sl&&L.c){const b=a.map(r=>r[0]).filter(x=>x!==L.c&&x[0]!=L.c[0]&&!glSame(x[2],L.c[2])&&!L.c[0].includes(x[0])&&!x[0].includes(L.c[0]));L.c2=b.length?pick(b):null}L.sh=false;L.fb=null;L.tx=""};
  if(!L.c)nw();const c=L.c;
  if(!c){v.innerHTML=ltPilih(L,LV3)+'<p class="pos" style="margin:30px 0">Tidak ada kata untuk level ini.</p>';ltPilihBind(v,L,lTu);return}
- v.innerHTML=ltPilih(L,LV3)+`
-<p class="lq">Tulis <b>satu kalimat</b> yang memakai kata ini (seperti 写作 bagian 2)</p>
-<div class="gx"><div class="gz" style="font-size:34px">${c[0]}</div><div class="gpy">${c[1]}</div><div class="gi">${c[2]}</div></div>
+ v.innerHTML=ltPilih(L,LV3,"tu")+`
+<p class="lq">Tulis <b>satu kalimat</b> yang memakai ${L.sl&&L.c2?"<b>kedua kata</b> ini":"kata ini"} (seperti 写作 bagian 2)</p>
+<div class="gx"><div class="gz" style="font-size:34px">${c[0]}</div><div class="gpy">${c[1]}</div><div class="gi">${c[2]}</div></div>${L.sl&&L.c2?`<div class="gx"><div class="gz" style="font-size:34px">${L.c2[0]}</div><div class="gpy">${L.c2[1]}</div><div class="gi">${L.c2[2]}</div></div>`:""}
 <textarea id="ta" placeholder="Tulis kalimat bahasa Mandarin di sini…">${L.tx}</textarea>
 <div class="row"><button id="c">Periksa</button><button id="s">${L.sh?"Sembunyikan contoh":"Lihat contoh"}</button><button id="n">Kata lain</button></div>
-${L.fb?`<div class="fb">${L.fb}</div>`:""}${L.sh?`<div class="gx"><div class="gz">${c[5]} ${aub(c[5])}</div><div class="tg">Contoh jawaban (bukan satu-satunya jawaban benar)</div></div>`:""}`;
+${L.fb?`<div class="fb">${L.fb}</div>`:""}${L.sh?`<div class="gx"><div class="gz">${c[5]} ${aub(c[5])}</div><div class="tg">${L.sl&&L.c2?"Contoh jawaban untuk "+c[0]+" saja (bukan satu-satunya jawaban benar)":"Contoh jawaban (bukan satu-satunya jawaban benar)"}</div></div>`:""}`;
  ltPilihBind(v,L,lTu);
  $("ta").oninput=e=>{L.tx=e.target.value};
- $("c").onclick=()=>{const z=$("ta").value.trim();L.tx=z;const ck=[[z.includes(c[0]),"Memakai kata "+c[0]],[hanN(z)>=8,"Panjang minimal 8 karakter Mandarin (sekarang "+hanN(z)+")"],[/[。？！]$/.test(z),"Diakhiri tanda baca (。？！)"],[!/[A-Za-z]/.test(z),"Tidak ada huruf Latin"],[/[，。？！]/.test(z)||hanN(z)>=8,"Struktur: Subjek + (waktu/tempat) + Kata kerja + Objek"]];
+ $("c").onclick=()=>{const z=$("ta").value.trim();L.tx=z;const two=L.sl&&L.c2,mn=two?14:8,ck=[[z.includes(c[0]),"Memakai kata "+c[0]],...(two?[[z.includes(L.c2[0]),"Memakai kata "+L.c2[0]]]:[]),[hanN(z)>=mn,"Panjang minimal "+mn+" karakter Mandarin (sekarang "+hanN(z)+")"],[/[。？！]$/.test(z),"Diakhiri tanda baca (。？！)"],[!/[A-Za-z]/.test(z),"Tidak ada huruf Latin"],two?[/，/.test(z),"Ada tanda koma (，) yang memisahkan dua bagian kalimat"]:[/[，。？！]/.test(z)||hanN(z)>=8,"Struktur: Subjek + (waktu/tempat) + Kata kerja + Objek"]];
   L.fb=z?ck.map(x=>`<div class="${x[0]?"y":"n"}">${ikL(x[0]?"cek":"tutup","lm")}${x[1]}</div>`).join("")+'<div class="pos" style="text-align:left;margin-top:6px">Pemeriksaan otomatis hanya mengecek bentuk, bukan tata bahasa. Bandingkan dengan contoh, atau minta guru memeriksa.</div>':'<div class="n">Tulis kalimatmu dulu.</div>';lTu(v)};
  $("s").onclick=()=>{L.sh=!L.sh;lTu(v)};$("n").onclick=()=>{nw();lTu(v)};
 }
@@ -2565,8 +2567,23 @@ const ltUniq=(a,skip)=>{const z=new Set(skip);return a.filter(x=>{if(z.has(x[0])
 const ltLv=L=>L.v3?(L.l3||1):L.lv;
 const ltSameLv=(L,x)=>L.v3?x[3]==ltLv(L):(ltLv(L)==5?(x[3]==5||x[3]==6):x[3]==ltLv(L));
 const ltRows=(L,ok)=>{const lv=ltLv(L);if(L.v3)return(H3.by[lv]||[]).map(i=>[D3[i],i]).filter(([c])=>c&&ok(c));return D.map((c,i)=>[c,i]).filter(([c])=>(lv==5?(c[3]==5||c[3]==6):c[3]==lv)&&ok(c))};
-function ltPilih(L,lvls){const lv=ltLv(L);return `<div class="ltb"><button class="pl ${L.v3?"":"on"}" data-v3="0">HSK 2.0</button><button class="pl ${L.v3?"on":""}" data-v3="1">HSK 3.0</button></div><div class="ltb">${(L.v3?[1,2,3,4,5].map(n=>[n,"Level "+n]):lvls).map(([n,t])=>`<button class="pl ${lv==n?"on":""}" data-l="${n}">${t}</button>`).join("")}</div>`}
+/* Mode Sulit (L.sl, tombol "Sulit" di ltPilih): pilihan salah diambil yang paling mirip kunci (hanzi sama, awal atau akhir sama, bunyi sama), bukan acak.
+   Jawaban tetap satu: pengecoh tidak berbagi arti (glSame), dan di Isian kata jenis katanya berbeda. Kata satu hanzi dilewati karena terlalu sedikit pembedanya. */
+const ltHz=s=>String(s).match(/[一-鿿]/g)||[];
+const ltBagi=(a,b)=>{const s=new Set(ltHz(b));return[...new Set(ltHz(a))].filter(ch=>s.has(ch)).length};
+const ltMirip=(c,x)=>{const a=c[0],b=x[0];return ltBagi(a,b)*3+(a[0]==b[0]?2:0)+(a[a.length-1]==b[b.length-1]?2:0)+(typeof c[1]=="string"&&typeof x[1]=="string"&&pySub(c[1])==pySub(x[1])?4:0)+(a.length==b.length?1:0)+(c[6]&&c[6]==x[6]?1:0)};
+const ltUrut=(c,a)=>a.map(x=>[x,ltMirip(c,x)+Math.random()*2]).sort((p,q)=>q[1]-p[1]).map(p=>p[0]);
+const ltCat={ar:"Mode sulit: kata satu hanzi dilewati, dan tiga pilihan lain diambil dari kata yang paling mirip bentuk atau bunyinya.",
+ is:"Mode sulit: kata satu hanzi dilewati. Pilihan salah berbagi hanzi atau bunyi dengan jawaban, tetapi jenis katanya berbeda, jadi hanya satu yang pas.",
+ pihp:"Mode sulit: hanya kata dua hanzi ke atas, dan tiga pilihan lain berbeda satu nada saja dari yang benar.",
+ piph:"Mode sulit: hanya kata dua hanzi ke atas, dan pilihan lain dipilih yang bunyinya sama atau bentuknya mirip.",
+ pa:"Mode sulit: kelima kata dipilih yang saling mirip bentuknya, jadi bentuk hanzi tidak membantu menebak pasangannya.",
+ tu:"Mode sulit: pakai dua kata sekaligus dalam satu kalimat, minimal 14 karakter Mandarin dan ada tanda koma.",
+ de:"Mode sulit: tiga kalimat lain dipilih yang paling banyak berbagi hanzi dengan kalimat yang diputar."};
+const ltSulitCat=(L,k)=>L.sl&&ltCat[k]?`<p class="pos" style="text-align:left;margin:0 0 8px" role="note">${ltCat[k]}</p>`:"";
+function ltPilih(L,lvls,k){const lv=ltLv(L);return `<div class="ltb"><button class="pl ${L.v3?"":"on"}" data-v3="0">HSK 2.0</button><button class="pl ${L.v3?"on":""}" data-v3="1">HSK 3.0</button><button class="pl ${L.sl?"on":""}" data-sl="1" aria-pressed="${!!L.sl}">Sulit</button></div><div class="ltb">${(L.v3?[1,2,3,4,5].map(n=>[n,"Level "+n]):lvls).map(([n,t])=>`<button class="pl ${lv==n?"on":""}" data-l="${n}">${t}</button>`).join("")}</div>${ltSulitCat(L,k)}`}
 function ltPilihBind(v,L,again){
+ v.querySelectorAll("[data-sl]").forEach(b=>b.onclick=()=>{L.sl=!L.sl;L.q=null;L.c=null;again(v)});
  v.querySelectorAll("[data-v3]").forEach(b=>b.onclick=()=>{L.v3=b.dataset.v3=="1";L.q=null;L.c=null;again(v)});
  v.querySelectorAll(".ltb [data-l]").forEach(b=>b.onclick=()=>{if(L.v3)L.l3=+b.dataset.l;else L.lv=+b.dataset.l;L.q=null;L.c=null;again(v)})}
 /* daftar HSK 3.0 dimuat dulu (data/hsk3.json); true bila siap atau tidak dipakai */
@@ -2583,12 +2600,12 @@ Object.keys(TN).forEach(k=>[...TN[k]].forEach((ch,t)=>{TNR[ch]=[k,t]}));
 const PYOK=/^[A-Za-zāáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜü' ]+$/,PYNADA=["nada ringan","nada 1 (datar tinggi)","nada 2 (naik)","nada 3 (turun lalu naik)","nada 4 (turun)"];
 const pySub=s=>s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[ ']/g,"").toLowerCase();
 /* pinyin pengecoh: nada satu atau dua suku kata diganti; kata tanpa tanda nada diberi nada di vokal pertama */
-function piVars(py){
+function piVars(py,one){
  const ch=[...py],tp=[],o=new Set(),put=(a,i,t)=>{a[i]=TN[TNR[a[i]][0]][t]};
  ch.forEach((c,i)=>{const r=TNR[c];if(r&&r[1]>0)tp.push(i)});
  if(tp.length){
   tp.forEach(i=>[1,2,3,4].forEach(t=>{if(t!=TNR[ch[i]][1]){const a=ch.slice();put(a,i,t);o.add(a.join(""))}}));
-  if(tp.length>1)for(let k=0;k<10;k++){const a=ch.slice();tp.forEach(i=>{if(Math.random()<.6)put(a,i,1+(Math.random()*4|0))});o.add(a.join(""))}
+  if(tp.length>1&&!one)for(let k=0;k<10;k++){const a=ch.slice();tp.forEach(i=>{if(Math.random()<.6)put(a,i,1+(Math.random()*4|0))});o.add(a.join(""))}
  }else{const i=ch.findIndex(c=>"aeiouü".includes(c));if(i>=0)[1,2,3,4].forEach(t=>{const a=ch.slice();put(a,i,t);o.add(a.join(""))})}
  o.delete(py);return[...o]}
 function whyPi(q,x){
@@ -2600,16 +2617,16 @@ function whyPi(q,x){
 function lPi(v){
  const L=LS.pi=LS.pi||{lv:2,l3:1,v3:false,dir:"hp",ok:0,n:0};
  if(!ltSiap(v,L))return;
- const okC=c=>c[0]&&c[1]&&c[6]!="sen"&&c[0].length<=5&&!/[／/]/.test(c[0])&&PYOK.test(c[1]);
+ const okC=c=>c[0]&&c[1]&&c[6]!="sen"&&c[0].length<=5&&!/[／/]/.test(c[0])&&PYOK.test(c[1])&&(!L.sl||c[0].length>=2);
  const nw=()=>{const a=ltRows(L,okC);if(!a.length){L.q=null;return}const c=pick(a)[0];let o;
-  if(L.dir=="hp")o=[{t:c[1],ok:true},...sh(piVars(c[1])).slice(0,3).map(t=>({t,ok:false}))];
-  else{const b=pySub(c[1]),d=ltAll(L).filter(x=>x!==c&&ltSameLv(L,x)&&okC(x)&&x[0]!=c[0]&&x[1]!=c[1]).map(x=>[x,(pySub(x[1])==b?0:10)+Math.abs(x[0].length-c[0].length)*3+Math.random()*4]).sort((p,q)=>p[1]-q[1]).map(p=>p[0]);
+  if(L.dir=="hp")o=[{t:c[1],ok:true},...sh(piVars(c[1],L.sl)).slice(0,3).map(t=>({t,ok:false}))];
+  else{const b=pySub(c[1]),d=ltAll(L).filter(x=>x!==c&&ltSameLv(L,x)&&okC(x)&&x[0]!=c[0]&&x[1]!=c[1]).map(x=>[x,L.sl?(pySub(x[1])==b?0:(ltBagi(x[0],c[0])>0?5:11))+Math.abs(x[0].length-c[0].length)*2+Math.random()*2:(pySub(x[1])==b?0:10)+Math.abs(x[0].length-c[0].length)*3+Math.random()*4]).sort((p,q)=>p[1]-q[1]).map(p=>p[0]);
    o=[{t:c[0],ok:true,c},...ltUniq(d,[c[0]]).slice(0,3).map(x=>({t:x[0],ok:false,c:x}))]}
   if(o.length<4){L.q=null;return}
   L.q={c,o:sh(o),p:null,v3:!!L.v3,dir:L.dir}};
  if(!L.q||L.q.v3!=!!L.v3||L.q.dir!=L.dir||!ltSameLv(L,L.q.c))nw();
  const q=L.q,c=q&&q.c,ok=q&&q.p!==null&&q.o[q.p].ok;
- v.innerHTML=ltPilih(L,LV2)+`<div class="ltb"><button class="pl ${L.dir=="hp"?"on":""}" data-d="hp">Hanzi → Pinyin</button><button class="pl ${L.dir=="ph"?"on":""}" data-d="ph">Pinyin → Hanzi</button><span class="pos">Skor ${L.ok}/${L.n}</span></div>`+
+ v.innerHTML=ltPilih(L,LV2,"pi"+L.dir)+`<div class="ltb"><button class="pl ${L.dir=="hp"?"on":""}" data-d="hp">Hanzi → Pinyin</button><button class="pl ${L.dir=="ph"?"on":""}" data-d="ph">Pinyin → Hanzi</button><span class="pos">Skor ${L.ok}/${L.n}</span></div>`+
  (q?`<p class="lq">${L.dir=="hp"?"Pilih pinyin beserta nada yang benar":"Pilih hanzi yang dibaca seperti pinyin ini"}</p>
 <div class="bl" style="text-align:center;font-size:${L.dir=="hp"?36:26}px">${L.dir=="hp"?c[0]:c[1]}</div>${L.dir=="hp"?`<p class="pos" style="margin:-6px 0 8px">${c[2]}${posT(c)?" · "+posT(c):""}</p>`:""}
 ${mcq(v,L,q,q.o.map(o=>({t:o.t,ok:o.ok,sub:L.dir=="hp"?"":o.c[1]+" · "+o.c[2]})),q.p,"")}
@@ -2623,13 +2640,13 @@ ${q.p!==null?`<div class="rs ${ok?"ok":"no"}">${ok?ikL("cek","lm")+"Benar":ikL("
 function lPa(v){
  const L=LS.pa=LS.pa||{lv:2,l3:1,v3:false,dir:"ha",ok:0,n:0};
  if(!ltSiap(v,L))return;
- const okC=c=>c[0]&&c[1]&&c[2]&&c[6]!="sen"&&c[0].length<=5&&!/[／/]/.test(c[0]),cut=s=>s.length>40?s.slice(0,40)+"…":s;
- const nw=()=>{const g=[];for(const c of sh(ltRows(L,okC).map(r=>r[0]))){if(g.length>=5)break;if(g.some(x=>x[0]==c[0]||x[1]==c[1]||glSame(x[2],c[2])))continue;g.push(c)}
+ const okC=c=>c[0]&&c[1]&&c[2]&&c[6]!="sen"&&c[0].length<=5&&!/[／/]/.test(c[0])&&(!L.sl||c[0].length>=2),cut=s=>s.length>40?s.slice(0,40)+"…":s;
+ const nw=()=>{const g=[],rw=ltRows(L,okC).map(r=>r[0]);let sr;if(L.sl&&rw.length){const s0=pick(rw);sr=[s0,...ltUrut(s0,rw.filter(x=>x!==s0))]}else sr=sh(rw);for(const c of sr){if(g.length>=5)break;if(g.some(x=>x[0]==c[0]||x[1]==c[1]||glSame(x[2],c[2])))continue;g.push(c)}
   if(g.length<5){L.q=null;return}
   L.q={g,r:sh([0,1,2,3,4]),sel:null,done:[],mis:0,bad:null,v3:!!L.v3,dir:L.dir}};
  if(!L.q||L.q.v3!=!!L.v3||L.q.dir!=L.dir||!ltSameLv(L,L.q.g[0]))nw();
  const q=L.q,fin=!!q&&q.done.length==5,rt=c=>L.dir=="ha"?cut(c[2]):c[1];
- v.innerHTML=ltPilih(L,LV2)+`<div class="ltb"><button class="pl ${L.dir=="ha"?"on":""}" data-d="ha">Hanzi ↔ Arti</button><button class="pl ${L.dir=="hp"?"on":""}" data-d="hp">Hanzi ↔ Pinyin</button><span class="pos">Set tanpa salah ${L.ok}/${L.n}</span></div>`+
+ v.innerHTML=ltPilih(L,LV2,"pa")+`<div class="ltb"><button class="pl ${L.dir=="ha"?"on":""}" data-d="ha">Hanzi ↔ Arti</button><button class="pl ${L.dir=="hp"?"on":""}" data-d="hp">Hanzi ↔ Pinyin</button><span class="pos">Set tanpa salah ${L.ok}/${L.n}</span></div>`+
  (q?`<p class="lq">Ketuk satu hanzi di kiri, lalu pasangannya di kanan</p>
 <div class="pg"><div>${q.g.map((c,i)=>`<button class="op ${q.done.includes(i)?"ok":q.sel===i?"in":""}" data-a="${i}"><span class="hz2">${c[0]}</span></button>`).join("")}</div><div>${q.r.map(j=>`<button class="op ${q.done.includes(j)?"ok":q.bad&&q.bad[1]===j?"no":""}" data-b="${j}">${rt(q.g[j])}</button>`).join("")}</div></div>
 ${fin?`<div class="rs ${q.mis?"no":"ok"}">${q.mis?ikL("tutup","lm")+"Selesai, salah "+q.mis+" kali":ikL("cek","lm")+"Selesai tanpa salah"}</div><table class="gt">${q.g.map(c=>`<tr><td class="hzs">${c[0]}</td><td>${c[1]}</td><td style="text-align:left">${c[2]}</td></tr>`).join("")}</table><div class="row"><button id="n">Set baru</button></div>`:`<p class="pos" style="text-align:left">Salah: ${q.mis} · Cocok: ${q.done.length} / 5</p>`}`:`<p class="pos" style="margin:30px 0">Tidak ada cukup kata untuk level ini.</p>`);
@@ -2647,6 +2664,11 @@ ${fin?`<div class="rs ${q.mis?"no":"ok"}">${q.mis?ikL("tutup","lm")+"Selesai, sa
    HSK 1-4: data/soal-hsk1..4.json, soal buatan sendiri tanpa gambar. Bagian mengikuti ujian resmi:
    HSK 1-2 听力 dan 阅读, HSK 3-4 ditambah 书写. Isi tiap jenis dijelaskan di claude/workbook-hsk1-4.md (Project Web zenta). */
 const WB={d:{},p:{},err:{}},WBN=[1,2,3,4,5],WBS={1:1,2:2,3:3,4:4,5:7};
+/* Mode Sulit di Workbook (LS.h5.sl): hanya butir bertanda h:1 yang dipakai. Jenis tanpa butir sulit memakai semua butir, jadi tidak pernah kosong.
+   Butir sulit ditulis tangan: kuncinya tidak bisa ditebak dari satu kata, dan pengecohnya masuk akal. Tambah butir baru dengan "h":1 di data/soal-hsk*.json. */
+const h5Idx=A=>{const R=LS.h5||{},all=A.map((x,i)=>i);if(!R.sl)return all;const h=all.filter(i=>A[i]&&A[i].h);return h.length?h:all};
+const h5Pick=(A,last)=>{const I=h5Idx(A);return pick(I.filter(i=>i!==last||I.length==1))};
+const h5Cat=(n,t)=>{if(["xz","xj","xw"].includes(t))return "Jenis ini dibangkitkan dari kosakata dan cerita, jadi semua soalnya dipakai. Mode sulit berlaku di jenis lain.";const D5=WB.d[n];if(!D5)return "Mode sulit: hanya butir yang ditulis khusus sulit.";const A=t=="du"?[...(D5.du||[]),...(D5.dl||[])]:D5[t]||[],k=A.filter(x=>x&&x.h).length;return k?"Mode sulit: hanya butir yang ditulis khusus sulit, "+k+" butir di jenis ini.":"Jenis ini belum punya butir sulit, jadi semua soalnya dipakai."};
 const WBT={ting:"Dialog pendek",pan:"Benar atau salah 判断",xc:"Isi kata 选词填空",pj:"Cocokkan kalimat 句子配对",px:"Urutkan kalimat 排序",xz:"Isi kata 选词填空",xj:"Isi kalimat 选句填空",du:"Pahami bacaan 阅读理解",jz:"Susun kalimat 完成句子",xh:"Tulis hanzi 写汉字",zj:"Buat kalimat 造句",xw:"Tulis dengan 5 kata 写短文"};
 const WBG0=[["ting","听力","Mendengar"],["baca","阅读","Membaca"],["tulis","书写","Menulis"]];
 const WBP={1:[["ting","pan"],["xc","pj","du"]],2:[["ting","pan"],["xc","pj","du"]],3:[["ting","pan"],["xc","pj","du"],["jz","xh"]],4:[["ting","pan"],["xc","px","du"],["jz","zj"]],5:[["ting"],["xz","xj","du"],["jz","xw"]]};
@@ -2660,7 +2682,7 @@ function wbLvAwal(){
  return 1}
 function wbMuat(n){
  if(WB.d[n])return Promise.resolve(WB.d[n]);
- if(!WB.p[n])WB.p[n]=fetch("data/soal-hsk"+n+".json?v=1").then(r=>{if(!r.ok)throw new Error("http "+r.status);return r.json()}).then(j=>{
+ if(!WB.p[n])WB.p[n]=fetch("data/soal-hsk"+n+".json?v=2").then(r=>{if(!r.ok)throw new Error("http "+r.status);return r.json()}).then(j=>{
   if(!j||j.v!==1||!wbNeed(n).every(k=>Array.isArray(j[k])&&j[k].length))throw new Error("format");WB.d[n]=j;WB.err[n]=false;return j}).catch(e=>{WB.p[n]=null;WB.err[n]=true;throw e});
  return WB.p[n]}
 function h5Data(hb){
@@ -2687,10 +2709,11 @@ function lH5(v){
  const n=R.lv,G=WBG(n),L=(R.by=R.by||{})[n]=(R.by||{})[n]||{t:G[0][3][0][0]};
  let grp=G.find(g=>g[3].some(x=>x[0]==L.t));if(!grp){grp=G[0];L.t=grp[3][0][0]}
  v.innerHTML=`<p class="pos" style="text-align:left;margin:4px 0 0">Tipe soal mengikuti ujian HSK ${n} dan 练习册 (workbook) HSK标准教程 ${n}: <span lang="zh">${G.map(g=>g[1]).join("、")}</span>. Soalnya dibuat sendiri untuk Zenta 汉, bukan salinan buku.</p>
-<div class="ltb h5r" role="group" aria-label="Level Workbook">${WBN.map(x=>`<button class="pl ${x==n?"on":""}" data-n="${x}" aria-pressed="${x==n}">HSK ${x}</button>`).join("")}</div>
+<div class="ltb h5r" role="group" aria-label="Level Workbook">${WBN.map(x=>`<button class="pl ${x==n?"on":""}" data-n="${x}" aria-pressed="${x==n}">HSK ${x}</button>`).join("")}<button class="pl ${R.sl?"on":""}" data-sl="1" aria-pressed="${!!R.sl}">Sulit</button></div>
 <div class="ltb h5r" role="group" aria-label="Bagian ujian">${G.map(g=>`<button class="pl ${g==grp?"on":""}" data-g="${g[0]}" aria-pressed="${g==grp}"><span lang="zh">${g[1]}</span> ${g[2]}</button>`).join("")}</div>
-<div class="ltb h5r" role="group" aria-label="Jenis soal">${grp[3].map(x=>`<button class="pl ${L.t==x[0]?"on":""}" data-t="${x[0]}" aria-pressed="${L.t==x[0]}">${x[1]}</button>`).join("")}</div><div id="h5b"></div>`;
+<div class="ltb h5r" role="group" aria-label="Jenis soal">${grp[3].map(x=>`<button class="pl ${L.t==x[0]?"on":""}" data-t="${x[0]}" aria-pressed="${L.t==x[0]}">${x[1]}</button>`).join("")}</div>${R.sl?`<p class="pos" style="text-align:left;margin:0 0 8px" role="note">${h5Cat(n,L.t)}</p>`:""}<div id="h5b"></div>`;
  v.querySelectorAll("[data-n]").forEach(b=>b.onclick=()=>{R.lv=+b.dataset.n;try{localStorage.setItem("hsk_wb_lv",R.lv)}catch(e){}h5Stop();lH5(v)});
+ v.querySelectorAll("[data-sl]").forEach(b=>b.onclick=()=>{R.sl=!R.sl;h5Stop();Object.values(R.by||{}).forEach(Lv=>Object.keys(Lv).forEach(k=>{const s=Lv[k];if(s&&typeof s=="object"){if("q" in s)s.q=null;if("it" in s)s.it=null;if(k=="xh"||k=="zj")s.i=-1}}));lH5(v)});
  v.querySelectorAll("[data-g]").forEach(b=>b.onclick=()=>{L.t=G.find(x=>x[0]==b.dataset.g)[3][0][0];h5Stop();lH5(v)});
  v.querySelectorAll("[data-t]").forEach(b=>b.onclick=()=>{L.t=b.dataset.t;h5Stop();lH5(v)});
  const t=L.t;
@@ -2703,7 +2726,7 @@ function h5Ting(hb,L,v,key){
  const S5=L[key]=L[key]||{ok:0,n:0,q:null,last:-1};
  /* pan (判断): pernyataan tercetak dilihat dulu, lalu dengar teksnya; opsi selalu 对 lalu 错 */
  const mix=x=>pan?h5Mix(x.a,["对 Benar","错 Salah"],true):h5Mix(x.a,x.o);
- const nw=()=>{const i=pick(A.map((x,i)=>i).filter(i=>i!==S5.last||A.length==1));S5.last=i;S5.q={i,o:mix(A[i]),p:null,show:!zv()}};
+ const nw=()=>{const i=h5Pick(A,S5.last);S5.last=i;S5.q={i,o:mix(A[i]),p:null,show:!zv()}};
  if(!S5.q||!A[S5.q.i])nw();
  const q=S5.q,x=A[q.i],done=q.p!==null,ok=done&&q.o[q.p].ok,sp=j=>x.s?`<span class="tg">${x.s[j]}</span> `:"";
  hb.innerHTML=`<div class="ltb"><span class="lq" style="margin:0"><span lang="zh">听力</span> ${pan?"Dengarkan teks, lalu tentukan apakah pernyataan ini benar atau salah":"Dengarkan dialog, lalu pilih jawaban"}</span><span class="pos">Skor ${S5.ok}/${S5.n}</span></div>
@@ -2782,7 +2805,7 @@ function h5Du(hb,L,v,key){
  const S5=L[key]=L[key]||{m:"p",ok:0,n:0,q:null,last:-1},dua=key=="du"&&Array.isArray(D5.dl)&&D5.dl.length>0;
  if(!dua)S5.m="p";
  const lst=()=>key=="du"?(S5.m=="p"?D5.du:D5.dl):D5[key];
- const nw=()=>{const i=pick(lst().map((x,i)=>i).filter(i=>i!==S5.last||lst().length==1));S5.last=i;S5.q={m:S5.m,i,ps:lst()[i].q.map(x=>({o:h5Mix(x.a,x.o,x.fix),p:null}))}};
+ const nw=()=>{const i=h5Pick(lst(),S5.last);S5.last=i;S5.q={m:S5.m,i,ps:lst()[i].q.map(x=>({o:h5Mix(x.a,x.o,x.fix),p:null}))}};
  if(!S5.q||S5.q.m!=S5.m||!lst()[S5.q.i])nw();
  const q=S5.q,x=lst()[q.i],done=q.ps.every(p=>p.p!==null);
  const arah={du:S5.m=="p"?(wbLv()==5?"Baca teks, lalu pilih pernyataan yang sesuai dengan isinya":"Baca teks, lalu jawab pertanyaan"):"Baca teks, lalu jawab tiga pertanyaan",
@@ -2803,7 +2826,7 @@ function h5Jz(hb,L,v){
  if(S5.src=="buat"&&!h5Data(hb))return;
  if(S5.src=="st"&&h5Cerita(hb))return;
  const nw=()=>{let it;
-  if(S5.src=="buat"){const x=pick(WB.d[n5].jz);it={W:x.w,z:x.z,a:(x.a||[]).map(noP),g:x.g,tr:x.tr,e:/[。？！]$/.test(x.z)?x.z.slice(-1):""}}
+  if(S5.src=="buat"){const J=WB.d[n5].jz,x=J[h5Pick(J,-1)];it={W:x.w,z:x.z,a:(x.a||[]).map(noP),g:x.g,tr:x.tr,e:/[。？！]$/.test(x.z)?x.z.slice(-1):""}}
   else{const A=[];RD.forEach(s=>{if(s.l!=zs)return;s.p.forEach(P=>splitS(P).forEach(tk=>{const n=wd(tk).length,z=txtT(tk);if(n>=5&&n<=16&&!/[“”]/.test(z)&&chunk(tk).length>=4)A.push({tk,z,g:"Dari cerita: "+s.t})}))});
    if(!A.length){S5.it=null;return}
    const x=pick(A),W=chunk(x.tk),end=x.tk[x.tk.length-1];it={W,z:x.z,a:suAlts({t:x.tk,a:[]},W),g:x.g,tr:"",e:end[1]===0?end[0]:""}}
@@ -2856,7 +2879,7 @@ ${S5.fb?`<div class="fb">${S5.fb}</div>`:""}${S5.ex?ws.map(c=>`<div class="gx"><
 function h5Xh(hb,L,v){
  const D5=h5Data(hb);if(!D5)return;
  const A=D5.xh,S5=L.xh=L.xh||{ok:0,n:0,i:-1,res:null,tx:"",note:""};
- const nw=()=>{S5.i=pick(A.map((x,i)=>i).filter(i=>i!==S5.i||A.length==1));S5.res=null;S5.tx="";S5.note=""};
+ const nw=()=>{S5.i=h5Pick(A,S5.i);S5.res=null;S5.tx="";S5.note=""};
  if(S5.i<0||!A[S5.i])nw();
  const x=A[S5.i],done=S5.res!==null;
  const kal=x.z.replace("＿",done?`<span class="bk ${S5.res}">${x.a}</span>`:'<span class="bk">（　）</span>');
@@ -2878,7 +2901,7 @@ ${done?`<div class="rs ${S5.res}">${S5.res=="ok"?ikL("cek","lm")+"Benar":ikL("tu
 function h5Zj(hb,L,v){
  const D5=h5Data(hb);if(!D5)return;
  const A=D5.zj,S5=L.zj=L.zj||{ok:0,n:0,i:-1,tx:"",fb:null,ex:false};
- const nw=()=>{S5.i=pick(A.map((x,i)=>i).filter(i=>i!==S5.i||A.length==1));S5.tx="";S5.fb=null;S5.ex=false};
+ const nw=()=>{S5.i=h5Pick(A,S5.i);S5.tx="";S5.fb=null;S5.ex=false};
  if(S5.i<0||!A[S5.i])nw();
  const x=A[S5.i];
  hb.innerHTML=`<div class="ltb"><span class="lq" style="margin:0"><span lang="zh">造句</span> Tulis satu kalimat dengan kata ini</span><span class="pos">Skor ${S5.ok}/${S5.n}</span></div>
