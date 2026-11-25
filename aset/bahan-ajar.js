@@ -7,7 +7,9 @@
    Dari mana isinya
    - Isi slide (teks buku dan penjelasan laoshi) TIDAK ada di repo. Diminta ke server: POST hsk-u-isi {secret: token sesi, paket: "bj5"}.
      Workflow n8n hanya melayani paket bj5 kepada pemilik. Jawaban: {ok, paket, v, D: [slide, ...]}. Salinan disimpan di Cache API
-     (zenta-isi-v2, kunci /__isi/bj5/<email>), dihapus bersama isi khusus lainnya saat keluar, dan dicek ulang ke server tiap 24 jam.
+     (zenta-isi-v2, kunci /__isi/bj5/<email>), dihapus bersama isi khusus lainnya saat keluar. Tiap 课件 dibuka, salinan tampil dulu, lalu penampil bertanya ke server
+     lewat POST {secret, paket, cek: 1} (jawaban ringan: n dan ck, sidik jari seluruh isi). Bila ck atau n berbeda dari yang tersimpan di salinan,
+     isi diunduh penuh. Tanpa cek ini, pelajaran baru di server tidak muncul sampai salinan lama kedaluwarsa. Salinan tanpa ck (buatan versi lama) diunduh ulang.
      Versi isi (VER) ikut disimpan: salinan berversi lama diabaikan, jadi bentuk isi yang berubah tidak tercampur dengan salinan lama.
    - Bentuk satu slide (dicek di slideOk; slide yang bentuknya salah dibuang satu per satu, bukan menggagalkan semuanya):
        {l: nomor pelajaran 1-36, k: jenis, sec: label hanzi, si: label Indonesia, t: judul hanzi (opsional), b: [blok], pg: halaman buku, src: sumber lain,
@@ -28,7 +30,7 @@
    - Posisi slide terakhir tiap pelajaran disimpan di perangkat ini saja (localStorage bj_pos), tidak ikut sinkron. */
 (function(){
  "use strict";
- var ISI="https://n8n.zenta.web.id/webhook/hsk-u-isi",PAKET="bj5",CACHE="zenta-isi-v2",UMUR=864e5,MAXL=36,PERBUKU=18,VER=3;
+ var ISI="https://n8n.zenta.web.id/webhook/hsk-u-isi",PAKET="bj5",CACHE="zenta-isi-v2",MAXL=36,PERBUKU=18,VER=3;
  var KIND={cv:"课",wu:"金",ks:"木",tx:"土",ct:"水",sd:"水",bd:"水",lt:"火",ex:"金",ap:"火"};
  var st={s:"idle",slides:[],by:{},gl:{},p:null};          /* s: idle | load | ok | net | bukan | sesi */
  var ui={v:"list",buku:1,l:0,i:0,py:true,id:false,full:false};
@@ -106,7 +108,7 @@
  function ckey(m){return "/__isi/"+PAKET+"/"+encodeURIComponent(m)}
  function cache(){try{return typeof caches!=="undefined"&&caches&&caches.open?caches.open(CACHE):Promise.reject(new Error("tanpa cache"))}catch(x){return Promise.reject(x)}}
  function cacheGet(m){return cache().then(function(c){return c.match(ckey(m))}).then(function(r){return r?r.json():null}).catch(function(){return null})}
- function cachePut(m,D){cache().then(function(c){return c.put(ckey(m),new Response(JSON.stringify({t:Date.now(),v:VER,D:D}),{headers:{"Content-Type":"application/json"}}))}).catch(function(){})}
+ function cachePut(m,D,ck,n){cache().then(function(c){return c.put(ckey(m),new Response(JSON.stringify({t:Date.now(),v:VER,ck:ck,n:n,D:D}),{headers:{"Content-Type":"application/json"}}))}).catch(function(){})}
  function cacheDel(m){cache().then(function(c){return c.delete(ckey(m))}).catch(function(){})}
 
  /* ---- minta isi ke server. Hasil: "ok" | "bukan" (403) | "sesi" (401) | "net" ---- */
@@ -118,9 +120,25 @@
     if(r.status===403)return"bukan";
     if(r.status===401)return"sesi";
     if(!r.ok)return"net";
-    return r.json().then(function(j){if(j&&j.ok===true&&j.paket===PAKET&&j.v===VER&&apply(j.D)){cachePut(a.e,flatRaw(j.D));return"ok"}return"net"});
+    return r.json().then(function(j){if(j&&j.ok===true&&j.paket===PAKET&&j.v===VER&&apply(j.D)){cachePut(a.e,flatRaw(j.D),isStr(j.ck)?j.ck:undefined,typeof j.n==="number"?j.n:undefined);return"ok"}return"net"});
    })
    .catch(function(){return"net"})
+   .then(function(x){clearTimeout(to);return x});
+ }
+ /* tanya sidik jari isi di server tanpa mengunduhnya. Hasil: "ok" (salinan masih terbaru atau server tak terjangkau) | "baru" (isi di server berubah) | "bukan" | "sesi" */
+ function cek(a,c){
+  var ctl=typeof AbortController!=="undefined"?new AbortController():null,to=setTimeout(function(){if(ctl)ctl.abort()},15000);
+  return fetch(ISI,{method:"POST",headers:{"Content-Type":"application/json"},mode:"cors",signal:ctl?ctl.signal:undefined,body:JSON.stringify({secret:a.t,paket:PAKET,cek:1})})
+   .then(function(r){
+    if(r.status===403)return"bukan";
+    if(r.status===401)return"sesi";
+    if(!r.ok)return"ok";
+    return r.json().then(function(j){
+     if(!(j&&j.ok===true&&j.paket===PAKET&&j.v===VER&&isStr(j.ck)&&typeof j.n==="number"))return"ok";
+     return j.ck===c.ck&&j.n===c.n?"ok":"baru";
+    });
+   })
+   .catch(function(){return"ok"})
    .then(function(x){clearTimeout(to);return x});
  }
  function flatRaw(D){var o=[];D.forEach(function(x){if(isArr(x))x.forEach(function(y){o.push(y)});else o.push(x)});return o}
@@ -131,8 +149,9 @@
   st.p=(paksa?Promise.resolve(null):cacheGet(a.e)).then(function(c){
    if(c&&c.v===VER&&apply(c.D)){
     st.s="ok";draw();
-    if(Date.now()-(+c.t||0)<UMUR)return"ok";
-    return ambil(a).then(function(x){return x==="net"?"ok":x});   /* salinan lama tetap dipakai bila server tak terjangkau */
+    var penuh=function(){return ambil(a).then(function(x){return x==="net"?"ok":x})};   /* salinan lama tetap dipakai bila server tak terjangkau */
+    if(!isStr(c.ck)||typeof c.n!=="number")return penuh();      /* salinan buatan versi lama tidak punya sidik jari */
+    return cek(a,c).then(function(x){return x==="baru"?penuh():x});
    }
    draw();
    return ambil(a);
