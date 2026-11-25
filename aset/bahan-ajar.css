@@ -1,0 +1,182 @@
+/* 课件 Bahan ajar HSK 5 untuk Zenta 汉. Dipakai bersama aset/bahan-ajar.js, dimuat dari index.html.
+
+   Design Read: ruang kelas pribadi di dalam Zenta. Pemilik membuka satu pelajaran HSK 5 sebagai deretan slide (satu bab satu bahan ajar)
+   untuk belajar sendiri dan untuk mengajar ulang. Bahasa visual tetap 五行 milik situs: token warna, huruf Noto Serif SC untuk hanzi,
+   Poppins untuk judul. Dial ENERGY 1 / RHYTHM 2 / MOTION 0.
+   Alasan keputusan (satu baris tiap butir):
+   - Warna slide mengikuti isi, bukan selera: 生词 木 hijau, 课文 土 kuning tanah, 注释/搭配/辨析 水 biru, 练习 火 koral, 热身/扩展 金 abu-biru.
+     Pemilik sudah mengenal pemetaan ini dari menu Materi, jadi jenis slide terbaca sekilas tanpa membaca label.
+   - Cap unsur 木水土火金 di kepala slide: motif identitas situs yang sama dengan panduan (tur), bukan hiasan baru.
+   - Tanpa garis warna di tepi kartu dan tanpa bayangan: kartu hanya berbatas garis tipis seperti .card di bagian lain situs.
+   - Ukuran huruf mengikuti lebar panggung (satuan cqw): satu aturan yang pas di HP 360 px, laptop, dan layar penuh untuk proyektor.
+   - Layar penuh dibuat sendiri (kelas .bj-full), tidak bergantung pada Fullscreen API yang tidak ada di iPhone; sisa halaman dibuat inert oleh skrip.
+   - Tanpa animasi pindah slide: belajar butuh perhatian tenang, dan prefers-reduced-motion otomatis terpenuhi.
+   - Hanya token tema (var(--...)): terang dan gelap mengikuti pilihan akun tanpa aturan terpisah. */
+
+/* chip 课件 di pilihan bagian Materi: tampil hanya untuk akun pemilik (atribut hidden diatur skrip) */
+#mt-seg #n-bj[hidden]{display:none}
+#mt-seg:has(#n-bj:not([hidden])){grid-template-columns:repeat(5,minmax(0,1fr))}
+body:has(#n-bj.on) #mt-seg{display:grid}
+body:has(#n-bj.on){--acc:var(--ink);--acct:var(--soft);--accf:var(--btn);--accfi:var(--btnink)}
+#n-bj.on{--acc:var(--ink);--acct:var(--soft)}
+@media (max-width:420px){#mt-seg:has(#n-bj:not([hidden])) button b{font-size:14px}#mt-seg:has(#n-bj:not([hidden])) button small{font-size:10.5px}}
+
+.bj{display:grid;gap:14px;margin:6px 0 24px;color:var(--ink);text-align:left}
+.bj button{font:inherit;color:inherit;cursor:pointer}
+.bj [hidden]{display:none!important}
+.bj button:focus-visible,.bj summary:focus-visible,.bj [tabindex="0"]:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.bj [lang="zh"],.bj [lang="zh-Hans"]{font-family:'Noto Serif SC',serif}
+.bj-h2{margin:0;font:600 22px/1.25 Poppins,Inter,system-ui,sans-serif}
+.bj-h2 [lang]{font-family:'Noto Serif SC',serif;font-weight:700;margin-right:.35em}
+.bj-lead{margin:6px 0 0;font-size:14px;line-height:1.55;color:var(--mute)}
+
+/* pesan keadaan: memuat, galat, bukan pemilik, sesi habis */
+.bj-msg{padding:28px 14px;border:1px solid var(--line);border-radius:18px;background:var(--card);color:var(--mute);line-height:1.6;text-align:center}
+.bj-msg p{margin:0 0 12px}
+.bj-msg p:last-child{margin:0}
+.bj-msg button{min-height:44px;padding:10px 18px;border:1px solid var(--line);background:var(--soft);font-weight:600}
+
+/* pilih buku 上 / 下 */
+.bj-seg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;padding:4px;border:1px solid var(--line);border-radius:16px;background:var(--card)}
+.bj-seg button{min-height:48px;padding:6px 8px;border:0;border-radius:12px;background:none;color:var(--mute);font-size:13px;line-height:1.25}
+.bj-seg button b{display:block;font:700 15px/1.2 "Noto Sans SC","Noto Serif SC",system-ui,sans-serif;color:inherit}
+.bj-seg button[aria-pressed="true"]{background:var(--soft);color:var(--ink)}
+
+/* daftar pelajaran */
+.bj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin:0;padding:0;list-style:none}
+.bj-tile{display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-areas:"n z" "n s";column-gap:10px;align-items:center;width:100%;min-height:64px;padding:10px 12px;border:1px solid var(--line);border-radius:16px;background:var(--card);text-align:left}
+.bj-tile .n{grid-area:n;min-width:1.6em;font:600 22px/1 Poppins,Inter,system-ui,sans-serif;color:var(--mute);text-align:center}
+.bj-tile .z{grid-area:z;font:700 15.5px/1.3 'Noto Serif SC',serif;overflow-wrap:anywhere}
+.bj-tile .s{grid-area:s;font-size:12px;line-height:1.3;color:var(--mute)}
+.bj-tile:disabled{cursor:default;background:none;border-style:dashed;color:var(--mute);opacity:1}
+.bj-tile:disabled .z{font-weight:500}
+.bj-tile:not(:disabled):hover{background:var(--soft)}
+
+/* kepala penampil */
+.bj-top{display:flex;align-items:center;gap:10px;min-width:0}
+.bj-back{flex:none;min-height:44px;padding:8px 14px 8px 10px;border:1px solid var(--line);background:var(--card);display:inline-flex;align-items:center;gap:4px;font-size:14px;font-weight:600}
+.bj-back svg,.bj-nav svg,.bj-tools svg{flex:none;width:20px;height:20px}
+.bj-tt{margin:0;min-width:0;font:600 15px/1.3 Inter,system-ui,sans-serif;color:var(--mute);overflow-wrap:anywhere}
+.bj-tt b{font-family:'Noto Serif SC',serif;color:var(--ink);font-size:17px}
+
+/* penampil: panggung + bilah + alat */
+.bj-pres{display:grid;gap:10px;min-width:0}
+.bj-stage{position:relative;min-width:0;border:1.5px solid var(--line);border-radius:28px;background:var(--card);overflow:hidden}
+.bj-stage[data-more]::after{content:"Gulir untuk lanjutannya";position:absolute;left:50%;bottom:44px;transform:translateX(-50%);padding:4px 12px;border:1px solid var(--line);border-radius:999px;background:var(--soft);color:var(--mute);font:600 12px/1.3 Inter,system-ui,sans-serif;white-space:nowrap;pointer-events:none}
+@supports (width:1cqw){.bj-stage{container-type:inline-size}}
+.bj-slide{--u:17px;--kc:var(--ink);--kt:var(--soft);display:flex;flex-direction:column;height:var(--bj-h,clamp(400px,66vh,680px));min-width:0;padding:calc(var(--u)*1.1) calc(var(--u)*1.2) calc(var(--u)*.9);color:var(--ink)}
+@supports (width:1cqw){.bj-slide{--u:clamp(14px,2.2cqw,26px)}}
+.k-wu,.k-ex{--kc:var(--e5d);--kt:var(--e5t)}
+.k-ks{--kc:var(--e1d);--kt:var(--e1t)}
+.k-tx{--kc:var(--e3d);--kt:var(--e3t)}
+.k-ct,.k-sd,.k-bd{--kc:var(--e2d);--kt:var(--e2t)}
+.k-lt,.k-ap{--kc:var(--e4d);--kt:var(--e4t)}
+.bj-sh{display:flex;align-items:center;gap:calc(var(--u)*.7);flex:none;margin-bottom:calc(var(--u)*.7)}
+.bj-cap{flex:none;display:grid;place-items:center;width:calc(var(--u)*2.3);height:calc(var(--u)*2.3);border-radius:50%;background:var(--kt);color:var(--kc);font:700 calc(var(--u)*1.2)/1 'Noto Serif SC',serif}
+.bj-sec{margin:0;font:700 calc(var(--u)*1.05)/1.2 'Noto Sans SC','Noto Serif SC',system-ui,sans-serif;color:var(--kc);overflow-wrap:anywhere}
+.bj-si{margin:2px 0 0;font:600 calc(var(--u)*.78)/1.25 Inter,system-ui,sans-serif;color:var(--mute)}
+.bj-t{flex:none;margin:0 0 calc(var(--u)*.6);font:700 calc(var(--u)*2)/1.2 'Noto Serif SC',serif;overflow-wrap:anywhere}
+.bj-body{flex:1 1 auto;min-height:0;overflow:auto;display:flex;flex-direction:column;gap:calc(var(--u)*.8);padding:2px 2px 6px;overscroll-behavior:contain}
+.bj-sf{flex:none;margin:calc(var(--u)*.5) 0 0;font-size:calc(var(--u)*.7);line-height:1.3;color:var(--mute)}
+
+/* blok isi */
+.bj-p{margin:0;font-size:calc(var(--u)*1.4);line-height:1.85}
+.bj-i{margin:0;font-size:calc(var(--u)*.95);line-height:1.55;color:var(--mute)}
+.bj-n{margin:0;font-size:calc(var(--u)*.92);line-height:1.6;color:var(--mute)}
+.bj-h{margin:calc(var(--u)*.3) 0 0;font:700 calc(var(--u)*1.2)/1.35 'Noto Serif SC',serif}
+.bj-li{margin:0;padding:0 0 0 1.2em;font-size:calc(var(--u)*1.1);line-height:1.7}
+.bj-li li{margin:0 0 .2em;padding-left:.2em}
+.bj-li li::marker{color:var(--kc)}
+.bj-hl{background:var(--kt);color:var(--kc);padding:0 .12em;border-radius:5px;font-weight:700}
+.bj-sp{position:relative;display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;width:44px;height:44px;margin:-10px -4px -10px .1em;padding:0;border:0;background:none;color:var(--mute)}
+.bj-sp::before{content:"";position:absolute;inset:6px;border-radius:50%;background:var(--soft)}
+.bj-sp svg{position:relative;width:16px;height:16px}
+.bj-sp:hover{color:var(--ink)}
+/* terjemahan dan pinyin dapat dimatikan */
+.bj:not(.bj-id) .bj-i[data-tr]{display:none}
+.bj.bj-nopy .bj-py{display:none}
+
+/* contoh kalimat */
+.bj-ex{margin:0;padding:0;list-style:none;display:grid;gap:calc(var(--u)*.6)}
+.bj-ex li{padding:calc(var(--u)*.6) calc(var(--u)*.8);border:1px solid var(--line);border-radius:16px}
+.bj-ex .bj-z{margin:0;font-size:calc(var(--u)*1.25);line-height:1.7}
+
+/* tanya jawab */
+.bj-qa{border:1px solid var(--line);border-radius:16px}
+.bj-qa summary{display:block;min-height:44px;padding:calc(var(--u)*.6) calc(var(--u)*.9);font:500 calc(var(--u)*1.15)/1.65 'Noto Serif SC',serif;cursor:pointer;list-style:none}
+.bj-qa summary::-webkit-details-marker{display:none}
+.bj-qa summary::after{content:"Lihat jawaban";display:block;margin-top:.2em;font:600 calc(var(--u)*.72)/1.3 Inter,system-ui,sans-serif;color:var(--kc)}
+.bj-qa[open] summary::after{content:"Sembunyikan jawaban"}
+.bj-a{padding:0 calc(var(--u)*.9) calc(var(--u)*.7);display:grid;gap:calc(var(--u)*.3)}
+.bj-a .bj-za{margin:0;padding:calc(var(--u)*.4) calc(var(--u)*.6);border-radius:12px;background:var(--kt);color:var(--kc);font:700 calc(var(--u)*1.15)/1.6 'Noto Serif SC',serif}
+
+/* tabel */
+.bj-tbw{min-width:0;overflow-x:auto;border:1px solid var(--line);border-radius:16px}
+.bj-tbw table{width:100%;border-collapse:collapse;font-size:calc(var(--u)*1);line-height:1.55}
+.bj-tbw caption{padding:calc(var(--u)*.5) calc(var(--u)*.8);text-align:left;font:700 calc(var(--u)*.95)/1.4 'Noto Serif SC',serif;color:var(--kc);background:var(--kt)}
+.bj-tbw th{padding:calc(var(--u)*.45) calc(var(--u)*.8);text-align:left;font:700 calc(var(--u)*.9)/1.4 'Noto Serif SC',serif;color:var(--mute);border-bottom:1px solid var(--line)}
+.bj-tbw td{padding:calc(var(--u)*.5) calc(var(--u)*.8);vertical-align:top;border-top:1px solid var(--line);font-family:'Noto Serif SC',serif}
+.bj-tbw tbody tr:first-child td{border-top:0}
+.bj-tbw td.e{color:var(--mute)}
+
+/* bank kata */
+.bj-wb{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:calc(var(--u)*.5)}
+.bj-wb li{padding:calc(var(--u)*.3) calc(var(--u)*.9);border-radius:999px;background:var(--kt);color:var(--kc);font:700 calc(var(--u)*1.2)/1.5 'Noto Serif SC',serif}
+
+/* kosakata */
+.bj-kt{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,15em),1fr));gap:calc(var(--u)*.6)}
+.bj-kt li{display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-areas:"n z" "n p" "n m";column-gap:calc(var(--u)*.7);padding:calc(var(--u)*.6) calc(var(--u)*.8);border:1px solid var(--line);border-radius:16px;min-width:0}
+.bj-kt .n{grid-area:n;font:600 calc(var(--u)*.8)/1.6 Inter,system-ui,sans-serif;color:var(--mute);min-width:1.4em}
+.bj-kt .z{grid-area:z;display:flex;align-items:center;flex-wrap:wrap;gap:0 .3em;font:700 calc(var(--u)*1.6)/1.35 'Noto Serif SC',serif;color:var(--kc);overflow-wrap:anywhere}
+.bj-kt .st{font:600 calc(var(--u)*.8)/1 Inter,system-ui,sans-serif;color:var(--mute)}
+.bj-kt .p{grid-area:p;font:600 calc(var(--u)*.95)/1.4 Inter,system-ui,sans-serif}
+.bj-kt .c{color:var(--mute);font-weight:500}
+.bj-kt .m{grid-area:m;font-size:calc(var(--u)*.9);line-height:1.45}
+.bj-kt .m small{display:block;color:var(--mute);font-size:.88em}
+
+/* kolokasi (词语搭配) */
+.bj-sd{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.6fr);gap:calc(var(--u)*.9);padding:calc(var(--u)*.8);border:1px solid var(--line);border-radius:16px}
+@container (max-width:520px){.bj-sd{grid-template-columns:minmax(0,1fr)}}
+.bj-sd .w{display:flex;flex-direction:column;gap:2px}
+.bj-sd .w .py{font:600 calc(var(--u)*.9)/1.3 Inter,system-ui,sans-serif}
+.bj-sd .w .zz{font:700 calc(var(--u)*2.1)/1.2 'Noto Serif SC',serif;color:var(--kc)}
+.bj-sd .w .en{font-size:calc(var(--u)*.85);color:var(--mute)}
+.bj-sd .f{display:inline-block;margin:0 0 calc(var(--u)*.4);padding:calc(var(--u)*.15) calc(var(--u)*.7);border-radius:8px;background:var(--kt);color:var(--kc);font:700 calc(var(--u)*.95)/1.5 Inter,system-ui,sans-serif}
+.bj-sd p{margin:0}
+.bj-sd .cl{font:500 calc(var(--u)*1.15)/1.6 'Noto Serif SC',serif}
+.bj-sd .xx{margin-top:calc(var(--u)*.3);font:500 calc(var(--u)*1.15)/1.7 'Noto Serif SC',serif}
+
+/* sampul */
+.bj-cv{display:grid;gap:calc(var(--u)*.3);padding:calc(var(--u)*.6) 0}
+.bj-cv .no{font:600 calc(var(--u)*5)/1 Poppins,Inter,system-ui,sans-serif;color:var(--mute)}
+.bj-cv .zz{font:700 calc(var(--u)*3.4)/1.2 'Noto Serif SC',serif}
+.bj-cv .en{font:600 calc(var(--u)*1.3)/1.3 Poppins,Inter,system-ui,sans-serif}
+.bj-cv .id{font-size:calc(var(--u)*1);color:var(--mute)}
+
+/* bilah geser dan alat */
+.bj-bar{position:sticky;bottom:var(--bj-nav,0px);z-index:5;display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;align-items:center;gap:10px;margin:0 -4px;padding:8px 4px;background:var(--bg)}
+.bj-nav{display:inline-grid;place-items:center;width:48px;height:48px;padding:0;border:1px solid var(--line);border-radius:14px;background:var(--card)}
+.bj-nav[aria-disabled="true"]{opacity:.4;cursor:default}
+.bj-prog{height:6px;border-radius:3px;background:var(--soft);overflow:hidden}
+.bj-prog i{display:block;height:100%;background:var(--ink)}
+.bj-cnt{min-width:4.5em;text-align:center;font:600 14px/1 Inter,system-ui,sans-serif;color:var(--mute)}
+.bj-tools{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.bj-tools button,.bj-tools select{min-height:44px;padding:8px 14px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);font:600 13.5px/1.2 Inter,system-ui,sans-serif}
+.bj-tools button{display:inline-flex;align-items:center;gap:6px}
+.bj-tools button[aria-pressed="true"]{background:var(--soft);border-color:var(--ink)}
+.bj-tools select{flex:1 1 180px;min-width:0;max-width:100%}
+.bj-vh{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* layar penuh */
+.bj-pres.bj-full .bj-bar{position:static;margin:0;padding:0;background:none}
+.bj-pres.bj-full{position:fixed;inset:0;z-index:2000;grid-template-rows:minmax(0,1fr) auto auto;gap:8px;padding:10px 10px calc(10px + env(safe-area-inset-bottom,0px));background:var(--bg)}
+.bj-pres.bj-full .bj-stage{display:grid;border-radius:20px;min-height:0}
+.bj-pres.bj-full .bj-slide{height:100%;min-height:0}
+@supports (width:1cqw){.bj-pres.bj-full .bj-slide{--u:clamp(16px,2.5cqw,46px)}}
+body:has(.bj-pres.bj-full){overflow:hidden}
+
+@media (max-width:420px){
+ .bj-h2{font-size:20px}
+ .bj-tools button span{font-size:13px}
+}
+@media print{.bj-pres{display:block}.bj-slide{height:auto}.bj-bar,.bj-tools,.bj-top{display:none}}
