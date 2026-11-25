@@ -368,7 +368,7 @@ html.boot-fail #boot .bt-el span{animation:none;opacity:.55}
 @keyframes bt-slide{0%{transform:translateX(-100%)}100%{transform:translateX(250%)}}
 @media (prefers-reduced-motion:reduce){#boot{transition:none}#boot .bt-el span{animation:none;opacity:1}#boot .bt-bar i{animation:none;width:100%;opacity:.55}}
 </style>
-<link rel="stylesheet" href="aset/tur.css?v=1"><script src="aset/tur.js?v=4" defer></script></head><body><div id="boot" role="status" aria-live="polite" aria-busy="true">
+<link rel="stylesheet" href="aset/tur.css?v=1"><script src="aset/tur.js?v=4" defer></script><link rel="stylesheet" href="aset/bahan-ajar.css?v=1"><script src="aset/bahan-ajar.js?v=1" defer></script></head><body><div id="boot" role="status" aria-live="polite" aria-busy="true">
  <div class="bt-in">
   <div class="bt-logo" aria-hidden="true"><span class="zl">Zenta<i lang="zh">汉</i></span></div>
   <div class="bt-sub">Belajar Mandarin Harian</div>
@@ -1728,7 +1728,7 @@ const ikL=(n,c)=>'<svg class="lu'+(c?' '+c:'')+'" viewBox="0 0 24 24" fill="none
 </script>
 <div class="wrap"><button id="sbtn" type="button" aria-label="Cari"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></button>
 <div class="ap-t" role="heading" aria-level="1"><span class="zl">Zenta<i lang="zh">汉</i></span></div><div class="sub">Belajar Mandarin Harian</div>
-<div id="mt-seg" role="group" aria-label="Bagian materi"><button type="button" id="n-vc"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M8 10h8M8 14h5"/></svg><b lang="zh">词汇</b> <small>Kosakata</small></button><button type="button" id="n-gr"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h11a3 3 0 013 3v13H8a3 3 0 01-3-3z"/><path d="M9 9h6M9 13h4"/></svg><b lang="zh">语法</b> <small>Tata bahasa</small></button><button type="button" id="n-rd"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6c3-1.5 6-1.5 9 0 3-1.5 6-1.5 9 0v13c-3-1.5-6-1.5-9 0-3-1.5-6-1.5-9 0z"/><path d="M12 6v13"/></svg><b lang="zh">阅读</b> <small>Membaca</small></button><button type="button" id="n-hz"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M12 4v16M4 12h16" stroke-dasharray="2 2.4"/></svg><b lang="zh">汉字</b> <small>Aksara</small></button></div>
+<div id="mt-seg" role="group" aria-label="Bagian materi"><button type="button" id="n-vc"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M8 10h8M8 14h5"/></svg><b lang="zh">词汇</b> <small>Kosakata</small></button><button type="button" id="n-gr"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h11a3 3 0 013 3v13H8a3 3 0 01-3-3z"/><path d="M9 9h6M9 13h4"/></svg><b lang="zh">语法</b> <small>Tata bahasa</small></button><button type="button" id="n-rd"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6c3-1.5 6-1.5 9 0 3-1.5 6-1.5 9 0v13c-3-1.5-6-1.5-9 0-3-1.5-6-1.5-9 0z"/><path d="M12 6v13"/></svg><b lang="zh">阅读</b> <small>Membaca</small></button><button type="button" id="n-hz"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M12 4v16M4 12h16" stroke-dasharray="2 2.4"/></svg><b lang="zh">汉字</b> <small>Aksara</small></button><button type="button" id="n-bj" hidden><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M12 16v4M8 20h8"/></svg><b lang="zh">课件</b> <small>Bahan ajar</small></button></div>
 <div class="stats" id="stats"></div>
 <div class="row" id="md"></div>
 <div class="row" id="lv"></div>
@@ -1841,7 +1841,7 @@ body.hm:not(.pr-on) #view .hb>#hb-uji{grid-column:1/-1;grid-template-columns:rep
    - Tab aktif ditandai aria-current. Tidak ada permintaan jaringan dan tidak menyentuh data belajar. */
 (function(){
  "use strict";
- var MT=["n-vc","n-gr","n-rd","n-hz"],TABS=["n-hm","n-mt","n-lt","n-pr"],last="n-vc",prog=false;
+ var MT=["n-vc","n-gr","n-rd","n-hz","n-bj"],TABS=["n-hm","n-mt","n-lt","n-pr"],last="n-vc",prog=false;
  function $(id){return document.getElementById(id)}
  function on(id){var e=$(id);return !!(e&&e.classList.contains("on"))}
  function setA(e,a,v){if(e&&e.getAttribute(a)!==v)e.setAttribute(a,v)}
@@ -2036,8 +2036,8 @@ function head(){const hm=S.mode=="hm",vc=S.mode=="hsk"||S.mode=="tek";
  $("ch").style.display=K()&&S.mode!="rd"&&S.mode!="lt"?"":"none";
  $("ch").onchange=e=>{S.ch=+e.target.value;S.i=0;S.flip=false;render()};
  $("t-study").className=S.tab=="study"?"on":"";$("t-sum").className=S.tab=="sum"?"on":"";$("t-write").className=S.tab=="write"?"on":"";
- $("md").style.display=vc?"":"none";$("vt").style.display=vc?"":"none";$("stats").style.display=vc?"":"none";$("lv").style.display=hm?"none":"";$("bc").style.display=hm?"none":"";$("ch").style.display=vc&&K()?"":"none";
- document.body.classList.toggle("hm",hm);const nm={hm:"n-hm",hsk:"n-vc",tek:"n-vc",gr:"n-gr",rd:"n-rd",lt:"n-lt",hz:"n-hz"}[S.mode];["n-hm","n-vc","n-gr","n-rd","n-lt","n-hz"].forEach(id=>$(id).classList.toggle("on",id==nm));
+ $("md").style.display=vc?"":"none";$("vt").style.display=vc?"":"none";$("stats").style.display=vc?"":"none";$("lv").style.display=hm||S.mode=="bj"?"none":"";$("bc").style.display=hm?"none":"";$("ch").style.display=vc&&K()?"":"none";
+ document.body.classList.toggle("hm",hm);const nm={hm:"n-hm",hsk:"n-vc",tek:"n-vc",gr:"n-gr",rd:"n-rd",lt:"n-lt",hz:"n-hz",bj:"n-bj"}[S.mode];["n-hm","n-vc","n-gr","n-rd","n-lt","n-hz","n-bj"].forEach(id=>$(id).classList.toggle("on",id==nm));
 }
 
 const stepSVG=(s,k)=>{let p="";for(let j=0;j<=k;j++)p+=`<path d="${s[j]}" fill="${j==k?"#e8674f":"#9a8f80"}"/>`;return `<svg viewBox="0 0 1024 1024" width="64" height="64"><g transform="scale(1,-1) translate(0,-900)">${p}</g></svg>`};
@@ -3047,6 +3047,7 @@ function render(){
  if(S.mode=="hm"){renderHome(v);return}
  if(H3M){renderH3(v);return}
  if(S.mode=="hz"){noteLast("hz","汉字 · "+HZN[S.zk]);renderHz(v);return}
+ if(S.mode=="bj"){noteLast("bj","课件 · HSK 5");if(window.zBj)window.zBj.render(v,{t:CH[7]||[]});else v.innerHTML='<p class="hj hj-msg" role="status">Bahan ajar belum bisa dimuat. Muat ulang halaman.</p>';return}
  if(S.mode=="lt"){noteLast("lt","练习 · "+({su:"Susun kalimat",is:"Isian kata",ur:"Urutan kalimat",tu:"Buat kalimat",hk:"HSKK",po:"Pola kalimat",ar:"Arti kata",de:"Dengar & pilih",pi:"Pinyin & nada",pa:"Pasangkan",h5:"Workbook"})[S.lk]);renderLt(v);return}
  if(S.mode=="rd"){const st=RD.filter(s=>s.l==+S.rl.slice(1))[S.ch-1];noteLast("rd","阅读 · "+rdLn(+S.rl.slice(1))+(st?" · "+st.t:""));renderRd(v);return}
  if(S.mode=="gr"){renderGr(v);return}
@@ -3207,7 +3208,7 @@ function headH3(){
  $("ch").onchange=e=>{S.ch=+e.target.value;S.i=0;S.flip=false;render()};
  $("t-study").className=S.tab=="study"?"on":"";$("t-sum").className=S.tab=="sum"?"on":"";$("t-write").className=S.tab=="write"?"on":"";
  $("md").style.display="";$("vt").style.display="";$("stats").style.display="";$("lv").style.display="";$("bc").style.display="";$("ch").style.display="";
- document.body.classList.toggle("hm",false);["n-hm","n-vc","n-gr","n-rd","n-lt","n-hz"].forEach(id=>$(id).classList.toggle("on",id=="n-vc"));
+ document.body.classList.toggle("hm",false);["n-hm","n-vc","n-gr","n-rd","n-lt","n-hz","n-bj"].forEach(id=>$(id).classList.toggle("on",id=="n-vc"));
 }
 /* catatan status isi penuh (hanya untuk akun yang seharusnya berakses penuh) dan ajakan berlangganan (akun lain) */
 function h3Note(){
@@ -3253,6 +3254,7 @@ function renderH3(v){
  let x0=null;$("cd").ontouchstart=e=>{x0=e.touches[0].clientX};$("cd").ontouchend=e=>{if(x0===null)return;const dx=e.changedTouches[0].clientX-x0;x0=null;if(Math.abs(dx)>60){e.preventDefault();go(dx<0?1:-1)}};
 }
 ["n-hm","n-vc","n-gr","n-rd","n-lt","n-hz"].forEach((id,i)=>$(id).onclick=()=>{S.review=false;if(id==="n-hz"&&S.mode==="hz")S.zd=0;goMode(["hm","vc","gr","rd","lt","hz"][i])});
+$("n-bj").onclick=()=>{S.review=false;goMode("bj")};
 $("t-study").onclick=()=>{S.review=false;S.tab="study";render();scrollTo(0,0)};$("t-write").onclick=()=>{S.review=false;S.tab="write";S.i=0;render();scrollTo(0,0)};$("t-sum").onclick=()=>{S.review=false;S.tab="sum";render();scrollTo(0,0)};
 const nz=s=>(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
 let SX=null,SFLT="all";
